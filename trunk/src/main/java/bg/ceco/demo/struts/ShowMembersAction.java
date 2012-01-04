@@ -32,7 +32,7 @@ public class ShowMembersAction extends Action {
 	private static final String TAB= "\t\t\t\t\t\t\t\t\t\t\t\t\t";
 	private static final String URL = "http://localhost:8080/screenshots/";
 	private static final String FORWARD_SUCCESS = "success";
-	
+	private List <String> listOfTests;
 	@Autowired
 	private AdministrationService adminService;
 
@@ -46,6 +46,8 @@ public class ShowMembersAction extends Action {
 			System.out.println(person.getPermission());
 		}
 		request.setAttribute("members", listMembers);
+		//listOfTests = checkFiles ();
+		request.setAttribute("listOfTests", checkFiles ());
 		message = "Message";
 		newMethod(mapping, 6);
 		return mapping.findForward(FORWARD_SUCCESS);
@@ -61,15 +63,16 @@ public class ShowMembersAction extends Action {
 	public static void print(String str) {
 		System.out.println("(showMemebers) -Eto go i meg=ssage-to" + str);
 	}
-	
-public void checkFiles () throws Exception{
 		
-		InputStream  io = Thread.currentThread().getContextClassLoader().getResourceAsStream("galery/Galery.jsp");
+public List <String> checkFiles () throws Exception{
+		
+		InputStream  io = Thread.currentThread().getContextClassLoader().getResourceAsStream("gallery/Gallery.jsp");
 		Reader reader = new InputStreamReader(io);
 		BufferedReader rader = new BufferedReader(reader);
 		FileWriter write = new FileWriter(galery()); 
 		
-		try {		
+		try {
+			List <String> listOfTests = new ArrayList<String>();		
 			List <File> listFiles = new ArrayList<File>();			
 			File dir = new File(sceensLocationPath());
 			  for (File child : dirListByAscendingDate(dir)) {			  
@@ -77,21 +80,22 @@ public void checkFiles () throws Exception{
 			      continue;  // Ignore the self and parent aliases.\
 			     }		    
 			    listFiles.add(child);
+			    listOfTests.add(child.getName());
 			  }			  
-			  
-			  StringBuilder builder = new StringBuilder();		 
-			  for (int i=0; i<listFiles.size(); i++){			 
-				  String screenShot = listFiles.get(i).toString().replace(sceensLocationPath()+"\\", URL);
-				  builder.append(TAB+"{image : '"+ screenShot+"'},\n");	
-			  }
-			  
-			 String line = null;			
-			 while ((line = rader.readLine()) !=null){
-				 if (line.contains("{placeholder}")){
-					 line = line.replace("{placeholder}", builder);
-				 }
-				 write.write(line+"\n");
-			 }	
+		return listOfTests;	  
+//			  StringBuilder builder = new StringBuilder();		 
+//			  for (int i=0; i<listFiles.size(); i++){			 
+//				  String screenShot = listFiles.get(i).toString().replace(sceensLocationPath()+"\\", URL);
+//				  builder.append(TAB+"{image : '"+ screenShot+"'},\n");	
+//			  }
+//			  
+//			 String line = null;			
+//			 while ((line = rader.readLine()) !=null){
+//				 if (line.contains("{placeholder}")){
+//					 line = line.replace("{placeholder}", builder);
+//				 }
+//				 write.write(line+"\n");
+//			 }	
 		 } finally {
 			 IOUtils.closeQuietly(reader);
 			 IOUtils.closeQuietly(io);
