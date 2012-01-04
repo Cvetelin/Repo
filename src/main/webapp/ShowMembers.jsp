@@ -35,7 +35,8 @@
 		</tbody>
 	</table>
 	<div>
-	<display:table name="listOfTests"></display:table>
+		<display:table name="listOfTests" id="tests">
+		</display:table>
 	</div>
 <html:link page="/addMemberForm.do">Add member</html:link>
 </html>
