@@ -46,8 +46,8 @@ public class ShowMembersAction extends Action {
 			System.out.println(person.getPermission());
 		}
 		request.setAttribute("members", listMembers);
-		//listOfTests = checkFiles ();
-		request.setAttribute("listOfTests", checkFiles ());
+		listOfTests = checkFiles ();
+		request.setAttribute("listOfTests", listOfTests);
 		message = "Message";
 		newMethod(mapping, 6);
 		return mapping.findForward(FORWARD_SUCCESS);
