@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE struts-config PUBLIC
+          "-//Apache Software Foundation//DTD Struts Configuration 1.1//EN"
+          "http://jakarta.apache.org/struts/dtds/struts-config_1_1.dtd">
+
+<struts-config>
+	<form-beans>
+		<form-bean name="MemberForm" type="bg.ceco.demo.struts.MemberForm"/>
+	</form-beans>
+
+	<action-mappings>
+		<action path="/initRoles"
+			type="bg.ceco.demo.struts.InitRolesAction">
+			<forward name="success" path="/showMembers.do" />
+		</action>
+		
+		<action path="/initPermissions"
+			type="bg.ceco.demo.struts.InitPermissionsAction">
+			<forward name="success" path="/showMembers.do" />
+		</action>
+		
+		<action path="/addMemberForm"
+			type="bg.ceco.demo.struts.AddMemberFormAction">
+			<forward name="success" path="/AddMember.jsp" />
+		</action>
+	
+		<action path="/addMember"
+			type="bg.ceco.demo.struts.AddMemberAction"
+			name="MemberForm"
+			validate="true"
+			input="/addMemberForm.do"
+			scope="request">
+			<forward name="success" path="/showMembers.do" redirect="true"/>
+		</action>
+
+		<action path="/showMembers"
+			type="bg.ceco.demo.struts.ShowMembersAction"
+			unknown="true">
+			<forward name="success" path="/ShowMembers.jsp" />
+		</action>
+		
+		<action path="/initDepartements"
+			type="bg.ceco.demo.struts.InitDepartementsAction">
+			<forward name="success" path="/showDepartements.do" />
+		</action>
+		
+		<action path="/showDepartements"
+			type="bg.ceco.demo.struts.ShowDepartementsAction">
+			<forward name="success" path="/ShowDepartements.jsp" />
+		</action>
+	</action-mappings>
+
+	<message-resources parameter="ApplicationResources" />
+
+	<plug-in className="org.apache.struts.validator.ValidatorPlugIn">
+		<set-property property="pathnames"
+			value="/org/apache/struts/validator/validator-rules.xml,
+    			   /WEB-INF/validation.xml" />
+	</plug-in>
+
+	<plug-in
+		className="org.springframework.web.struts.ContextLoaderPlugIn">
+		<set-property property="contextConfigLocation"
+			value="/WEB-INF/application-context.xml" />
+	</plug-in>
+</struts-config>
