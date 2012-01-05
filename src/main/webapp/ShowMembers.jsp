@@ -35,7 +35,9 @@
 		</tbody>
 	</table>
 	<div>
-		<display:table name="listOfTests" id="tests">
+		<display:table name="dirInfos" id="dirInfo">
+			<display:column property="name" href="bla"/>
+			<display:column property="path" />		
 		</display:table>
 	</div>
 <html:link page="/addMemberForm.do">Add member</html:link>
