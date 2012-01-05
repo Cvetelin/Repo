@@ -14,6 +14,7 @@ import java.util.Map;
 import javax.imageio.ImageIO;
 import javax.security.auth.login.LoginException;
 
+import org.apache.commons.io.FileUtils;
 import org.openqa.selenium.ie.InternetExplorerDriver;
 import org.openqa.selenium.remote.Command;
 import org.openqa.selenium.remote.DriverCommand;
@@ -73,7 +74,7 @@ public class ModifiedInternetExplorerDriver extends InternetExplorerDriver {
 	public ModifiedInternetExplorerDriver(String testName) {
 		super();
 		this.testName = testName;
-		this.location = createSaveLoacation();
+		createSaveLoacation();
 	}
 
 	public void captureScreen(String fileName, String driverCommand) throws Exception {
@@ -149,7 +150,7 @@ public class ModifiedInternetExplorerDriver extends InternetExplorerDriver {
 		return location.toString();
 	}
 
-	protected String createSaveLoacation() {
+	protected void createSaveLoacation() {
 		StringBuilder pathToFile = new StringBuilder();
 		try {
 			File rootDir = new File(".");
@@ -160,23 +161,14 @@ public class ModifiedInternetExplorerDriver extends InternetExplorerDriver {
 			pathToFile.append(rootDir.getCanonicalPath());
 			pathToFile.append(SCREEN_LOCATION);
 			pathToFile.append(testName);
-			checkAndCreateFolder(pathToFile.toString());
 			pathToFile.append("\\");
 			pathToFile.append(approximateTestStartTime);
-			checkAndCreateFolder(pathToFile.toString());
 			pathToFile.append("\\");
-			
+			FileUtils.forceMkdir(new File(pathToFile.toString()));
 		} catch (IOException e) {
 			throw new IllegalArgumentException("Error creating dir!", e);
 		}
-		return pathToFile.toString();
-	}
-
-	protected void checkAndCreateFolder(String dirLocation) throws IOException {
-		File theDir = new File(dirLocation);
-		if (!theDir.exists()) {
-			theDir.mkdir();
-		}
+		this.location = pathToFile.toString();
 	}
 
 	@Override
