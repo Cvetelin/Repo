@@ -32,7 +32,6 @@ public class ShowMembersAction extends Action {
 	private static final String TAB= "\t\t\t\t\t\t\t\t\t\t\t\t\t";
 	private static final String URL = "http://localhost:8080/screenshots/";
 	private static final String FORWARD_SUCCESS = "success";
-	private List <String> listOfTests;
 	@Autowired
 	private AdministrationService adminService;
 
@@ -46,8 +45,7 @@ public class ShowMembersAction extends Action {
 			System.out.println(person.getPermission());
 		}
 		request.setAttribute("members", listMembers);
-		listOfTests = checkFiles ();
-		request.setAttribute("listOfTests", listOfTests);
+		request.setAttribute("dirInfos", checkFiles());
 		message = "Message";
 		newMethod(mapping, 6);
 		return mapping.findForward(FORWARD_SUCCESS);
@@ -64,7 +62,7 @@ public class ShowMembersAction extends Action {
 		System.out.println("(showMemebers) -Eto go i meg=ssage-to" + str);
 	}
 		
-public List <String> checkFiles () throws Exception{
+	private List <DirInfo> checkFiles () throws Exception{
 		
 		InputStream  io = Thread.currentThread().getContextClassLoader().getResourceAsStream("gallery/Gallery.jsp");
 		Reader reader = new InputStreamReader(io);
@@ -72,17 +70,22 @@ public List <String> checkFiles () throws Exception{
 		FileWriter write = new FileWriter(galery()); 
 		
 		try {
-			List <String> listOfTests = new ArrayList<String>();		
+			List <DirInfo> dirInfos = new ArrayList<DirInfo>();		
 			List <File> listFiles = new ArrayList<File>();			
 			File dir = new File(sceensLocationPath());
 			  for (File child : dirListByAscendingDate(dir)) {			  
+				
 			    if (".".equals(child.getName()) || "..".equals(child.getName())) {
 			      continue;  // Ignore the self and parent aliases.\
 			     }		    
 			    listFiles.add(child);
-			    listOfTests.add(child.getName());
+			    DirInfo bean = new DirInfo();
+			    bean.setName(child.getName());
+			    bean.setPath(child.getCanonicalPath());
+			    dirInfos.add(bean);
+			    
 			  }			  
-		return listOfTests;	  
+		return dirInfos;	  
 //			  StringBuilder builder = new StringBuilder();		 
 //			  for (int i=0; i<listFiles.size(); i++){			 
 //				  String screenShot = listFiles.get(i).toString().replace(sceensLocationPath()+"\\", URL);
