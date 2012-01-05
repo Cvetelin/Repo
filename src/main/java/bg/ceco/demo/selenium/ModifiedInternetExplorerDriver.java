@@ -1,4 +1,4 @@
-package org.codehaus.mojo.selenium.support;
+package bg.ceco.demo.selenium;
 
 import java.awt.Dimension;
 import java.awt.Rectangle;
@@ -6,6 +6,7 @@ import java.awt.Robot;
 import java.awt.Toolkit;
 import java.awt.image.BufferedImage;
 import java.io.File;
+import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Map;
@@ -14,13 +15,12 @@ import javax.imageio.ImageIO;
 import javax.security.auth.login.LoginException;
 
 import org.openqa.selenium.ie.InternetExplorerDriver;
-import org.openqa.selenium.internal.selenesedriver.TakeScreenshot;
 import org.openqa.selenium.remote.Command;
 import org.openqa.selenium.remote.DriverCommand;
 import org.openqa.selenium.remote.Response;
 import org.openqa.selenium.remote.UnreachableBrowserException;
 
-public class ModifiedRemoteWebDriver extends InternetExplorerDriver {
+public class ModifiedInternetExplorerDriver extends InternetExplorerDriver {
 
 	private static final String SCREEN_LOCATION = "\\src\\main\\webapp\\screenshots\\";
 
@@ -66,11 +66,11 @@ public class ModifiedRemoteWebDriver extends InternetExplorerDriver {
 		this.testName = testName;
 	}
 
-	public ModifiedRemoteWebDriver() {
+	public ModifiedInternetExplorerDriver() {
 		super();
 	}
 
-	public ModifiedRemoteWebDriver(String testName) {
+	public ModifiedInternetExplorerDriver(String testName) {
 		super();
 		this.testName = testName;
 		this.location = createSaveLoacation();
@@ -166,13 +166,13 @@ public class ModifiedRemoteWebDriver extends InternetExplorerDriver {
 			checkAndCreateFolder(pathToFile.toString());
 			pathToFile.append("\\");
 			
-		} catch (Exception e) {
+		} catch (IOException e) {
 			throw new IllegalArgumentException("Error creating dir!", e);
 		}
 		return pathToFile.toString();
 	}
 
-	protected void checkAndCreateFolder(String dirLocation) throws Exception {
+	protected void checkAndCreateFolder(String dirLocation) throws IOException {
 		File theDir = new File(dirLocation);
 		if (!theDir.exists()) {
 			theDir.mkdir();
