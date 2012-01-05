@@ -1,3 +1,4 @@
+package bg.ceco.demo.selenium;
 ////package org.codehaus.mojo.selenium;
 ////
 ////import java.io.IOException;

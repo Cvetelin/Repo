@@ -1,12 +1,14 @@
-package org.codehaus.mojo.selenium;
+package bg.ceco.demo;
 
 
 import java.util.concurrent.TimeUnit;
 
-import org.codehaus.mojo.selenium.support.ModifiedTestCase;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.events.EventFiringWebDriver;
+
+import bg.ceco.demo.selenium.ListenerThatHiglilightsElements;
+import bg.ceco.demo.selenium.ModifiedTestCase;
 
 
 public class SeleniumExampleTest extends ModifiedTestCase{	
@@ -18,7 +20,6 @@ public class SeleniumExampleTest extends ModifiedTestCase{
 		//WebDriverBackedSelenium selenium = new WebDriverBackedSelenium(driver, "http://www.dir.bg/");		
 		//driver = ((WrapsDriver)selenium).getWrappedDriver();
 		edriver.get("http://www.dir.bg/");
-		//driver.get("http://www.dir.bg/");
 		//selenium.open("http://www.dir.bg/");
 		//selenium.click("link=Бургас");
 		//selenium.waitForPageToLoad("30000");

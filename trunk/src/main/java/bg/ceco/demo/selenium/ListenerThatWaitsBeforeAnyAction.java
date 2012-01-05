@@ -1,4 +1,4 @@
-package org.codehaus.mojo.selenium;
+package bg.ceco.demo.selenium;
 import java.util.concurrent.TimeUnit;
 
 import org.openqa.selenium.WebDriver;
