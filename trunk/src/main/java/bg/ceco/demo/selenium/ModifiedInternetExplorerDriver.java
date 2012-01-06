@@ -10,10 +10,8 @@ import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Map;
-
 import javax.imageio.ImageIO;
 import javax.security.auth.login.LoginException;
-
 import org.apache.commons.io.FileUtils;
 import org.openqa.selenium.ie.InternetExplorerDriver;
 import org.openqa.selenium.remote.Command;
@@ -184,12 +182,12 @@ public class ModifiedInternetExplorerDriver extends InternetExplorerDriver {
 					"dd.MM.yyyy HH-mm-ss-S");
 			String timeCaptured = format.format(date);
 			captureScreen(timeCaptured, driverCommand);
-			log(getSessionId(), command.getName(), When.BEFORE);
+			log(getSessionId(), command.getName(), command, When.BEFORE);
 
 			response = getCommandExecutor().execute(command);
 			captureScreen(timeCaptured, driverCommand);
 			if (response == null) {
-				log(getSessionId(), command.getName(), When.AFTER);
+				log(getSessionId(), command.getName(), command, When.AFTER);
 				return null;
 			}
 
@@ -198,9 +196,9 @@ public class ModifiedInternetExplorerDriver extends InternetExplorerDriver {
 			// {"ELEMENT": id} to RemoteWebElements.
 			Object value = getElementConverter().apply(response.getValue());
 			response.setValue(value);
-			log(getSessionId(), command.getName(), When.AFTER);
+			log(getSessionId(), command.getName(), command, When.AFTER);
 		} catch (Exception e) {
-			log(getSessionId(), command.getName(), When.EXCEPTION);
+			log(getSessionId(), command.getName(), command, When.EXCEPTION);
 			String errorMessage = "Error communicating with the remote browser. "
 					+ "It may have died.";
 			if (driverCommand.equals(DriverCommand.NEW_SESSION)) {
@@ -212,9 +210,5 @@ public class ModifiedInternetExplorerDriver extends InternetExplorerDriver {
 
 		return getErrorHandler().throwIfResponseFailed(response,
 				System.currentTimeMillis() - start);
-	}
-
-	public enum When {
-		BEFORE, AFTER, EXCEPTION
 	}
 }
