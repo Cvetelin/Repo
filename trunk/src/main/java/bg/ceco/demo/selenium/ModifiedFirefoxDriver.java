@@ -87,40 +87,34 @@ public class ModifiedFirefoxDriver extends FirefoxDriver {
 		Double screenWidth = screenSize.getWidth();
 		if (screenWidth.intValue() == SCREEN_WIDTH_IN_1920X1080
 				&& screenHeight.intValue() == SCREEN_HEIGHT_IN_1920X1080) {
-			Rectangle screenRectangle = new Rectangle(new Dimension(
-					USABLE_WIDTH_IN_1920X1080, USABLE_HEIGHT_IN_1920X1080));
-			saveScreenShot(screenRectangle,
-					generateSaveLocation(location, fileName));
+			Rectangle screenRectangle = new Rectangle(new Dimension(USABLE_WIDTH_IN_1920X1080,
+					USABLE_HEIGHT_IN_1920X1080));
+			saveScreenShot(screenRectangle, generateSaveLocation(location, fileName));
 		} else if (screenWidth.intValue() == SCREEN_WIDTH_IN_1680X1050
 				&& screenHeight.intValue() == SCREEN_HEIGHT_IN_1680X1050) {
-			Rectangle screenRectangle = new Rectangle(new Dimension(
-					USABLE_WIDTH_IN_1680X1050, USABLE_HEIGHT_IN_1680X1050));
-			saveScreenShot(screenRectangle,
-					generateSaveLocation(location, fileName));
+			Rectangle screenRectangle = new Rectangle(new Dimension(USABLE_WIDTH_IN_1680X1050,
+					USABLE_HEIGHT_IN_1680X1050));
+			saveScreenShot(screenRectangle, generateSaveLocation(location, fileName));
 		} else if (screenWidth.intValue() == SCREEN_WIDTH_IN_1366X768
 				&& screenHeight.intValue() == SCREEN_HEIGHT_IN_1366X768) {
-			Rectangle screenRectangle = new Rectangle(new Dimension(
-					USABLE_WIDTH_IN_1366X1050, USABLE_HEIGHT_IN_1366X768));
-			saveScreenShot(screenRectangle,
-					generateSaveLocation(location, fileName));
+			Rectangle screenRectangle = new Rectangle(new Dimension(USABLE_WIDTH_IN_1366X1050,
+					USABLE_HEIGHT_IN_1366X768));
+			saveScreenShot(screenRectangle, generateSaveLocation(location, fileName));
 		} else if (screenWidth.intValue() == SCREEN_WIDTH_IN_1280X800
 				&& screenHeight.intValue() == SCREEN_HEIGHT_IN_1280X800) {
-			Rectangle screenRectangle = new Rectangle(new Dimension(
-					USABLE_WIDTH_IN_1280X800, USABLE_HEIGHT_IN_1280X800));
-			saveScreenShot(screenRectangle,
-					generateSaveLocation(location, fileName));
+			Rectangle screenRectangle = new Rectangle(
+					new Dimension(USABLE_WIDTH_IN_1280X800, USABLE_HEIGHT_IN_1280X800));
+			saveScreenShot(screenRectangle, generateSaveLocation(location, fileName));
 		} else if (screenWidth.intValue() == SCREEN_WIDTH_IN_1280X1024
 				&& screenHeight.intValue() == SCREEN_HEIGHT_IN_1280X1024) {
-			Rectangle screenRectangle = new Rectangle(new Dimension(
-					USABLE_WIDTH_IN_1280X1024, USABLE_HEIGHT_IN_1280X1024));
-			saveScreenShot(screenRectangle,
-					generateSaveLocation(location, fileName));
+			Rectangle screenRectangle = new Rectangle(new Dimension(USABLE_WIDTH_IN_1280X1024,
+					USABLE_HEIGHT_IN_1280X1024));
+			saveScreenShot(screenRectangle, generateSaveLocation(location, fileName));
 		} else if (screenWidth.intValue() == SCREEN_WIDTH_IN_1024X768
 				&& screenHeight.intValue() == SCREEN_HEIGHT_IN_1024X768) {
-			Rectangle screenRectangle = new Rectangle(new Dimension(
-					USABLE_WIDTH_IN_1024X768, USABLE_HEIGHT_IN_1024X768));
-			saveScreenShot(screenRectangle,
-					generateSaveLocation(location, fileName));
+			Rectangle screenRectangle = new Rectangle(
+					new Dimension(USABLE_WIDTH_IN_1024X768, USABLE_HEIGHT_IN_1024X768));
+			saveScreenShot(screenRectangle, generateSaveLocation(location, fileName));
 		} else
 			throw new LoginException("Unsupported resolution");
 	}
@@ -180,8 +174,7 @@ public class ModifiedFirefoxDriver extends FirefoxDriver {
 		long start = System.currentTimeMillis();
 		try {
 			Date date = new Date(System.currentTimeMillis());
-			SimpleDateFormat format = new SimpleDateFormat(
-					"dd.MM.yyyy HH-mm-ss-S");
+			SimpleDateFormat format = new SimpleDateFormat("dd.MM.yyyy HH-mm-ss-S");
 			String timeCaptured = format.format(date);
 			captureScreen(timeCaptured, driverCommand);
 			log(getSessionId(), command.getName(), command, When.BEFORE);
@@ -200,9 +193,8 @@ public class ModifiedFirefoxDriver extends FirefoxDriver {
 			response.setValue(value);
 			log(getSessionId(), command.getName(), command, When.AFTER);
 		} catch (Exception e) {
-			log(getSessionId(), command.getName(),command, When.EXCEPTION);
-			String errorMessage = "Error communicating with the remote browser. "
-					+ "It may have died.";
+			log(getSessionId(), command.getName(), command, When.EXCEPTION);
+			String errorMessage = "Error communicating with the remote browser. " + "It may have died.";
 			if (driverCommand.equals(DriverCommand.NEW_SESSION)) {
 				errorMessage = "Could not start a new session. Possible causes are "
 						+ "invalid address of the remote server or browser start-up failure.";
@@ -210,7 +202,6 @@ public class ModifiedFirefoxDriver extends FirefoxDriver {
 			throw new UnreachableBrowserException(errorMessage, e);
 		}
 
-		return getErrorHandler().throwIfResponseFailed(response,
-				System.currentTimeMillis() - start);
+		return getErrorHandler().throwIfResponseFailed(response, System.currentTimeMillis() - start);
 	}
 }
