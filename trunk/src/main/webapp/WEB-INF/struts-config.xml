@@ -42,7 +42,7 @@
 		
 		<action path="/showTestExecutionTime"
 			type="bg.ceco.demo.struts.ShowTestExecutionTimeAction">
-			<forward name="success" path="/ShowExecutedTests.jsp" />
+			<forward name="success" path="/ShowTestExecutionTime.jsp" />
 		</action>
 		
 		<action path="/initDepartements"
