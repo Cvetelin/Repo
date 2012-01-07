@@ -79,46 +79,40 @@ public class ModifiedInternetExplorerDriver extends InternetExplorerDriver {
 		if (DriverCommand.NEW_SESSION.equals(driverCommand)) {
 			return;
 		}
-		
+
 		Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
 		Double screenHeight = screenSize.getHeight();
 		Double screenWidth = screenSize.getWidth();
 		if (screenWidth.intValue() == SCREEN_WIDTH_IN_1920X1080
 				&& screenHeight.intValue() == SCREEN_HEIGHT_IN_1920X1080) {
-			Rectangle screenRectangle = new Rectangle(new Dimension(
-					USABLE_WIDTH_IN_1920X1080, USABLE_HEIGHT_IN_1920X1080));
-			saveScreenShot(screenRectangle,
-					generateSaveLocation(location, fileName));
+			Rectangle screenRectangle = new Rectangle(new Dimension(USABLE_WIDTH_IN_1920X1080,
+					USABLE_HEIGHT_IN_1920X1080));
+			saveScreenShot(screenRectangle, generateSaveLocation(location, fileName));
 		} else if (screenWidth.intValue() == SCREEN_WIDTH_IN_1680X1050
 				&& screenHeight.intValue() == SCREEN_HEIGHT_IN_1680X1050) {
-			Rectangle screenRectangle = new Rectangle(new Dimension(
-					USABLE_WIDTH_IN_1680X1050, USABLE_HEIGHT_IN_1680X1050));
-			saveScreenShot(screenRectangle,
-					generateSaveLocation(location, fileName));
+			Rectangle screenRectangle = new Rectangle(new Dimension(USABLE_WIDTH_IN_1680X1050,
+					USABLE_HEIGHT_IN_1680X1050));
+			saveScreenShot(screenRectangle, generateSaveLocation(location, fileName));
 		} else if (screenWidth.intValue() == SCREEN_WIDTH_IN_1366X768
 				&& screenHeight.intValue() == SCREEN_HEIGHT_IN_1366X768) {
-			Rectangle screenRectangle = new Rectangle(new Dimension(
-					USABLE_WIDTH_IN_1366X1050, USABLE_HEIGHT_IN_1366X768));
-			saveScreenShot(screenRectangle,
-					generateSaveLocation(location, fileName));
+			Rectangle screenRectangle = new Rectangle(new Dimension(USABLE_WIDTH_IN_1366X1050,
+					USABLE_HEIGHT_IN_1366X768));
+			saveScreenShot(screenRectangle, generateSaveLocation(location, fileName));
 		} else if (screenWidth.intValue() == SCREEN_WIDTH_IN_1280X800
 				&& screenHeight.intValue() == SCREEN_HEIGHT_IN_1280X800) {
-			Rectangle screenRectangle = new Rectangle(new Dimension(
-					USABLE_WIDTH_IN_1280X800, USABLE_HEIGHT_IN_1280X800));
-			saveScreenShot(screenRectangle,
-					generateSaveLocation(location, fileName));
+			Rectangle screenRectangle = new Rectangle(
+					new Dimension(USABLE_WIDTH_IN_1280X800, USABLE_HEIGHT_IN_1280X800));
+			saveScreenShot(screenRectangle, generateSaveLocation(location, fileName));
 		} else if (screenWidth.intValue() == SCREEN_WIDTH_IN_1280X1024
 				&& screenHeight.intValue() == SCREEN_HEIGHT_IN_1280X1024) {
-			Rectangle screenRectangle = new Rectangle(new Dimension(
-					USABLE_WIDTH_IN_1280X1024, USABLE_HEIGHT_IN_1280X1024));
-			saveScreenShot(screenRectangle,
-					generateSaveLocation(location, fileName));
+			Rectangle screenRectangle = new Rectangle(new Dimension(USABLE_WIDTH_IN_1280X1024,
+					USABLE_HEIGHT_IN_1280X1024));
+			saveScreenShot(screenRectangle, generateSaveLocation(location, fileName));
 		} else if (screenWidth.intValue() == SCREEN_WIDTH_IN_1024X768
 				&& screenHeight.intValue() == SCREEN_HEIGHT_IN_1024X768) {
-			Rectangle screenRectangle = new Rectangle(new Dimension(
-					USABLE_WIDTH_IN_1024X768, USABLE_HEIGHT_IN_1024X768));
-			saveScreenShot(screenRectangle,
-					generateSaveLocation(location, fileName));
+			Rectangle screenRectangle = new Rectangle(
+					new Dimension(USABLE_WIDTH_IN_1024X768, USABLE_HEIGHT_IN_1024X768));
+			saveScreenShot(screenRectangle, generateSaveLocation(location, fileName));
 		} else
 			throw new LoginException("Unsupported resolution");
 	}

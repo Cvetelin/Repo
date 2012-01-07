@@ -12,12 +12,12 @@
 	<action-mappings>
 		<action path="/initRoles"
 			type="bg.ceco.demo.struts.InitRolesAction">
-			<forward name="success" path="/showMembers.do" />
+			<forward name="success" path="/showExecutedTests.do" />
 		</action>
 		
 		<action path="/initPermissions"
 			type="bg.ceco.demo.struts.InitPermissionsAction">
-			<forward name="success" path="/showMembers.do" />
+			<forward name="success" path="/showExecutedTests.do" />
 		</action>
 		
 		<action path="/addMemberForm"
@@ -31,13 +31,18 @@
 			validate="true"
 			input="/addMemberForm.do"
 			scope="request">
-			<forward name="success" path="/showMembers.do" redirect="true"/>
+			<forward name="success" path="/showExecutedTests.do" redirect="true"/>
 		</action>
 
-		<action path="/showMembers"
-			type="bg.ceco.demo.struts.ShowMembersAction"
+		<action path="/showExecutedTests"
+			type="bg.ceco.demo.struts.ShowExecutedTestsAction"
 			unknown="true">
-			<forward name="success" path="/ShowMembers.jsp" />
+			<forward name="success" path="/ShowExecutedTests.jsp" />
+		</action>
+		
+		<action path="/showTestExecutionTime"
+			type="bg.ceco.demo.struts.ShowTestExecutionTimeAction">
+			<forward name="success" path="/ShowExecutedTests.jsp" />
 		</action>
 		
 		<action path="/initDepartements"
