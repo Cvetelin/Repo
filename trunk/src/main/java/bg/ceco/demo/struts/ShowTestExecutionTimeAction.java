@@ -17,24 +17,21 @@ public class ShowTestExecutionTimeAction extends Action {
 
 	public ActionForward execute(ActionMapping mapping, ActionForm form, HttpServletRequest request,
 			HttpServletResponse response) throws Exception {
-
 		String dirInfo = request.getParameter("testDir");
-		List<ExecutionTime> bla = getTestExecutions(dirInfo);
-		request.setAttribute("testExecutions", bla);
-
+		request.setAttribute("testExecutions", getTestExecutions(dirInfo));
 		return mapping.findForward(FORWARD_SUCCESS);
 	}
 
-	private List<ExecutionTime> getTestExecutions(String pathToDir) throws Exception {
+	private List<DirInfo> getTestExecutions(String pathToDir) throws Exception {
 
-		List<ExecutionTime> dirInfos = new ArrayList<ExecutionTime>();
+		List<DirInfo> dirInfos = new ArrayList<DirInfo>();
 		File dir = new File(pathToDir);
 		for (File child : dirListByAscendingDate(dir)) {
 
 			if (".".equals(child.getName()) || "..".equals(child.getName())) {
 				continue; // Ignore the self and parent aliases.\
 			}
-			ExecutionTime bean = new ExecutionTime();
+			DirInfo bean = new DirInfo();
 			bean.setName(child.getName());
 			bean.setPath(child.getCanonicalPath());
 			dirInfos.add(bean);

@@ -8,10 +8,12 @@
 <html>
 <div>
 	<display:table name="testExecutions" id="testExecution">
-		<display:column property="name" url="/showTestExecutionTime.do">
+		<display:column value="Go to Gallery" url="/prepareGalery.do" paramId="executionTimeAsFolder" paramProperty="path" >
+		<display:column property="name" title="Test execution time">		 	
+		</display:column>
 		</display:column>
 	</display:table>
 </div>
-<html:link page="/addMemberForm.do">Add member</html:link>
+<a href="showExecutedTests.do">Back to Tests list</a>
 </html>
 
