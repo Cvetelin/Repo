@@ -65,14 +65,12 @@ public class ShowExecutedTestsAction extends DispatchAction {
 
 		try {
 			List<DirInfo> dirInfos = new ArrayList<DirInfo>();
-			// List <File> listFiles = new ArrayList<File>();
 			File dir = new File(sceensLocationPath());
 			for (File child : dirListByAscendingDate(dir)) {
 
 				if (".".equals(child.getName()) || "..".equals(child.getName())) {
 					continue; // Ignore the self and parent aliases.\
 				}
-				// listFiles.add(child);
 				DirInfo bean = new DirInfo();
 				bean.setName(child.getName());
 				bean.setPath(child.getCanonicalPath());
@@ -109,11 +107,6 @@ public class ShowExecutedTestsAction extends DispatchAction {
 		return pathToFiles;
 	}
 
-	private static String galery() throws Exception {
-		File rootDir = new File(".");
-		String pathToGalery = rootDir.getCanonicalPath() + GALERY_INDEX_LOCATION;
-		return pathToGalery;
-	}
 
 	@SuppressWarnings("unchecked")
 	private static File[] dirListByAscendingDate(File folder) {

@@ -45,6 +45,11 @@
 			<forward name="success" path="/ShowTestExecutionTime.jsp" />
 		</action>
 		
+		<action path="/prepareGalery"
+			type="bg.ceco.demo.struts.PrepareGaleryAction">
+			<forward name="success" path="/PrepareGalery.jsp" />
+		</action>
+		
 		<action path="/initDepartements"
 			type="bg.ceco.demo.struts.InitDepartementsAction">
 			<forward name="success" path="/showDepartements.do" />
