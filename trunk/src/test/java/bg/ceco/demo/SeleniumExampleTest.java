@@ -1,31 +1,25 @@
 package bg.ceco.demo;
 
 
-import java.util.concurrent.TimeUnit;
-
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.events.EventFiringWebDriver;
 
-import bg.ceco.demo.selenium.ListenerThatHiglilightsElements;
-import bg.ceco.demo.selenium.ModifiedTestCase;
+import bg.ceco.demo.selenium.IEScreenshotTestCase;
 
 
-public class SeleniumExampleTest extends ModifiedTestCase{	
+public class SeleniumExampleTest extends IEScreenshotTestCase {	
 
 	public void testSomethingSimple() throws Exception {
 
-		EventFiringWebDriver edriver = new EventFiringWebDriver(driver);
-		edriver.register(new ListenerThatHiglilightsElements("#FFFF00", 1, 500, TimeUnit.NANOSECONDS));
 		//WebDriverBackedSelenium selenium = new WebDriverBackedSelenium(driver, "http://www.dir.bg/");		
 		//driver = ((WrapsDriver)selenium).getWrappedDriver();
-		edriver.get("http://www.dir.bg/");
+		driver.get("http://www.dir.bg/");
 		//selenium.open("http://www.dir.bg/");
 		//selenium.click("link=Бургас");
 		//selenium.waitForPageToLoad("30000");
 //		selenium.isElementPresent("//*[@id='textfields']"); 
-		assertTrue(edriver.findElement(By.tagName("body")).getText().contains("ДНЕС"));
-		 WebElement el = edriver.findElement(By.id("textfields"));
+		assertTrue(driver.findElement(By.tagName("body")).getText().contains("ДНЕС"));
+		 WebElement el = driver.findElement(By.id("textfields"));
 		 el.sendKeys("новини");
 		 el.getAttribute("id");
 //		selenium.type("//*[@id='textfields']", "новини");
