@@ -17,8 +17,9 @@ public class ShowTestExecutionTimeAction extends Action {
 
 	public ActionForward execute(ActionMapping mapping, ActionForm form, HttpServletRequest request,
 			HttpServletResponse response) throws Exception {
-		String dirInfo = request.getParameter("testDir");
-		request.setAttribute("testExecutions", getTestExecutions(dirInfo));
+		String path = request.getParameter("path");
+		String name = request.getParameter("name");
+		request.setAttribute("testExecutions", getTestExecutions(path));
 		return mapping.findForward(FORWARD_SUCCESS);
 	}
 
