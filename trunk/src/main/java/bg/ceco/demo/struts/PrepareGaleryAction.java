@@ -13,6 +13,7 @@ import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import org.apache.commons.io.IOUtils;
+import org.apache.commons.lang.StringUtils;
 import org.apache.struts.action.Action;
 import org.apache.struts.action.ActionForm;
 import org.apache.struts.action.ActionForward;
@@ -82,7 +83,7 @@ public class PrepareGaleryAction extends Action {
 	private String constructURL(String pathToFiles) throws Exception{
 		File rootDir = new File(".");
 		String root = rootDir.getCanonicalPath()+ WEB;		
-		String replacedPath = pathToFiles.replace(root, URL);
+		String replacedPath = pathToFiles.replace(root, StringUtils.EMPTY);
 		StringBuilder builder = new StringBuilder(replacedPath.replace("\\", "/"));
 		return builder.toString();
 	}
