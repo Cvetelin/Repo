@@ -6,12 +6,15 @@ import java.util.Comparator;
 import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+import org.apache.commons.io.FileUtils;
 import org.apache.struts.action.Action;
 import org.apache.struts.action.ActionForm;
 import org.apache.struts.action.ActionForward;
 import org.apache.struts.action.ActionMapping;
+import org.apache.struts.actions.DispatchAction;
 
-public class ShowTestExecutionTimeAction extends Action {
+public class ShowTestExecutionTimeAction extends DispatchAction {
 
 	private static final String FORWARD_SUCCESS = "success";
 
@@ -23,7 +26,7 @@ public class ShowTestExecutionTimeAction extends Action {
 		return mapping.findForward(FORWARD_SUCCESS);
 	}
 
-	private List<DirInfo> getTestExecutions(String pathToDir) throws Exception {
+	protected List<DirInfo> getTestExecutions(String pathToDir) throws Exception {
 
 		List<DirInfo> dirInfos = new ArrayList<DirInfo>();
 		File dir = new File(pathToDir);
@@ -39,9 +42,16 @@ public class ShowTestExecutionTimeAction extends Action {
 		}
 		return dirInfos;
 	}
-
+	
+	public ActionForward deleteGallery(ActionMapping mapping, ActionForm form, HttpServletRequest request,
+			HttpServletResponse response) throws Exception {
+		String path = request.getParameter("path");
+		File folder = new File(path);
+		FileUtils.forceDelete(folder);
+		return mapping.findForward(FORWARD_SUCCESS);
+	}
 	@SuppressWarnings("unchecked")
-	private static File[] dirListByAscendingDate(File folder) {
+	protected static File[] dirListByAscendingDate(File folder) {
 		if (!folder.isDirectory()) {
 			return null;
 		}
