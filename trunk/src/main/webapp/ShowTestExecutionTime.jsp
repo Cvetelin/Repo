@@ -6,14 +6,35 @@
 <%@ page pageEncoding="UTF-8"%>
 
 <html>
-<div>
-	<display:table name="testExecutions" id="testExecution">
-		<display:column value="Go to Gallery" url="/prepareGalery.do" paramId="executionTimeAsFolder" paramProperty="path" >
-		<display:column property="name" title="Test execution time">		 	
-		</display:column>
-		</display:column>
-	</display:table>
-</div>
+<head>
+<link type="text/css" rel="stylesheet" href="/css/display.css">
+</head>
+<body class="box">
+	<table border="1">
+		<thead>
+			<tr align="center" bgcolor="00CC66">
+				<th colspan="2">SELENIUM TESTS</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td>
+					<div>
+
+						<display:table name="testExecutions" id="testExecution"
+							class="title">
+							<display:column value="Go to Gallery" url="/prepareGalery.do"
+								paramId="executionTimeAsFolder" paramProperty="path">
+								<display:column property="name" title="Test execution time">
+								</display:column>
+							</display:column>
+						</display:table>
+					</div>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+</body>
 <a href="showExecutedTests.do">Back to Tests list</a>
 </html>
 

@@ -8,6 +8,15 @@ public class DirInfo {
 
 	private String name;
 	private String path;
+	private String executionTime;
+
+	public String getExecutionTime() {
+		return executionTime;
+	}
+
+	public void setExecutionTime(String executionTime) {
+		this.executionTime = executionTime;
+	}
 
 	public String getName() {
 		return name;
