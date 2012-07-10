@@ -56,15 +56,24 @@
 					slide_counter           :   1,		//Display slide numbers
 					slide_captions          :   1,		//Slide caption (Pull from "title" in slides array)
 					slides 					:  	[		//Slideshow Images
-													{image : 'http://localhost:8080/screenshots/testSomethingSimple/05.01.2012 21-39-49/05.01.2012 21-39-50-35.png'},
-													{image : 'http://localhost:8080/screenshots/testSomethingSimple/05.01.2012 21-39-49/05.01.2012 21-39-58-275.png'},
-													{image : 'http://localhost:8080/screenshots/testSomethingSimple/05.01.2012 21-39-49/05.01.2012 21-40-00-215.png'},
-													{image : 'http://localhost:8080/screenshots/testSomethingSimple/05.01.2012 21-39-49/05.01.2012 21-40-01-875.png'},
-													{image : 'http://localhost:8080/screenshots/testSomethingSimple/05.01.2012 21-39-49/05.01.2012 21-40-02-885.png'},
-													{image : 'http://localhost:8080/screenshots/testSomethingSimple/05.01.2012 21-39-49/05.01.2012 21-40-03-855.png'},
-													{image : 'http://localhost:8080/screenshots/testSomethingSimple/05.01.2012 21-39-49/05.01.2012 21-40-04-945.png'},
-													{image : 'http://localhost:8080/screenshots/testSomethingSimple/05.01.2012 21-39-49/05.01.2012 21-40-05-995.png'},
-													{image : 'http://localhost:8080/screenshots/testSomethingSimple/05.01.2012 21-39-49/05.01.2012 21-40-07-115.png'},
+													{image : 'screenshots/testSomethingSimple/10.07.2012 23-42-34/10.07.2012 23-42-34-383.png'},
+													{image : 'screenshots/testSomethingSimple/10.07.2012 23-42-34/10.07.2012 23-42-42-991.png'},
+													{image : 'screenshots/testSomethingSimple/10.07.2012 23-42-34/10.07.2012 23-42-43-738.png'},
+													{image : 'screenshots/testSomethingSimple/10.07.2012 23-42-34/10.07.2012 23-42-44-673.png'},
+													{image : 'screenshots/testSomethingSimple/10.07.2012 23-42-34/10.07.2012 23-42-45-355.png'},
+													{image : 'screenshots/testSomethingSimple/10.07.2012 23-42-34/10.07.2012 23-42-46-834.png'},
+													{image : 'screenshots/testSomethingSimple/10.07.2012 23-42-34/10.07.2012 23-42-47-488.png'},
+													{image : 'screenshots/testSomethingSimple/10.07.2012 23-42-34/10.07.2012 23-42-48-230.png'},
+													{image : 'screenshots/testSomethingSimple/10.07.2012 23-42-34/10.07.2012 23-42-48-867.png'},
+													{image : 'screenshots/testSomethingSimple/10.07.2012 23-42-34/10.07.2012 23-42-49-542.png'},
+													{image : 'screenshots/testSomethingSimple/10.07.2012 23-42-34/10.07.2012 23-42-50-178.png'},
+													{image : 'screenshots/testSomethingSimple/10.07.2012 23-42-34/10.07.2012 23-42-50-912.png'},
+													{image : 'screenshots/testSomethingSimple/10.07.2012 23-42-34/10.07.2012 23-42-51-566.png'},
+													{image : 'screenshots/testSomethingSimple/10.07.2012 23-42-34/10.07.2012 23-42-52-329.png'},
+													{image : 'screenshots/testSomethingSimple/10.07.2012 23-42-34/10.07.2012 23-42-52-979.png'},
+													{image : 'screenshots/testSomethingSimple/10.07.2012 23-42-34/10.07.2012 23-42-53-921.png'},
+													{image : 'screenshots/testSomethingSimple/10.07.2012 23-42-34/10.07.2012 23-42-54-659.png'},
+													{image : 'screenshots/testSomethingSimple/10.07.2012 23-42-34/10.07.2012 23-42-55-411.png'},
  
 												]
 												
