@@ -42,7 +42,7 @@
     <target name="build" description="Compile main source tree java files">
         <mkdir dir="${build.dir}"/>
         <javac destdir="${build.dir}" source="1.5" target="1.5" debug="true"
-               deprecation="false" optimize="false" failonerror="true">
+               deprecation="false" optimize="false" failonerror="true" includeantruntime="false">
             <src path="${src.dir}"/>
             <classpath refid="master-classpath"/>
         </javac>
@@ -72,14 +72,26 @@
     
 <!-- ============================================================== -->
 <!-- Tomcat tasks - remove these if you don't have Tomcat installed -->
+<!-- In tomcat-users.xml set:  -->
+<!-- role rolename="manager" -->
+<!-- role rolename="manager-gui" -->
+<!-- role rolename="manager-script" -->
+<!-- user username="tomcat" password="s3cret" roles="admin,manager,manager-gui,manager-script" -->
 <!-- ============================================================== -->
+
+
 
     <path id="catalina-ant-classpath">
         <!-- We need the Catalina jars for Tomcat -->
         <!--  * for other app servers - check the docs -->
         <fileset dir="${appserver.lib}">
             <include name="catalina-ant.jar"/>
+	        <include name="tomcat-coyote.jar"/>
+	        <include name="tomcat-util.jar"/>
         </fileset>
+		 <fileset dir="${appserver.home}/bin">
+	                <include name="tomcat-juli.jar"/>
+	    </fileset>
     </path>
 
     <taskdef name="install" classname="org.apache.catalina.ant.DeployTask">
