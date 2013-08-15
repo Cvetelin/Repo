@@ -1,0 +1,23 @@
+body {
+	font-family: Verdana, Helvetica, Arial, sans-serif;
+	font-size: 12px;
+}
+
+h1 {
+	font-size: 16px;
+	text-decoration: underline;
+}
+
+input.error {
+	background-color: red;
+}
+
+div.textarea-handle {
+	background: #EEEEEE url(../images/textarea-handle.gif) no-repeat scroll 50%1px;
+	border-color: -moz-use-text-color #BABDB6 rgb(186, 189, 182);
+	border-style: none solid solid;
+	border-width: medium 1px 1px;
+	cursor: s-resize;
+	font-size: 0pt;
+	height: 5px;
+}
