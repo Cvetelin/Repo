@@ -17,10 +17,10 @@
 		<meta http-equiv="content-type" content="text/html; charset=UTF-8" />
 		<meta http-equiv="X-UA-Compatible" content="IE=8" />
 		
-		<link rel="stylesheet" href="css/supersized.css" type="text/css" media="screen" />
+		<link rel="stylesheet" href="/css/supersized.css" type="text/css" media="screen" />
 		
-		<script type="text/javascript" src="js/jquery-1.6.2.min.js"></script>
-		<script type="text/javascript" src="js/supersized.3.1.3.min.js"></script>
+		<script type="text/javascript" src="/js/jquery-1.6.2.min.js"></script>
+		<script type="text/javascript" src="/js/supersized.3.1.3.min.js"></script>
 		
 		<script type="text/javascript">  
 			
@@ -99,7 +99,7 @@
 			
 			<!--Navigation-->
 			<div id="navigation">
-				<img id="prevslide" src="img/back_dull.png"/><img id="pauseplay" src="img/pause_dull.png"/><img id="nextslide" src="img/forward_dull.png"/>
+				<img id="prevslide" src="/img/back_dull.png"/><img id="pauseplay" src="/img/pause_dull.png"/><img id="nextslide" src="/img/forward_dull.png"/>
 			</div>
 			
 			<!--Logo in bar-->
