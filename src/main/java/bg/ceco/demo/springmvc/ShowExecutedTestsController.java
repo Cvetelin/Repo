@@ -9,13 +9,14 @@ import java.util.List;
 import org.apache.log4j.Logger;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.servlet.ModelAndView;
 
 import bg.ceco.demo.struts.DirInfo;
 
 @Controller
-@RequestMapping("/ShowExecutedTests")
 public class ShowExecutedTestsController {
 	
 	private static final String SCREENS_LOCATION = "\\src\\main\\webapp\\screenshots";
@@ -26,14 +27,16 @@ public class ShowExecutedTestsController {
 	
 	private static Logger log = Logger.getLogger(ShowExecutedTestsController.class.getName());
 	
-	@RequestMapping(method = RequestMethod.GET)
-	public void printHello(ModelMap model) throws Exception {
-		try {
-			model.addAttribute("dirinfos", getTestsNames().get(0).getName());
-		} catch (Exception e) {
-			log.info(e);
-		}
-	
+	@RequestMapping(value="/ShowExecutedTests", method = RequestMethod.GET)
+	public ModelAndView diplayTests(@ModelAttribute("dirInfo") DirInfo dirInfo) throws Exception {
+//		try {
+//			model.addAttribute("dirinfos", getTestsNames().get(0).getName());
+//		} catch (Exception e) {
+//			log.info(e);
+		
+//		}
+		
+		return new ModelAndView("ShowExecutedTests", "dirInfo", getTestsNames());
 //		model.addAttribute("message", "Hello Spring MVC Framework!");
 	
 	}

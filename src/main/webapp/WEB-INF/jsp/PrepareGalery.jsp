@@ -17,10 +17,10 @@
 		<meta http-equiv="content-type" content="text/html; charset=UTF-8" />
 		<meta http-equiv="X-UA-Compatible" content="IE=8" />
 		
-		<link rel="stylesheet" href="css/supersized.css" type="text/css" media="screen" />
+		<link rel="stylesheet" href="/css/supersized.css" type="text/css" media="screen" />
 		
-		<script type="text/javascript" src="js/jquery-1.6.2.min.js"></script>
-		<script type="text/javascript" src="js/supersized.3.1.3.min.js"></script>
+		<script type="text/javascript" src="/js/jquery-1.6.2.min.js"></script>
+		<script type="text/javascript" src="/js/supersized.3.1.3.min.js"></script>
 		
 		<script type="text/javascript">  
 			
@@ -56,24 +56,13 @@
 					slide_counter           :   1,		//Display slide numbers
 					slide_captions          :   1,		//Slide caption (Pull from "title" in slides array)
 					slides 					:  	[		//Slideshow Images
-													{image : 'screenshots/testSomethingSimple/10.07.2012 23-42-34/10.07.2012 23-42-34-383.png'},
-													{image : 'screenshots/testSomethingSimple/10.07.2012 23-42-34/10.07.2012 23-42-42-991.png'},
-													{image : 'screenshots/testSomethingSimple/10.07.2012 23-42-34/10.07.2012 23-42-43-738.png'},
-													{image : 'screenshots/testSomethingSimple/10.07.2012 23-42-34/10.07.2012 23-42-44-673.png'},
-													{image : 'screenshots/testSomethingSimple/10.07.2012 23-42-34/10.07.2012 23-42-45-355.png'},
-													{image : 'screenshots/testSomethingSimple/10.07.2012 23-42-34/10.07.2012 23-42-46-834.png'},
-													{image : 'screenshots/testSomethingSimple/10.07.2012 23-42-34/10.07.2012 23-42-47-488.png'},
-													{image : 'screenshots/testSomethingSimple/10.07.2012 23-42-34/10.07.2012 23-42-48-230.png'},
-													{image : 'screenshots/testSomethingSimple/10.07.2012 23-42-34/10.07.2012 23-42-48-867.png'},
-													{image : 'screenshots/testSomethingSimple/10.07.2012 23-42-34/10.07.2012 23-42-49-542.png'},
-													{image : 'screenshots/testSomethingSimple/10.07.2012 23-42-34/10.07.2012 23-42-50-178.png'},
-													{image : 'screenshots/testSomethingSimple/10.07.2012 23-42-34/10.07.2012 23-42-50-912.png'},
-													{image : 'screenshots/testSomethingSimple/10.07.2012 23-42-34/10.07.2012 23-42-51-566.png'},
-													{image : 'screenshots/testSomethingSimple/10.07.2012 23-42-34/10.07.2012 23-42-52-329.png'},
-													{image : 'screenshots/testSomethingSimple/10.07.2012 23-42-34/10.07.2012 23-42-52-979.png'},
-													{image : 'screenshots/testSomethingSimple/10.07.2012 23-42-34/10.07.2012 23-42-53-921.png'},
-													{image : 'screenshots/testSomethingSimple/10.07.2012 23-42-34/10.07.2012 23-42-54-659.png'},
-													{image : 'screenshots/testSomethingSimple/10.07.2012 23-42-34/10.07.2012 23-42-55-411.png'},
+													{image : 'http://localhost:8080/screenshots/testSomethingSimple/16.08.2013 11-16-23/16.08.2013 11-16-23-812.png'},
+													{image : 'http://localhost:8080/screenshots/testSomethingSimple/16.08.2013 11-16-23/16.08.2013 11-16-26-703.png'},
+													{image : 'http://localhost:8080/screenshots/testSomethingSimple/16.08.2013 11-16-23/16.08.2013 11-16-27-484.png'},
+													{image : 'http://localhost:8080/screenshots/testSomethingSimple/16.08.2013 11-16-23/16.08.2013 11-16-28-390.png'},
+													{image : 'http://localhost:8080/screenshots/testSomethingSimple/16.08.2013 11-16-23/16.08.2013 11-16-29-203.png'},
+													{image : 'http://localhost:8080/screenshots/testSomethingSimple/16.08.2013 11-16-23/16.08.2013 11-16-31-15.png'},
+													{image : 'http://localhost:8080/screenshots/testSomethingSimple/16.08.2013 11-16-23/16.08.2013 11-16-31-781.png'},
  
 												]
 												
@@ -117,7 +106,7 @@
 			
 			<!--Navigation-->
 			<div id="navigation">
-				<img id="prevslide" src="img/back_dull.png"/><img id="pauseplay" src="img/pause_dull.png"/><img id="nextslide" src="img/forward_dull.png"/>
+				<img id="prevslide" src="/img/back_dull.png"/><img id="pauseplay" src="/img/pause_dull.png"/><img id="nextslide" src="/img/forward_dull.png"/>
 			</div>
 			
 			<!--Logo in bar-->
