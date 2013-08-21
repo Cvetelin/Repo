@@ -19,7 +19,7 @@
 					<div>
 
 						<display:table name="dirInfos" id="dirInfo"	class="title">
-							<display:column value="Go to Gallery" url="/app/PrepareGalery?path=${dirInfo.path}">
+							<display:column value="Go to Gallery" url="/app/PrepareGallery?path=${dirInfo.path}">
 								<display:column property="name" title="Test execution time">
 								</display:column>
 							</display:column>
