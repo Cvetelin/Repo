@@ -26,7 +26,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 public class PrepareGalleryController  {
 	
 	private static final String FORWARD_SUCCESS = "success";
-	private static final String GALERY_INDEX_LOCATION = "\\src\\main\\webapp\\WEB-INF\\jsp\\PrepareGalery.jsp";
+	private static final String GALERY_INDEX_LOCATION = "\\src\\main\\webapp\\WEB-INF\\jsp\\PrepareGallery.jsp";
 	private static final String TAB = "\t\t\t\t\t\t\t\t\t\t\t\t\t";
 	private static final String URL = "http://localhost:8080/";
 	private static final String WEB ="\\src\\main\\webapp\\";	
@@ -39,7 +39,7 @@ public class PrepareGalleryController  {
 		} catch (Exception e) {
 			log.info(e);
 		}
-		return "PrepareGalery";
+		return "PrepareGallery";
 	}
 	
 	

@@ -30,6 +30,6 @@
 		</tbody>
 	</table>
 </body>
-<a href="/ShowExecutedTests">Back to Tests list</a>
+<a href="/app/ShowExecutedTests">Back to Tests list</a>
 </html>
 
