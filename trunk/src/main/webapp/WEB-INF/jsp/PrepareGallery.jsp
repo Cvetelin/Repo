@@ -113,7 +113,6 @@
 			
 			<!--Navigation-->
 			<ul id="slide-list"></ul>
-			
 		</div>
 	</div>
 
