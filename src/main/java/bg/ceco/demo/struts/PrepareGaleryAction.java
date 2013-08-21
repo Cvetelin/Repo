@@ -1,4 +1,4 @@
-package bg.ceco.demo.springmvc;
+package bg.ceco.demo.struts;
 //package bg.ceco.demo.struts;
 //
 //import java.io.BufferedReader;

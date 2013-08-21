@@ -23,16 +23,16 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 
 @Controller
-public class PrepareGaleryController  {
+public class PrepareGalleryController  {
 	
 	private static final String FORWARD_SUCCESS = "success";
 	private static final String GALERY_INDEX_LOCATION = "\\src\\main\\webapp\\WEB-INF\\jsp\\PrepareGalery.jsp";
 	private static final String TAB = "\t\t\t\t\t\t\t\t\t\t\t\t\t";
 	private static final String URL = "http://localhost:8080/";
 	private static final String WEB ="\\src\\main\\webapp\\";	
-	private static Logger log = Logger.getLogger(PrepareGaleryController.class.getName());
+	private static Logger log = Logger.getLogger(PrepareGalleryController.class.getName());
 	
-	@RequestMapping(value="/PrepareGalery", method = RequestMethod.GET)
+	@RequestMapping(value="/PrepareGallery", method = RequestMethod.GET)
 	public String prepareGalery(@RequestParam("path") String path) {
 		try {			
 			readWriteGallery(path);
