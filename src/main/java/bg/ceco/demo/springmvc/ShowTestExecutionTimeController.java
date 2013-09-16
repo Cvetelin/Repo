@@ -30,6 +30,14 @@ public class ShowTestExecutionTimeController {
 	
 	}
 	
+	@RequestMapping(value="/DeleteTestExecutionTime", method = RequestMethod.GET)
+	public String deleteGalery (@RequestParam("fileRoot") String fileRoot, ModelMap model) throws Exception {
+		File folder = new File(fileRoot);
+		FileUtils.forceDelete(folder);
+
+		return "ShowTestExecutionTime";
+	}
+	
 //	public ActionForward execute(ActionMapping mapping, ActionForm form, HttpServletRequest request,
 //			HttpServletResponse response) throws Exception {
 //		String path = request.getParameter("path");
@@ -55,13 +63,26 @@ public class ShowTestExecutionTimeController {
 		return dirInfos;
 	}
 	
-//	public ActionForward deleteGallery(ActionMapping mapping, ActionForm form, HttpServletRequest request,
-//			HttpServletResponse response) throws Exception {
-//		String path = request.getParameter("path");
-//		File folder = new File(path);
-//		FileUtils.forceDelete(folder);
-//		return mapping.findForward(FORWARD_SUCCESS);
-//	}
+	//	public ActionForward deleteGallery(ActionMapping mapping, ActionForm form, HttpServletRequest request,
+	//	HttpServletResponse response) throws Exception {
+	//String path = request.getParameter("path");
+	//File folder = new File(path);
+	//FileUtils.forceDelete(folder);
+	//return mapping.findForward(FORWARD_SUCCESS);
+	//}
+	//@SuppressWarnings("unchecked")
+	//protected static File[] dirListByAscendingDate(File folder) {
+	//if (!folder.isDirectory()) {
+	//	return null;
+	//}
+	//File[] files = folder.listFiles();
+	//Arrays.sort(files, new Comparator() {
+	//	public int compare(final Object o1, final Object o2) {
+	//		return new Long(((File) o1).lastModified()).compareTo(new Long(((File) o2).lastModified()));
+	//	}
+	//});
+	//return files;
+	//}
 	@SuppressWarnings("unchecked")
 	protected static File[] dirListByAscendingDate(File folder) {
 		if (!folder.isDirectory()) {
