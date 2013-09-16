@@ -33,7 +33,7 @@ public class PrepareGalleryController  {
 	private static Logger log = Logger.getLogger(PrepareGalleryController.class.getName());
 	
 	@RequestMapping(value="/PrepareGallery", method = RequestMethod.GET)
-	public String prepareGalery(@RequestParam("path") String path) {
+	public String prepareGalery(@RequestParam("filesRoot") String path) {
 		try {			
 			readWriteGallery(path);
 		} catch (Exception e) {
