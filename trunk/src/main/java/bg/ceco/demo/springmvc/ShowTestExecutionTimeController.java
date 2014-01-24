@@ -4,12 +4,14 @@ import java.io.File;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Comparator;
+import java.util.Date;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.apache.commons.io.FileUtils;
+import org.apache.commons.lang.time.DateUtils;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -55,9 +57,13 @@ public class ShowTestExecutionTimeController {
 			if (".".equals(child.getName()) || "..".equals(child.getName())) {
 				continue; // Ignore the self and parent aliases.\
 			}
-			DirInfo bean = new DirInfo();
+			
+			Date dateExecuted = DateUtils.parseDate(child.getName().replace("-", ":"), new String[]{"dd.MM.yyyy HH:mm:ss"});
+			
+			DirInfo bean = new DirInfo();			
 			bean.setName(child.getName());
 			bean.setPath(child.getCanonicalPath());
+			bean.setExecutionDate(dateExecuted);
 			dirInfos.add(bean);
 		}
 		return dirInfos;

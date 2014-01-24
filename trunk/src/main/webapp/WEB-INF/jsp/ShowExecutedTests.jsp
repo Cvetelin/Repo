@@ -20,10 +20,10 @@
 			</tr>
 		</thead>
 		<tbody class="title">
-			<display:table name="dirInfo" id="dir" class="title">
-				<display:column title="Test name" property="name" href="/app/ShowTestExecutionTime?path=${dir.path}">
+			<display:table name="dirInfo" id="dir" class="title" >
+				<display:column title="Test name" property="name" href="/app/ShowTestExecutionTime?path=${dir.path}" sortable="true">
 				</display:column>
-				<display:column title="Last execution Time" property="executionTime"></display:column>
+				<display:column title="Last execution Time" property="executionDate" format="{0,date,dd.MM.yyyy HH:mm:ss}"></display:column>
 			</display:table>
 		</tbody>
 </body>

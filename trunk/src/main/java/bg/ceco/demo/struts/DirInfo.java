@@ -1,5 +1,7 @@
 package bg.ceco.demo.struts;
 
+import java.util.Date;
+
 /**
  * @author Administrator
  * 
@@ -8,14 +10,14 @@ public class DirInfo {
 
 	private String name;
 	private String path;
-	private String executionTime;
+	private Date executionDate;
 
-	public String getExecutionTime() {
-		return executionTime;
+	public Date getexecutionDate() {
+		return executionDate;
 	}
 
-	public void setExecutionTime(String executionTime) {
-		this.executionTime = executionTime;
+	public void setExecutionDate(Date executionDate) {
+		this.executionDate = executionDate;
 	}
 
 	public String getName() {

@@ -4,8 +4,10 @@ import java.io.File;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Comparator;
+import java.util.Date;
 import java.util.List;
 
+import org.apache.commons.lang.time.DateUtils;
 import org.apache.log4j.Logger;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -54,7 +56,8 @@ public class ShowExecutedTestsController {
 				DirInfo bean = new DirInfo();
 				bean.setName(child.getName());
 				bean.setPath(child.getCanonicalPath());
-				bean.setExecutionTime(getTestExecutions(child.getCanonicalPath()));
+				Date dateExecuted = DateUtils.parseDate(getTestExecutions(child.getCanonicalPath()), new String[]{"dd.MM.yyyy HH-mm-ss"});
+				bean.setExecutionDate(dateExecuted);
 				dirInfos.add(bean);
 
 			}
