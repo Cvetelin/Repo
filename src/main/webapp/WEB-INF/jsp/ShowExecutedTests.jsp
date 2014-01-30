@@ -12,6 +12,7 @@
 
 <title>SELENIUM TEST</title>
 </head>
+
 <body class="box">
 	<table border="1">
 		<thead>
@@ -20,8 +21,8 @@
 			</tr>
 		</thead>
 		<tbody class="title">
-			<display:table name="dirInfo" id="dir" class="title" >
-				<display:column title="Test name" property="name" href="/app/ShowTestExecutionTime?path=${dir.path}" sortable="true">
+			<display:table name="dirInfo" id="dir">
+				<display:column title="Test name" property="name" href="/app/ShowTestExecutionTime" paramId="path" paramProperty="path">
 				</display:column>
 				<display:column title="Last execution Time" property="executionDate" format="{0,date,dd.MM.yyyy HH:mm:ss}"></display:column>
 			</display:table>
