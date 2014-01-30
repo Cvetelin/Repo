@@ -36,9 +36,16 @@ public class ShowTestExecutionTimeController {
 	public String deleteGalery (@RequestParam("fileRoot") String fileRoot, ModelMap model) throws Exception {
 		File folder = new File(fileRoot);
 		FileUtils.forceDelete(folder);
-
 		return "ShowTestExecutionTime";
 	}
+	@RequestMapping(value="/deleteSelected", method = RequestMethod.POST)
+	public String deleteGaleryList (@ModelAttribute("dirInfos") ArrayList<DirInfo> dirInfo, ModelMap model) throws Exception {
+		
+		File folder = new File(dirInfo.get(0).getPath());
+		FileUtils.forceDelete(folder);		
+		return "ShowTestExecutionTime";
+	}
+	
 	
 //	public ActionForward execute(ActionMapping mapping, ActionForm form, HttpServletRequest request,
 //			HttpServletResponse response) throws Exception {

@@ -1,6 +1,7 @@
 <%@ taglib uri="http://java.sun.com/jstl/fmt" prefix="fmt"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://displaytag.sf.net" prefix="display"%>
+<%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 <%@ page pageEncoding="UTF-8"%>
 
 <html>
@@ -8,6 +9,11 @@
 <script type="text/javascript"
 	src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.js"></script>
 <script type="text/javascript">
+	function submitForm(method) {
+		 $('#deleteSelected').get(0).setAttribute('action', method);
+		 $('#deleteSelected').submit();
+	}
+
 	$(function() {
 		// add multiple select / deselect functionality
 		$("#selectall").click(function() {
@@ -37,9 +43,11 @@
 		</thead>
 		<tbody>
 			<tr>
-				<td>
-					<div>
-						<display:table name="dirInfos" id="dirInfo" class="title"sort="external" defaultsort="1">
+				<td>				
+				<form:form action="select" commandName="dirInfos" id="deleteSelected">
+					<a href="#" onclick="submitForm('deleteSelected')">Delete selected</a>				
+					<div align="right">				
+						<display:table name="dirInfos" id="dirInfo" class="title" sort="external" defaultsort="1">
 							<display:column property="executionDate"
 								title="Test execution time"	format="{0,date,dd.MM.yyyy HH:mm:ss}" sortable="true"
 								sortName="executionDate" />
@@ -48,10 +56,11 @@
 							<display:column value="Delete" href="/app/DeleteTestExecutionTime" paramProperty="path"
 								paramId="fileRoot" />
 							<display:column	title="<input type='checkbox' name='selectall' id='selectall'/>">
-								<input type="checkbox" class="case" name="case" />
+															<input type="checkbox" class="case" name="dirInfo[0].delete"/> 
 							</display:column>
 						</display:table>
 					</div>
+					</form:form>
 				</td>
 			</tr>
 		</tbody>

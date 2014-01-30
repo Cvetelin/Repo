@@ -1,6 +1,7 @@
 package bg.ceco.demo.struts;
 
 import java.util.Date;
+import java.util.List;
 
 /**
  * @author Administrator
@@ -11,6 +12,15 @@ public class DirInfo {
 	private String name;
 	private String path;
 	private Date executionDate;
+	private boolean delete;
+
+	public boolean isDelete() {
+		return delete;
+	}
+
+	public void setDelete(boolean delete) {
+		this.delete = delete;
+	}
 
 	public Date getexecutionDate() {
 		return executionDate;

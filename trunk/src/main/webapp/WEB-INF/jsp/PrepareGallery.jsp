@@ -20,11 +20,11 @@
 		<link rel="stylesheet" href="/css/supersized.css" type="text/css" media="screen" />
 		<link rel="stylesheet" href="/theme/supersized.shutter.css" type="text/css" media="screen" />
 		
-		<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.1/jquery.min.js"></script>
+		<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"></script>
 		<script type="text/javascript" src="/js/jquery.easing.min.js"></script>
 		
-		<script type="text/javascript" src="/js/supersized.3.2.7.min.js"></script>
-		<script type="text/javascript" src="/theme/supersized.shutter.min.js"></script>
+		<script type="text/javascript" src="/js/supersized.3.2.7.js"></script>
+		<script type="text/javascript" src="/theme/supersized.shutter.js"></script>
 		
 		<script type="text/javascript">
 			
@@ -40,24 +40,6 @@
 					// Components							
 					slide_links				:	'blank',	// Individual links for each slide (Options: false, 'num', 'name', 'blank')
 					slides 					:  	[			// Slideshow Images
-													{image : 'http://localhost:8080/screenshots/testSomethingSimple/10.07.2012 23-42-34/10.07.2012 23-42-34-383.png'},
-													{image : 'http://localhost:8080/screenshots/testSomethingSimple/10.07.2012 23-42-34/10.07.2012 23-42-42-991.png'},
-													{image : 'http://localhost:8080/screenshots/testSomethingSimple/10.07.2012 23-42-34/10.07.2012 23-42-43-738.png'},
-													{image : 'http://localhost:8080/screenshots/testSomethingSimple/10.07.2012 23-42-34/10.07.2012 23-42-44-673.png'},
-													{image : 'http://localhost:8080/screenshots/testSomethingSimple/10.07.2012 23-42-34/10.07.2012 23-42-45-355.png'},
-													{image : 'http://localhost:8080/screenshots/testSomethingSimple/10.07.2012 23-42-34/10.07.2012 23-42-46-834.png'},
-													{image : 'http://localhost:8080/screenshots/testSomethingSimple/10.07.2012 23-42-34/10.07.2012 23-42-47-488.png'},
-													{image : 'http://localhost:8080/screenshots/testSomethingSimple/10.07.2012 23-42-34/10.07.2012 23-42-48-230.png'},
-													{image : 'http://localhost:8080/screenshots/testSomethingSimple/10.07.2012 23-42-34/10.07.2012 23-42-48-867.png'},
-													{image : 'http://localhost:8080/screenshots/testSomethingSimple/10.07.2012 23-42-34/10.07.2012 23-42-49-542.png'},
-													{image : 'http://localhost:8080/screenshots/testSomethingSimple/10.07.2012 23-42-34/10.07.2012 23-42-50-178.png'},
-													{image : 'http://localhost:8080/screenshots/testSomethingSimple/10.07.2012 23-42-34/10.07.2012 23-42-50-912.png'},
-													{image : 'http://localhost:8080/screenshots/testSomethingSimple/10.07.2012 23-42-34/10.07.2012 23-42-51-566.png'},
-													{image : 'http://localhost:8080/screenshots/testSomethingSimple/10.07.2012 23-42-34/10.07.2012 23-42-52-329.png'},
-													{image : 'http://localhost:8080/screenshots/testSomethingSimple/10.07.2012 23-42-34/10.07.2012 23-42-52-979.png'},
-													{image : 'http://localhost:8080/screenshots/testSomethingSimple/10.07.2012 23-42-34/10.07.2012 23-42-53-921.png'},
-													{image : 'http://localhost:8080/screenshots/testSomethingSimple/10.07.2012 23-42-34/10.07.2012 23-42-54-659.png'},
-													{image : 'http://localhost:8080/screenshots/testSomethingSimple/10.07.2012 23-42-34/10.07.2012 23-42-55-411.png'},
 
 												]
 					

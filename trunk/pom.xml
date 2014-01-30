@@ -20,6 +20,7 @@
           </dependency>
         </dependencies>
         <configuration>
+		 <jvmArgs>-XX:PermSize=256M -XX:MaxPermSize=512M</jvmArgs> 
           <contextPath>/</contextPath>
           <scanIntervalSeconds>10</scanIntervalSeconds>
         </configuration>
@@ -49,6 +50,11 @@
     </plugins>
   </build>
   <dependencies>
+	<dependency>
+		<groupId>xml-apis</groupId>
+		<artifactId>xml-apis</artifactId>
+		<version>1.4.01</version>
+		</dependency>
 	<dependency>
         <groupId>org.springframework</groupId>
         <artifactId>spring-webmvc</artifactId>
@@ -148,7 +154,7 @@
 	 <dependency>
         <groupId>org.seleniumhq.selenium</groupId>
         <artifactId>selenium-java</artifactId>
-        <version>2.24.1</version>
+        <version>2.39.0</version>
     </dependency>
     </dependencies>
   <properties>
