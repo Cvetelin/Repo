@@ -2,6 +2,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://displaytag.sf.net" prefix="display"%>
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
+<%@ taglib uri="http://www.springframework.org/tags" prefix="spring"%>
 <%@ page pageEncoding="UTF-8"%>
 
 <html>
@@ -10,8 +11,11 @@
 	src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.js"></script>
 <script type="text/javascript">
 	function submitForm(method) {
-		 $('#deleteSelected').get(0).setAttribute('action', method);
-		 $('#deleteSelected').submit();
+		var answer = confirm("Are you sure want to delete the selected tests?")
+		if (answer){
+			$('#dirInfoForm').get(0).setAttribute('action', method);
+			$('#dirInfoForm').submit();
+		}
 	}
 
 	$(function() {
@@ -30,9 +34,11 @@
 			}
 		});
 	});
+	
 </script>
 
 <link type="text/css" rel="stylesheet" href="/css/display.css">
+<!-- <link type="text/css" rel="stylesheet" href="/css/bootstrap.css"> -->
 </head>
 <body class="box">
 	<table>
@@ -43,25 +49,24 @@
 		</thead>
 		<tbody>
 			<tr>
-				<td>				
-				<form:form action="select" commandName="dirInfos" id="deleteSelected">
-					<a href="#" onclick="submitForm('deleteSelected')">Delete selected</a>				
-					<div align="right">				
-						<display:table name="dirInfos" id="dirInfo" class="title" sort="external" defaultsort="1">
-							<display:column property="executionDate"
-								title="Test execution time"	format="{0,date,dd.MM.yyyy HH:mm:ss}" sortable="true"
-								sortName="executionDate" />
-							<display:column value="Go to Gallery" href="/app/PrepareGallery"
-								paramProperty="path" paramId="filesRoot" />
-							<display:column value="Delete" href="/app/DeleteTestExecutionTime" paramProperty="path"
-								paramId="fileRoot" />
-							<display:column	title="<input type='checkbox' name='selectall' id='selectall'/>">
-															<input type="checkbox" class="case" name="dirInfo[0].delete"/> 
-							</display:column>
-						</display:table>
+				<td><form:form action="dirInfoForm" commandName="dirInfoForm" id="dirInfoForm" method="POST" >
+						<div align="right">
+						<a href="#" onclick="submitForm('dirInfoForm')">Delete selected</a>
+						</div>
+						<div>
+							<display:table name="dirInfos" id="dirInfo" class="title" sort="external" defaultsort="1">
+								<display:column property="executionDate" title="Test execution time"
+									format="{0,date,dd.MM.yyyy HH:mm:ss}" sortable="true" 	sortName="executionDate" />
+								<display:column value="Go to Gallery" href="/app/PrepareGallery"
+									paramProperty="path" paramId="filesRoot" />
+								<display:column value="Delete" href="/app/DeleteTestExecutionTime" paramProperty="path"	paramId="fileRoot" />
+								<display:column	title="<input type='checkbox' name='selectall' id='selectall'/>">
+									<form:checkbox cssClass="case" path="delete"
+										value="${dirInfo.path}" />
+								</display:column>
+							</display:table>
 					</div>
-					</form:form>
-				</td>
+					</form:form></td>
 			</tr>
 		</tbody>
 	</table>

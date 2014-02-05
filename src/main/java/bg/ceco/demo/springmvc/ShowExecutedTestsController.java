@@ -16,7 +16,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
-import bg.ceco.demo.struts.DirInfo;
 
 @Controller
 public class ShowExecutedTestsController {
@@ -31,15 +30,8 @@ public class ShowExecutedTestsController {
 	
 	@RequestMapping(value="/ShowExecutedTests", method = RequestMethod.GET)
 	public ModelAndView diplayTests(@ModelAttribute("dirInfo") DirInfo dirInfo) throws Exception {
-//		try {
-//			model.addAttribute("dirinfos", getTestsNames().get(0).getName());
-//		} catch (Exception e) {
-//			log.info(e);
-		
-//		}
 		
 		return new ModelAndView("ShowExecutedTests", "dirInfo", getTestsNames());
-//		model.addAttribute("message", "Hello Spring MVC Framework!");
 	
 	}
 	
