@@ -6,6 +6,8 @@ import java.text.SimpleDateFormat;
 import java.util.Map;
 
 import org.apache.commons.io.FileUtils;
+import org.junit.Rule;
+import org.junit.rules.TestName;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.remote.Command;
@@ -24,6 +26,7 @@ public class FFScreenshotDriver extends FirefoxDriver {
 	
 	private String testName;
 	private String saveLocation;
+	private String calssName;
 	
 	public FFScreenshotDriver() {
 		super();
@@ -34,6 +37,13 @@ public class FFScreenshotDriver extends FirefoxDriver {
 	public FFScreenshotDriver(String testName) {
 		super();
 		this.testName = testName;
+		createSaveLoacation();
+	}
+	
+	public FFScreenshotDriver(String testName, String calssName) {
+		super();
+		this.testName = testName;
+		this.calssName = calssName;
 		createSaveLoacation();
 	}
 	
@@ -81,7 +91,7 @@ public class FFScreenshotDriver extends FirefoxDriver {
 			File rootDir = new File(".");
 			pathToFile.append(rootDir.getCanonicalPath());
 			pathToFile.append(SCREEN_LOCATION);
-			pathToFile.append(testName);
+			pathToFile.append(calssName+testName);
 			pathToFile.append("\\");
 			pathToFile.append(SAVE_DIR_FORMATTER.format(System.currentTimeMillis()));
 			pathToFile.append("\\");
