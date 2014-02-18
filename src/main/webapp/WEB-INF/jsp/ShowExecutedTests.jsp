@@ -12,11 +12,12 @@
 	prefix="tilesx"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
+<link type="text/css" rel="stylesheet" href="/css/display.css">
+<link type="text/css" rel="stylesheet" href="/css/bootstrap.css">
 <head>
 <title>SELENIUM TEST</title>
 </head>
-<link type="text/css" rel="stylesheet" href="/css/display.css">
-<link type="text/css" rel="stylesheet" href="/css/bootstrap.css">
+
 <body>
 
 	<!-- 		<div class="col-md-8 text-center table-bordered" >SELENIUM TESTS</div> -->

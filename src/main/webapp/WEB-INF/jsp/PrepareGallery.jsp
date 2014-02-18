@@ -33,13 +33,42 @@
 				$.supersized({
 				
 					// Functionality
-					slide_interval          :   3000,		// Length between transitions
+					slide_interval          :   100,		// Length between transitions
 					transition              :   1, 			// 0-None, 1-Fade, 2-Slide Top, 3-Slide Right, 4-Slide Bottom, 5-Slide Left, 6-Carousel Right, 7-Carousel Left
-					transition_speed		:	700,		// Speed of transition
+					transition_speed		:	300,		// Speed of transition
 															   
 					// Components							
 					slide_links				:	'blank',	// Individual links for each slide (Options: false, 'num', 'name', 'blank')
 					slides 					:  	[			// Slideshow Images
+													{image : 'http://localhost:8080/screenshots/testSearchingProject/24.01.2014 13-02-01/24.01.2014 13-02-01-734.png'},
+													{image : 'http://localhost:8080/screenshots/testSearchingProject/24.01.2014 13-02-01/24.01.2014 13-02-02-734.png'},
+													{image : 'http://localhost:8080/screenshots/testSearchingProject/24.01.2014 13-02-01/24.01.2014 13-02-02-984.png'},
+													{image : 'http://localhost:8080/screenshots/testSearchingProject/24.01.2014 13-02-01/24.01.2014 13-02-03-312.png'},
+													{image : 'http://localhost:8080/screenshots/testSearchingProject/24.01.2014 13-02-01/24.01.2014 13-02-03-531.png'},
+													{image : 'http://localhost:8080/screenshots/testSearchingProject/24.01.2014 13-02-01/24.01.2014 13-02-03-843.png'},
+													{image : 'http://localhost:8080/screenshots/testSearchingProject/24.01.2014 13-02-01/24.01.2014 13-02-04-78.png'},
+													{image : 'http://localhost:8080/screenshots/testSearchingProject/24.01.2014 13-02-01/24.01.2014 13-02-04-343.png'},
+													{image : 'http://localhost:8080/screenshots/testSearchingProject/24.01.2014 13-02-01/24.01.2014 13-02-04-546.png'},
+													{image : 'http://localhost:8080/screenshots/testSearchingProject/24.01.2014 13-02-01/24.01.2014 13-02-04-906.png'},
+													{image : 'http://localhost:8080/screenshots/testSearchingProject/24.01.2014 13-02-01/24.01.2014 13-02-05-140.png'},
+													{image : 'http://localhost:8080/screenshots/testSearchingProject/24.01.2014 13-02-01/24.01.2014 13-02-05-640.png'},
+													{image : 'http://localhost:8080/screenshots/testSearchingProject/24.01.2014 13-02-01/24.01.2014 13-02-05-859.png'},
+													{image : 'http://localhost:8080/screenshots/testSearchingProject/24.01.2014 13-02-01/24.01.2014 13-02-06-171.png'},
+													{image : 'http://localhost:8080/screenshots/testSearchingProject/24.01.2014 13-02-01/24.01.2014 13-02-06-421.png'},
+													{image : 'http://localhost:8080/screenshots/testSearchingProject/24.01.2014 13-02-01/24.01.2014 13-02-06-703.png'},
+													{image : 'http://localhost:8080/screenshots/testSearchingProject/24.01.2014 13-02-01/24.01.2014 13-02-06-984.png'},
+													{image : 'http://localhost:8080/screenshots/testSearchingProject/24.01.2014 13-02-01/24.01.2014 13-02-07-296.png'},
+													{image : 'http://localhost:8080/screenshots/testSearchingProject/24.01.2014 13-02-01/24.01.2014 13-02-07-515.png'},
+													{image : 'http://localhost:8080/screenshots/testSearchingProject/24.01.2014 13-02-01/24.01.2014 13-02-07-812.png'},
+													{image : 'http://localhost:8080/screenshots/testSearchingProject/24.01.2014 13-02-01/24.01.2014 13-02-08-31.png'},
+													{image : 'http://localhost:8080/screenshots/testSearchingProject/24.01.2014 13-02-01/24.01.2014 13-02-08-406.png'},
+													{image : 'http://localhost:8080/screenshots/testSearchingProject/24.01.2014 13-02-01/24.01.2014 13-02-08-625.png'},
+													{image : 'http://localhost:8080/screenshots/testSearchingProject/24.01.2014 13-02-01/24.01.2014 13-02-08-890.png'},
+													{image : 'http://localhost:8080/screenshots/testSearchingProject/24.01.2014 13-02-01/24.01.2014 13-02-09-125.png'},
+													{image : 'http://localhost:8080/screenshots/testSearchingProject/24.01.2014 13-02-01/24.01.2014 13-02-09-609.png'},
+													{image : 'http://localhost:8080/screenshots/testSearchingProject/24.01.2014 13-02-01/24.01.2014 13-02-09-750.png'},
+													{image : 'http://localhost:8080/screenshots/testSearchingProject/24.01.2014 13-02-01/24.01.2014 13-02-10-906.png'},
+													{image : 'http://localhost:8080/screenshots/testSearchingProject/24.01.2014 13-02-01/24.01.2014 13-02-11-203.png'},
 
 												]
 					

@@ -35,7 +35,7 @@ public class ShowExecutedTestsController {
 	
 	}
 	
-	private List<DirInfo> getTestsNames() throws Exception {
+	public List<DirInfo> getTestsNames() throws Exception {
 
 		try {
 			List<DirInfo> dirInfos = new ArrayList<DirInfo>();

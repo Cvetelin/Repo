@@ -23,7 +23,7 @@
   	  <put-attribute name="body" value="/WEB-INF/jsp/ShowTestExecutionTime.jsp" />
 	</definition>
 	
-		<definition name="PrepareGallery">
+		<definition name="PrepareGallery" extends="base">
   	  <put-attribute name="body" value="/WEB-INF/jsp/PrepareGallery.jsp" />
 	</definition>
 	

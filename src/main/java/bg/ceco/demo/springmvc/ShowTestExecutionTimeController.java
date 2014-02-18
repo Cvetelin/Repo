@@ -1,19 +1,11 @@
 package bg.ceco.demo.springmvc;
 
-import static org.hamcrest.CoreMatchers.is;
-
 import java.io.File;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Comparator;
 import java.util.Date;
-import java.util.Iterator;
 import java.util.List;
-
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-import javax.swing.text.StyledEditorKit.BoldAction;
-
 import org.apache.commons.io.FileUtils;
 import org.apache.commons.lang.StringUtils;
 import org.apache.commons.lang.time.DateUtils;
@@ -45,11 +37,16 @@ public class ShowTestExecutionTimeController {
 	}
 	
 	@RequestMapping(value="/dirInfoForm", method = RequestMethod.POST)
-	public String deleteGaleryList (@ModelAttribute("dirInfoForm") DirInfoForm dirInfoForm, ModelMap model) throws Exception {
+	public ModelAndView deleteGaleryList (@ModelAttribute("dirInfoForm") DirInfoForm dirInfoForm, ModelMap model) throws Exception {
 		String [] teststToDelete= dirInfoForm.getDelete();
+		File folder = new File("defult");
 		for (int i = 0; i < teststToDelete.length; i++) {
-			File folder = new File(teststToDelete[i]);
+			folder = new File(teststToDelete[i]);
 			FileUtils.forceDelete(folder);
+			
+		}
+		if(!FileUtils.directoryContains(new File(folder.getParent()), folder)){
+			FileUtils.forceDelete(new File(folder.getParent()));
 		}
 		
 		StringBuilder sb = new StringBuilder();
@@ -60,8 +57,16 @@ public class ShowTestExecutionTimeController {
 			}
 			sb.append(path[i]);
 		}
-		model.addAttribute("dirInfos", getTestExecutions(sb.toString()));
-		return "ShowTestExecutionTime";
+		String pageToLoad = sb.toString();
+		
+		if(StringUtils.isBlank(pageToLoad)){
+			ShowExecutedTestsController con = new ShowExecutedTestsController();
+			return new ModelAndView("ShowExecutedTests", "dirInfo", con.getTestsNames());
+		} else {			
+			model.addAttribute("dirInfos", getTestExecutions(sb.toString()));
+			return new ModelAndView("ShowTestExecutionTime");
+		}
+
 	}
 	
 	protected List<DirInfo> getTestExecutions(String pathToDir) throws Exception {
