@@ -11,7 +11,8 @@
  	
 	  <definition name="base" template="/WEB-INF/jsp/Default.jsp">
 	  	<put-attribute name="menu" value="/WEB-INF/jsp/MainManu.jsp" />  
-		<put-attribute name="body" value="" />  
+		<put-attribute name="body" value="" /> 
+		<put-attribute name="left" value="/WEB-INF/jsp/ShowExecutedClasses.jsp" />
     </definition>
     
 	
@@ -23,8 +24,12 @@
   	  <put-attribute name="body" value="/WEB-INF/jsp/ShowTestExecutionTime.jsp" />
 	</definition>
 	
-		<definition name="PrepareGallery" extends="base">
+	<definition name="PrepareGallery" extends="base">
   	  <put-attribute name="body" value="/WEB-INF/jsp/PrepareGallery.jsp" />
 	</definition>
 	
+	<definition name="Index" extends="base">
+  	  <put-attribute name="body" value="/WEB-INF/jsp/Index.jsp" />
+	</definition>
+		
 </tiles-definitions> 

@@ -45,23 +45,20 @@
 <body>
 	<form:form action="dirInfoForm" commandName="dirInfoForm"
 		id="dirInfoForm" method="POST">
-		<div class="container center-block text-center">
+		<div class="container center-block text-right ">
+		<div class="col-md-8">
 			<a href="#" onclick="submitForm('dirInfoForm')">Delete selected</a>
+			</div>
 		</div>
 		<div class="container center-block text-center">
-			<display:table name="dirInfos" id="dirInfo" sort="external"
-				defaultsort="1" class="col-md-8  table-bordered title">
-				<display:column property="executionDate" title="Test execution time"
-					format="{0,date,dd.MM.yyyy HH:mm:ss}" sortable="true"
-					sortName="executionDate" class="col-md-4 table-bordered text-center" />
-				<display:column value="Go to Gallery" href="/app/PrepareGallery"
-					paramProperty="path" paramId="filesRoot"
+			<display:table name="dirInfos" id="dirInfo"  requestURI="ShowTestExecutionTime" class="col-md-8  table-bordered title">
+				<display:column property="executionDate" title="Test execution time" format="{0,date,dd.MM.yyyy HH:mm:ss}" sortable="true"
+					class="col-md-4 table-bordered text-center" />
+				<display:column value="Go to Gallery" href="/app/PrepareGallery" paramProperty="path" paramId="filesRoot"
 					class="col-md-2 table-bordered text-center" />
-				<display:column value="Delete" href="/app/DeleteTestExecutionTime"
-					paramProperty="path" paramId="fileRoot"
-					class="col-md-2 table-bordered text-center" />
-				<display:column class="col-md-2 text-center"
-					title="<input type='checkbox' name='selectall' id='selectall' />">
+				<display:column value="Delete" href="/app/DeleteTestExecutionTime" paramProperty="path" paramId="fileRoot"
+					class="col-md-1 table-bordered text-center" />
+				<display:column class="col-xs-1 text-center" title="<input type='checkbox' name='selectall' id='selectall' />">
 					<form:checkbox cssClass="case" path="delete"
 						value="${dirInfo.path}" />
 				</display:column>

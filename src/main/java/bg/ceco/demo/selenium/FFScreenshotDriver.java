@@ -91,7 +91,9 @@ public class FFScreenshotDriver extends FirefoxDriver {
 			File rootDir = new File(".");
 			pathToFile.append(rootDir.getCanonicalPath());
 			pathToFile.append(SCREEN_LOCATION);
-			pathToFile.append(calssName+testName);
+			pathToFile.append(calssName);
+			pathToFile.append("\\");
+			pathToFile.append(testName);
 			pathToFile.append("\\");
 			pathToFile.append(SAVE_DIR_FORMATTER.format(System.currentTimeMillis()));
 			pathToFile.append("\\");
