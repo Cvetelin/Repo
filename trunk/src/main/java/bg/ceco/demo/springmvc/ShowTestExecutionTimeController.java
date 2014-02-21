@@ -73,7 +73,7 @@ public class ShowTestExecutionTimeController {
 
 		List<DirInfo> dirInfos = new ArrayList<DirInfo>();
 		File dir = new File(pathToDir);
-		for (File child : dirListByAscendingDate(dir)) {
+		for (File child : dirListByDescendingDate(dir)) {
 
 			if (".".equals(child.getName()) || "..".equals(child.getName())) {
 				continue; // Ignore the self and parent aliases.\
@@ -82,7 +82,7 @@ public class ShowTestExecutionTimeController {
 			Date dateExecuted = DateUtils.parseDate(child.getName().replace("-", ":"), new String[]{"dd.MM.yyyy HH:mm:ss"});
 			
 			DirInfo bean = new DirInfo();			
-			bean.setName(child.getName());
+			bean.setTestName(child.getName());
 			bean.setPath(child.getCanonicalPath());
 			bean.setExecutionDate(dateExecuted);
 			dirInfos.add(bean);
@@ -103,5 +103,19 @@ public class ShowTestExecutionTimeController {
 		});
 		return files;
 	}
+	
+	@SuppressWarnings("unchecked")
+	public static File[] dirListByDescendingDate(File folder) {
+		if (!folder.isDirectory()) {
+			return null;
+		}
+		File files[] = folder.listFiles();
+		Arrays.sort(files, new Comparator() {
+			public int compare(final Object o1, final Object o2) {
+				return new Long(((File) o2).lastModified()).compareTo(new Long(((File) o1).lastModified()));
+			}
+		});
+		return files;
+	  } 
 }
 

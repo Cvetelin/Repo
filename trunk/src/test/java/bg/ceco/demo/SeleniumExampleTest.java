@@ -1,14 +1,17 @@
 package bg.ceco.demo;
 
 
+import org.junit.Assert;
+import org.junit.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 
+import bg.ceco.demo.selenium.FFScreenShotTestCase;
 import bg.ceco.demo.selenium.IEScreenshotTestCase;
 
 
-public class SeleniumExampleTest extends IEScreenshotTestCase {	
-
+public class SeleniumExampleTest  extends FFScreenShotTestCase{	
+	@Test
 	public void testSomethingSimple() throws Exception {
 
 		//WebDriverBackedSelenium selenium = new WebDriverBackedSelenium(driver, "http://www.dir.bg/");		
@@ -18,7 +21,7 @@ public class SeleniumExampleTest extends IEScreenshotTestCase {
 		//selenium.click("link=Бургас");
 		//selenium.waitForPageToLoad("30000");
 //		selenium.isElementPresent("//*[@id='textfields']"); 
-		assertTrue(driver.findElement(By.tagName("body")).getText().contains("Welcome to Wikipedia"));
+		Assert.assertTrue(driver.findElement(By.tagName("body")).getText().contains("Welcome to Wikipedia"));
 		 WebElement el = driver.findElement(By.id("searchInput"));
 		 el.sendKeys("selenium");
 		 el.getAttribute("id");

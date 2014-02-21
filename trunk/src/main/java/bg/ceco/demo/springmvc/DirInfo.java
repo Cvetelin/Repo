@@ -9,32 +9,96 @@ import java.util.List;
  */
 public class DirInfo {
 
-	private String name;
+	private String testName;
+	private String testClassName;
 	private String path;
+	private String classPath;
 	private Date executionDate;
-
-	public Date getexecutionDate() {
-		return executionDate;
+	private List<TestInfo> testInfo;
+	
+	
+ 	public List<TestInfo> getTestInfo() {
+		return testInfo;
 	}
-
-	public void setExecutionDate(Date executionDate) {
-		this.executionDate = executionDate;
+	public void setTestInfo(List<TestInfo> testInfo) {
+		this.testInfo = testInfo;
 	}
-
-	public String getName() {
-		return name;
+	/**
+	 * 
+	 * @return the name of the executed test
+	 */
+	public String getTestName() {
+		return testName;
 	}
-
-	public void setName(String name) {
-		this.name = name;
+	/**
+	 * 
+	 * @param testName
+	 */
+	public void setTestName(String testName) {
+		this.testName = testName;
 	}
-
+	/**
+	 * 
+	 * @return the name of the executed the class
+	 */
+	public String getTestClassName() {
+		return testClassName;
+	}
+	
+	/**
+	 * 
+	 * @param testClass
+	 */
+	public void setTestClassName(String testClassName) {
+		this.testClassName = testClassName;
+	}
+	/**
+	 * 
+	 * @return path to the directory where the test is 
+	 */
 	public String getPath() {
 		return path;
 	}
-
+	
+	/**
+	 * 
+	 * @param path
+	 */
 	public void setPath(String path) {
 		this.path = path;
 	}
+	
+	/**
+	 * 
+	 * @return the exact time of time execution
+	 */
+	public Date getExecutionDate() {
+		return executionDate;
+	}
+	
+	/**
+	 * 
+	 * @param executionDate
+	 */
+	public void setExecutionDate(Date executionDate) {
+		this.executionDate = executionDate;
+	}
+	
+	/**
+	 * 
+	 * @return path to the directory where the test class is
+	 */
+	public String getClassPath() {
+		return classPath;
+	}
+	
+	/**
+	 * 
+	 * @param classPath
+	 */
+	public void setClassPath(String classPath) {
+		this.classPath = classPath;
+	}
 
+	
 }
