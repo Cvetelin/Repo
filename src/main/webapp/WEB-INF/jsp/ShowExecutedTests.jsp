@@ -23,13 +23,15 @@
 	<!-- 		<div class="col-md-8 text-center table-bordered" >SELENIUM TESTS</div> -->
 	<!-- 		<div class="container" >  -->
 	<div class="container center-block text-center">
-		<display:table name="testInfo" id="dir" class="col-md-8  table-bordered title"  requestURI="ShowExecutedTests" defaultsort="1">
+	
+		<display:table name="testInfo" id="dir" class="col-md-8  table-bordered title"  requestURI="ShowExecutedTests" defaultsort="1">	
 			<display:column title="Test name" property="name" href="/app/ShowTestExecutionTime" paramId="path"
 				paramProperty="path" class="col-md-4 table-bordered" sortable="true">
 			</display:column>
 			<display:column title="Last execution Time" property="executionDate" format="{0,date,dd.MM.yyyy HH:mm:ss}"
 				class="col-md-4 table-bordered text-center" sortable="true" ></display:column>
-		</display:table>
+				</display:table>
+
 
 	</div>
 </body>

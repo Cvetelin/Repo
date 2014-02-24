@@ -61,7 +61,7 @@ public class PrepareGalleryController  {
 			List<File> listFiles = new ArrayList<File>();
 			StringBuilder builder = new StringBuilder();
 			File dir = new File(sceensLocationPath);
-			for (File filesInDir : dirListByAscendingDate(dir)) {
+			for (File filesInDir : Constants.dirListByAscendingDate(dir)) {
 				if (".".equals(filesInDir.getName()) || "..".equals(filesInDir.getName())) {
 					continue; // Ignore the self and parent aliases.\
 				}
@@ -101,19 +101,5 @@ public class PrepareGalleryController  {
 		String replacedPath = pathToFiles.replace(root, "http://localhost:8080/");
 		StringBuilder builder = new StringBuilder(replacedPath.replace("\\", "/"));
 		return builder.toString();
-	}
-	
-	@SuppressWarnings("unchecked")
-	private static File[] dirListByAscendingDate(File folder) {
-		if (!folder.isDirectory()) {
-			return null;
-		}
-		File[] files = folder.listFiles();
-		Arrays.sort(files, new Comparator() {
-			public int compare(final Object o1, final Object o2) {
-				return new Long(((File) o1).lastModified()).compareTo(new Long(((File) o2).lastModified()));
-			}
-		});
-		return files;
 	}
 }

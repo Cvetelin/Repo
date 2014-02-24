@@ -12,7 +12,7 @@
 	  <definition name="base" template="/WEB-INF/jsp/Default.jsp">
 	  	<put-attribute name="menu" value="/WEB-INF/jsp/MainManu.jsp" />  
 		<put-attribute name="body" value="" /> 
-		<put-attribute name="left" value="/WEB-INF/jsp/ShowExecutedClasses.jsp" />
+	  <put-attribute name="left" value="/WEB-INF/jsp/ShowExecutedClasses.jsp" />
     </definition>
     
 	
@@ -29,7 +29,7 @@
 	</definition>
 	
 	<definition name="Index" extends="base">
-  	  <put-attribute name="body" value="/WEB-INF/jsp/Index.jsp" />
+  	  <put-attribute name="body" value="/WEB-INF/jsp/Index.jsp" />	
 	</definition>
 		
 </tiles-definitions> 

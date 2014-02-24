@@ -43,15 +43,9 @@
 <head>
 </head>
 <body>
-	<form:form action="dirInfoForm" commandName="dirInfoForm"
-		id="dirInfoForm" method="POST">
-		<div class="container center-block text-right ">
-		<div class="col-md-8">
-			<a href="#" onclick="submitForm('dirInfoForm')">Delete selected</a>
-			</div>
-		</div>
+	<form:form action="dirInfoForm" commandName="dirInfoForm" id="dirInfoForm" method="POST">
 		<div class="container center-block text-center">
-			<display:table name="dirInfos" id="dirInfo"  requestURI="ShowTestExecutionTime" class="col-md-8  table-bordered title">
+			<display:table name="exectutionInfo" id="exectutionInfo"  requestURI="ShowTestExecutionTime" class="col-md-8  table-bordered title">
 				<display:column property="executionDate" title="Test execution time" format="{0,date,dd.MM.yyyy HH:mm:ss}" sortable="true"
 					class="col-md-4 table-bordered text-center" />
 				<display:column value="Go to Gallery" href="/app/PrepareGallery" paramProperty="path" paramId="filesRoot"
@@ -60,10 +54,13 @@
 					class="col-md-1 table-bordered text-center" />
 				<display:column class="col-xs-1 text-center" title="<input type='checkbox' name='selectall' id='selectall' />">
 					<form:checkbox cssClass="case" path="delete"
-						value="${dirInfo.path}" />
+						value="${exectutionInfo.path}" />
 				</display:column>
 			</display:table>
 		</div>
+			<div class="container center-block text-right col-md-7">
+				<a href="#" onclick="submitForm('dirInfoForm')">Delete selected</a>
+			</div>
 	</form:form>
 </body>
 <a href="/app/ShowExecutedTests">Back to Tests list</a>
