@@ -22,7 +22,7 @@
 
 	<div class="text-center">
 		<display:table name="dirInfo" id="dir" class="col-md-2  table-bordered title"  requestURI="ShowExecutedTests" defaultsort="1">
-			<display:column title="Class name" property="testClassName" href="/app/ShowExecutedClassTests" paramId="path"
+			<display:column title="Class name" property="testClassName" href="/app/ShowExecutedTests" paramId="path"
 				paramProperty="classPath" class="col-md-2 table-bordered" sortable="true">
 			</display:column>
 		</display:table>

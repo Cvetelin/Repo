@@ -23,8 +23,11 @@ public class ShowTestExecutionTimeController {
 
 	@RequestMapping(value="/ShowTestExecutionTime", method = RequestMethod.GET)
 	public String detailTestsDisplay(@RequestParam("path") String path, ModelMap model) throws Exception {
+		List<DirInfo> info = getTestClasses();
+		
 		model.addAttribute(new DirInfoForm());
-		model.addAttribute("dirInfos", getTestExecutions(path));
+		model.addAttribute("exectutionInfo", getTestExecutions(path));
+		model.addAttribute("dirInfo", info);
 		return "ShowTestExecutionTime";
 	
 	}
@@ -61,7 +64,7 @@ public class ShowTestExecutionTimeController {
 		
 		if(StringUtils.isBlank(pageToLoad)){
 			ShowExecutedTestsController con = new ShowExecutedTestsController();
-			return new ModelAndView("ShowExecutedTests", "dirInfo", con.getTestsNames());
+			return new ModelAndView("ShowExecutedTests", "dirInfo", getTestsNames());
 		} else {			
 			model.addAttribute("dirInfos", getTestExecutions(sb.toString()));
 			return new ModelAndView("ShowTestExecutionTime");
@@ -69,11 +72,11 @@ public class ShowTestExecutionTimeController {
 
 	}
 	
-	protected List<DirInfo> getTestExecutions(String pathToDir) throws Exception {
+	protected List<TestInfo> getTestExecutions(String pathToDir) throws Exception {
 
-		List<DirInfo> dirInfos = new ArrayList<DirInfo>();
+		List<TestInfo> testInfos = new ArrayList<TestInfo>();
 		File dir = new File(pathToDir);
-		for (File child : dirListByDescendingDate(dir)) {
+		for (File child : Constants.dirListByDescendingDate(dir)) {
 
 			if (".".equals(child.getName()) || "..".equals(child.getName())) {
 				continue; // Ignore the self and parent aliases.\
@@ -81,41 +84,67 @@ public class ShowTestExecutionTimeController {
 			
 			Date dateExecuted = DateUtils.parseDate(child.getName().replace("-", ":"), new String[]{"dd.MM.yyyy HH:mm:ss"});
 			
-			DirInfo bean = new DirInfo();			
-			bean.setTestName(child.getName());
+			TestInfo bean = new TestInfo();			
+			bean.setName(child.getName());
 			bean.setPath(child.getCanonicalPath());
 			bean.setExecutionDate(dateExecuted);
-			dirInfos.add(bean);
+			testInfos.add(bean);
 		}
-		return dirInfos;
+		return testInfos;
 	}
 
-	@SuppressWarnings("unchecked")
-	protected static File[] dirListByAscendingDate(File folder) {
-		if (!folder.isDirectory()) {
-			return null;
-		}
-		File[] files = folder.listFiles();
-		Arrays.sort(files, new Comparator() {
-			public int compare(final Object o1, final Object o2) {
-				return new Long(((File) o1).lastModified()).compareTo(new Long(((File) o2).lastModified()));
+	private List<DirInfo> getTestsNames() throws Exception {
+
+		try {
+			List<DirInfo> dirInfos = new ArrayList<DirInfo>();
+			File dir = new File(Constants.sceensLocationPath());
+			for (File child : Constants.dirListByAscendingDate(dir)) {
+
+				if (".".equals(child.getName()) || "..".equals(child.getName())) {
+					continue; // Ignore the self and parent aliases.\
+				}
+				DirInfo bean = new DirInfo();
+				bean.setTestName(child.getName());
+				bean.setPath(child.getCanonicalPath());
+				Date dateExecuted = DateUtils.parseDate(Constants.getLastTestExecution(child.getCanonicalPath()),
+						new String[] { "dd.MM.yyyy HH-mm-ss" });
+				bean.setExecutionDate(dateExecuted);
+				dirInfos.add(bean);
+
 			}
-		});
-		return files;
+			return dirInfos;
+
+		} finally {
+		}
 	}
 	
-	@SuppressWarnings("unchecked")
-	public static File[] dirListByDescendingDate(File folder) {
-		if (!folder.isDirectory()) {
-			return null;
+	private List<DirInfo> getTestClasses() throws Exception {
+		List<DirInfo> dirInfos = new ArrayList<DirInfo>();
+		try {
+			File classDir = new File(Constants.sceensLocationPath());
+			for (File testclass : Constants.dirListByAscendingDate(classDir)) {
+				File testDir = new File(testclass.getCanonicalPath());
+				DirInfo bean = new DirInfo();
+				bean.setTestClassName(testclass.getName());
+				bean.setClassPath(testclass.getCanonicalPath());
+				List<TestInfo> testInfos = new ArrayList<TestInfo>();
+					for (File test : Constants.dirListByAscendingDate(testDir)) {						
+						TestInfo  testInfo = new TestInfo();
+						testInfo.setName(test.getName());
+						testInfo.setPath(test.getCanonicalPath());									
+						Date dateExecuted = DateUtils.parseDate(Constants.getLastTestExecution(test.getCanonicalPath()),
+								new String[] { "dd.MM.yyyy HH-mm-ss" });
+						testInfo.setExecutionDate(dateExecuted);
+						testInfos.add(testInfo);
+						
+					}
+				bean.setTestInfo(testInfos);
+				dirInfos.add(bean);
+			}			
+			return dirInfos;
+		} finally {
 		}
-		File files[] = folder.listFiles();
-		Arrays.sort(files, new Comparator() {
-			public int compare(final Object o1, final Object o2) {
-				return new Long(((File) o2).lastModified()).compareTo(new Long(((File) o1).lastModified()));
-			}
-		});
-		return files;
-	  } 
+	}
+	
 }
 
