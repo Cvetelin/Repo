@@ -16,9 +16,9 @@ import org.springframework.web.servlet.ModelAndView;
 @Controller
 public class ShowExecutedClassesController {
 	
-	@RequestMapping(value = "/Index", method = RequestMethod.GET)
+	@RequestMapping(value = "/index", method = RequestMethod.GET)
 	public ModelAndView displayTestClasses (@ModelAttribute("dirInfo") DirInfo dirInfo) throws Exception {
-		return new ModelAndView("Index", "dirInfo", getTestClasses());
+		return new ModelAndView("index", "dirInfo", getTestClasses());
 	}
 	
 	
