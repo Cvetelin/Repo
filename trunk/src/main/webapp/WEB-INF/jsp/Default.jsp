@@ -5,7 +5,9 @@
 	prefix="tilesx"%>
 <%@ taglib uri="http://java.sun.com/jstl/core_rt" prefix="c"%>
 <html>
+<link type="text/css" rel="stylesheet" href="/css/display.css">
 <link type="text/css" rel="stylesheet" href="/css/bootstrap.css">
+
 <head>
 </head>
 <body>

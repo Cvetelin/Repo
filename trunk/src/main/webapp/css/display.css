@@ -1,11 +1,8 @@
-
-/* body { */
-/* 	margin-left: 10%; */
-/* 	margin-right: 10%; */
-/* 	background-color: white; */
-/* 	margin-bottom: 5%; */
-/* 	margin-top: 1%; */
-/* 	} */
+body, table {
+	padding: 0px;
+	background: #F5F5DC;
+	color: #000;
+}
 
 h1 {
 	margin-left: -8%
