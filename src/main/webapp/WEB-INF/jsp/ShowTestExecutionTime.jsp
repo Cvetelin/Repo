@@ -17,12 +17,25 @@
 	src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.js"></script>
 <script type="text/javascript">
 	function submitForm(method) {
-		var answer = confirm("Are you sure want to delete the selected tests?")
-		if (answer){
-			$('#dirInfoForm').get(0).setAttribute('action', method);
-			$('#dirInfoForm').submit();
+		if (validateForm()) {
+			var answer = confirm("Are you sure want to delete the selected tests?")
+			if (answer){
+				$('#dirInfoForm').get(0).setAttribute('action', method);
+				$('#dirInfoForm').submit();
+			}
 		}
 	}
+	
+	function validateForm()
+	 {
+	 var x=document.forms["deleteform"].value;
+	 if (x==null || x=="")
+	   {
+	   alert("There is nothing selected to delete");
+	   return false;
+	   }
+	 }
+	
 	$(function() {
 		// add multiple select / deselect functionality
 		$("#selectall").click(function() {
@@ -43,7 +56,7 @@
 <head>
 </head>
 <body>
-	<form:form action="dirInfoForm" commandName="dirInfoForm" id="dirInfoForm" method="POST">
+	<form:form action="dirInfoForm" commandName="dirInfoForm" id="dirInfoForm" method="POST" name="deleteform">
 		<div class="container center-block text-center">
 			<display:table name="exectutionInfo" id="exectutionInfo"  requestURI="ShowTestExecutionTime" class="col-md-8  table-bordered title col-md-offset-1">
 				<display:column property="executionDate" title="Test execution time" format="{0,date,dd.MM.yyyy HH:mm:ss}" sortable="true"
@@ -53,12 +66,12 @@
 				<display:column value="Delete" href="/app/DeleteTestExecutionTime" paramProperty="path" paramId="fileRoot"
 					class="col-md-1 table-bordered text-center" />
 				<display:column class="col-xs-1 text-center" title="<input type='checkbox' name='selectall' id='selectall' />">
-					<form:checkbox cssClass="case" path="delete"
+					<form:checkbox cssClass="case" path="delete" id="selected" 
 						value="${exectutionInfo.path}" />
 				</display:column>
 			</display:table>
 		</div>
-		<div class="container center-block text-right col-md-8">
+		<div class="container center-block text-right col-md-8">		
 			<a href="#" onclick="submitForm('dirInfoForm')">Delete selected</a>
 		</div>
 	</form:form>
