@@ -2,23 +2,14 @@ package bg.ceco.demo.springmvc;
 
 import java.io.File;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Collection;
-import java.util.Comparator;
 import java.util.Date;
-import java.util.Iterator;
 import java.util.List;
 
-import javax.naming.spi.DirectoryManager;
-
-import org.apache.commons.io.DirectoryWalker;
-import org.apache.commons.io.FileUtils;
 import org.apache.commons.lang.StringUtils;
 import org.apache.commons.lang.time.DateUtils;
-import org.apache.log4j.Logger;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -28,7 +19,7 @@ import org.springframework.web.servlet.ModelAndView;
 public class ShowExecutedTestsController {
 
 
-	private static Logger log = Logger.getLogger(ShowExecutedTestsController.class.getName());
+
 
 	@RequestMapping(value = "/ShowExecutedTests", method = RequestMethod.GET)
 	public ModelAndView diplayTests(@RequestParam("path") String classPath, ModelMap map) throws Exception {
