@@ -14,7 +14,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import org.apache.commons.io.IOUtils;
 import org.apache.commons.lang.StringUtils;
-import org.apache.log4j.Logger;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -30,14 +29,13 @@ public class PrepareGalleryController  {
 	private static final String TAB = "\t\t\t\t\t\t\t\t\t\t\t\t\t";
 	private static final String URL = "http://localhost:8080/";
 	private static final String WEB ="\\src\\main\\webapp\\";	
-	private static Logger log = Logger.getLogger(PrepareGalleryController.class.getName());
 	
 	@RequestMapping(value="/PrepareGallery", method = RequestMethod.GET)
 	public String prepareGalery(@RequestParam("filesRoot") String path) {
 		try {			
 			readWriteGallery(path);
 		} catch (Exception e) {
-			log.info(e);
+			
 		}
 		return "PrepareGallery";
 	}
