@@ -5,7 +5,7 @@ import java.util.List;
 public class DirInfoForm {
 
 	private String[] delete;
-	private List<DirInfo> dirInfo;
+	private List<TestClassDirInfo> dirInfo;
 
 	public String[] getDelete() {
 		return delete;
@@ -15,11 +15,11 @@ public class DirInfoForm {
 		this.delete = delete;
 	}
 
-	public List<DirInfo> getDirInfo() {
+	public List<TestClassDirInfo> getDirInfo() {
 		return dirInfo;
 	}
 
-	public void setDirInfo(List<DirInfo> dirInfo) {
+	public void setDirInfo(List<TestClassDirInfo> dirInfo) {
 		this.dirInfo = dirInfo;
 	}
 

@@ -7,9 +7,9 @@ import java.util.List;
  * @author Administrator
  * 
  */
-public class DirInfo {
+public class TestClassDirInfo {
 
-	private String testName;
+	private String name;
 	private String testClassName;
 	private String path;
 	private String classPath;
@@ -23,28 +23,21 @@ public class DirInfo {
 	public void setTestInfo(List<TestInfo> testInfo) {
 		this.testInfo = testInfo;
 	}
-	/**
-	 * 
-	 * @return the name of the executed test
-	 */
-	public String getTestName() {
-		return testName;
-	}
-	/**
-	 * 
-	 * @param testName
-	 */
-	public void setTestName(String testName) {
-		this.testName = testName;
-	}
+	
 	/**
 	 * 
 	 * @return the name of the executed the class
 	 */
 	public String getTestClassName() {
 		return testClassName;
-	}
+	}	
 	
+	public String getName() {
+		return name;
+	}
+	public void setName(String name) {
+		this.name = name;
+	}
 	/**
 	 * 
 	 * @param testClass

@@ -23,91 +23,57 @@ public class ShowExecutedTestsController {
 
 	@RequestMapping(value = "/ShowExecutedTests", method = RequestMethod.GET)
 	public ModelAndView diplayTests(@RequestParam("path") String classPath, ModelMap map) throws Exception {
-		List<DirInfo> info = getTestClasses(classPath);
-		List<TestInfo> allTestInfo = new ArrayList<TestInfo>();		
-		for (int i = 0; i < info.size(); i++) {
-			Collection<TestInfo> t = info.get(i).getTestInfo();
-			allTestInfo.addAll(t);		}
-
+		List<TestClassDirInfo> info = Constants.getTestClassesDirInfo();
+		TestClassDirInfo classInfo = Constants.getTestClassDirInfo(classPath);
 		map.addAttribute("dirInfo", info);
-		map.addAttribute("testInfo", allTestInfo);
+		map.addAttribute("testInfo", classInfo.getTestInfo());
 		return new ModelAndView("ShowExecutedTests");
 
 	}
 	
 
-	public List<DirInfo> getTestClasses(String selectedClassPath) throws Exception {
-		List<DirInfo> dirInfos = new ArrayList<DirInfo>();
-		try {
-			File classDir = new File(Constants.sceensLocationPath());
-			for (File testclass : Constants.dirListByAscendingDate(classDir)) {
-				File testDir = new File(testclass.getCanonicalPath());
-				DirInfo bean = new DirInfo();
-				bean.setTestClassName(testclass.getName());
-				bean.setClassPath(testclass.getCanonicalPath());
-				List<TestInfo> testInfos = new ArrayList<TestInfo>();
-				if(StringUtils.equals(testclass.getCanonicalPath(), selectedClassPath)) {
-					for (File test : Constants.dirListByAscendingDate(testDir)) {
-						TestInfo  testInfo = new TestInfo();
-						testInfo.setName(test.getName());
-						testInfo.setPath(test.getCanonicalPath());						
-						Date dateExecuted = DateUtils.parseDate(Constants.getLastTestExecution(test.getCanonicalPath()),
-								new String[] { "dd.MM.yyyy HH-mm-ss" });
-						testInfo.setExecutionDate(dateExecuted);
-						testInfos.add(testInfo);
-					}
-				}
-				bean.setTestInfo(testInfos);
-				dirInfos.add(bean);
-			}
-			return dirInfos;
-		} finally {
-		}
-	}
+//	public List<DirInfo> getTestClasses(String selectedClassPath) throws Exception {
+//		List<DirInfo> dirInfos = new ArrayList<DirInfo>();
+//		try {
+//			File classDir = new File(Constants.sceensLocationPath());
+//			for (File testclass : Constants.dirListByAscendingDate(classDir)) {
+//				File testDir = new File(testclass.getCanonicalPath());
+//				DirInfo bean = new DirInfo();
+//				bean.setTestClassName(testclass.getName());
+//				bean.setClassPath(testclass.getCanonicalPath());
+//				List<TestInfo> testInfos = new ArrayList<TestInfo>();
+//				if(StringUtils.equals(testclass.getCanonicalPath(), selectedClassPath)) {
+//					for (File test : Constants.dirListByAscendingDate(testDir)) {
+//						TestInfo  testInfo = new TestInfo();
+//						testInfo.setName(test.getName());
+//						testInfo.setPath(test.getCanonicalPath());						
+//						Date dateExecuted = Constants.getLastTestExecutionDate(test.getCanonicalPath());
+//						testInfo.setExecutionDate(dateExecuted);
+//						testInfos.add(testInfo);
+//					}
+//				}
+//				bean.setTestInfo(testInfos);
+//				dirInfos.add(bean);
+//			}
+//			return dirInfos;
+//		} finally {
+//		}
+//	}
 	
-	private List<DirInfo> getTestClasses() throws Exception {
-		List<DirInfo> dirInfos = new ArrayList<DirInfo>();
-		try {
-			File classDir = new File(Constants.sceensLocationPath());
-			for (File testclass : Constants.dirListByAscendingDate(classDir)) {
-				File testDir = new File(testclass.getCanonicalPath());
-				DirInfo bean = new DirInfo();
-				bean.setTestClassName(testclass.getName());
-				bean.setClassPath(testclass.getCanonicalPath());
-				List<TestInfo> testInfos = new ArrayList<TestInfo>();
-					for (File test : Constants.dirListByAscendingDate(testDir)) {						
-						TestInfo  testInfo = new TestInfo();
-						testInfo.setName(test.getName());
-						testInfo.setPath(test.getCanonicalPath());									
-						Date dateExecuted = DateUtils.parseDate(Constants.getLastTestExecution(test.getCanonicalPath()),
-								new String[] { "dd.MM.yyyy HH-mm-ss" });
-						testInfo.setExecutionDate(dateExecuted);
-						testInfos.add(testInfo);
-						
-					}
-				bean.setTestInfo(testInfos);
-				dirInfos.add(bean);
-			}			
-			return dirInfos;
-		} finally {
-		}
-	}
-
-	private List<DirInfo> getTestsNames(String classPath) throws Exception {
+	private List<TestClassDirInfo> getTestsNames(String classPath) throws Exception {
 		
 		try {
-			List<DirInfo> dirInfos = new ArrayList<DirInfo>();
+			List<TestClassDirInfo> dirInfos = new ArrayList<TestClassDirInfo>();
 			File dir = new File(classPath);
 			for (File child : Constants.dirListByAscendingDate(dir)) {
 
 				if (".".equals(child.getName()) || "..".equals(child.getName())) {
 					continue; // Ignore the self and parent aliases.\
 				}
-				DirInfo bean = new DirInfo();
-				bean.setTestName(child.getName());
+				TestClassDirInfo bean = new TestClassDirInfo();
+				bean.setName(child.getName());
 				bean.setPath(child.getCanonicalPath());
-				Date dateExecuted = DateUtils.parseDate(Constants.getLastTestExecution(child.getCanonicalPath()),
-						new String[] { "dd.MM.yyyy HH-mm-ss" });
+				Date dateExecuted = Constants.getLastTestExecutionDate(child.getCanonicalPath());
 				bean.setExecutionDate(dateExecuted);
 				dirInfos.add(bean);
 

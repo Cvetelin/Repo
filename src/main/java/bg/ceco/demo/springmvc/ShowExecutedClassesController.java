@@ -17,18 +17,18 @@ import org.springframework.web.servlet.ModelAndView;
 public class ShowExecutedClassesController {
 	
 	@RequestMapping(value = "/index", method = RequestMethod.GET)
-	public ModelAndView displayTestClasses (@ModelAttribute("dirInfo") DirInfo dirInfo) throws Exception {
+	public ModelAndView displayTestClasses (@ModelAttribute("dirInfo") TestClassDirInfo dirInfo) throws Exception {
 		return new ModelAndView("index", "dirInfo", getTestClasses());
 	}
 	
 	
-	public List<DirInfo> getTestClasses() throws Exception {
-		List<DirInfo> dirInfos = new ArrayList<DirInfo>();
+	public List<TestClassDirInfo> getTestClasses() throws Exception {
+		List<TestClassDirInfo> dirInfos = new ArrayList<TestClassDirInfo>();
 		try {
 			File classDir = new File(Constants.sceensLocationPath());
 			for (File testclass : Constants.dirListByAscendingDate(classDir)) {
 				File testDir = new File(testclass.getCanonicalPath());
-				DirInfo bean = new DirInfo();
+				TestClassDirInfo bean = new TestClassDirInfo();
 				bean.setTestClassName(testclass.getName());
 				bean.setClassPath(testclass.getCanonicalPath());
 //				List<TestInfo> testInfos = new ArrayList<TestInfo>();
