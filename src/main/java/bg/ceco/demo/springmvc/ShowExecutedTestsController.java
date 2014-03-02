@@ -6,6 +6,7 @@ import java.util.Collection;
 import java.util.Date;
 import java.util.List;
 
+import org.apache.commons.io.FileUtils;
 import org.apache.commons.lang.StringUtils;
 import org.apache.commons.lang.time.DateUtils;
 import org.springframework.stereotype.Controller;
@@ -27,38 +28,25 @@ public class ShowExecutedTestsController {
 		TestClassDirInfo classInfo = Constants.getTestClassDirInfo(classPath);
 		map.addAttribute("dirInfo", info);
 		map.addAttribute("testInfo", classInfo.getTestInfo());
-		return new ModelAndView("ShowExecutedTests");
+		map.addAttribute("classInfo", classInfo);
+		return new ModelAndView("ShowExecutedTests", map);
 
 	}
 	
 
-//	public List<DirInfo> getTestClasses(String selectedClassPath) throws Exception {
-//		List<DirInfo> dirInfos = new ArrayList<DirInfo>();
-//		try {
-//			File classDir = new File(Constants.sceensLocationPath());
-//			for (File testclass : Constants.dirListByAscendingDate(classDir)) {
-//				File testDir = new File(testclass.getCanonicalPath());
-//				DirInfo bean = new DirInfo();
-//				bean.setTestClassName(testclass.getName());
-//				bean.setClassPath(testclass.getCanonicalPath());
-//				List<TestInfo> testInfos = new ArrayList<TestInfo>();
-//				if(StringUtils.equals(testclass.getCanonicalPath(), selectedClassPath)) {
-//					for (File test : Constants.dirListByAscendingDate(testDir)) {
-//						TestInfo  testInfo = new TestInfo();
-//						testInfo.setName(test.getName());
-//						testInfo.setPath(test.getCanonicalPath());						
-//						Date dateExecuted = Constants.getLastTestExecutionDate(test.getCanonicalPath());
-//						testInfo.setExecutionDate(dateExecuted);
-//						testInfos.add(testInfo);
-//					}
-//				}
-//				bean.setTestInfo(testInfos);
-//				dirInfos.add(bean);
-//			}
-//			return dirInfos;
-//		} finally {
-//		}
-//	}
+	@RequestMapping(value="/DeleteTest", method = RequestMethod.GET)
+	public ModelAndView deleteGalery (@RequestParam("fileRoot") String fileRoot, ModelMap model) throws Exception {
+		
+		File testExecutionDirToDelete = new File(fileRoot);
+		FileUtils.forceDelete(testExecutionDirToDelete);
+		
+		if (new File(testExecutionDirToDelete.getParent()).list().length <= 0 ) {
+			File testDir = new File(testExecutionDirToDelete.getParent());
+			FileUtils.forceDelete(testDir);
+			return new ModelAndView("redirect:/app/index");
+		}
+		return diplayTests(new File(fileRoot).getParent(), new ModelMap());
+	}
 	
 	private List<TestClassDirInfo> getTestsNames(String classPath) throws Exception {
 		

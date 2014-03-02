@@ -4,18 +4,16 @@ body, table {
 	color: #000;
 }
 
-h1 {
-	margin-left: -8%
-}
-h2,h3,h4,h5 {
-	margin-right: -4%
+
+.headtitle-link a{
+  color: #D1D0CE;
+  text-decoration: none;
+  font-size:15px
 }
 
 .title {
 	border:	solid;
 	border-width: thin;
-	
-	
 }
 
 .title thead th{
@@ -37,6 +35,9 @@ div.custom {
 	 min-height:20px;
 }
 
+.colordiv div{
+	background-color:  	#504A4B;
+}
 div.custom > li > a{
 	 padding-top:2px; 
 	 padding-bottom:2px;

@@ -8,6 +8,7 @@ public class TestExecDirInfo {
 	private String path;
 	private Date executionDate;
 	private String pathToParentDir;
+	private String parentName;
 	
 	public String getName() {
 		return name;
@@ -40,6 +41,12 @@ public class TestExecDirInfo {
 	public void setPathToParentDir(String pathToParentDir) {
 		this.pathToParentDir = pathToParentDir;
 	}
-	
-	
+
+	public String getParentName() {
+		return parentName;
+	}
+
+	public void setParentName(String parentName) {
+		this.parentName = parentName;
+	}
 }
