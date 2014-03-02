@@ -22,7 +22,7 @@ import org.springframework.web.servlet.ModelAndView;
 public class ShowTestExecutionTimeController {
 	private String pathToTestDir;
 	@RequestMapping(value="/ShowTestExecutionTime", method = RequestMethod.GET)
-	public String detailTestsDisplay(@RequestParam("path") String path, ModelMap model) throws Exception {
+	public ModelAndView detailTestsDisplay(@RequestParam("path") String path, ModelMap model) throws Exception {
 		List<TestClassDirInfo> info = Constants.getTestClassesDirInfo();
 		pathToTestDir = path;		
 		TestClassDirInfo classInfo = Constants.getTestClassDirInfo(new File(path).getParent());
@@ -30,16 +30,16 @@ public class ShowTestExecutionTimeController {
 		model.addAttribute("exectutionInfo", getTestExecutions(path));
 		model.addAttribute("dirInfo", info);
 		model.addAttribute("classInfo", classInfo);
-		return "ShowTestExecutionTime";
+		return new ModelAndView("ShowTestExecutionTime", model);
 	}
 	
 	@RequestMapping(value="/DeleteTestExecutionTime", method = RequestMethod.GET)
-	public ModelAndView deleteGalery (@RequestParam("fileRoot") String fileRoot, ModelMap model) throws Exception {
+	public ModelAndView deleteGalery (@RequestParam("fileRoot") String pathToExecDir, ModelMap model) throws Exception {
 		List<TestClassDirInfo> info = Constants.getTestClassesDirInfo();
 		model.addAttribute("dirInfo", info);
 		model.addAttribute(new DirInfoForm());
 		
-		File testExecutionDirToDelete = new File(fileRoot);
+		File testExecutionDirToDelete = new File(pathToExecDir);
 		FileUtils.forceDelete(testExecutionDirToDelete);
 		
 		if (new File(testExecutionDirToDelete.getParent()).list().length <= 0 ) {
@@ -51,7 +51,7 @@ public class ShowTestExecutionTimeController {
 		}
 		
 		model.addAttribute("exectutionInfo", getTestExecutions(testExecutionDirToDelete.getParent()));		
-		return new ModelAndView("ShowTestExecutionTime");
+		return detailTestsDisplay(new File(pathToExecDir).getParent(), new ModelMap());
 	}
 	
 	@RequestMapping(value="/dirInfoForm", method = RequestMethod.POST)
