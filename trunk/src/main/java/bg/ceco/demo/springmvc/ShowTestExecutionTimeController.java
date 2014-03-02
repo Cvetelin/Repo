@@ -24,10 +24,12 @@ public class ShowTestExecutionTimeController {
 	@RequestMapping(value="/ShowTestExecutionTime", method = RequestMethod.GET)
 	public String detailTestsDisplay(@RequestParam("path") String path, ModelMap model) throws Exception {
 		List<TestClassDirInfo> info = Constants.getTestClassesDirInfo();
-		pathToTestDir = path;
+		pathToTestDir = path;		
+		TestClassDirInfo classInfo = Constants.getTestClassDirInfo(new File(path).getParent());
 		model.addAttribute(new DirInfoForm());
 		model.addAttribute("exectutionInfo", getTestExecutions(path));
 		model.addAttribute("dirInfo", info);
+		model.addAttribute("classInfo", classInfo);
 		return "ShowTestExecutionTime";
 	}
 	
@@ -99,6 +101,7 @@ public class ShowTestExecutionTimeController {
 			bean.setPath(child.getCanonicalPath());
 			bean.setExecutionDate(dateExecuted);
 			bean.setPathToParentDir(child.getParent());
+			bean.setParentName(dir.getName());
 			execInfos.add(bean);
 		}
 		return execInfos;
