@@ -24,6 +24,7 @@
 				<div class="collapse navbar-collapse navHeaderCollapse">
 					<ul class="nav navbar-nav navbar-center">
 						<li><a href="#">Home</a></li>
+						<li><a href="/app/RunClass">Run</a></li>
 					</ul>
 				</div>
 			</div>
