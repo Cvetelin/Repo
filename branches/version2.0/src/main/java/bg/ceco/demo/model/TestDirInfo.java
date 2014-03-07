@@ -1,9 +1,9 @@
-package bg.ceco.demo.springmvc;
+package bg.ceco.demo.model;
 
 import java.util.Date;
 import java.util.List;
 
-public class TestInfo {
+public class TestDirInfo {
 
 	private String name;
 	private String path;
