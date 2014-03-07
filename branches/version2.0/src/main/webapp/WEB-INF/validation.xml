@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE form-validation PUBLIC
+          "-//Apache Software Foundation//DTD Commons Validator Rules Configuration 1.0//EN"
+          "http://jakarta.apache.org/commons/dtds/validator_1_0.dtd">
+
+<form-validation>
+	<formset>
+		<form name="MemberForm">
+    		<field property="firstName" depends="required">
+    			<arg0 key="memberForm.firstName"/>
+    		</field>
+    		<field property="lastName" depends="required">
+    			<arg0 key="memberForm.lastName"/>
+    		</field>
+    		<field property="birthDate" depends="required,date">
+    			<arg0 key="memberForm.birthDate"/>
+    		</field>
+    		<field property="email" depends="required,email">
+    			<arg0 key="memberForm.email"/>
+    		</field>
+    		<field property="password" depends="required,minlength,validwhen">
+    			<arg0 key="memberForm.password" />
+    			<arg1 name="minlength" key="${var:minlength}" resource="false"/>
+    			<msg name="validwhen" key="memberForm.errors.password" />
+        		<var>
+        			<var-name>minlength</var-name>
+        			<var-value>6</var-value>
+        		</var>
+        		<var>
+          			<var-name>test</var-name>
+          			<var-value>(password == passwordAgain)</var-value>
+        		</var>
+    		</field>
+    		<field property="passwordAgain" depends="required,minlength">
+    			<arg0 key="memberForm.passwordAgain"/>
+    			<arg1 name="minlength" key="${var:minlength}" resource="false"/>
+        		<var>
+        			<var-name>minlength</var-name>
+        			<var-value>6</var-value>
+        		</var>
+        		<msg/>
+    		</field>
+		</form>
+	</formset>
+	<formset language="bg">
+		<form name="MemberForm">
+    		<field property="firstName" depends="required">
+    			<arg0 key="memberForm.firstName"/>
+    		</field>
+    		<field property="lastName" depends="required">
+    			<arg0 key="memberForm.lastName"/>
+    		</field>
+    		<field property="birthDate" depends="required,date">
+    			<arg0 key="memberForm.birthDate"/>
+        		<!--
+        		<var>
+        			<var-name>datePattern</var-name>
+        			<var-value>dd.MM.yyyy</var-value>
+        		</var>
+        		-->
+    		</field>
+    		<field property="email" depends="required,email">
+    			<arg0 key="memberForm.email"/>
+    		</field>
+    		<field property="password" depends="required,minlength,validwhen">
+    			<arg0 key="memberForm.password"/>
+    			<arg1 name="minlength" key="${var:minlength}" resource="false"/>
+    			<msg name="validwhen" key="memberForm.errors.password"/>
+        		<var>
+        			<var-name>minlength</var-name>
+        			<var-value>6</var-value>
+        		</var>
+        		<var>
+          			<var-name>test</var-name>
+          			<var-value>(password == passwordAgain)</var-value>
+        		</var>
+    		</field>
+    		<field property="passwordAgain" depends="required,minlength">
+    			<arg0 key="memberForm.passwordAgain"/>
+    			<arg1 name="minlength" key="${var:minlength}" resource="false"/>
+        		<var>
+        			<var-name>minlength</var-name>
+        			<var-value>6</var-value>
+        		</var>
+    		</field>
+		</form>
+	</formset>
+</form-validation>
