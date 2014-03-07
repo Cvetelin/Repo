@@ -2,10 +2,12 @@ package bg.ceco.demo.springmvc;
 
 import java.util.List;
 
+import bg.ceco.demo.model.ClassInfo;
+
 public class DirInfoForm {
 
 	private String[] delete;
-	private List<TestClassDirInfo> dirInfo;
+	private List<ClassInfo> dirInfo;
 
 	public String[] getDelete() {
 		return delete;
@@ -15,11 +17,11 @@ public class DirInfoForm {
 		this.delete = delete;
 	}
 
-	public List<TestClassDirInfo> getDirInfo() {
+	public List<ClassInfo> getDirInfo() {
 		return dirInfo;
 	}
 
-	public void setDirInfo(List<TestClassDirInfo> dirInfo) {
+	public void setDirInfo(List<ClassInfo> dirInfo) {
 		this.dirInfo = dirInfo;
 	}
 

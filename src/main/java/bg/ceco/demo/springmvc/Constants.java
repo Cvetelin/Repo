@@ -10,6 +10,9 @@ import java.util.List;
 import org.apache.commons.lang.StringUtils;
 import org.apache.commons.lang.time.DateUtils;
 
+import bg.ceco.demo.model.ClassInfo;
+import bg.ceco.demo.model.TestDirInfo;
+
 public class Constants {
 	private static final String SCREENS_LOCATION = "\\src\\main\\webapp\\screenshots";
 	private static final String GALERY_INDEX_LOCATION = "\\src\\main\\webapp\\Galery.html";
@@ -54,16 +57,16 @@ public class Constants {
 	
 	public static Date getLastTestExecutionDate(String pathToDir) throws Exception {
 
-		TestInfo bean = new TestInfo();
+		TestDirInfo bean = new TestDirInfo();
 		File dir = new File(pathToDir);		
 		bean.setExecutionDate(DateUtils.parseDate(dirListByDescendingDate(dir)[0].getName(), new String[] { "dd.MM.yyyy HH-mm-ss" }));
 	
 		return bean.getExecutionDate();
 	}
 	
-	public static TestClassDirInfo getTestClassDirInfo(String selectedClassPath) throws Exception {
+	public static ClassInfo getTestClassDirInfo(String selectedClassPath) throws Exception {
 //		List<DirInfo> dirInfos = new ArrayList<DirInfo>();
-		TestClassDirInfo testClassDirInfo = new TestClassDirInfo();
+		ClassInfo testClassDirInfo = new ClassInfo();
 		try {
 			File testClassDir = new File(selectedClassPath);
 			testClassDirInfo.setName(testClassDir.getName());
@@ -74,10 +77,10 @@ public class Constants {
 //				DirInfo bean = new DirInfo();
 //				bean.setTestClassName(testclass.getName());
 //				bean.setClassPath(testclass.getCanonicalPath());
-				List<TestInfo> testInfos = new ArrayList<TestInfo>();
+				List<TestDirInfo> testInfos = new ArrayList<TestDirInfo>();
 //				if(StringUtils.equals(testclass.getCanonicalPath(), selectedClassPath)) {
 					for (File test : Constants.dirListByAscendingDate(new File(selectedClassPath))) {
-						TestInfo  testInfo = new TestInfo();
+						TestDirInfo  testInfo = new TestDirInfo();
 						testInfo.setName(test.getName());
 						testInfo.setPath(test.getCanonicalPath());						
 						Date dateExecuted = getLastTestExecutionDate(test.getCanonicalPath());
@@ -93,18 +96,18 @@ public class Constants {
 		}
 	}
 	
-	public static List<TestClassDirInfo> getTestClassesDirInfo() throws Exception {
-		List<TestClassDirInfo> dirInfos = new ArrayList<TestClassDirInfo>();
+	public static List<ClassInfo> getTestClassesDirInfo() throws Exception {
+		List<ClassInfo> dirInfos = new ArrayList<ClassInfo>();
 		try {
 			File classDir = new File(Constants.sceensLocationPath());
 			for (File testclass : Constants.dirListByAscendingDate(classDir)) {
 				File testDir = new File(testclass.getCanonicalPath());
-				TestClassDirInfo bean = new TestClassDirInfo();
-				bean.setTestClassName(testclass.getName());
-				bean.setClassPath(testclass.getCanonicalPath());
-				List<TestInfo> testInfos = new ArrayList<TestInfo>();
+				ClassInfo bean = new ClassInfo();
+				bean.setName(testclass.getName());
+				bean.setPath(testclass.getCanonicalPath());
+				List<TestDirInfo> testInfos = new ArrayList<TestDirInfo>();
 					for (File test : Constants.dirListByAscendingDate(testDir)) {						
-						TestInfo  testInfo = new TestInfo();
+						TestDirInfo  testInfo = new TestDirInfo();
 						testInfo.setName(test.getName());
 						testInfo.setPath(test.getCanonicalPath());									
 						Date dateExecuted = Constants.getLastTestExecutionDate(test.getCanonicalPath());

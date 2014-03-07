@@ -13,24 +13,26 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
+
+import bg.ceco.demo.model.ClassInfo;
 @Controller
 public class ShowExecutedClassesController {
 	
 	@RequestMapping(value = "/index", method = RequestMethod.GET)
-	public ModelAndView displayTestClasses (@ModelAttribute("dirInfo") TestClassDirInfo dirInfo) throws Exception {
+	public ModelAndView displayTestClasses (@ModelAttribute("dirInfo") ClassInfo dirInfo) throws Exception {
 		return new ModelAndView("index", "dirInfo", getTestClasses());
 	}
 	
 	
-	public List<TestClassDirInfo> getTestClasses() throws Exception {
-		List<TestClassDirInfo> dirInfos = new ArrayList<TestClassDirInfo>();
+	public List<ClassInfo> getTestClasses() throws Exception {
+		List<ClassInfo> dirInfos = new ArrayList<ClassInfo>();
 		try {
 			File classDir = new File(Constants.sceensLocationPath());
 			for (File testclass : Constants.dirListByAscendingDate(classDir)) {
 				File testDir = new File(testclass.getCanonicalPath());
-				TestClassDirInfo bean = new TestClassDirInfo();
-				bean.setTestClassName(testclass.getName());
-				bean.setClassPath(testclass.getCanonicalPath());
+				ClassInfo bean = new ClassInfo();
+				bean.setName(testclass.getName());
+				bean.setPath(testclass.getCanonicalPath());
 //				List<TestInfo> testInfos = new ArrayList<TestInfo>();
 //					for (File test : Constants.dirListByAscendingDate(testDir)) {						
 //						TestInfo  testInfo = new TestInfo();
