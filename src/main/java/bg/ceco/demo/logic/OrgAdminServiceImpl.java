@@ -12,10 +12,10 @@ import bg.ceco.demo.model.OrganisationDao;
 import bg.ceco.demo.model.Service;
 import bg.ceco.demo.model.ServiceImpl;
 
-@Component
+//@Component
 public class OrgAdminServiceImpl implements OrgAdminService {
     
-    @Autowired
+ //   @Autowired
     private OrganisationDao orgDao;
 
     public void initDepartements() {

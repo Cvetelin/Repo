@@ -10,10 +10,10 @@ import bg.ceco.demo.model.RoleDao;
 import bg.ceco.demo.model.Service;
 import bg.ceco.demo.model.ServiceImpl;
 
-@Component
+//@Component
 public class TestService {
 
-    @Autowired
+  //  @Autowired
     private OrganisationDao orgDao;
 
     public void initDepartements() {

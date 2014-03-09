@@ -12,16 +12,16 @@ import bg.ceco.demo.model.PersonDao;
 import bg.ceco.demo.model.Role;
 import bg.ceco.demo.model.RoleDao;
 
-@Component
+//@Component
 public class AdministrationServiceImpl implements AdministrationService {
 
-	@Autowired
+//	@Autowired
 	private RoleDao roleDao;
 
-	@Autowired
+//	@Autowired
 	private PersonDao personDao;
 
-	@Autowired
+//	@Autowired
 	private PermissionDao permissionDao;
 
 	public void initRoles() {

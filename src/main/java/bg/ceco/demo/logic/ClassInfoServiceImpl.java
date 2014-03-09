@@ -9,7 +9,7 @@ import bg.ceco.demo.model.ClassInfo;
 import bg.ceco.demo.model.ClassInfoDao;
 
 @Component
-public class ClassInofServiceImpl implements ClassInfoService {
+public class ClassInfoServiceImpl implements ClassInfoService {
 
 	@Autowired
 	private ClassInfoDao classInfoDao;
