@@ -15,7 +15,6 @@ import javax.persistence.Table;
  * 
  */
 @Entity
-@Table
 public class ClassInfo {
 	
 	@Id
