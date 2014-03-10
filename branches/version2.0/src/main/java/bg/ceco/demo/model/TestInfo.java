@@ -8,81 +8,81 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.Table;
-
-/**
- * @author Administrator
- * 
- */
 @Entity
-public class ClassInfo {
-	
+public class TestInfo {
 	@Id
-	@Column(name = "CLASS_ID")
+	@Column(name = "TEST_ID")
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private long id;
 	private String name;
 	private String path;
 	private Date executionDate;
-//	private List<TestDirInfo> testInfo;
-	private long testId;
-	private boolean success;	
+//	private List<TestExecDirInfo> testExecDirInfos;
+	private long classId;
 	
-	public ClassInfo() {
+	
+	
+	public TestInfo() {
+	
 	}
-	
-	public ClassInfo(long id, String name, String path, Date executionDate,
-			long testId, boolean success) {
+
+	public TestInfo(long id, String name, String path, Date executionDate,
+			List<ExecInfo> testExecDirInfos, long classId, long execId) {
 		this.id = id;
 		this.name = name;
 		this.path = path;
 		this.executionDate = executionDate;
-		this.testId = testId;
-		this.success = success;
+//		this.testExecDirInfos = testExecDirInfos;
+
 	}
-	public long getTestId() {
-		return testId;
-	}
-	public void setTestId(long testId) {
-		this.testId = testId;
-	}
-	public boolean isSuccess() {
-		return success;
-	}
-	public void setSuccess(boolean success) {
-		this.success = success;
-	}
+
 	public long getId() {
 		return id;
 	}
+
 	public void setId(long id) {
 		this.id = id;
 	}
+
+	public long getClassId() {
+		return classId;
+	}
+
+	public void setClassId(long classId) {
+		this.classId = classId;
+	}
+
 	public String getName() {
 		return name;
 	}
+
 	public void setName(String name) {
 		this.name = name;
 	}
+
 	public String getPath() {
 		return path;
 	}
+
 	public void setPath(String path) {
 		this.path = path;
 	}
+
 	public Date getExecutionDate() {
 		return executionDate;
 	}
+
 	public void setExecutionDate(Date executionDate) {
 		this.executionDate = executionDate;
 	}
-//	public List<TestDirInfo> getTestInfo() {
-//		return testInfo;
+
+//	public List<TestExecDirInfo> getTestExecDirInfos() {
+//		return testExecDirInfos;
 //	}
-//	public void setTestInfo(List<TestDirInfo> testInfo) {
-//		this.testInfo = testInfo;
+//
+//	public void setTestExecDirInfos(List<TestExecDirInfo> testExecDirInfos) {
+//		this.testExecDirInfos = testExecDirInfos;
 //	}
 	
 	
- 
 }

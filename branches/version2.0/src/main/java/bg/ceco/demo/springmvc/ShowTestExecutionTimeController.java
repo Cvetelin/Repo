@@ -18,7 +18,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import bg.ceco.demo.model.ClassInfo;
-import bg.ceco.demo.model.TestExecDirInfo;
+import bg.ceco.demo.model.ExecInfo;
 
 
 @Controller
@@ -49,7 +49,7 @@ public class ShowTestExecutionTimeController {
 			File testDir = new File(testExecutionDirToDelete.getParent());
 			FileUtils.forceDelete(testDir);
 			ClassInfo classInfo = Constants.getTestClassDirInfo(testDir.getParent());
-			model.addAttribute("testInfo", classInfo.getTestInfo());
+//			model.addAttribute("testInfo", classInfo.getTestInfo());
 			return new ModelAndView("ShowExecutedTests");
 		}
 		
@@ -77,7 +77,7 @@ public class ShowTestExecutionTimeController {
 				FileUtils.forceDelete(testDir);
 				
 				ClassInfo classInfo = Constants.getTestClassDirInfo(testDir.getParent());
-				model.addAttribute("testInfo", classInfo.getTestInfo());
+//				model.addAttribute("testInfo", classInfo.getTestInfo());
 				return new ModelAndView("ShowExecutedTests");				
 			}			
 		
@@ -87,9 +87,9 @@ public class ShowTestExecutionTimeController {
 		return new ModelAndView("redirect:/app/ShowTestExecutionTime", "path",  pathToTestDir);
 	}
 	
-	protected List<TestExecDirInfo> getTestExecutions(String pathToDir) throws Exception {
+	protected List<ExecInfo> getTestExecutions(String pathToDir) throws Exception {
 
-		List<TestExecDirInfo> execInfos = new ArrayList<TestExecDirInfo>();
+		List<ExecInfo> execInfos = new ArrayList<ExecInfo>();
 		File dir = new File(pathToDir);
 		for (File child : Constants.dirListByDescendingDate(dir)) {
 
@@ -99,12 +99,12 @@ public class ShowTestExecutionTimeController {
 			
 			Date dateExecuted = DateUtils.parseDate(child.getName().replace("-", ":"), new String[]{"dd.MM.yyyy HH:mm:ss"});
 			
-			TestExecDirInfo bean = new TestExecDirInfo();			
+			ExecInfo bean = new ExecInfo();			
 			bean.setName(child.getName());
 			bean.setPath(child.getCanonicalPath());
 			bean.setExecutionDate(dateExecuted);
-			bean.setPathToParentDir(child.getParent());
-			bean.setParentName(dir.getName());
+//			bean.setPathToParentDir(child.getParent());
+//			bean.setParentName(dir.getName());
 			execInfos.add(bean);
 		}
 		return execInfos;
