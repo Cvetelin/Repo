@@ -11,7 +11,7 @@ import org.apache.commons.lang.StringUtils;
 import org.apache.commons.lang.time.DateUtils;
 
 import bg.ceco.demo.model.ClassInfo;
-import bg.ceco.demo.model.TestDirInfo;
+import bg.ceco.demo.model.TestInfo;
 
 public class Constants {
 	private static final String SCREENS_LOCATION = "\\src\\main\\webapp\\screenshots";
@@ -57,7 +57,7 @@ public class Constants {
 	
 	public static Date getLastTestExecutionDate(String pathToDir) throws Exception {
 
-		TestDirInfo bean = new TestDirInfo();
+		TestInfo bean = new TestInfo();
 		File dir = new File(pathToDir);		
 		bean.setExecutionDate(DateUtils.parseDate(dirListByDescendingDate(dir)[0].getName(), new String[] { "dd.MM.yyyy HH-mm-ss" }));
 	
@@ -77,10 +77,10 @@ public class Constants {
 //				DirInfo bean = new DirInfo();
 //				bean.setTestClassName(testclass.getName());
 //				bean.setClassPath(testclass.getCanonicalPath());
-				List<TestDirInfo> testInfos = new ArrayList<TestDirInfo>();
+				List<TestInfo> testInfos = new ArrayList<TestInfo>();
 //				if(StringUtils.equals(testclass.getCanonicalPath(), selectedClassPath)) {
 					for (File test : Constants.dirListByAscendingDate(new File(selectedClassPath))) {
-						TestDirInfo  testInfo = new TestDirInfo();
+						TestInfo  testInfo = new TestInfo();
 						testInfo.setName(test.getName());
 						testInfo.setPath(test.getCanonicalPath());						
 						Date dateExecuted = getLastTestExecutionDate(test.getCanonicalPath());
@@ -89,7 +89,7 @@ public class Constants {
 					}
 //				}
 //				bean.setTestInfo(testInfos);
-				testClassDirInfo.setTestInfo(testInfos);
+	//			testClassDirInfo.setTestInfo(testInfos);
 //			}
 			return testClassDirInfo;
 		} finally {
@@ -105,9 +105,9 @@ public class Constants {
 				ClassInfo bean = new ClassInfo();
 				bean.setName(testclass.getName());
 				bean.setPath(testclass.getCanonicalPath());
-				List<TestDirInfo> testInfos = new ArrayList<TestDirInfo>();
+				List<TestInfo> testInfos = new ArrayList<TestInfo>();
 					for (File test : Constants.dirListByAscendingDate(testDir)) {						
-						TestDirInfo  testInfo = new TestDirInfo();
+						TestInfo  testInfo = new TestInfo();
 						testInfo.setName(test.getName());
 						testInfo.setPath(test.getCanonicalPath());									
 						Date dateExecuted = Constants.getLastTestExecutionDate(test.getCanonicalPath());
@@ -115,7 +115,7 @@ public class Constants {
 						testInfos.add(testInfo);
 						
 					}
-				bean.setTestInfo(testInfos);
+	//			bean.setTestInfo(testInfos);
 				dirInfos.add(bean);
 			}			
 			return dirInfos;

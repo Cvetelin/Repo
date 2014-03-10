@@ -19,28 +19,28 @@ private SessionFactory sessionFactory;
 	}
 
 	
-	public void save(ClassInfo testClassDirInfo) {
-		sessionFactory.getCurrentSession().save(testClassDirInfo);
+	public void save(ClassInfo classInfo) {
+		sessionFactory.getCurrentSession().save(classInfo);
 		
 	}
 
 	
-	public void update(ClassInfo testClassDirInfo) {
-		sessionFactory.getCurrentSession().update(testClassDirInfo);
+	public void update(ClassInfo classInfo) {
+		sessionFactory.getCurrentSession().update(classInfo);
 		
 	}
 
 	
-	public void delete(ClassInfo testClassDirInfo) {
-		sessionFactory.getCurrentSession().delete(testClassDirInfo);
+	public void delete(ClassInfo classInfo) {
+		sessionFactory.getCurrentSession().delete(classInfo);
 		
 	}
 
-	
+	@SuppressWarnings("unchecked")
 	public List<ClassInfo> list() {
 		Criteria crit = sessionFactory.getCurrentSession().createCriteria(ClassInfo.class);
-		List<ClassInfo> clients = crit.list();
-		return clients;
+		List<ClassInfo> classInfo = crit.list();
+		return classInfo;
 	}
 	
 }

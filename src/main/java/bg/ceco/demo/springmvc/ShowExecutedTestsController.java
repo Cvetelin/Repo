@@ -29,7 +29,7 @@ public class ShowExecutedTestsController {
 		List<ClassInfo> info = Constants.getTestClassesDirInfo();
 		ClassInfo classInfo = Constants.getTestClassDirInfo(classPath);
 		map.addAttribute("dirInfo", info);
-		map.addAttribute("testInfo", classInfo.getTestInfo());
+//		map.addAttribute("testInfo", classInfo.getTestInfo());
 		map.addAttribute("classInfo", classInfo);
 		return new ModelAndView("ShowExecutedTests", map);
 
