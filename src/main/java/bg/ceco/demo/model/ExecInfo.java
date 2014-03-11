@@ -7,19 +7,29 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Table;
 @Entity
+@Table(name="EXECUTION")
 public class ExecInfo {
 	@Id
 	@Column(name = "EXECUTION_ID")
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private long id;
+	
+	@Column(name = "NAME")
 	private String name;
+	
+	@Column(name = "PATH")
 	private String path;
+	
+	@Column(name = "EXECUTION_DATE")
 	private Date executionDate;
-//	private String pathToParentDir;
-//	private String parentName;
+
+	@Column(name = "TEST_ID")
 	private long testId;
 	
+	@Column(name = "FAILURE_REASON")
+	private String failureReason;
 	
 	public ExecInfo() {
 	
@@ -32,8 +42,16 @@ public class ExecInfo {
 	this.path = path;
 	this.executionDate = executionDate;
 	this.testId = testId;
-}
+	}
 
+	public String getFailureReason() {
+		return failureReason;
+	}
+
+	public void setFailureReason(String failureReason) {
+		this.failureReason = failureReason;
+	}
+	
 	public long getId() {
 		return id;
 	}

@@ -10,22 +10,33 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+import org.apache.velocity.tools.config.DefaultKey;
+
 /**
  * @author Administrator
  * 
  */
 @Entity
+@Table(name="CLASS")
 public class ClassInfo {
 	
 	@Id
 	@Column(name = "CLASS_ID")
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private long id;
+	
+	@Column(name = "NAME")
 	private String name;
+	
+	@Column(name = "QUALIFIED_NAME")
+	private String qualifiedName;
+	
+	@Column(name = "PATH")
 	private String path;
 	private Date executionDate;
 //	private List<TestDirInfo> testInfo;
-	private long testId;
+		
+	@Column(name = "SUCCESS")
 	private boolean success;	
 	
 	public ClassInfo() {
@@ -37,15 +48,17 @@ public class ClassInfo {
 		this.name = name;
 		this.path = path;
 		this.executionDate = executionDate;
-		this.testId = testId;
 		this.success = success;
+	}	
+	
+	public String getQualifiedName() {
+		return qualifiedName;
 	}
-	public long getTestId() {
-		return testId;
+
+	public void setQualifiedName(String qualifiedName) {
+		this.qualifiedName = qualifiedName;
 	}
-	public void setTestId(long testId) {
-		this.testId = testId;
-	}
+
 	public boolean isSuccess() {
 		return success;
 	}
