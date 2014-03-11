@@ -15,5 +15,7 @@ public interface ClassInfoService {
 	public abstract void update(ClassInfo classInfo);
 
 	public abstract void delete(ClassInfo classInfo);
+	
+	public abstract ClassInfo loadBy(String qualifiedName);
 
 }

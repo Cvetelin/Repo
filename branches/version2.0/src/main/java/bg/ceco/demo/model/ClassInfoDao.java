@@ -15,4 +15,6 @@ public interface ClassInfoDao {
 	public void delete(ClassInfo testClassDirInfo);
 	
 	public List<ClassInfo> list();
+	
+	public ClassInfo loadBy(String qualifiedName);
 }

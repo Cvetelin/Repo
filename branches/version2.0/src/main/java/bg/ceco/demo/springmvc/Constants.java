@@ -5,17 +5,21 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Comparator;
 import java.util.Date;
+import java.util.Iterator;
 import java.util.List;
 
-import org.apache.commons.lang.StringUtils;
-import org.apache.commons.lang.time.DateUtils;
 
+import org.apache.commons.lang.time.DateUtils;
 import bg.ceco.demo.model.ClassInfo;
 import bg.ceco.demo.model.TestInfo;
 
+
 public class Constants {
+
+	
 	private static final String SCREENS_LOCATION = "\\src\\main\\webapp\\screenshots";
 	private static final String GALERY_INDEX_LOCATION = "\\src\\main\\webapp\\Galery.html";
+	public static final String TEST_LOCATION = "\\src\\test\\java";
 	private static final String TAB = "\t\t\t\t\t\t\t\t\t\t\t\t\t";
 	private static final String URL = "http://localhost:8080/screenshots/";
 	private static final String FORWARD_SUCCESS = "success";
@@ -25,6 +29,12 @@ public class Constants {
 		String pathToFiles = rootDir.getCanonicalPath() + SCREENS_LOCATION;
 		return pathToFiles;
 	}
+	
+	public static String testLocationPath() throws Exception {
+		File rootDir = new File(".");
+		String pathToFiles = rootDir.getCanonicalPath() + TEST_LOCATION;
+		return pathToFiles;
+	}	
 	
 	
 	@SuppressWarnings("unchecked")

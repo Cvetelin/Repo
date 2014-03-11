@@ -56,6 +56,12 @@ public class ClassInfoServiceImpl implements ClassInfoService {
 		classInfoDao.delete(classInfo);
 	}
 
-
+	/* (non-Javadoc)
+	 * @see bg.ceco.demo.logic.ClassInfoService#load(long)
+	 */
+	@Override
+	public ClassInfo loadBy(String qualifiedName) {
+		return classInfoDao.loadBy(qualifiedName);
+	}
 	
 }

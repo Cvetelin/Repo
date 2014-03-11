@@ -8,22 +8,28 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Table;
 @Entity
+@Table(name="TEST")
 public class TestInfo {
 	@Id
 	@Column(name = "TEST_ID")
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private long id;
+	
+	@Column(name = "NAME")
 	private String name;
+	
+	@Column(name = "PATH")
 	private String path;
+	
+	@Column(name = "EXECUTION_DATE")
 	private Date executionDate;
-//	private List<TestExecDirInfo> testExecDirInfos;
-	private long classId;
 	
+	@Column(name = "CLASS_ID")
+	private long classId;	
 	
-	
-	public TestInfo() {
-	
+	public TestInfo() {	
 	}
 
 	public TestInfo(long id, String name, String path, Date executionDate,
@@ -32,9 +38,7 @@ public class TestInfo {
 		this.name = name;
 		this.path = path;
 		this.executionDate = executionDate;
-//		this.testExecDirInfos = testExecDirInfos;
-
-	}
+	}	
 
 	public long getId() {
 		return id;

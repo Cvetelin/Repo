@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.hibernate.Criteria;
 import org.hibernate.SessionFactory;
+import org.hibernate.criterion.Restrictions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -41,6 +42,13 @@ private SessionFactory sessionFactory;
 		Criteria crit = sessionFactory.getCurrentSession().createCriteria(ClassInfo.class);
 		List<ClassInfo> classInfo = crit.list();
 		return classInfo;
+	}
+	
+	@Override
+	@SuppressWarnings("unchecked")
+	public ClassInfo loadBy(String qualifiedName) {
+		return (ClassInfo) sessionFactory.getCurrentSession().createCriteria(TestInfo.class)
+			.add(Restrictions.eq("qualifiedName", qualifiedName)).uniqueResult();
 	}
 	
 }
