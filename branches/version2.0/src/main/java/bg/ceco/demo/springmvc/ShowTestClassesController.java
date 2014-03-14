@@ -35,8 +35,14 @@ public class ShowTestClassesController {
 	
 	@RequestMapping(value = "/RunClass", method = RequestMethod.GET)
 	public ModelAndView runClass (@RequestParam("qualifiedName") String qualifiedName) {
-		Result reslt = TestRunner.runClass(qualifiedName);
 		ClassInfo classInfo = classInfoService.loadBy(qualifiedName);
+		Result reslt = null;
+		TestRunner runner = new TestRunner();
+		try {
+			 reslt = runner.runClass(classInfo);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}		
 			if (reslt.getFailureCount() == 0) {
 				classInfo.setSuccess(true);
 			}		

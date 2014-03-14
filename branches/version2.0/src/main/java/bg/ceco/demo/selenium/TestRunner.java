@@ -1,24 +1,24 @@
 package bg.ceco.demo.selenium;
 
+
 import org.junit.runner.JUnitCore;
 import org.junit.runner.Result;
 
+import web.test.login.LoginTest;
 
-
+import bg.ceco.demo.model.ClassInfo;
 
 public class TestRunner {
 
-	public static Result runClass(String classQualifiedName) {
+	public static Result runClass(ClassInfo classInfo) throws Exception {
+		
+		Class<?> cls = Class.forName(classInfo.getQualifiedName());
+	
 		JUnitCore runner = new JUnitCore();
 		runner.addListener(new TestListener());
-		Class cls = null;
-		try {
-			cls = Class.forName(classQualifiedName);
-		} catch (ClassNotFoundException e) {
 
-			e.printStackTrace();
-		}
 		return runner.run(cls);
 
-	}
+		}
+		
 }
