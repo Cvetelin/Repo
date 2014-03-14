@@ -1,0 +1,4 @@
+-------------------------------------------------------------------------------
+Test set: web.test.project.ProjectBudgetModificationTest
+-------------------------------------------------------------------------------
+Tests run: 7, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 159.469 sec
