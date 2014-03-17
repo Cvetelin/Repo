@@ -17,15 +17,30 @@
 <head>
 <title>BUGSHOT</title>
 </head>
-
-<body>
-	<div class="text-center">
-		<display:table name="dirInfo" id="dir" class="col-md-2  table-bordered title"  requestURI="ShowExecutedTests" defaultsort="1">
+ 
+<body>		
+	<div class="container center-block text-center row ">
+	
+	
+	<form:form commandName="dirInfo" method="POST" cssClass="container form-inline center-block text-left col-md-4">
+		<div class="form-group ">
+  	    	<label for="exampleInputFile">File input</label>
+   	 		<input type="file" id="exampleInputFile">
+   			<p class="help-block">Select jar file to load</p>
+ 		 </div>
+ 		 <div class="btn-group btn-group-sm">
+  			 <button type="submit" class="btn btn-default">Submit</button>
+  		 </div>
+	</form:form>	
+		<display:table name="dirInfo" id="dir" class="col-md-4  table-bordered title"  requestURI="ShowExecutedTests" defaultsort="1">
 			<display:column title="Executest test classes" property="name" href="/app/RunClass" paramId="qualifiedName"
-				paramProperty="qualifiedName" class="col-md-2 table-bordered" sortable="true">
+				paramProperty="qualifiedName" class="col-md-4 table-bordered" sortable="true">
 			</display:column>
 		</display:table>
+	<div>
 	</div>
-	<a href="/app/GetTestClasses">GetGetTesTlasses</a>
+		<a href="/app/GetTestClasses">GetTesClasses</a>
+	</div>
+	
 </body>
 </html>
