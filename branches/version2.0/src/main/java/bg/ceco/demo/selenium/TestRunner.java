@@ -4,8 +4,6 @@ package bg.ceco.demo.selenium;
 import org.junit.runner.JUnitCore;
 import org.junit.runner.Result;
 
-import web.test.login.LoginTest;
-
 import bg.ceco.demo.model.ClassInfo;
 
 public class TestRunner {

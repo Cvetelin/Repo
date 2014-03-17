@@ -1,9 +1,12 @@
 package bg.ceco.demo.springmvc;
 
+import java.io.BufferedOutputStream;
 import java.io.File;
+import java.io.FileOutputStream;
 import java.util.Iterator;
 
 import org.apache.commons.io.FileUtils;
+import org.apache.commons.io.FilenameUtils;
 import org.apache.commons.io.filefilter.FileFilterUtils;
 import org.apache.commons.io.filefilter.IOFileFilter;
 import org.apache.commons.io.filefilter.TrueFileFilter;
@@ -15,6 +18,8 @@ import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 import bg.ceco.demo.logic.ClassInfoService;
@@ -55,6 +60,25 @@ public class ShowTestClassesController {
 		ModelMap map = new ModelMap();
 		getAlltest();
 		return "redirect:/app/ShowTestClasses";
+	}
+	
+	@RequestMapping(value="/uploadFile", method = RequestMethod.POST)
+	public @ResponseBody String handleFileUpload(@RequestParam("file") MultipartFile file) {
+		String name = file.getName();
+		if(!file.isEmpty() || !FilenameUtils.getExtension(file.getName()).equals("jar")){			
+			 try {
+	                byte[] bytes = file.getBytes();
+	                BufferedOutputStream stream =
+	                        new BufferedOutputStream(new FileOutputStream(new File(name + "-uploaded")));
+	                stream.write(bytes);
+	                stream.close();
+	                return "Load file " + name + " into " + name + "-uploaded !";
+	            } catch (Exception e) {
+	                return "File upload faild! File name: " + name + " => " + e.getMessage();
+	            }
+	        } else {
+	            return "File upload faild! File " + name + " is not jar or it is empty.";
+	        }
 	}
 	
 	
