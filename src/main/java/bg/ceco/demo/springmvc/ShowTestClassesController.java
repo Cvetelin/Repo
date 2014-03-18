@@ -2,7 +2,9 @@ package bg.ceco.demo.springmvc;
 
 import java.io.BufferedOutputStream;
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.FileOutputStream;
+import java.sql.Blob;
 import java.util.Iterator;
 
 import org.apache.commons.io.FileUtils;
@@ -11,6 +13,8 @@ import org.apache.commons.io.filefilter.FileFilterUtils;
 import org.apache.commons.io.filefilter.IOFileFilter;
 import org.apache.commons.io.filefilter.TrueFileFilter;
 import org.apache.commons.lang.StringUtils;
+import org.hibernate.LobHelper;
+import org.hibernate.SessionFactory;
 import org.junit.runner.Result;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -30,6 +34,9 @@ import bg.ceco.demo.selenium.TestRunner;
 public class ShowTestClassesController {
 	@Autowired
 	private ClassInfoService classInfoService;
+	
+	@Autowired
+	private SessionFactory sessionFactory;
 	
 	@RequestMapping(value = "/ShowTestClasses", method = RequestMethod.GET)
 	public ModelAndView runClass () throws Exception {	
@@ -65,8 +72,10 @@ public class ShowTestClassesController {
 	@RequestMapping(value="/uploadFile", method = RequestMethod.POST)
 	public @ResponseBody String handleFileUpload(@RequestParam("file") MultipartFile file) {
 		String name = file.getName();
-		if(!file.isEmpty() || !FilenameUtils.getExtension(file.getName()).equals("jar")){			
-			 try {
+		if(!file.isEmpty() || !FilenameUtils.getExtension(file.getName()).equals("jar")){
+	//		 LobHelper lh = sessionFactory.getCurrentSession().getLobHelper();
+			 try {						 	
+		//	        Blob b = lh.createBlob(file.getInputStream(), file.);
 	                byte[] bytes = file.getBytes();
 	                BufferedOutputStream stream =
 	                        new BufferedOutputStream(new FileOutputStream(new File(name + "-uploaded")));
