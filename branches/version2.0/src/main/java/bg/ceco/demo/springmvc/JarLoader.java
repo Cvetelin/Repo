@@ -23,6 +23,7 @@ public class JarLoader {
 	
 	@Autowired 
 	public TestInfo testInfo;
+	
 	public void loadJar(String pathToJar) throws Exception {
 		
 		JarFile jarFile = new JarFile("C:\\m2\\bugshot\\test\\bugshot-test\\1.0\\bugshot-test-1.0-tests.jar");
@@ -53,6 +54,8 @@ public class JarLoader {
             
             
         }
+        
+        
 		
 //	    File f = new File("C:\\m2\\bugshot\\test\\bugshot-test\\1.0\\bugshot-test-1.0-tests.jar");
 //	    URLClassLoader urlCl = new URLClassLoader(new URL[] { f.toURI().toURL()},System.class.getClassLoader());
