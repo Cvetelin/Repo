@@ -20,32 +20,43 @@
  
 <body>		
 	<div class="container center-block text-center row ">
-		<div class="row col-md-10 table-bordered title text-center ">Add project</div>
-		<div class="row col-md-10 table-bordered title text-center">
+<!-- 		<div class="row col-md-10 table-bordered title text-center ">Add project</div> -->
+<!-- 		<div class="row col-md-10 table-bordered title text-left"> -->
+		
+<!-- 			<div class="input-group"> -->
+<!-- 			<label for="projectName">Project name: </label> -->
+<%-- 			<form:input path="project" id="projectName" cssClass="form-control" /> --%>
+<!-- 			</div> -->
+		
+		
+<%-- 			<form:form commandName="project"  method="POST" cssClass="container form-inline center-block text-left col-md-8"> --%>
+<!-- 				<div class="form-group "> -->
+<!-- 		  	    	<label for="exampleInputFile">File input</label> -->
+<!-- 		   	 		<input type="file" id="exampleInputFile"> -->
+<!-- 		   			<p class="help-block">Select jar file to load</p> -->
+<!-- 		 		 </div> -->
+<!-- 		 		 <div class="btn-group btn-group-sm"> -->
+<!-- 		  			 <button type="submit" class="btn btn-default">Submit</button> -->
+<!-- 		  		 </div> -->
+<%-- 			</form:form> --%>
+<!-- 		</div> -->
 			
-			<form:form method="POST" modelAttribute="project" cssClass="container form-inline center-block text-left col-md-8">
-				<div class="form-group ">
-		  	    	<label for="exampleInputFile">File input</label>
-		   	 		<input type="file" id="exampleInputFile">
-		   			<p class="help-block">Select jar file to load</p>
-		 		 </div>
-		 		 <div class="btn-group btn-group-sm">
-		  			 <button type="submit" class="btn btn-default">Submit</button>
-		  		 </div>
-			</form:form>
-	
-	</div>	
-		<!-- 	<display:table name="dirInfo" id="dir" class="col-md-4  table-bordered title"  requestURI="ShowExecutedTests" defaultsort="1">
+<!-- 		<div class="row col-md-10 table-bordered title text-center">	</div>	 -->
+<!-- 		<div class="row col-md-10 table-bordered title text-center">	</div>	 -->
+<!-- 		<div class="row col-md-10 table-bordered title text-center">	</div>		 -->
+			<display:table name="dirInfo" id="dir" class="col-md-4  table-bordered title"  requestURI="ShowExecutedTests" defaultsort="1">
 			<display:column title="Executest test classes" property="name" href="/app/RunClass" paramId="qualifiedName"
 				paramProperty="qualifiedName" class="col-md-4 table-bordered" sortable="true">
 			</display:column>
 		</display:table> 
-		
+		<!-- 
 		http://viralpatel.net/blogs/spring-mvc-multi-row-submit-java-list/
 		http://howtodoinjava.com/2013/08/30/hibernate-example-of-insertselect-blob-from-database/
 		-->
 		
 	</div>
+	
+</div>
 		<a href="/app/GetTestClasses">GetTesClasses</a>
 	
 	

@@ -25,6 +25,7 @@
 					<ul class="nav navbar-nav navbar-center">
 						<li><a href="#">Home</a></li>
 						<li><a href="/app/ShowTestClasses">Run</a></li>
+						<li><a href="/app/AddProject">Add project</a></li>
 					</ul>
 				</div>
 			</div>

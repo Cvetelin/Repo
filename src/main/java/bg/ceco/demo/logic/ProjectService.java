@@ -1,9 +1,7 @@
 package bg.ceco.demo.logic;
 
 import java.util.List;
-
 import bg.ceco.demo.model.Project;
-import bg.ceco.demo.model.ProjectDao;
 
 public interface ProjectService {
 
