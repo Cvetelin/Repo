@@ -4,11 +4,9 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
-
 import bg.ceco.demo.model.ExecInfo;
 import bg.ceco.demo.model.ExecInfoDao;
-import bg.ceco.demo.model.TestInfo;
-import bg.ceco.demo.model.TestInfoDao;
+
 @Component
 public class ExecInfoServiceImpl implements ExecInfoService {
 	@Autowired

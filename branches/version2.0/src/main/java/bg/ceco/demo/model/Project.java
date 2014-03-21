@@ -10,8 +10,6 @@ import javax.persistence.Id;
 import javax.persistence.Lob;
 import javax.persistence.Table;
 
-import com.mysql.jdbc.Blob;
-
 @Entity
 @Table(name = "PROJECT")
 public class Project {
@@ -21,34 +19,70 @@ public class Project {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private long id;
 	
-	@Column(name = "NAME")
-	private String name;
+	@Column(name = "PROJECT_NAME")
+	private String projectName;
+	
+	@Column(name = "JAR_NAME")
+	private String jarName;
+	
+	@Column(name = "DEPENDENCY_JAR_NAME")
+	private String dependencyJarName;
+	
+	@Column(name = "JAR_PATH")
+	private String jarPath;
+	
+	@Column(name = "DEPENDENCY_JAR_PATH")
+	private String dependencyJarPath;
 	
 	@Column(name = "DESCRIPTION")
 	private String description;
 	
 	@Column(name = "TEST_JAR")
 	@Lob
-	private Blob testJar;
+	private byte[] testJar;
 	
 	@Column(name = "DEPENDENCY_JAR")
 	@Lob
-	private Blob dependencyJar;
+	private byte[] dependencyJar;
 	
 	@Column(name = "DATE_CREATION")
-	private Date dateCreation;
+	private Date dateCreation;	
 	
+	public String getProjectName() {
+		return projectName;
+	}
+	public void setProjectName(String projectName) {
+		this.projectName = projectName;
+	}
+	public String getJarName() {
+		return jarName;
+	}
+	public void setJarName(String jarName) {
+		this.jarName = jarName;
+	}
+	public String getDependencyJarName() {
+		return dependencyJarName;
+	}
+	public void setDependencyJarName(String dependencyJarName) {
+		this.dependencyJarName = dependencyJarName;
+	}
+	public String getJarPath() {
+		return jarPath;
+	}
+	public void setJarPath(String jarPath) {
+		this.jarPath = jarPath;
+	}
+	public String getDependencyJarPath() {
+		return dependencyJarPath;
+	}
+	public void setDependencyJarPath(String dependencyJarPath) {
+		this.dependencyJarPath = dependencyJarPath;
+	}
 	public long getId() {
 		return id;
 	}
 	public void setId(long id) {
 		this.id = id;
-	}
-	public String getName() {
-		return name;
-	}
-	public void setName(String name) {
-		this.name = name;
 	}
 	public String getDescription() {
 		return description;
@@ -56,16 +90,16 @@ public class Project {
 	public void setDescription(String description) {
 		this.description = description;
 	}
-	public Blob getTestJar() {
+	public byte[] getTestJar() {
 		return testJar;
 	}
-	public void setTestJar(Blob testJar) {
+	public void setTestJar(byte[] testJar) {
 		this.testJar = testJar;
 	}
-	public Blob getDependencyJar() {
+	public byte[] getDependencyJar() {
 		return dependencyJar;
 	}
-	public void setDependencyJar(Blob dependencyJar) {
+	public void setDependencyJar(byte[] dependencyJar) {
 		this.dependencyJar = dependencyJar;
 	}
 	public Date getDateCreation() {

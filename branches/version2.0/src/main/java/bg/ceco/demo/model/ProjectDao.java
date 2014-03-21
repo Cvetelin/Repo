@@ -14,7 +14,6 @@ public interface ProjectDao {
 
 	public abstract void removeBy(long id);
 
-	@SuppressWarnings("unchecked")
 	public abstract List<Project> list();
 
 	public abstract Project loadBy(String name);
