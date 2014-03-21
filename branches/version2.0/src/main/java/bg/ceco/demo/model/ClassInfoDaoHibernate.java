@@ -1,7 +1,6 @@
 package bg.ceco.demo.model;
 
 import java.util.List;
-
 import org.hibernate.Criteria;
 import org.hibernate.SessionFactory;
 import org.hibernate.criterion.Restrictions;
@@ -45,7 +44,6 @@ private SessionFactory sessionFactory;
 	}
 	
 	@Override
-	@SuppressWarnings("unchecked")
 	public ClassInfo loadBy(String qualifiedName) {
 		return (ClassInfo) sessionFactory.getCurrentSession().createCriteria(ClassInfo.class)
 			.add(Restrictions.eq("qualifiedName", qualifiedName)).uniqueResult();

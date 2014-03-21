@@ -14,7 +14,6 @@ public class SeleniumExampleTest  extends FFScreenShotTestCase{
 	
 	@Test
 	public void testSomethingSimple() throws Exception {
-
 		//WebDriverBackedSelenium selenium = new WebDriverBackedSelenium(driver, "http://www.dir.bg/");		
 		//driver = ((WrapsDriver)selenium).getWrappedDriver();
 		driver.get("http://en.wikipedia.org/wiki/Main_Page");

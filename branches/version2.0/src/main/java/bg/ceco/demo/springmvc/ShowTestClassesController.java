@@ -37,8 +37,6 @@ public class ShowTestClassesController {
 	@Autowired
 	private ClassInfoService classInfoService;
 	
-	@Autowired
-	private ProjectService projectService;
 
 	@RequestMapping(value = "/ShowTestClasses", method = RequestMethod.GET)
 	public ModelAndView runClass () throws Exception {	
@@ -71,39 +69,7 @@ public class ShowTestClassesController {
 		return "redirect:/app/ShowTestClasses";
 	}
 	
-	@RequestMapping(value="/uploadFile", method = RequestMethod.POST)
-	public @ResponseBody String handleFileUpload(@ModelAttribute("project")  Project project, BindingResult result,
-			@RequestParam("testJar") MultipartFile testJar, @RequestParam("depJar") MultipartFile depJar) {
-		FileValidator fileValidator = new FileValidator();
-		fileValidator.validate(testJar, result);
-		
-		if(depJar != null) {
-			fileValidator.validate(depJar, result);			
-		}
-		
-		String name = testJar.getOriginalFilename();
-			 try {						 	
-				 project.setDateCreation(new Date());
-				 project.setDependencyJar(depJar.getBytes());
-				 project.setDependencyJarName(depJar.getName());
-				 project.setDependencyJarPath(project.getDependencyJarPath());
-				 project.setDescription(project.getDescription());
-				 project.setJarName(testJar.getName());
-				 project.setJarPath(project.getJarPath());
-				 project.setProjectName(project.getProjectName());
-				 project.setTestJar(testJar.getBytes());
-				 projectService.save(project);
-//			        Blob b = lh.createBlob(file.getInputStream(), file.);
-//	                byte[] bytes = testJar.getBytes();
-//	                BufferedOutputStream stream =
-//	                        new BufferedOutputStream(new FileOutputStream(new File(name + "-uploaded")));
-//	                stream.write(bytes);
-//	                stream.close();
-	                return "Load file " + name + " into " + name + "-uploaded !";
-	            } catch (Exception e) {
-	                return "File upload faild! File name: " + name + " => " + e.getMessage();
-	            }
-	}
+
 	
 	
 	private void getAlltest() throws Exception {
