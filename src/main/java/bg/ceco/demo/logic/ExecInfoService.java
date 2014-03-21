@@ -1,9 +1,7 @@
 package bg.ceco.demo.logic;
 
 import java.util.List;
-
 import bg.ceco.demo.model.ExecInfo;
-import bg.ceco.demo.model.ExecInfoDao;
 
 public interface ExecInfoService {
 
