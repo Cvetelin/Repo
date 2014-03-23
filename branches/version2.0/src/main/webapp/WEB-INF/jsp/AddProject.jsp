@@ -15,8 +15,9 @@
 <link type="text/css" rel="stylesheet" href="/css/display.css">
 <link type="text/css" rel="stylesheet" href="/css/bootstrap.css">
 <head>
-	<script type="text/javascript">
-		
+<script type="text/javascript"
+	src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.js"></script>
+	<script type="text/javascript">	
 		function validateAddProject() {
 			var hasErrors = false;
 			
@@ -36,25 +37,7 @@
 				return false;
 			return true;
 		}
-		
-		$(document).ready(function() {
-			$('#projectForm input').on('focus', function() {
-				$('#projectForm input').on('keyup', function(e) {
-					if (e.keyCode == 27) {
-						$('#cancelBtn').click();
-						$('#versionForm input').off('keyup');
-					}
-				});
-			});
-			$('input[name="name"]').focus();
-
-			$('#cancelBtn').on('click', function() {
-				window.location.href = "<c:url value='/projects' />";
-			})
-		});
 	</script>
-
-
 </head>
  
 <body>	
@@ -62,7 +45,7 @@
 		<div class="col-md-10 text-center">
 			<p class="lead">Add project</p>			
 		</div>	
-		<form:form commandName="projectForm" method="POST"  action="CreateProject"  cssClass="form-horizontal">
+		<form:form commandName="projectForm" method="POST"  action="CreateProject"  cssClass="form-horizontal" enctype="multipart/form-data">
 			<div class="form-group">
 				<label for="projectName" class="col-sm-3 control-label">Project name</label>
 				<div class="col-sm-4">
@@ -73,28 +56,27 @@
 			<div class="form-group">
 				<label for="description" class="col-sm-3 control-label">Description</label>
 				<div class="col-sm-4">
-					<input type="text" id="description" class="form-control" />
+					<form:input path="description" id="description" class="form-control" />
 				</div>
 			</div>			
 			<div class="form-group">
 		  	    	<label for="testJar" class="col-sm-3 control-label">Jar file</label>
 		  	    	<div class="col-sm-4">
-		   	 			<input type="file" id="testJar" class="form-control"  name="testJar"/>
+		   	 			<input type="file" id="testJar" class="form-control"  name="testJar" onchange="GetDiretory()"/>
+		   	 			<div style="display:none; color:red;">The value is required</div>
 		   	 			<p class="help-block text-center">The JAR containing the test classes</p>
-		   	 		</div>		   			
-		   			<div style="display:none; color:red;">The value is required</div>		   			
+		   	 		</div>			   					   			
 		 	 </div>	
 		 	 <div class="form-group">
 		  	    	<label for="depJar" class="col-sm-3 control-label">Dependency jar</label>
 		  	    	<div class="col-sm-4">
-		   	 			<input type="file" id="depJar" class="form-control" />
+		   	 			<input type="file" id="depJar" name="depJar" class="form-control" />
 		   	 			<p class="help-block text-center">The JAR containing classes not in test src folder</p>
-		   	 		</div>		   			
-		   			<div style="display:none; color:red;">The value is required</div>		   			
+		   	 		</div>	   				
 		 	 </div>			 	 
 		 	 <div class="form-group">
 				<div class="col-sm-offset-1 col-sm-5 pull-right">		 		
-		  			 <button type="submit" class="btn btn-default" onclick="return validateAddProject();" value="Ok">Save</button>
+		  			 <input type="submit" class="btn btn-default" onclick="return validateAddProject();" value="Save"></input>
 		  		</div>
 		  	 </div>			  	
 		</form:form>

@@ -2,6 +2,8 @@ package bg.ceco.demo.springmvc;
 
 import java.util.Date;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
@@ -12,7 +14,9 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
+import bg.ceco.demo.logic.ClassInfoService;
 import bg.ceco.demo.logic.ProjectService;
+import bg.ceco.demo.model.ClassInfo;
 import bg.ceco.demo.model.Project;
 @Controller
 public class ProjectController {
@@ -26,26 +30,27 @@ public class ProjectController {
 	}
 	
 	@RequestMapping(value="/CreateProject", method = RequestMethod.POST)
-	public @ResponseBody String add(@ModelAttribute("projectForm")  ProjectForm projectForm, BindingResult result,
+	public @ResponseBody String add(HttpServletRequest request, @ModelAttribute("projectForm")  ProjectForm projectForm, BindingResult result,
 			@RequestParam("testJar") MultipartFile testJar, @RequestParam("depJar") MultipartFile depJar) {
 		FileValidator fileValidator = new FileValidator();
 		fileValidator.validate(testJar, result);
 		
+		ClassInfo info = new ClassInfo();
 		Project project = new Project();
-		if(depJar != null) {
+		if(!(depJar.getSize() == 0)) {
 			fileValidator.validate(depJar, result);			
 		}
 		
 		String name = testJar.getOriginalFilename();
-			 try {						 	
+			 try {			
 				 project.setDateCreation(new Date());
 				 project.setDependencyJar(depJar.getBytes());
 				 project.setDependencyJarName(depJar.getName());
-				 project.setDependencyJarPath(project.getDependencyJarPath());
-				 project.setDescription(project.getDescription());
+
+				 project.setDescription(projectForm.getDescription());
 				 project.setJarName(testJar.getName());
-				 project.setJarPath(project.getJarPath());
-				 project.setProjectName(project.getProjectName());
+
+				 project.setProjectName(projectForm.getName());
 				 project.setTestJar(testJar.getBytes());
 				 projectService.save(project);
 //			        Blob b = lh.createBlob(file.getInputStream(), file.);
