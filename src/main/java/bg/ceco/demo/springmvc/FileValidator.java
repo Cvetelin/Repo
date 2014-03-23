@@ -23,8 +23,8 @@ public class FileValidator implements Validator{
 					"Please select a file!");
 		}
 
-		if (!file.isEmpty()
-				|| !FilenameUtils.getExtension(file.getName()).equals("jar")) {
+		if (file.isEmpty()
+				|| !FilenameUtils.getExtension(file.getOriginalFilename()).equals("jar")) {
 			errors.rejectValue("file", "uploadForm.salectFile",
 					"File upload faild! File " + file.getName() + " is not jar or it is empty");
 		}
