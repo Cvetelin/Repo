@@ -48,6 +48,9 @@ public class Project {
 	@Column(name = "DATE_CREATION")
 	private Date dateCreation;	
 	
+	@Column(name = "DATE_MODIFICATION")
+	private Date dateModification;	
+	
 	public String getProjectName() {
 		return projectName;
 	}
@@ -108,7 +111,10 @@ public class Project {
 	public void setDateCreation(Date dateCreation) {
 		this.dateCreation = dateCreation;
 	}
-	
-	
-	
+	public Date getDateModification() {
+		return dateModification;
+	}
+	public void setDateModification(Date dateModification) {
+		this.dateModification = dateModification;
+	}	
 }

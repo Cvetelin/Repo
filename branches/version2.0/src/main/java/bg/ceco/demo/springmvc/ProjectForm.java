@@ -6,22 +6,7 @@ public class ProjectForm {
 	private String description;
 	private String pathToTestJar;
 	private String pathToDependencyJar;
-	private byte[] testJar;
-	private byte[] dependencyJar;	
 	
-	
-	public byte[] getTestJar() {
-		return testJar;
-	}
-	public void setTestJar(byte[] testJar) {
-		this.testJar = testJar;
-	}
-	public byte[] getDependencyJar() {
-		return dependencyJar;
-	}
-	public void setDependencyJar(byte[] dependencyJar) {
-		this.dependencyJar = dependencyJar;
-	}
 	public String getName() {
 		return name;
 	}

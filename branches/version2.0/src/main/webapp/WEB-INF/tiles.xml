@@ -37,4 +37,9 @@
 		<put-attribute name="body" value="/WEB-INF/jsp/AddProject.jsp" />
 	</definition>
 	
+	<definition name="ShowProjects" extends="base">
+		<put-attribute name="left" value="" />
+		<put-attribute name="body" value="/WEB-INF/jsp/ShowProjects.jsp" />
+	</definition>
+	
 </tiles-definitions> 
