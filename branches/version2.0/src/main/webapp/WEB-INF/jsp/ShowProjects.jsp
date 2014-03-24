@@ -15,16 +15,28 @@
 <link type="text/css" rel="stylesheet" href="/css/display.css">
 <link type="text/css" rel="stylesheet" href="/css/bootstrap.css">
 <head>
+<script type="text/javascript">
+	function submitForm() {
+		$('form[name="project"]').submit();
+	}
+</script>
 </head>
 <body>
 	<div class="container center-block text-center row ">
-		<display:table name="projects" id="projects" class="col-md-8 table-bordered title text-center"  requestURI="ShowProjects" defaultsort="1">
+		<display:table name="projects" id="projects" class="col-md-12 table-bordered title text-center table-striped table-hover"  
+		requestURI="ShowProjects" defaultsort="1" >
 			<display:column title="Project Name" property="projectName" href="/app/RunClass" paramId="name"
-				paramProperty="projectName" sortable="true"/>
-			<display:column  title="Date creation" property ="dateCreation"  format="{0,date,dd.MM.yyyy HH:mm:ss}" sortable="true"/>
-			<display:column  title="Test JAR name" property ="jarName" sortable="true"/>
-			<display:column  title="Dependency JAR name" property ="dependencyJarName" sortable="true"/>
+				paramProperty="projectName" sortable="true" maxLength="30"/>
+			<display:column  title="Test JAR name" property ="jarName" sortable="true" maxLength="30"/>			
+			<display:column  title="Dependency JAR name" property ="dependencyJarName" sortable="true" maxLength="30"/>
+			<display:column  title="Description" property ="description" sortable="true" maxLength="30"/>
+			<display:column  title="Modified on" property ="dateModification"  format="{0,date,dd.MM.yyyy HH:mm:ss}" sortable="true"/>
+			<display:column  title="Created on" property ="dateCreation"  format="{0,date,dd.MM.yyyy HH:mm:ss}" sortable="true"/>
+			<display:column href="/app/EditProject" paramId="id" paramProperty="id">
+					<button  class="btn btn-primary btn-xs" name="projectForm">Edit</button>		
+			</display:column>
 		</display:table> 
+		
 	</div>
 </body>
 </html>
