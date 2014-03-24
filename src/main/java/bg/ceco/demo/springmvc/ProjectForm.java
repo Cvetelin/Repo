@@ -2,6 +2,7 @@ package bg.ceco.demo.springmvc;
 
 
 public class ProjectForm {
+	
 	private String name;
 	private String description;
 	private String pathToTestJar;

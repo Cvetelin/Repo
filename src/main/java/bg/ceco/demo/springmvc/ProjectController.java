@@ -33,6 +33,14 @@ public class ProjectController {
 		map.addAttribute("projects", projectService.list());
 		return new ModelAndView("ShowProjects", map);
 	}
+	
+	@RequestMapping(value = "/EditProject", method = RequestMethod.GET)
+	public ModelAndView editProject(@RequestParam("id") long id) {
+		projectService.load(id);
+		ModelMap map = new ModelMap();
+		map.addAttribute("projects", projectService.list());
+		return new ModelAndView("ShowProjects", map);
+	}
 
 	@RequestMapping(value = "/AddProject", method = RequestMethod.GET)
 	public String showAdd(@ModelAttribute ProjectForm projectForm,

@@ -49,16 +49,16 @@
 			<div class="form-group">
 				<label for="projectName" class="col-sm-3 control-label">Project name</label>
 				<div class="col-sm-4">
-					<form:input path="name" id="projectName" cssClass="form-control" />
+					<form:input path="name" id="projectName" cssClass="form-control" maxlength="50"/>
 					<div style="display:none; color:red;">The value is required</div>
 				</div>
-			</div>
-			<div class="form-group">
-				<label for="description" class="col-sm-3 control-label">Description</label>
+			</div>		
+			 <div class="form-group">
+				<label for="description" class="col-sm-3 control-label">Project description</label>
 				<div class="col-sm-4">
-					<form:input path="description" id="description" class="form-control" />
+					<form:input path="description" id="description" class="form-control" maxlength="150"/> 
 				</div>
-			</div>			
+			</div>				
 			<div class="form-group">
 		  	    	<label for="testJar" class="col-sm-3 control-label">Jar file</label>
 		  	    	<div class="col-sm-4">

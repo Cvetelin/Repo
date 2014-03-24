@@ -23,7 +23,7 @@
 					Gallery</a>
 				<div class="collapse navbar-collapse navHeaderCollapse">
 					<ul class="nav navbar-nav navbar-center">
-						<li><a href="#">Home</a></li>
+						<li><a href="/app/ShowProjects">Pojects</a></li>
 						<li><a href="/app/ShowTestClasses">Run</a></li>
 						<li><a href="/app/AddProject">Add project</a></li>
 					</ul>
