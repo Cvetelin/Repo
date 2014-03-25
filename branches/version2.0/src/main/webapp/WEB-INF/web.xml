@@ -27,4 +27,22 @@ http://java.sun.com/xml/ns/j2ee/web-app_2_5.xsd">
 		<location>/app/index</location>
 	</error-page>
 	
+	<filter>
+   		<filter-name>OpenSessionInViewFilter</filter-name>
+   	    <filter-class>org.springframework.orm.hibernate4.support.OpenSessionInViewFilter</filter-class>
+    	<init-param>
+    		<param-name>sessionFactoryBeanName</param-name>
+      		<param-value>sessionFactory</param-value>
+    	</init-param>
+  	</filter>
+ 	<filter-mapping>
+    	<filter-name>OpenSessionInViewFilter</filter-name>
+    	<url-pattern>/app/*</url-pattern>
+  	</filter-mapping>
+	
+	<listener>
+    	<listener-class>
+        org.springframework.web.context.ContextLoaderListener
+    </listener-class>
+  </listener>
 </web-app>

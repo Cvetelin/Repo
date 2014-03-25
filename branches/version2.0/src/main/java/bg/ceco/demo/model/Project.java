@@ -10,6 +10,8 @@ import javax.persistence.Id;
 import javax.persistence.Lob;
 import javax.persistence.Table;
 
+import org.springframework.context.annotation.Lazy;
+
 @Entity
 @Table(name = "PROJECT")
 public class Project {

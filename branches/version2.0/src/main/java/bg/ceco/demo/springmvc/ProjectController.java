@@ -2,8 +2,7 @@ package bg.ceco.demo.springmvc;
 
 import java.util.Date;
 
-import javax.servlet.http.HttpServletRequest;
-
+import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -12,13 +11,10 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
-import bg.ceco.demo.logic.ClassInfoService;
 import bg.ceco.demo.logic.ProjectService;
-import bg.ceco.demo.model.ClassInfo;
 import bg.ceco.demo.model.Project;
 
 @Controller
@@ -26,6 +22,9 @@ public class ProjectController {
 
 	@Autowired
 	private ProjectService projectService;
+	
+	@Autowired
+	private SessionFactory sessionFactory;
 
 	@RequestMapping(value = "/ShowProjects", method = RequestMethod.GET)
 	public ModelAndView showProjects() {
@@ -36,10 +35,13 @@ public class ProjectController {
 	
 	@RequestMapping(value = "/EditProject", method = RequestMethod.GET)
 	public ModelAndView editProject(@RequestParam("id") long id) {
-		projectService.load(id);
+		Project project = projectService.load(id);
+		ProjectForm form = new ProjectForm();
+		form.setName(project.getProjectName());
+		form.setDescription(project.getDescription());		
 		ModelMap map = new ModelMap();
-		map.addAttribute("projects", projectService.list());
-		return new ModelAndView("ShowProjects", map);
+		map.addAttribute("project", form);
+		return new ModelAndView("redirect:/app/AddProject", map);
 	}
 
 	@RequestMapping(value = "/AddProject", method = RequestMethod.GET)
