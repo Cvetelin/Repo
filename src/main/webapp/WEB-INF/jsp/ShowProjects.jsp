@@ -22,7 +22,7 @@
 </script>
 </head>
 <body>
-	<div class="container center-block text-center row ">
+	<div class="container text-center row ">
 		<display:table name="projects" id="projects" class="col-md-12 table-bordered title text-center table-striped table-hover"  
 		requestURI="ShowProjects" defaultsort="1" >
 			<display:column title="Project Name" property="projectName" href="/app/RunClass" paramId="name"
