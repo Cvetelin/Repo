@@ -73,7 +73,14 @@
 		   	 			<input type="file" id="depJar" name="depJar" class="form-control" />
 		   	 			<p class="help-block text-center">The JAR containing classes not in test src folder</p>
 		   	 		</div>	   				
-		 	 </div>			 	 
+		 	 </div>	
+		 	 <div class="form-group">
+				<label for="description" class="col-sm-3 control-label">Jar save location</label>				
+				<div class="col-sm-4">
+					<form:input path="pathToTestJar" id="description" class="form-control" maxlength="150"/> 
+					<p class="help-block text-center">Where to store the jars. Example: C:\</p>
+				</div>
+			</div>		 	 
 		 	 <div class="form-group">
 				<div class="col-sm-offset-1 col-sm-5 pull-right">		 		
 		  			 <input type="submit" class="btn btn-default" onclick="return validateAddProject();" value="Save"></input>
