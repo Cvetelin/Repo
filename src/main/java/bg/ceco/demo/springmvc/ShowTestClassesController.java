@@ -1,35 +1,23 @@
 package bg.ceco.demo.springmvc;
 
-import java.io.BufferedOutputStream;
 import java.io.File;
-import java.io.FileOutputStream;
-import java.util.Date;
 import java.util.Iterator;
-
 import org.apache.commons.io.FileUtils;
 import org.apache.commons.io.filefilter.FileFilterUtils;
 import org.apache.commons.io.filefilter.IOFileFilter;
 import org.apache.commons.io.filefilter.TrueFileFilter;
 import org.apache.commons.lang.StringUtils;
-import org.hibernate.Hibernate;
-import org.hibernate.SessionFactory;
 import org.junit.runner.Result;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
-import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
-
 import bg.ceco.demo.logic.ClassInfoService;
 import bg.ceco.demo.logic.ProjectService;
 import bg.ceco.demo.model.ClassInfo;
-import bg.ceco.demo.model.Project;
 import bg.ceco.demo.selenium.TestRunner;
 
 @Controller
@@ -37,9 +25,12 @@ public class ShowTestClassesController {
 	@Autowired
 	private ClassInfoService classInfoService;
 	
-
+	@Autowired
+	private ProjectService projectService;
+	
 	@RequestMapping(value = "/ShowTestClasses", method = RequestMethod.GET)
-	public ModelAndView runClass () throws Exception {	
+	public ModelAndView showClasses (@RequestParam("name") String projectName,
+			@RequestParam("id") long projectid) throws Exception {	
 		ModelMap map = new ModelMap();
 		map.put("dirInfo", classInfoService.list());		
 		return new ModelAndView("ShowTestClasses", map);
@@ -61,6 +52,7 @@ public class ShowTestClassesController {
 		classInfoService.update(classInfo);
 		return new ModelAndView("ShowTestClasses","dirInfo", classInfoService.list());
 	}
+	
 	
 	@RequestMapping(value = "/GetTestClasses", method = RequestMethod.GET)
 	public String getClasses() throws Exception {

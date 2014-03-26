@@ -1,7 +1,10 @@
 package bg.ceco.demo.springmvc;
 
+import java.io.File;
 import java.util.Date;
 
+import org.apache.commons.lang.RandomStringUtils;
+import org.apache.commons.lang.StringUtils;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -19,7 +22,7 @@ import bg.ceco.demo.model.Project;
 
 @Controller
 public class ProjectController {
-
+	private static final String JAR_SAVE_LOCATION = "bugshot-tmp\\";
 	@Autowired
 	private ProjectService projectService;
 	
@@ -34,14 +37,15 @@ public class ProjectController {
 	}
 	
 	@RequestMapping(value = "/EditProject", method = RequestMethod.GET)
-	public ModelAndView editProject(@RequestParam("id") long id) {
+	public ModelAndView editProject(@RequestParam("id") long id , @ModelAttribute("projectForm") ProjectForm projectForm) {
 		Project project = projectService.load(id);
-		ProjectForm form = new ProjectForm();
-		form.setName(project.getProjectName());
-		form.setDescription(project.getDescription());		
+		projectForm.setName(project.getProjectName());
+		if(!StringUtils.isEmpty(project.getDescription())) {
+			projectForm.setDescription(project.getDescription());
+		}
 		ModelMap map = new ModelMap();
-		map.addAttribute("project", form);
-		return new ModelAndView("redirect:/app/AddProject", map);
+		map.addAttribute("project", projectForm);
+		return new ModelAndView("AddProject", map);
 	}
 
 	@RequestMapping(value = "/AddProject", method = RequestMethod.GET)
@@ -64,13 +68,15 @@ public class ProjectController {
 			fileValidator.validate(depJar, result);
 		}
 		try {
+			String depJarPath = constructSaveLocation(projectForm, depJar);
+			String testJarPatj = constructSaveLocation(projectForm, testJar);
 			project.setDateCreation(new Date());
 			project.setDependencyJar(depJar.getBytes());
 			project.setDependencyJarName(depJar.getOriginalFilename());
-
+			project.setDependencyJarPath(depJarPath);
 			project.setDescription(projectForm.getDescription());
 			project.setJarName(testJar.getOriginalFilename());
-
+			project.setJarPath(testJarPatj);
 			project.setProjectName(projectForm.getName());
 			project.setTestJar(testJar.getBytes());
 			projectService.save(project);
@@ -85,5 +91,25 @@ public class ProjectController {
 		} catch (Exception e) {
 			return new ModelAndView("ShowProjects");
 		}
+	}
+	
+	private String constructSaveLocation (ProjectForm projectForm, MultipartFile file) {
+		String rootDir = "C:\\";
+		StringBuilder path = new StringBuilder();
+		if(StringUtils.isEmpty(projectForm.getPathToTestJar())){		
+			path.append(rootDir);
+			path.append(JAR_SAVE_LOCATION);
+			path.append(projectForm.getName());
+			path.append("\\");
+			path.append(file.getOriginalFilename());
+			path.append("-");
+			path.append(RandomStringUtils.randomNumeric(4));
+			path.append("\\");
+			path.append(file.getOriginalFilename());
+			return path.toString();
+		}
+		
+		return path.toString();
+		
 	}
 }
