@@ -107,7 +107,22 @@ public class ProjectController {
 			path.append("\\");
 			path.append(file.getOriginalFilename());
 			return path.toString();
-		}
+		} else
+			try {
+				String saveLocation = projectForm.getPathToTestJar();
+				if ("\\".equals(projectForm.getPathToTestJar().substring(saveLocation.length()-1, saveLocation.length()))) {
+					path.append(saveLocation);
+					path.append(file.getOriginalFilename());
+					return path.toString();
+				 } else {
+					 path.append(saveLocation);
+					 path.append("\\");
+					 path.append(file.getOriginalFilename());
+					 return path.toString();
+				 }
+			} catch (Exception e) {
+				// TODO: handle exception
+			}
 		
 		return path.toString();
 		
