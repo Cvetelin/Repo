@@ -18,6 +18,7 @@ import org.springframework.web.servlet.ModelAndView;
 import bg.ceco.demo.logic.ClassInfoService;
 import bg.ceco.demo.logic.ProjectService;
 import bg.ceco.demo.model.ClassInfo;
+import bg.ceco.demo.model.Project;
 import bg.ceco.demo.selenium.TestRunner;
 
 @Controller
@@ -29,10 +30,13 @@ public class ShowTestClassesController {
 	private ProjectService projectService;
 	
 	@RequestMapping(value = "/ShowTestClasses", method = RequestMethod.GET)
-	public ModelAndView showClasses (@RequestParam("name") String projectName,
-			@RequestParam("id") long projectid) throws Exception {	
+	public ModelAndView showClasses (@RequestParam("id") long projectid) throws Exception {	
 		ModelMap map = new ModelMap();
-		map.put("dirInfo", classInfoService.list());		
+		Project project = projectService.get(projectid);
+		String name = project.getProjectName();
+		byte [] jarFile = project.getTestJar();
+		JarLoader.loadJar(project);
+			
 		return new ModelAndView("ShowTestClasses", map);
 	}
 	

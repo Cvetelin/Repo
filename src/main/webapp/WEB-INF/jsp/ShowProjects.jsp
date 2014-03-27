@@ -25,8 +25,8 @@
 	<div class="container text-center row ">
 		<display:table name="projects" id="projects" class="col-md-12 table-bordered title text-center table-striped table-hover"  
 		requestURI="ShowProjects" defaultsort="1" >
-			<display:column title="Project Name" property="projectName" href="/app/ShowTestClasses" paramId="name"
-				paramProperty="projectName" sortable="true" maxLength="30"/>
+			<display:column title="Project Name" property="projectName" href="/app/ShowTestClasses" paramId="id"
+				paramProperty="id" sortable="true" maxLength="30"/>
 			<display:column  title="Test JAR name" property ="jarName" sortable="true" maxLength="30"/>			
 			<display:column  title="Dependency JAR name" property ="dependencyJarName" sortable="true" maxLength="30"/>
 			<display:column  title="Description" property ="description" sortable="true" maxLength="30"/>

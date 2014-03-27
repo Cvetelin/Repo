@@ -18,4 +18,6 @@ public interface ProjectDao {
 
 	public abstract Project loadBy(String name);
 
+	public abstract Project get(long id);
+
 }

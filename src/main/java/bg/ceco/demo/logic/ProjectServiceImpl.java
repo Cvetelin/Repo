@@ -29,6 +29,14 @@ public class ProjectServiceImpl implements ProjectService {
 	public Project load(long id) {
 		return projectDao.load(id);
 	}
+	
+	/* (non-Javadoc)
+	 * @see bg.ceco.demo.logic.ProjectService#get(long)
+	 */
+	@Override
+	public Project get(long id) {
+		return projectDao.get(id);
+	}
 
 	/* (non-Javadoc)
 	 * @see bg.ceco.demo.logic.ProjectService#save(bg.ceco.demo.model.Project)

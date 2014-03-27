@@ -17,4 +17,6 @@ public interface ProjectService {
 
 	public abstract Project loadBy(String jarName);
 
+	public abstract Project get(long id);
+
 }

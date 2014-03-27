@@ -22,6 +22,15 @@ public class PojectDaoHibernate implements ProjectDao {
 		return (Project) sessionFactory.getCurrentSession().load(Project.class, id);
 	
 	}
+	
+	/* (non-Javadoc)
+	 * @see bg.ceco.demo.model.ProjectDao#load(long)
+	 */
+	@Override
+	public Project get(long id) {
+		return (Project) sessionFactory.getCurrentSession().get(Project.class, id);
+	
+	}
 
 	
 	/* (non-Javadoc)

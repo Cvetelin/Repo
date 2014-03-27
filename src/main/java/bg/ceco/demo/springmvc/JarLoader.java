@@ -3,7 +3,9 @@ package bg.ceco.demo.springmvc;
 import java.io.File;
 import java.net.URL;
 import java.net.URLClassLoader;
+import java.util.ArrayList;
 import java.util.Enumeration;
+import java.util.List;
 import java.util.jar.JarEntry;
 import java.util.jar.JarFile;
 
@@ -55,40 +57,46 @@ public class JarLoader {
         }
 	}
         
-        public void loadJar(Project project) throws Exception {
-    		FileUtils.writeByteArrayToFile(new File(project.getJarPath()), project.getTestJar());       	
-        
-    		JarFile jarFile = new JarFile(project.getJarPath());
-            Enumeration<?> e = jarFile.entries();            
-            
-            File f = new File(project.getJarPath());
-            URL[] urls = { f.toURI().toURL()};
-            URLClassLoader cl = URLClassLoader.newInstance(urls);
-
-            ClassPool cp = ClassPool.getDefault();
-            while (e.hasMoreElements()) {
-                JarEntry je = (JarEntry) e.nextElement();
-                if(je.isDirectory() || !je.getName().endsWith("Test.class")){
-                    continue;
-                }
-                // -6 because of .class
-                String className = je.getName().substring(0,je.getName().length()-6);
-                className = className.replace('/', '.');
-                
-                CtClass ct = cp.get(className);
-                CtMethod [] ctmethod = ct.getMethods();            
-                
-               
-                Class<?> c = cl.loadClass(className);
-                System.out.println ("Success!");            
-            }
-        
-        
+	public static List<Class<?>> loadJar(Project project) throws Exception {
+		FileUtils.writeByteArrayToFile(new File(project.getJarPath()),
+				project.getTestJar());
 		
-//	    File f = new File("C:\\m2\\bugshot\\test\\bugshot-test\\1.0\\bugshot-test-1.0-tests.jar");
-//	    URLClassLoader urlCl = new URLClassLoader(new URL[] { f.toURI().toURL()},System.class.getClassLoader());
-//	    Class<?> cls = urlCl.loadClass("web.test.login.LoginTest");
-//	    cls.newInstance();
-//	    System.out.println ("Success!");  
-	  }
+
+		JarFile jarFile = new JarFile(project.getJarPath());
+		Enumeration<?> e = jarFile.entries();
+
+		File f = new File(project.getJarPath());
+		URL[] urls = { f.toURI().toURL() };
+		URLClassLoader cl = URLClassLoader.newInstance(urls);
+
+		List<Class<?>> testClasses = new ArrayList<Class<?>>();
+		ClassPool cp = ClassPool.getDefault();
+		while (e.hasMoreElements()) {
+			JarEntry je = (JarEntry) e.nextElement();
+			if (je.isDirectory() || !je.getName().endsWith("Test.class")) {
+				continue;
+			}
+			// -6 because of .class
+			String className = je.getName().substring(0,
+					je.getName().length() - 6);
+			className = className.replace('/', '.');
+
+			CtClass ct = cp.get(className);
+			CtMethod[] ctmethod = ct.getMethods();
+
+			Class<?> c = cl.loadClass(className);
+			testClasses.add(c);
+			System.out.println("Success!");
+
+		}
+
+		return testClasses;
+		// File f = new
+		// File("C:\\m2\\bugshot\\test\\bugshot-test\\1.0\\bugshot-test-1.0-tests.jar");
+		// URLClassLoader urlCl = new URLClassLoader(new URL[] {
+		// f.toURI().toURL()},System.class.getClassLoader());
+		// Class<?> cls = urlCl.loadClass("web.test.login.LoginTest");
+		// cls.newInstance();
+		// System.out.println ("Success!");
+	}
 }
