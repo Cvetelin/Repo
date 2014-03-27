@@ -37,6 +37,20 @@
 				return false;
 			return true;
 		}
+		
+		$(function () {
+		    $('#submitForm').validate({
+		        rules: {},
+		        messages: {},
+		        submitHandler: function () {
+		            return false
+		        }
+		    });
+		    $('input[name^="testJar"]').rules('add', {
+		        required: true,
+		        accept: "image/jpeg, image/pjpeg"
+		    });
+		});
 	</script>
 </head>
  
@@ -45,7 +59,7 @@
 		<div class="col-md-10 text-center">
 			<p class="lead">Add project</p>			
 		</div>	
-		<form:form commandName="projectForm" method="POST"  action="CreateProject"  cssClass="form-horizontal" enctype="multipart/form-data">
+		<form:form commandName="projectForm" method="POST"  action="CreateProject"  cssClass="form-horizontal" enctype="multipart/form-data" id="submitForm">
 			<div class="form-group">
 				<label for="projectName" class="col-sm-3 control-label">Project name</label>
 				<div class="col-sm-4">
@@ -83,7 +97,7 @@
 			</div>		 	 
 		 	 <div class="form-group">
 				<div class="col-sm-offset-1 col-sm-5 pull-right">		 		
-		  			 <input type="submit" class="btn btn-default" onclick="return validateAddProject();" value="Save"></input>
+		  			 <input type="submit" class="btn btn-default" onclick="return validateAddProject();" value="Save" ></input>
 		  		</div>
 		  	 </div>			  	
 		</form:form>
