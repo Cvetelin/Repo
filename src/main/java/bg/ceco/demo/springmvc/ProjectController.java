@@ -1,8 +1,7 @@
 package bg.ceco.demo.springmvc;
 
-import java.io.File;
-import java.util.Date;
 
+import java.util.Date;
 import org.apache.commons.lang.RandomStringUtils;
 import org.apache.commons.lang.StringUtils;
 import org.hibernate.SessionFactory;
@@ -62,7 +61,10 @@ public class ProjectController {
 			@RequestParam("depJar") MultipartFile depJar) {
 		FileValidator fileValidator = new FileValidator();
 		fileValidator.validate(testJar, result);
-
+		if(result.hasErrors()){
+			return new ModelAndView("AddProject");
+		}
+		
 		Project project = new Project();
 		if (!(depJar.getSize() == 0)) {
 			fileValidator.validate(depJar, result);
@@ -96,7 +98,7 @@ public class ProjectController {
 	private String constructSaveLocation (ProjectForm projectForm, MultipartFile file) {
 		String rootDir = "C:\\";
 		StringBuilder path = new StringBuilder();
-		if(StringUtils.isEmpty(projectForm.getPathToTestJar())){		
+		
 			path.append(rootDir);
 			path.append(JAR_SAVE_LOCATION);
 			path.append(projectForm.getName());
@@ -106,25 +108,6 @@ public class ProjectController {
 			path.append(RandomStringUtils.randomNumeric(4));
 			path.append("\\");
 			path.append(file.getOriginalFilename());
-			return path.toString();
-		} else
-			try {
-				String saveLocation = projectForm.getPathToTestJar();
-				if ("\\".equals(projectForm.getPathToTestJar().substring(saveLocation.length()-1, saveLocation.length()))) {
-					path.append(saveLocation);
-					path.append(file.getOriginalFilename());
-					return path.toString();
-				 } else {
-					 path.append(saveLocation);
-					 path.append("\\");
-					 path.append(file.getOriginalFilename());
-					 return path.toString();
-				 }
-			} catch (Exception e) {
-				// TODO: handle exception
-			}
-		
-		return path.toString();
-		
+			return path.toString();	
 	}
 }
