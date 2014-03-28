@@ -10,6 +10,7 @@
 <%@ taglib uri="http://tiles.apache.org/tags-tiles" prefix="tiles"%>
 <%@ taglib uri="http://tiles.apache.org/tags-tiles-extras"
 	prefix="tilesx"%>
+	
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <link type="text/css" rel="stylesheet" href="/css/display.css">
@@ -38,23 +39,30 @@
 			return true;
 		}
 		
-		$(function () {
-		    $('#submitForm').validate({
-		        rules: {},
-		        messages: {},
-		        submitHandler: function () {
-		            return false
-		        }
-		    });
-		    $('input[name^="testJar"]').rules('add', {
-		        required: true,
-		        accept: "image/jpeg, image/pjpeg"
-		    });
-		});
+		var hash = {
+		  '.jar'  : 1,
+		  '.JAR' : 1,
+		};
+
+		function check_extension(filename, submitId) {
+	      var re = /\.\w{2}[\.r]$/;	      
+	      var ext = filename.match(re);
+	      var submitEl = document.getElementById(submitId);
+	      if (hash[ext]) {
+	        submitEl.disabled = false;
+	        return true;
+	      } else {
+	        alert("Invalid filename, please select jar file");
+	        submitEl.disabled = true;
+
+	        return false;
+	      }
+		}
 	</script>
 </head>
  
 <body>	
+	
 	<div  class="table-bordered">
 		<div class="col-md-10 text-center">
 			<p class="lead">Add project</p>			
@@ -76,7 +84,7 @@
 			<div class="form-group">
 		  	    	<label for="testJar" class="col-sm-3 control-label">Jar file</label>
 		  	    	<div class="col-sm-4">
-		   	 			<input type="file" id="testJar" class="form-control"  name="testJar" onchange="GetDiretory()"/>
+		   	 			<input type="file" id="testJar" class="form-control"  name="testJar" onchange="check_extension(this.value,'submit');"/>
 		   	 			<div style="display:none; color:red;">The value is required</div>
 		   	 			<p class="help-block text-center">The JAR containing the test classes</p>
 		   	 		</div>			   					   			
@@ -89,15 +97,8 @@
 		   	 		</div>	   				
 		 	 </div>	
 		 	 <div class="form-group">
-				<label for="description" class="col-sm-3 control-label">Jar save location</label>				
-				<div class="col-sm-4">
-					<form:input path="pathToTestJar" id="description" class="form-control" maxlength="150"/> 
-					<p class="help-block text-center">Where to store the jars. Example: C:\</p>
-				</div>
-			</div>		 	 
-		 	 <div class="form-group">
 				<div class="col-sm-offset-1 col-sm-5 pull-right">		 		
-		  			 <input type="submit" class="btn btn-default" onclick="return validateAddProject();" value="Save" ></input>
+		  			 <input type="submit" id="submit" class="btn btn-default" onclick="return validateAddProject();" value="Save" ></input>
 		  		</div>
 		  	 </div>			  	
 		</form:form>

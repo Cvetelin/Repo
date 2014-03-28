@@ -10,8 +10,6 @@ import javax.persistence.Id;
 import javax.persistence.Lob;
 import javax.persistence.Table;
 
-import org.springframework.context.annotation.Lazy;
-
 @Entity
 @Table(name = "PROJECT")
 public class Project {
@@ -40,7 +38,6 @@ public class Project {
 	private String description;
 	
 	@Column(name = "TEST_JAR")
-	@Lob
 	private byte[] testJar;
 	
 	@Column(name = "DEPENDENCY_JAR")
