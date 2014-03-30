@@ -1,7 +1,13 @@
 package bg.ceco.demo.springmvc;
 
 
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
+
+import javassist.CtClass;
+import javassist.CtMethod;
+
 import org.apache.commons.lang.RandomStringUtils;
 import org.apache.commons.lang.StringUtils;
 import org.hibernate.SessionFactory;
@@ -16,8 +22,12 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
+import bg.ceco.demo.logic.ClassInfoService;
 import bg.ceco.demo.logic.ProjectService;
+import bg.ceco.demo.logic.TestInfoService;
+import bg.ceco.demo.model.ClassInfo;
 import bg.ceco.demo.model.Project;
+import bg.ceco.demo.model.TestInfo;
 
 @Controller
 public class ProjectController {
@@ -26,7 +36,10 @@ public class ProjectController {
 	private ProjectService projectService;
 	
 	@Autowired
-	private SessionFactory sessionFactory;
+	private ClassInfoService classInfoService;
+	
+	@Autowired
+	private TestInfoService testInfoService;
 
 	@RequestMapping(value = "/ShowProjects", method = RequestMethod.GET)
 	public ModelAndView showProjects() {
@@ -95,6 +108,18 @@ public class ProjectController {
 		}
 	}
 	
+	@RequestMapping(value = "/GenerateTree", method = RequestMethod.GET) 
+	public ModelAndView generate(@RequestParam("id") long id) throws Exception {
+		Project project = projectService.load(id);
+		ProjectTreeGenerator generator = new ProjectTreeGenerator();
+		List<CtClass> classes = generator.loadJar(project);
+		generateClassSturcture(classes, project);
+		ModelMap map = new ModelMap();
+		map.addAttribute("dirInfo", classInfoService.list());
+		return new ModelAndView("AddProject", map);
+	}
+	
+	
 	private String constructSaveLocation (ProjectForm projectForm, MultipartFile file) {
 		String rootDir = "C:\\";
 		StringBuilder path = new StringBuilder();
@@ -109,5 +134,32 @@ public class ProjectController {
 			path.append("\\");
 			path.append(file.getOriginalFilename());
 			return path.toString();	
+	}
+	
+	private void generateClassSturcture (List<CtClass> classes, Project project) throws Exception {
+		
+		List<ClassInfo> classInfos = new ArrayList<ClassInfo>();	
+		List<TestInfo> testInfos = new ArrayList<TestInfo>();
+		for (CtClass class1 : classes) {
+			CtMethod[] methods = class1.getMethods();
+			ClassInfo classInfo = new ClassInfo();
+			
+			classInfo.setName(class1.getSimpleName());
+			classInfo.setQualifiedName(class1.getName());
+			classInfo.setProjectId(project.getId());
+			classInfos.add(classInfo);	
+			
+			classInfoService.save(classInfo);
+			
+			for (int i = 0; i < methods.length; i++) {
+				TestInfo testInfo = new TestInfo();
+				testInfo.setName(methods[i].getName());
+				testInfo.setClassId(classInfoService.loadBy(class1.getName()).getId());
+				testInfos.add(testInfo);	
+			}
+			testInfoService.saveAll(testInfos);					
+		}		
+		classInfoService.saveAll(classInfos);
+		List<ClassInfo> savedClasses = classInfoService.listBy(project.getId());
 	}
 }

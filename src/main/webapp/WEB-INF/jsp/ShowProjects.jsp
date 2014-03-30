@@ -35,6 +35,9 @@
 			<display:column href="/app/EditProject" paramId="id" paramProperty="id">
 					<button  class="btn btn-primary btn-xs" name="projectForm">Edit</button>		
 			</display:column>
+			<display:column href="/app/GenerateTree" paramId="id" paramProperty="id">
+					<button  class="btn btn-primary btn-xs">Generate Project Tree</button>		
+			</display:column>
 		</display:table> 
 		
 	</div>

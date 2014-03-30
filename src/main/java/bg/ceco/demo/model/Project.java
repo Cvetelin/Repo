@@ -1,13 +1,17 @@
 package bg.ceco.demo.model;
 
 import java.util.Date;
+import java.util.HashSet;
+import java.util.Set;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Lob;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -50,6 +54,26 @@ public class Project {
 	@Column(name = "DATE_MODIFICATION")
 	private Date dateModification;	
 	
+	public Project() {}
+		
+	public Project(long id, String projectName, String jarName,
+			String dependencyJarName, String jarPath, String dependencyJarPath,
+			String description, byte[] testJar, byte[] dependencyJar,
+			Date dateCreation, Date dateModification) {
+		super();
+		this.id = id;
+		this.projectName = projectName;
+		this.jarName = jarName;
+		this.dependencyJarName = dependencyJarName;
+		this.jarPath = jarPath;
+		this.dependencyJarPath = dependencyJarPath;
+		this.description = description;
+		this.testJar = testJar;
+		this.dependencyJar = dependencyJar;
+		this.dateCreation = dateCreation;
+		this.dateModification = dateModification;
+	}
+
 	public String getProjectName() {
 		return projectName;
 	}

@@ -1,7 +1,10 @@
 package bg.ceco.demo.springmvc;
 
 import java.io.File;
+import java.util.ArrayList;
 import java.util.Iterator;
+import java.util.List;
+
 import org.apache.commons.io.FileUtils;
 import org.apache.commons.io.filefilter.FileFilterUtils;
 import org.apache.commons.io.filefilter.IOFileFilter;
@@ -32,11 +35,20 @@ public class ShowTestClassesController {
 	@RequestMapping(value = "/ShowTestClasses", method = RequestMethod.GET)
 	public ModelAndView showClasses (@RequestParam("id") long projectid) throws Exception {	
 		ModelMap map = new ModelMap();
-		Project project = projectService.get(projectid);
-		String name = project.getProjectName();
-		byte [] jarFile = project.getTestJar();
-		JarLoader.loadJar(project);
-			
+		Project project = projectService.get(projectid);	
+//		JarLoader.loadJar("");
+		
+		JarLoader jarLoader = new JarLoader();
+		List<Class<?>> classList = jarLoader.loadJar(project);
+		List<ClassInfo> classInfos = new ArrayList<ClassInfo>();		
+		for (Class<?> class1 : classList) {
+			ClassInfo classInfo = new ClassInfo();
+			classInfo.setName(class1.getSimpleName());
+			classInfo.setQualifiedName(class1.getName());
+			classInfos.add(classInfo);		
+		}
+		classInfoService.saveAll(classInfos);
+		map.addAttribute("dirInfo", classInfoService.list());
 		return new ModelAndView("ShowTestClasses", map);
 	}
 	

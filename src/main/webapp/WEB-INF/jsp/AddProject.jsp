@@ -44,20 +44,53 @@
 		  '.JAR' : 1,
 		};
 
-		function check_extension(filename, submitId) {
-	      var re = /\.\w{2}[\.r]$/;	      
-	      var ext = filename.match(re);
-	      var submitEl = document.getElementById(submitId);
-	      if (hash[ext]) {
-	        submitEl.disabled = false;
-	        return true;
-	      } else {
-	        alert("Invalid filename, please select jar file");
-	        submitEl.disabled = true;
-
-	        return false;
-	      }
+		function checkExtension(filename, submitId, inputId) {
+			if(filename.value != ""){
+		      var re = /\.\w{2}[\.r]$/;	      
+		      var ext = filename.match(re);
+		      var submitEl = document.getElementById(submitId);
+		      if (hash[ext]) {
+		        submitEl.disabled = false;
+		        return true;
+		      } else {
+		        alert("Invalid filename, please select jar file");
+		        submitEl.disabled = true;
+		        clearFileInput(inputId);
+		        return false;
+		      }
+			}
 		}
+		
+		function clearFileInput(inputId) {
+			
+		    var oldInput = document.getElementById(inputId);
+		    var newInput = document.createElement("input");
+		    
+		    newInput.type = "file";
+		    newInput.id = oldInput.id;
+		    newInput.name = oldInput.name;
+		    newInput.className = oldInput.className;
+		    newInput.style.cssText = oldInput.style.cssText;
+		    newInput.onchange = oldInput.onchange;
+		    // copy any other relevant attributes		    
+		    oldInput.parentNode.replaceChild(newInput, oldInput);
+		}
+		
+		$(document).ready(function() {
+			$('#projectForm input').on('focus', function() {
+				$('#projectForm input').on('keyup', function(e) {
+					if (e.keyCode == 27) {
+						$('#cancelBtn').click();
+						$('#versionForm input').off('keyup');
+					}
+				});
+			});
+			$('input[name="name"]').focus();
+			
+			$('#cancelBtn').on('click', function() {
+				window.location.href = "<c:url value='/app/ShowProjects' />";
+			})
+		});
 	</script>
 </head>
  
@@ -84,7 +117,7 @@
 			<div class="form-group">
 		  	    	<label for="testJar" class="col-sm-3 control-label">Jar file</label>
 		  	    	<div class="col-sm-4">
-		   	 			<input type="file" id="testJar" class="form-control"  name="testJar" onchange="check_extension(this.value,'submit');"/>
+		   	 			<input type="file" id="testJar" class="form-control"  name="testJar" onchange="checkExtension(this.value,'submit','testJar');"/>
 		   	 			<div style="display:none; color:red;">The value is required</div>
 		   	 			<p class="help-block text-center">The JAR containing the test classes</p>
 		   	 		</div>			   					   			
@@ -92,13 +125,14 @@
 		 	 <div class="form-group">
 		  	    	<label for="depJar" class="col-sm-3 control-label">Dependency jar</label>
 		  	    	<div class="col-sm-4">
-		   	 			<input type="file" id="depJar" name="depJar" class="form-control" />
+		   	 			<input type="file" id="depJar" name="depJar" class="form-control"  onchange="checkExtension(this.value,'submit','depJar');"/>
 		   	 			<p class="help-block text-center">The JAR containing classes not in test src folder</p>
 		   	 		</div>	   				
 		 	 </div>	
 		 	 <div class="form-group">
-				<div class="col-sm-offset-1 col-sm-5 pull-right">		 		
-		  			 <input type="submit" id="submit" class="btn btn-default" onclick="return validateAddProject();" value="Save" ></input>
+				<div class="col-sm-offset-1 col-sm-6 pull-right">
+					<input type="button" id="cancelBtn" class="btn btn-default"  value=Back onClick="history.go(-1)" ></input>		
+		  			<input type="submit" id="submit" class="btn btn-default" onclick="return validateAddProject();" value="Save" ></input>
 		  		</div>
 		  	 </div>			  	
 		</form:form>

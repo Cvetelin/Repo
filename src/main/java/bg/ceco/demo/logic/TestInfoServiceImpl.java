@@ -59,4 +59,9 @@ public class TestInfoServiceImpl implements TestInfoService {
 	public void delete(TestInfo testInfo) {
 		testInfoDao.delete(testInfo);
 	}
+	
+	@Override
+	public void saveAll(List<TestInfo> testInfo) {
+		testInfoDao.saveAll(testInfo);
+	}
 }
