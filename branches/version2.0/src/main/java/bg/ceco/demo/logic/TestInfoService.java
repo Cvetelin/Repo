@@ -16,4 +16,6 @@ public interface TestInfoService {
 
 	public abstract void delete(TestInfo testInfo);
 
+	public abstract void saveAll(List<TestInfo> testInfo);
+
 }

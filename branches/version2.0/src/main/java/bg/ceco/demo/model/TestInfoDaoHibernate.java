@@ -74,4 +74,12 @@ public class TestInfoDaoHibernate implements TestInfoDao {
 				.add(Restrictions.eq("classId", classId)).list();
 		}
 	
+		@Override
+		public void saveAll(List<TestInfo> element) {
+	        for (int i = 0; i < element.size(); i++) {
+		        	sessionFactory.getCurrentSession().save(element.get(i));
+		            sessionFactory.getCurrentSession().flush();
+		            sessionFactory.getCurrentSession().clear();
+		      }
+		}
 }

@@ -16,5 +16,9 @@ public interface ClassInfoDao {
 	
 	public List<ClassInfo> list();
 	
+	public List<ClassInfo> listBy(long projectId);
+	
 	public ClassInfo loadBy(String qualifiedName);
+
+	void saveAll(List<ClassInfo> element) throws Exception;
 }

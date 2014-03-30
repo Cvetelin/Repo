@@ -64,4 +64,14 @@ public class ClassInfoServiceImpl implements ClassInfoService {
 		return classInfoDao.loadBy(qualifiedName);
 	}
 	
+	
+	@Override
+	public void saveAll(List<ClassInfo> classInfo) throws Exception {
+		classInfoDao.saveAll(classInfo);
+	}
+	
+	@Override
+	public List<ClassInfo> listBy(long projectId) {
+		return classInfoDao.listBy(projectId);
+	}
 }
