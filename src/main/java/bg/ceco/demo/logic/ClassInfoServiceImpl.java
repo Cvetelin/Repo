@@ -15,16 +15,19 @@ public class ClassInfoServiceImpl implements ClassInfoService {
 	@Autowired
 	private ClassInfoDao classInfoDao;
 
-
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see bg.ceco.demo.logic.ClassInfoService#list()
 	 */
 	@Override
 	public List<ClassInfo> list() {
 		return classInfoDao.list();
 	}
-	
-	/* (non-Javadoc)
+
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see bg.ceco.demo.logic.ClassInfoService#load(long)
 	 */
 	@Override
@@ -32,47 +35,61 @@ public class ClassInfoServiceImpl implements ClassInfoService {
 		return classInfoDao.load(id);
 	}
 
-	/* (non-Javadoc)
-	 * @see bg.ceco.demo.logic.ClassInfoService#save(bg.ceco.demo.model.ClassInfo)
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see
+	 * bg.ceco.demo.logic.ClassInfoService#save(bg.ceco.demo.model.ClassInfo)
 	 */
 	@Override
 	public void save(ClassInfo classInfo) {
 		classInfoDao.save(classInfo);
 	}
 
-	/* (non-Javadoc)
-	 * @see bg.ceco.demo.logic.ClassInfoService#update(bg.ceco.demo.model.ClassInfo)
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see
+	 * bg.ceco.demo.logic.ClassInfoService#update(bg.ceco.demo.model.ClassInfo)
 	 */
 	@Override
 	public void update(ClassInfo classInfo) {
 		classInfoDao.update(classInfo);
 	}
 
-	
-	/* (non-Javadoc)
-	 * @see bg.ceco.demo.logic.ClassInfoService#delete(bg.ceco.demo.model.ClassInfo)
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see
+	 * bg.ceco.demo.logic.ClassInfoService#delete(bg.ceco.demo.model.ClassInfo)
 	 */
 	@Override
 	public void delete(ClassInfo classInfo) {
 		classInfoDao.delete(classInfo);
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see bg.ceco.demo.logic.ClassInfoService#load(long)
 	 */
 	@Override
-	public ClassInfo loadBy(String qualifiedName) {
+	public List<ClassInfo> loadBy(String qualifiedName) {
 		return classInfoDao.loadBy(qualifiedName);
 	}
-	
-	
+
 	@Override
 	public void saveAll(List<ClassInfo> classInfo) throws Exception {
 		classInfoDao.saveAll(classInfo);
 	}
-	
+
 	@Override
 	public List<ClassInfo> listBy(Project project) {
 		return classInfoDao.listBy(project);
+	}
+
+	@Override
+	public ClassInfo loadBy(Project project, String qualifiedName) {
+		return classInfoDao.loadBy(project, qualifiedName);
 	}
 }
