@@ -18,5 +18,7 @@ public interface TestInfoDao {
 
 	public void saveAll(List<TestInfo> element);
 
+	public abstract List<TestInfo> listBy(ClassInfo classInfo);
+
 
 }

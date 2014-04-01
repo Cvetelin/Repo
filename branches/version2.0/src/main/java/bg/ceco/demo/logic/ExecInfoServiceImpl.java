@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import bg.ceco.demo.model.ExecInfo;
 import bg.ceco.demo.model.ExecInfoDao;
+import bg.ceco.demo.model.TestInfo;
 
 @Component
 public class ExecInfoServiceImpl implements ExecInfoService {
@@ -57,5 +58,14 @@ public class ExecInfoServiceImpl implements ExecInfoService {
 	@Override
 	public void delete(ExecInfo execInfo) {
 		execInfoDao.delete(execInfo);
+	}
+	
+	/* (non-Javadoc)
+	 * @see bg.ceco.demo.logic.ExecInfoService#list()
+	 */
+	
+	@Override
+	public List<ExecInfo> listBy(TestInfo testInfo) {
+		return execInfoDao.listBy(testInfo);
 	}
 }

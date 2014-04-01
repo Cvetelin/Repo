@@ -16,7 +16,7 @@ public interface ClassInfoDao {
 	
 	public List<ClassInfo> list();
 	
-	public List<ClassInfo> listBy(long projectId);
+	public List<ClassInfo> listBy(Project project);
 	
 	public ClassInfo loadBy(String qualifiedName);
 
