@@ -36,7 +36,6 @@ private SessionFactory sessionFactory;
 	
 	public void delete(ClassInfo classInfo) {
 		sessionFactory.getCurrentSession().delete(classInfo);
-		
 	}
 
 	@SuppressWarnings("unchecked")
@@ -47,9 +46,9 @@ private SessionFactory sessionFactory;
 	}
 	
 	@SuppressWarnings("unchecked")
-	public List<ClassInfo> listBy(long projectId) {
+	public List<ClassInfo> listBy(Project project) {
 		Criteria crit = sessionFactory.getCurrentSession().createCriteria(ClassInfo.class)
-				.add(Restrictions.eq("projectId", projectId));		
+				.add(Restrictions.eq("project", project));		
 		List<ClassInfo> classInfo = crit.list();
 		return classInfo;
 	}
@@ -64,8 +63,6 @@ private SessionFactory sessionFactory;
 	public void saveAll(List<ClassInfo> element) throws Exception {
         for (int i = 0; i < element.size(); i++) {
 	        	sessionFactory.getCurrentSession().save(element.get(i));
-	            sessionFactory.getCurrentSession().flush();
-	            sessionFactory.getCurrentSession().clear();
 	      }
 	}
 	

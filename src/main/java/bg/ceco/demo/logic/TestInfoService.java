@@ -2,6 +2,7 @@ package bg.ceco.demo.logic;
 
 import java.util.List;
 
+import bg.ceco.demo.model.ClassInfo;
 import bg.ceco.demo.model.TestInfo;
 
 public interface TestInfoService {
@@ -17,5 +18,7 @@ public interface TestInfoService {
 	public abstract void delete(TestInfo testInfo);
 
 	public abstract void saveAll(List<TestInfo> testInfo);
+
+	public abstract List<TestInfo> listBy(ClassInfo classInfo);
 
 }

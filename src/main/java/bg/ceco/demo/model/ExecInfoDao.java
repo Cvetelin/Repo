@@ -11,10 +11,9 @@ public interface ExecInfoDao {
 	public abstract void update(ExecInfo execInfo);
 
 	public abstract void delete(ExecInfo execInfo);
-
 	
 	public abstract List<ExecInfo> list();
-	
-	public abstract List<ExecInfo> listBy(long testId);
+
+	public abstract List<ExecInfo> listBy(TestInfo testInfo);
 
 }

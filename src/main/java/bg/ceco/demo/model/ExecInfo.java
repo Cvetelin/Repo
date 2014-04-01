@@ -7,6 +7,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 @Entity
 @Table(name="EXECUTION")
@@ -24,24 +26,25 @@ public class ExecInfo {
 	
 	@Column(name = "EXECUTION_DATE")
 	private Date executionDate;
-
-	@Column(name = "TEST_ID")
-	private long testId;
 	
 	@Column(name = "FAILURE_REASON")
 	private String failureReason;
+	
+	@ManyToOne(targetEntity = TestInfo.class)
+	@JoinColumn(name = "TEST_ID", nullable = false)
+	private TestInfo testInfo;
 	
 	public ExecInfo() {
 	
 	}
 
 	public ExecInfo(long id, String name, String path, Date executionDate,
-		long testId) {
+			TestInfo testInfo) {
 	this.id = id;
 	this.name = name;
 	this.path = path;
 	this.executionDate = executionDate;
-	this.testId = testId;
+	this.testInfo = testInfo;
 	}
 
 	public String getFailureReason() {
@@ -60,12 +63,12 @@ public class ExecInfo {
 		this.id = id;
 	}
 
-	public long getTestId() {
-		return testId;
+	public TestInfo getTestInfo() {
+		return testInfo;
 	}
 
-	public void setTestId(long testId) {
-		this.testId = testId;
+	public void setTestInfo(TestInfo testInfo) {
+		this.testInfo = testInfo;
 	}
 
 	public String getName() {

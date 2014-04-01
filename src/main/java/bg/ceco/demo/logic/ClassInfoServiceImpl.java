@@ -7,6 +7,7 @@ import org.springframework.stereotype.Component;
 
 import bg.ceco.demo.model.ClassInfo;
 import bg.ceco.demo.model.ClassInfoDao;
+import bg.ceco.demo.model.Project;
 
 @Component
 public class ClassInfoServiceImpl implements ClassInfoService {
@@ -71,7 +72,7 @@ public class ClassInfoServiceImpl implements ClassInfoService {
 	}
 	
 	@Override
-	public List<ClassInfo> listBy(long projectId) {
-		return classInfoDao.listBy(projectId);
+	public List<ClassInfo> listBy(Project project) {
+		return classInfoDao.listBy(project);
 	}
 }

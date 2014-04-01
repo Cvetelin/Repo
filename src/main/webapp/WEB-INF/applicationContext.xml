@@ -14,8 +14,27 @@
 		http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-3.2.xsd"	
 	default-autowire="byType">
 
-    <mvc:annotation-driven />
-	<context:component-scan base-package="bg.ceco.demo"/>
+	<context:component-scan base-package="bg.ceco.demo">
+	   <context:exclude-filter type="annotation" expression="org.springframework.stereotype.Controller" />
+    </context:component-scan>
+    <context:annotation-config/>
+	
+	<bean class="org.springframework.web.servlet.view.UrlBasedViewResolver">
+		<property name="viewClass" value="org.springframework.web.servlet.view.tiles3.TilesView"/>
+	</bean>
+	
+	<bean id="tilesConfigurer" class="org.springframework.web.servlet.view.tiles3.TilesConfigurer" >
+		<property name="definitions" value="/WEB-INF/tiles.xml"></property>
+	</bean>
+	
+	<bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+   		<property name="maxUploadSize" value=" 33554432"/> <!-- 32 Mb -->									   
+	</bean>
+	
+	<bean id="txManager"  class="org.springframework.orm.hibernate4.HibernateTransactionManager">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	
 	
 	<bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
 		<property name="url" value="jdbc:mysql://localhost:3306/gallery" />
@@ -43,10 +62,6 @@
 				<prop key="hibernate.dialect">org.hibernate.dialect.MySQL5Dialect</prop>
 				<prop key="hibernate.show_sql">true</prop>
 				<prop key="hibernate.hbm2ddl.auto">update</prop>
-				<!-- prop key="hibernate.c3p0.minPoolSize">${hibernate.c3p0.minPoolSize}</prop>
-				<prop key="hibernate.c3p0.maxPoolSize">${hibernate.c3p0.maxPoolSize}</prop>
-				<prop key="hibernate.c3p0.timeout">${hibernate.c3p0.timeout}</prop>
-				<prop key="hibernate.c3p0.max_statement">${hibernate.c3p0.max_statement}</prop -->
 				<prop key="hibernate.generate_statistics">true</prop>
 				<prop key="hibernate.cache.use_query_cache">false</prop>
 			</props>

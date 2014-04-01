@@ -50,7 +50,6 @@ public class TestInfoDaoHibernate implements TestInfoDao {
 		@Override
 		public void delete(TestInfo testInfo) {
 			sessionFactory.getCurrentSession().delete(testInfo);
-			
 		}
 
 		/* (non-Javadoc)
@@ -62,6 +61,14 @@ public class TestInfoDaoHibernate implements TestInfoDao {
 			Criteria crit = sessionFactory.getCurrentSession().createCriteria(TestInfo.class);
 			List<TestInfo> testinfo = crit.list();
 			return testinfo;
+		}
+		@Override
+		@SuppressWarnings("unchecked")
+		public List<TestInfo> listBy(ClassInfo classInfo) {
+			Criteria crit = sessionFactory.getCurrentSession().createCriteria(TestInfo.class)
+					.add(Restrictions.eq("classInfo", classInfo));		
+			List<TestInfo> testInfo = crit.list();
+			return testInfo;
 		}
 		
 		/* (non-Javadoc)
@@ -78,8 +85,6 @@ public class TestInfoDaoHibernate implements TestInfoDao {
 		public void saveAll(List<TestInfo> element) {
 	        for (int i = 0; i < element.size(); i++) {
 		        	sessionFactory.getCurrentSession().save(element.get(i));
-		            sessionFactory.getCurrentSession().flush();
-		            sessionFactory.getCurrentSession().clear();
 		      }
 		}
 }

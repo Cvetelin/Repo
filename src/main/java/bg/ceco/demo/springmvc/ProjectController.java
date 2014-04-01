@@ -3,7 +3,9 @@ package bg.ceco.demo.springmvc;
 
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.Iterator;
 import java.util.List;
+import java.util.Set;
 
 import javassist.CtClass;
 import javassist.CtMethod;
@@ -23,9 +25,11 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 import bg.ceco.demo.logic.ClassInfoService;
+import bg.ceco.demo.logic.ExecInfoService;
 import bg.ceco.demo.logic.ProjectService;
 import bg.ceco.demo.logic.TestInfoService;
 import bg.ceco.demo.model.ClassInfo;
+import bg.ceco.demo.model.ExecInfo;
 import bg.ceco.demo.model.Project;
 import bg.ceco.demo.model.TestInfo;
 
@@ -40,6 +44,9 @@ public class ProjectController {
 	
 	@Autowired
 	private TestInfoService testInfoService;
+	
+	@Autowired
+	public ExecInfoService execInfoService;
 
 	@RequestMapping(value = "/ShowProjects", method = RequestMethod.GET)
 	public ModelAndView showProjects() {
@@ -113,10 +120,11 @@ public class ProjectController {
 		Project project = projectService.load(id);
 		ProjectTreeGenerator generator = new ProjectTreeGenerator();
 		List<CtClass> classes = generator.loadJar(project);
+		clearOldData(project);
 		generateClassSturcture(classes, project);
 		ModelMap map = new ModelMap();
-		map.addAttribute("dirInfo", classInfoService.list());
-		return new ModelAndView("AddProject", map);
+		map.addAttribute("dirInfo", classInfoService.listBy(project));
+		return new ModelAndView("ShowTestClasses", map);
 	}
 	
 	
@@ -136,30 +144,50 @@ public class ProjectController {
 			return path.toString();	
 	}
 	
-	private void generateClassSturcture (List<CtClass> classes, Project project) throws Exception {
-		
-		List<ClassInfo> classInfos = new ArrayList<ClassInfo>();	
+	private void generateClassSturcture(List<CtClass> classes, Project project) throws Exception {
+
+		List<ClassInfo> classInfos = new ArrayList<ClassInfo>();
 		List<TestInfo> testInfos = new ArrayList<TestInfo>();
 		for (CtClass class1 : classes) {
-			CtMethod[] methods = class1.getMethods();
+			CtMethod[] methods = class1.getDeclaredMethods();
 			ClassInfo classInfo = new ClassInfo();
-			
+
 			classInfo.setName(class1.getSimpleName());
 			classInfo.setQualifiedName(class1.getName());
-			classInfo.setProjectId(project.getId());
-			classInfos.add(classInfo);	
+			classInfo.setProject(project);
+			classInfos.add(classInfo);
 			
 			classInfoService.save(classInfo);
-			
+
 			for (int i = 0; i < methods.length; i++) {
 				TestInfo testInfo = new TestInfo();
 				testInfo.setName(methods[i].getName());
-				testInfo.setClassId(classInfoService.loadBy(class1.getName()).getId());
-				testInfos.add(testInfo);	
+				testInfo.setClassInfo(classInfoService.loadBy(class1.getName()));
+				testInfos.add(testInfo);
 			}
-			testInfoService.saveAll(testInfos);					
-		}		
-		classInfoService.saveAll(classInfos);
-		List<ClassInfo> savedClasses = classInfoService.listBy(project.getId());
+			testInfoService.saveAll(testInfos);
+		}
+	}
+	
+	private void clearOldData (Project project) {
+			List<ClassInfo> classSet = classInfoService.listBy(project);
+			try {			
+				for (Iterator classIterator = classSet.iterator(); classIterator.hasNext();) {
+					ClassInfo classInfo = (ClassInfo) classIterator.next();
+//					List<TestInfo> testSet = testInfoService.listBy(classInfo);
+//					for (Iterator testIteretor = testSet.iterator(); testIteretor.hasNext();) {
+//						TestInfo testInfo = (TestInfo) testIteretor.next();
+//						List<ExecInfo> execSet = execInfoService.listBy(testInfo);
+//						for (Iterator execIterator = execSet.iterator(); execIterator.hasNext();) {
+//							ExecInfo execInfo = (ExecInfo) execIterator.next();
+//							execInfoService.delete(execInfo);
+//						}
+//						testInfoService.delete(testInfo);
+//					}
+					classInfoService.delete(classInfo);
+				}
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
 	}
 }

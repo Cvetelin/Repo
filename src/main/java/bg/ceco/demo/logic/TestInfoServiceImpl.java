@@ -5,6 +5,8 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import bg.ceco.demo.model.ClassInfo;
+import bg.ceco.demo.model.Project;
 import bg.ceco.demo.model.TestInfo;
 import bg.ceco.demo.model.TestInfoDao;
 @Component
@@ -23,7 +25,10 @@ public class TestInfoServiceImpl implements TestInfoService {
 		return testInfoDao.list();
 	}
 	
-
+	@Override
+	public List<TestInfo> listBy(ClassInfo classInfo) {
+		return testInfoDao.listBy(classInfo);
+	}
 	/* (non-Javadoc)
 	 * @see bg.ceco.demo.logic.TestInfoService#load(long)
 	 */

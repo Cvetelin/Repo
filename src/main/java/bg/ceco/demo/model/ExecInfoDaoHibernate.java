@@ -66,8 +66,11 @@ public class ExecInfoDaoHibernate implements ExecInfoDao {
 		 */
 		@Override
 		@SuppressWarnings("unchecked")
-		public List<ExecInfo> listBy(long classId) {
-			return (List<ExecInfo>) sessionFactory.getCurrentSession().createCriteria(ExecInfo.class)
-				.add(Restrictions.eq("testId", classId)).list();
+		public List<ExecInfo> listBy(TestInfo testInfo) {
+			Criteria crit = sessionFactory.getCurrentSession().createCriteria(ExecInfo.class)
+					.add(Restrictions.eq("testInfo", testInfo));		
+			List<ExecInfo> execInfo = crit.list();
+			return execInfo;
 		}
+
 }
