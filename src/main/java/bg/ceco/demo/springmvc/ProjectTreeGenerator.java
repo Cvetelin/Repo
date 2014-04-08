@@ -20,8 +20,7 @@ public class ProjectTreeGenerator {
 
 	public List<CtClass> loadJar(Project project) throws Exception {
 
-		FileUtils.writeByteArrayToFile(new File(project.getJarPath()),
-				project.getTestJar());
+		FileUtils.writeByteArrayToFile(new File(project.getJarPath()), project.getTestJar());
 
 		JarFile jarFile = new JarFile(project.getJarPath());
 		Enumeration<?> e = jarFile.entries();
@@ -43,8 +42,45 @@ public class ProjectTreeGenerator {
 			}
 			// -6 because of .class
 			// -5 because of .java
-			String className = je.getName().substring(0,
-					je.getName().length() - 6);
+			String className = je.getName().substring(0, je.getName().length() - 6);
+			className = className.replace('/', '.');
+
+			CtClass ct = cp.get(className);
+			ct.getClass().getSuperclass().getName();
+
+			classes.add(ct);
+			loadClassFormJar(project);
+			// Class<?> c = cl.loadClass(className);
+			// testClasses.add(c);
+		}
+		return classes;
+	}
+
+	private List<CtClass> loadClassFormJar(Project project) throws Exception {
+
+		FileUtils.writeByteArrayToFile(new File(project.getJarPath()), project.getTestJar());
+
+		JarFile jarFile = new JarFile(project.getJarPath());
+		Enumeration<?> e = jarFile.entries();
+
+		File f = new File(project.getJarPath());
+		URL[] urls = { f.toURI().toURL() };
+		URLClassLoader cl = URLClassLoader.newInstance(urls);
+
+		List<Class<?>> testClasses = new ArrayList<Class<?>>();
+
+		List<CtClass> classes = new ArrayList<CtClass>();
+
+		ClassPool cp = ClassPool.getDefault();
+		cp.insertClassPath(project.getJarPath());
+		while (e.hasMoreElements()) {
+			JarEntry je = (JarEntry) e.nextElement();
+			if (je.isDirectory() || !je.getName().endsWith("Test.class")) {
+				continue;
+			}
+			// -6 because of .class
+			// -5 because of .java
+			String className = je.getName().substring(0, je.getName().length() - 6);
 			className = className.replace('/', '.');
 
 			CtClass ct = cp.get(className);
@@ -52,8 +88,10 @@ public class ProjectTreeGenerator {
 
 			classes.add(ct);
 
-			// Class<?> c = cl.loadClass(className);
+			Class<?> c = cl.loadClass(className);
+			c.getSuperclass().getName();
 			// testClasses.add(c);
+			int i = 3;
 		}
 		return classes;
 	}

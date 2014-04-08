@@ -55,6 +55,7 @@ public class ProjectController {
 	public ModelAndView editProject(@RequestParam("id") long id, @ModelAttribute("projectForm") ProjectForm projectForm) {
 		Project project = projectService.load(id);
 		projectForm.setName(project.getProjectName());
+		projectForm.setProjectId(String.valueOf(id));
 		if (!StringUtils.isEmpty(project.getDescription())) {
 			projectForm.setDescription(project.getDescription());
 		}
@@ -73,15 +74,29 @@ public class ProjectController {
 			@RequestParam("testJar") MultipartFile testJar, @RequestParam("depJar") MultipartFile depJar) {
 		FileValidator fileValidator = new FileValidator();
 		fileValidator.validate(testJar, result);
-		if (result.hasErrors()) {
-			return new ModelAndView("AddProject");
-		}
-
-		Project project = new Project();
-		if (!(depJar.getSize() == 0)) {
-			fileValidator.validate(depJar, result);
-		}
 		try {
+			if (!StringUtils.isBlank(projectForm.getProjectId()) && projectService.load(Long.valueOf(projectForm.getProjectId())) != null) {
+				Project existingProject = projectService.load(Long.valueOf(projectForm.getProjectId()));
+
+				String depJarPath = constructSaveLocation(projectForm, depJar);
+				String testJarPatj = constructSaveLocation(projectForm, testJar);
+				existingProject.setDateModification(new Date());
+				existingProject.setDependencyJar(depJar.getBytes());
+				existingProject.setDependencyJarName(depJar.getOriginalFilename());
+				existingProject.setDependencyJarPath(depJarPath);
+				existingProject.setDescription(projectForm.getDescription());
+				existingProject.setJarName(testJar.getOriginalFilename());
+				existingProject.setJarPath(testJarPatj);
+				existingProject.setProjectName(projectForm.getName());
+				existingProject.setTestJar(testJar.getBytes());
+				projectService.update(existingProject);
+				return new ModelAndView("redirect:/app/ShowProjects");
+			}
+			Project project = new Project();
+			// if (!(depJar.getSize() == 0)) {
+			// fileValidator.validate(depJar, result);
+			// }
+
 			String depJarPath = constructSaveLocation(projectForm, depJar);
 			String testJarPatj = constructSaveLocation(projectForm, testJar);
 			project.setDateCreation(new Date());
@@ -103,7 +118,9 @@ public class ProjectController {
 			// stream.close();
 			return new ModelAndView("redirect:/app/ShowProjects");
 		} catch (Exception e) {
-			return new ModelAndView("ShowProjects");
+			e.printStackTrace();
+			return new ModelAndView("AddProject");
+
 		}
 	}
 
