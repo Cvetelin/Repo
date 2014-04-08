@@ -98,14 +98,15 @@
 	
 	<div  class="table-bordered">
 		<div class="col-md-10 text-center">
-			<p class="lead">Add project</p>			
+			<p class="lead">Add/Modify project</p>			
 		</div>	
 		<form:form commandName="projectForm" method="POST"  action="CreateProject"  cssClass="form-horizontal" enctype="multipart/form-data" id="submitForm">
 			<div class="form-group">
 				<label for="projectName" class="col-sm-3 control-label">Project name</label>
 				<div class="col-sm-4">
-					<form:input path="name" id="projectName" cssClass="form-control" maxlength="50"/>
+					<form:input path="name" id="projectName" cssClass="form-control" maxlength="30"/>					
 					<div style="display:none; color:red;">The value is required</div>
+					<form:hidden path="projectId"/>
 				</div>
 			</div>		
 			 <div class="form-group">
@@ -131,8 +132,11 @@
 		 	 </div>	
 		 	 <div class="form-group">
 				<div class="col-sm-offset-1 col-sm-6 pull-right">
-					<input type="button" id="cancelBtn" class="btn btn-default"  value=Back onClick="history.go(-1)" ></input>		
-		  			<input type="submit" id="submit" class="btn btn-default" onclick="return validateAddProject();" value="Save" ></input>
+					<input type="button" id="cancelBtn" class="btn btn-default"  value=Back onClick="history.go(-1)" />
+					<a href="/app/ShowProjects" >
+						<input type="button" id="cancelBtn" class="btn btn-default"  value="Cancel"></input>
+					</a>
+					<input type="submit" id="submit" class="btn btn-default" onclick="return validateAddProject();" value="Save" />
 		  		</div>
 		  	 </div>			  	
 		</form:form>
