@@ -15,31 +15,22 @@
 <link type="text/css" rel="stylesheet" href="/css/display.css">
 <link type="text/css" rel="stylesheet" href="/css/bootstrap.css">
 <head>
-<script type="text/javascript">
-	function submitForm() {
-		$('form[name="project"]').submit();
-	}
-</script>
 </head>
 <body>
-	<div class="container text-center center-block">
-		<display:table name="projects" id="projects" class="col-sm-12 col-md-12 col-lg-12 table-bordered text-center table-striped table-hover title"   
+	<div class="container text-center">
+		<display:table name="projects" id="projects" class="col-sm-10 col-md-10 col-lg-10 table-bordered text-center table-hover title headtitle-link"   
 		requestURI="ShowProjects" defaultsort="1" >
-			<display:column title="Project Name" property="projectName" href="/app/ShowTestClasses" paramId="id"
-				paramProperty="id" sortable="true" maxLength="20" />
-			<display:column  title="Test JAR name" property ="jarName" sortable="true" maxLength="20"/>	
-			<display:column  title="Description" property ="description" sortable="true" maxLength="50"/>		
-			<display:column  title="Dependency JAR name" property ="dependencyJarName" sortable="true" maxLength="20"/>		
+			<display:column title="Project Name" property="projectName" href="/app/ShowProjectDetails" paramId="id"
+				paramProperty="id" sortable="true" maxLength="20" />	
+			<display:column  title="Status" sortable="true"/>	
 			<display:column  title="Modified on" property ="dateModification"  format="{0,date,dd.MM.yyyy HH:mm:ss}" sortable="true"/>
 			<display:column  title="Created on" property ="dateCreation"  format="{0,date,dd.MM.yyyy HH:mm:ss}" sortable="true"/>
-			<display:column href="/app/EditProject" paramId="id" paramProperty="id">
-					<button  class="btn btn-primary btn-xs" name="projectForm">Edit</button>		
-			</display:column>
+			<display:column  title="Last execution time" format="{0,date,dd.MM.yyyy HH:mm:ss}" sortable="true"/>
+			
 			<display:column href="/app/GenerateTree" paramId="id" paramProperty="id">
 					<button  class="btn btn-primary btn-xs">Generate Project Tree</button>		
 			</display:column>
-		</display:table> 
-		
+		</display:table> 		
 	</div>
 </body>
 </html>

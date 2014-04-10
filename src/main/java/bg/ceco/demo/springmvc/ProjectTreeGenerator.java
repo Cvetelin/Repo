@@ -49,7 +49,7 @@ public class ProjectTreeGenerator {
 			ct.getClass().getSuperclass().getName();
 
 			classes.add(ct);
-			loadClassFormJar(project);
+			// loadClassFormJar(project);
 			// Class<?> c = cl.loadClass(className);
 			// testClasses.add(c);
 		}

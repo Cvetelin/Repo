@@ -133,7 +133,17 @@ public class ProjectController {
 		generateClassSturcture(classes, project);
 		ModelMap map = new ModelMap();
 		map.addAttribute("dirInfo", classInfoService.listBy(project));
-		return new ModelAndView("ShowTestClasses", map);
+		map.addAttribute("project", project);
+		return new ModelAndView("ShowProjectDetails", map);
+	}
+
+	@RequestMapping(value = "/ShowProjectDetails", method = RequestMethod.GET)
+	public ModelAndView projectDetails(@RequestParam("id") long id) {
+		Project project = projectService.load(id);
+		ModelMap map = new ModelMap();
+		map.addAttribute("project", project);
+		map.addAttribute("dirInfo", classInfoService.listBy(project));
+		return new ModelAndView("ShowProjectDetails", map);
 	}
 
 	private String constructSaveLocation(ProjectForm projectForm, MultipartFile file) {

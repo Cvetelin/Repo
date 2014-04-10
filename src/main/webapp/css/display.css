@@ -1,14 +1,20 @@
-body, table, tr, td {
+body {
 	padding: 0px;
-	background: #F5F5DC;
 	color: #000;
 	font-size:small;
 }
 
-.headtitle-link a{
-  color: #D1D0CE;
+table, tr:nth-child(odd) {
+	padding: 0px;
+	background-color: #F5F5DC;
+	color: #000;
+	font-size:small;
+}
+
+.headtitle-link th>a{
+  color: #2E0808;
   text-decoration: none;
-  font-size:15px
+  font-size:small;
 }
 
 .title {
@@ -18,20 +24,14 @@ body, table, tr, td {
 }
 
 .title thead th{
-	background-color:  	#504A4B; 
+	background-color:  	#726e6e; 
 	text-align: center;
 	
 }> li > a
-	
-.table-custom > thead > tr > th,
-.table-custom > tbody > tr > th,
-.table-custom > tfoot > tr > th,
-.table-custom > thead > tr > td,
-.table-custom > tfoot > tr > td,
-.table-custom > tbody > tr > td {
-	padding: 1px;
-	background-color: #FEFCFF;
-}
+
+.top-buffer {
+	margin-top:20px; 
+}	
 
 div.custom {
 	 background-color: #2B3856;
