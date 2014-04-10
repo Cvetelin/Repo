@@ -38,7 +38,7 @@
 	</definition>
 	
 	<definition name="ShowProjects" extends="base">
-		<put-attribute name="left" value="" />
+		<put-attribute name="left" value="/WEB-INF/jsp/ShowProjectDetails.jsp" />
 		<put-attribute name="body" value="/WEB-INF/jsp/ShowProjects.jsp" />
 	</definition>
 	
