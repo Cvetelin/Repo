@@ -5,7 +5,6 @@ body, table, tr, td {
 	font-size:small;
 }
 
-
 .headtitle-link a{
   color: #D1D0CE;
   text-decoration: none;
@@ -13,21 +12,24 @@ body, table, tr, td {
 }
 
 .title {
+	padding: 0px;
 	border:	solid;
 	border-width: thin;
 }
 
 .title thead th{
-	border:	solid;
-	border-width: thin; 
-	background-color:  	#504A4B;
+	background-color:  	#504A4B; 
 	text-align: center;
+	
 }> li > a
 	
-.title tbody td{
-	border:	solid;
-	border-width: 
-	thin; 
+.table-custom > thead > tr > th,
+.table-custom > tbody > tr > th,
+.table-custom > tfoot > tr > th,
+.table-custom > thead > tr > td,
+.table-custom > tfoot > tr > td,
+.table-custom > tbody > tr > td {
+	padding: 1px;
 	background-color: #FEFCFF;
 }
 
