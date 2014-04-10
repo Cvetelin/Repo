@@ -1,4 +1,4 @@
-body, table {
+body, table, tr, td {
 	padding: 0px;
 	background: #F5F5DC;
 	color: #000;

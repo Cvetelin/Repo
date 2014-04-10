@@ -13,13 +13,17 @@
 <head>
 </head>
 <body>
-
-<dir class="row ">
-	<div class="col-md-3"></div>
-</dir>
-	
-<dir class="row">
-	<div class="col-md-3"></div>
-</dir>
+<div class="text-center col-md-2">
+<table class="table table-hover table-bordered text-center table-striped table-hover">
+<tr>
+<td>asdasd</td>
+<td>asdasd</td>
+</tr>
+<tr>
+<td>Zasdd</td>
+<td>Zasdd</td>
+</tr>
+</table>
+</div>
 </body>
 </html>
