@@ -15,13 +15,13 @@
 		<tiles:insertAttribute name="menu" />
 	</div>
 	<div class="container-fluid">
-		<div class="row-fluid">
-			<div class="span2">
+		<div class="row">
+			
 				<tiles:insertAttribute name="left" />
-			</div>
-			<div class="span10">
+			
+			
 				<tiles:insertAttribute name="body" />
-			</div>
+			
 		</div>
 	</div>
 </body>

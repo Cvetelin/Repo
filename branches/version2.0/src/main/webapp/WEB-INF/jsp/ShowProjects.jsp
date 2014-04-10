@@ -22,8 +22,8 @@
 </script>
 </head>
 <body>
-	<div class="container text-center row center-block">
-		<display:table name="projects" id="projects" class="col-lg-12 table-bordered title text-center table-striped table-hover"  
+	<div class="container text-center center-block">
+		<display:table name="projects" id="projects" class="col-sm-12 col-md-12 col-lg-12 table-bordered text-center table-striped table-hover title"   
 		requestURI="ShowProjects" defaultsort="1" >
 			<display:column title="Project Name" property="projectName" href="/app/ShowTestClasses" paramId="id"
 				paramProperty="id" sortable="true" maxLength="20" />
