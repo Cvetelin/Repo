@@ -14,10 +14,10 @@
 <head>
 </head>
 <body>
-	<div class="container-fluid text-center center-block">
+	<div class="row" id="projectDetails">
 		<display:table name="project" id="project"
-			class="col-sm-12 col-md-12 col-lg-12 table-bordered text-center table-hover title"
-			requestURI="ShowProjects" defaultsort="1">
+			class="col-sm-12 col-md-12 col-lg-12 table-bordered text-center table-hover title" requestURI="ShowProjects"
+			defaultsort="1">
 			<display:column title="Project Name" property="projectName" paramId="id" paramProperty="id" maxLength="20" />
 			<display:column title="Test JAR name" property="jarName" maxLength="20" />
 			<display:column title="Description" property="description" maxLength="50" />
@@ -32,13 +32,43 @@
 			</display:column>
 		</display:table>
 	</div>
-	<div class="container text-center center-block">
-		<display:table name="dirInfo" id="dir" class="col-md-4  table-bordered table-hover title headtitle-link"
-			requestURI="ShowExecutedTests" defaultsort="1">
-			<display:column title="Test classes" property="name" href="/app/RunClass" paramId="id" paramProperty="id"
-				class="col-md-4 table-bordered" sortable="true">
+	<br></br>
+	<div class="row" id="classes">
+		<display:table name="classInfo" id="dir" class="col-md-7 text-center table-bordered table-hover title headtitle-link"
+			requestURI="ShowProjects" defaultsort="1">
+			<display:column title="Class name" property="name" paramId="id" paramProperty="id" sortable="true">
+			</display:column>
+			<display:column title="Folder Location" property="path" paramId="path" paramProperty="path" sortable="true">
+			</display:column>
+			<display:column title="Status" property="success" paramId="status" paramProperty="success" sortable="true">
+			</display:column>
+			<display:column title="Methods" paramId="method" paramProperty="classInfo.id" class="col-md-2">
+				<button class="btn btn-primary btn-xs" name="projectForm">List Methods</button>
+			</display:column>
+<%-- 			<display:column title="Methods name"> --%>
+<%-- 				<c:forEach var="cl" items="${dir.testInfo}"> --%>
+<%-- 					<c:out value="${cl.name}"></c:out> --%>
+<%-- 				</c:forEach> --%>
+<%-- 			</display:column> --%>
+
+			<display:column href="/app/RunClass" paramId="id" paramProperty="id">
+				<button class="btn btn-primary btn-xs" name="projectForm">Execute Test Class</button>
 			</display:column>
 		</display:table>
 	</div>
+	<br></br>
+	<div class="row" id="methods">
+		<c:forEach items="testInfo">
+			<display:table name="testInfo" id="dir" class="col-md-2 table-bordered table-hover title headtitle-link"
+				requestURI="ShowExecutedTests" defaultsort="1">
+				<display:column title="Class name" property="classInfo.name" paramId="id" paramProperty="id" sortable="true">
+				</display:column>
+				<display:column title="Test name" property="name" paramId="id" paramProperty="id" sortable="true">
+				</display:column>
+			</display:table>
+		</c:forEach>
+	</div>
+	</div>
+
 </body>
 </html>

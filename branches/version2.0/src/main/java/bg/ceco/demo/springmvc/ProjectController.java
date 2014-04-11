@@ -1,6 +1,7 @@
 package bg.ceco.demo.springmvc;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.Date;
 import java.util.Iterator;
 import java.util.List;
@@ -140,10 +141,17 @@ public class ProjectController {
 	@RequestMapping(value = "/ShowProjectDetails", method = RequestMethod.GET)
 	public ModelAndView projectDetails(@RequestParam("id") long id) {
 		Project project = projectService.load(id);
-		ModelMap map = new ModelMap();
-		map.addAttribute("project", project);
-		map.addAttribute("dirInfo", classInfoService.listBy(project));
-		return new ModelAndView("ShowProjectDetails", map);
+		ModelMap projectDetails = new ModelMap();
+		projectDetails.addAttribute("project", project);
+		List<ClassInfo> classes = classInfoService.listBy(project);
+		projectDetails.addAttribute("classInfo", classes);
+		Collection<TestInfo> methods = new ArrayList<TestInfo>();
+		for (Iterator iterator = classes.iterator(); iterator.hasNext();) {
+			ClassInfo classInfo = (ClassInfo) iterator.next();
+			methods.addAll(testInfoService.listBy(classInfo));
+		}
+		projectDetails.addAttribute("testInfo", methods);
+		return new ModelAndView("ShowProjectDetails", projectDetails);
 	}
 
 	private String constructSaveLocation(ProjectForm projectForm, MultipartFile file) {

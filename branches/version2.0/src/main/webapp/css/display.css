@@ -1,24 +1,21 @@
 body {
-	padding: 0px;
-	color: #000;
-	font-size:small;
+	color: #EEFFFF;
+	font-size:12px;
+	background-color: #EEFFFF;
 }
 
 table, tr:nth-child(odd) {
-	padding: 0px;
-	background-color: #F5F5DC;
 	color: #000;
-	font-size:small;
+	font-size:12px;
 }
 
 .headtitle-link th>a{
   color: #2E0808;
   text-decoration: none;
-  font-size:small;
+  font-size: 12px;
 }
 
 .title {
-	padding: 0px;
 	border:	solid;
 	border-width: thin;
 }
@@ -35,18 +32,20 @@ table, tr:nth-child(odd) {
 
 div.custom {
 	 background-color: #2B3856;
-	 min-height:20px;
+	 min-height: -30px;
 }
 
 .colordiv div{
 	background-color:  	#504A4B;
 }
 div.custom > li > a{
+	 color: #FFFFFF;
 	 padding-top:2px; 
 	 padding-bottom:2px;
 }
 
 div.custom ul > li > a{
+	 color: #FFFFFF;
 	 padding-top:1px; 
 	 padding-bottom:1px;
 	 font-size:small; 
