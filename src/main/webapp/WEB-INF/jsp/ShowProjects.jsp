@@ -18,7 +18,7 @@
 </head>
 <body>
 	<div class="container text-center">
-		<display:table name="projects" id="projects" class="col-sm-10 col-md-10 col-lg-10 table-bordered text-center table-hover title headtitle-link"   
+		<display:table name="projects" id="projects" class="col-sm-10 col-md-10 col-lg-10 table-bordered text-center table-hover title headtitle-link "    
 		requestURI="ShowProjects" defaultsort="1" >
 			<display:column title="Project Name" property="projectName" href="/app/ShowProjectDetails" paramId="id"
 				paramProperty="id" sortable="true" maxLength="20" />	

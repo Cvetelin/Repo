@@ -16,12 +16,11 @@
 <head>
 </head>
 <body>
-	<div class="navbar navbar-inverse navbar-static-top custom">
-		<div class="navbar-inner">
+	<div class="navbar navbar-static-top custom">
 			<div class="container">
 				<a href="/app/index" class="navbar-brand brand">Selenium
 					Gallery</a>
-				<div class="collapse navbar-collapse navHeaderCollapse">
+				<div class="collapse navbar-collapse ">
 					<ul class="nav navbar-nav navbar-center">
 						<li><a href="/app/ShowProjects">Projects</a></li>
 						<li><a href="/app/index">Run</a></li>
@@ -30,6 +29,5 @@
 				</div>
 			</div>
 		</div>
-	</div>
 </body>
 </html>
