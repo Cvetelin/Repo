@@ -16,7 +16,7 @@
 <head>
 </head>
 <body>
-	<div class="navbar navbar-static-top custom">
+	<div class="navbar navbar-static-top custom"> 
 			<div class="container">
 				<a href="/app/index" class="navbar-brand brand">Selenium
 					Gallery</a>

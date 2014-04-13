@@ -133,24 +133,14 @@ public class ProjectController {
 		clearOldData(project);
 		generateClassSturcture(classes, project);
 		ModelMap map = new ModelMap();
-		map.addAttribute("dirInfo", classInfoService.listBy(project));
-		map.addAttribute("project", project);
+		map = listPorejectDetils(project);
 		return new ModelAndView("ShowProjectDetails", map);
 	}
 
 	@RequestMapping(value = "/ShowProjectDetails", method = RequestMethod.GET)
 	public ModelAndView projectDetails(@RequestParam("id") long id) {
 		Project project = projectService.load(id);
-		ModelMap projectDetails = new ModelMap();
-		projectDetails.addAttribute("project", project);
-		List<ClassInfo> classes = classInfoService.listBy(project);
-		projectDetails.addAttribute("classInfo", classes);
-		Collection<TestInfo> methods = new ArrayList<TestInfo>();
-		for (Iterator iterator = classes.iterator(); iterator.hasNext();) {
-			ClassInfo classInfo = (ClassInfo) iterator.next();
-			methods.addAll(testInfoService.listBy(classInfo));
-		}
-		projectDetails.addAttribute("testInfo", methods);
+		ModelMap projectDetails = listPorejectDetils(project);
 		return new ModelAndView("ShowProjectDetails", projectDetails);
 	}
 
@@ -217,5 +207,20 @@ public class ProjectController {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
+	}
+
+	private ModelMap listPorejectDetils(Project project) {
+		ModelMap projectDetails = new ModelMap();
+		projectDetails.addAttribute("project", project);
+		List<ClassInfo> classes = classInfoService.listBy(project);
+		projectDetails.addAttribute("classInfos", classes);
+		Collection<TestInfo> methods = new ArrayList<TestInfo>();
+		for (Iterator iterator = classes.iterator(); iterator.hasNext();) {
+			ClassInfo classInfo = (ClassInfo) iterator.next();
+			methods.addAll(testInfoService.listBy(classInfo));
+		}
+		projectDetails.addAttribute("testInfos", methods);
+		projectDetails.addAttribute("projects", projectService.list());
+		return projectDetails;
 	}
 }

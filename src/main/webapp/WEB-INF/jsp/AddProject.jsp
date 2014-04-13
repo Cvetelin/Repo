@@ -17,7 +17,7 @@
 <link type="text/css" rel="stylesheet" href="/css/bootstrap.css">
 <head>
 <script type="text/javascript"
-	src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.js"></script>
+	src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-2.0.0.min.js"></script>
 	<script type="text/javascript">	
 		function validateAddProject() {
 			var hasErrors = false;

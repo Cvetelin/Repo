@@ -5,8 +5,9 @@
 
 	<definition name="base" template="/WEB-INF/jsp/Default.jsp">
 		<put-attribute name="menu" value="/WEB-INF/jsp/MainManu.jsp" />
+		<put-attribute name="upper-body" value="" />
 		<put-attribute name="body" value="" />
-		<put-attribute name="left" value="/WEB-INF/jsp/ShowExecutedClasses.jsp" />
+ 		<put-attribute name="left" value="" />
 	</definition>
 	
 	<definition name="ShowExecutedTests" extends="base">
@@ -18,7 +19,6 @@
 	</definition>
 	
 	<definition name="PrepareGallery" extends="base">
-		<put-attribute name="left" value="" />
 		<put-attribute name="menu" value="/WEB-INF/jsp/GalleryMenu.jsp" />
 		<put-attribute name="body" value="/WEB-INF/jsp/PrepareGallery.jsp" />
 	</definition>
@@ -28,23 +28,26 @@
 	</definition>
 	
 	<definition name="ShowTestClasses" extends="base">
-		<put-attribute name="left" value="" />
 		<put-attribute name="body" value="/WEB-INF/jsp/ShowTestClasses.jsp" />
 	</definition>
 	
 	<definition name="AddProject" extends="base">
-		<put-attribute name="left" value="" />
 		<put-attribute name="body" value="/WEB-INF/jsp/AddProject.jsp" />
 	</definition>
 	
 	<definition name="ShowProjects" extends="base">	
-		<put-attribute name="left" value="" />
 		<put-attribute name="body" value="/WEB-INF/jsp/ShowProjects.jsp" />
 	</definition>
 	
-	<definition name="ShowProjectDetails" extends="base">	
-		<put-attribute name="left" value=""  />
+	<definition name="ShowProjectDetails" extends="base">
+		<put-attribute name="left" value="/WEB-INF/jsp/LeftMenu.jsp" />	
 		<put-attribute name="body" value="/WEB-INF/jsp/ShowProjectDetails.jsp" />
+	</definition>
+	
+	<definition name="ShowClassDetails" extends="base">
+		<put-attribute name="left" value="/WEB-INF/jsp/LeftMenu.jsp" />		
+		<put-attribute name="upper-body" value="/WEB-INF/jsp/ShowProjectDetails.jsp" />
+		<put-attribute name="body" value="/WEB-INF/jsp/ShowClassDetails.jsp" />
 	</definition>
 	
 </tiles-definitions> 
