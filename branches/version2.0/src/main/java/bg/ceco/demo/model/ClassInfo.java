@@ -15,8 +15,6 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
-import org.hibernate.annotations.ForeignKey;
-
 /**
  * @author Administrator
  * 
@@ -38,6 +36,8 @@ public class ClassInfo {
 
 	@Column(name = "PATH")
 	private String path;
+
+	@Column(name = "EXCUTION_DATE")
 	private Date executionDate;
 	// private List<TestDirInfo> testInfo;
 
@@ -62,8 +62,7 @@ public class ClassInfo {
 	public ClassInfo() {
 	}
 
-	public ClassInfo(long id, String name, String qualifiedName, String path, Date executionDate, boolean success,
-			Project project) {
+	public ClassInfo(long id, String name, String qualifiedName, String path, Date executionDate, boolean success, Project project) {
 		this.id = id;
 		this.name = name;
 		this.qualifiedName = qualifiedName;
@@ -72,7 +71,7 @@ public class ClassInfo {
 		this.success = success;
 		this.project = project;
 	}
-	
+
 	public Set<TestInfo> getTestInfo() {
 		return testInfo;
 	}

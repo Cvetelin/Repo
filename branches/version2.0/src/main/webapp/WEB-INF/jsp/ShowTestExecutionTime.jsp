@@ -14,7 +14,7 @@
 <link type="text/css" rel="stylesheet" href="/css/display.css">
 <link type="text/css" rel="stylesheet" href="/css/bootstrap.css">
 <script type="text/javascript"
-	src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.js"></script>
+	src="http://code.jquery.com/jquery-2.0.0.min.js"></script>
 <script type="text/javascript">
 	function submitForm(method) {
 		var answer = confirm("Are you sure want to delete the selected tests?")
