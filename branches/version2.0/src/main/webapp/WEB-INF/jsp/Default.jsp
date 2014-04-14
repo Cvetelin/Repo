@@ -3,9 +3,8 @@
 <%@ taglib uri="http://tiles.apache.org/tags-tiles-extras" prefix="tilesx"%>
 <%@ taglib uri="http://java.sun.com/jstl/core_rt" prefix="c"%>
 <html>
-<link type="text/css" rel="stylesheet" href="/css/display.css">
 <link type="text/css" rel="stylesheet" href="/css/bootstrap.css">
-
+<link type="text/css" rel="stylesheet" href="/css/display.css">
 <head>
 
 </head>

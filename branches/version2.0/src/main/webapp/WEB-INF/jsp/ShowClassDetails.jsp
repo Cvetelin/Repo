@@ -9,11 +9,19 @@
 <%@ taglib prefix="tilesx" uri="http://tiles.apache.org/tags-tiles-extras" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
-<link type="text/css" rel="stylesheet" href="/css/display.css">
-<link type="text/css" rel="stylesheet" href="/css/bootstrap.css">
 <head>
 </head>
 <body>
-
+	<div class="row" id="methods">
+		<c:forEach items="testInfos">
+			<display:table name="testInfos" id="dir" class="col-md-2 table-bordered table-hover title headtitle-link"
+				requestURI="ShowProjectDetails" defaultsort="1">
+				<display:column title="Class name" property="classInfo.name" paramId="id" paramProperty="id" sortable="true">
+				</display:column>
+				<display:column title="Test name" property="name" paramId="id" paramProperty="id" sortable="true">
+				</display:column>
+			</display:table>
+		</c:forEach>
+	</div>
 </body>
 </html>

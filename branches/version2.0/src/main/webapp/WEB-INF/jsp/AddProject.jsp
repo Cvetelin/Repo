@@ -13,8 +13,6 @@
 	
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
-<link type="text/css" rel="stylesheet" href="/css/display.css">
-<link type="text/css" rel="stylesheet" href="/css/bootstrap.css">
 <head>
 <script type="text/javascript"
 	src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-2.0.0.min.js"></script>
@@ -96,7 +94,7 @@
  
 <body>	
 	
-	<div  class="table-bordered">
+	<div>
 		<div class="col-md-10 text-center">
 			<p class="lead">Add/Modify project</p>			
 		</div>	
@@ -126,7 +124,7 @@
 		 	 <div class="form-group">
 		  	    	<label for="depJar" class="col-sm-3 control-label">Dependency jar</label>
 		  	    	<div class="col-sm-4">
-		   	 			<input type="file" id="depJar" name="depJar" class="form-control"  onchange="checkExtension(this.value,'submit','depJar');"/>
+		   	 			<input type="file" id="depJar" name="depJar" class="form-control  onchange="checkExtension(this.value,'submit','depJar');"/>		   	 		
 		   	 			<p class="help-block text-center">The JAR containing classes not in test src folder</p>
 		   	 		</div>	   				
 		 	 </div>	

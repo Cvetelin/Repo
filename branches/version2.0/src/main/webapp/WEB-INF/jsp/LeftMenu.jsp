@@ -8,8 +8,6 @@
 <%@ taglib prefix="tiles" uri="http://tiles.apache.org/tags-tiles"%>
 <%@ taglib prefix="tilesx" uri="http://tiles.apache.org/tags-tiles-extras"%>
 <html>
-<link type="text/css" rel="stylesheet" href="/css/display.css">
-<link type="text/css" rel="stylesheet" href="/css/bootstrap.css">
 <head>
 <script type="text/javascript" src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-2.0.0.min.js"></script>
 <script type="text/javascript">
@@ -17,18 +15,20 @@
 </script>
 </head>
 <body>
-	<div id="left">
+	<div id="left" class="sidebar-custom">
+		<div class="table-bordered text-center custom lead" style="font-size: 14px; color: #FFFFFF">Projects</div>
 		<ul class="nav nav-pills nav-stacked">
-			<li><display:table name="projects" id="projects"
-					class="table-bordered text-center table-hover title headtitle-link" requestURI="ShowProjectDetails" defaultsort="1">
-					<display:column title="Projects" property="projectName" href="/app/ShowProjectDetails" paramId="id"
-						paramProperty="id" sortable="true" maxLength="35" />
-				</display:table></li>
-			<li><a href="#"> <c:forEach var="name" items="${projects.projectName}">
-						<c:out value="${name}"></c:out>
-					</c:forEach>
-			</a></li>
-			<li><a href="#">Messages</a></li>
+<%-- 			<display:table name="projectsList" id="projects" --%>
+<%-- 					class="table-bordered text-center table-hover title headtitle-link" requestURI="ShowProjectDetails" defaultsort="1"> --%>
+<%-- 					<display:column title="Projects" property="projectName" href="/app/ShowProjectDetails" paramId="id" --%>
+<%-- 						paramProperty="id" sortable="true" maxLength="35" class="col-md-2 " /> --%>
+<%-- 				</display:table> --%>
+			<c:forEach var="name" items="${projectsList}">
+				<li><a href="/app/ShowProjectDetails?id=${name.id}" class="table-bordered text-center table-hover">
+						<c:out value="${name.projectName}"></c:out>
+					</a>
+				</li>
+			</c:forEach>
 		</ul>
 	</div>
 </body>
