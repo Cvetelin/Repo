@@ -1,5 +1,5 @@
 body {
-	color: #EEFFFF;
+	color: #000000;
 	font-size:12px;
 	background-color: #EEFFFF;
 }
@@ -46,6 +46,13 @@ div.custom > li > a{
 
 div.custom ul > li > a{
 	 color: #FFFFFF;
+	 padding-top:1px; 
+	 padding-bottom:1px;
+	 font-size:small; 
+}
+
+div.sidebar-custom ul > li > a{
+	 color: #000000;
 	 padding-top:1px; 
 	 padding-bottom:1px;
 	 font-size:small; 

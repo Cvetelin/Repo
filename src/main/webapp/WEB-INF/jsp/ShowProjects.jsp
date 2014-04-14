@@ -9,12 +9,10 @@
 <%@ taglib prefix="tilesx" uri="http://tiles.apache.org/tags-tiles-extras" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
-<link type="text/css" rel="stylesheet" href="/css/display.css">
-<link type="text/css" rel="stylesheet" href="/css/bootstrap.css">
 <head>
 </head>
 <body>
-	<div class="container text-center">
+	<div class="text-center">
 		<display:table name="projects" id="projects" class="col-sm-10 col-md-10 col-lg-10 table-bordered text-center table-hover title headtitle-link "    
 		requestURI="ShowProjects" defaultsort="1" >
 			<display:column title="Project Name" property="projectName" href="/app/ShowProjectDetails" paramId="id"

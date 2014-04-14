@@ -220,7 +220,7 @@ public class ProjectController {
 			methods.addAll(testInfoService.listBy(classInfo));
 		}
 		projectDetails.addAttribute("testInfos", methods);
-		projectDetails.addAttribute("projects", projectService.list());
+		projectDetails.addAttribute("projectsList", projectService.list());
 		return projectDetails;
 	}
 }
