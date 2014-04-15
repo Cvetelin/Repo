@@ -53,7 +53,7 @@
 		<property name="dataSource" ref="dataSource" />
 		<property name="packagesToScan">
 			<array>
-        		<value>bg.ceco.demo.model</value>
+        		<value>bg.ceco.demo.*</value>
       		</array>
 		</property>	
 		<!--<property name="mappingResources"/>-->

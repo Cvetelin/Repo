@@ -47,7 +47,7 @@ function showMethodOfClass(id) {
 			requestURI="ShowProjectDetails" defaultsort="1">
 			<display:column title="Class name" property="name" paramId="id" paramProperty="id" sortable="true">
 			</display:column>
-			<display:column title="Last Execution Date" property="executionDate" sortable="true">
+			<display:column title="Last Execution Date" property="executionDate"  format="{0,date,dd.MM.yyyy HH:mm:ss}" sortable="true">
 			</display:column>
 			<display:column title="#Successful" sortable="true">
 			</display:column>
