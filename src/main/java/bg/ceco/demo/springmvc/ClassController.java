@@ -37,10 +37,11 @@ public class ClassController {
 		ClassInfo classInfo = classInfoService.load(classId);
 		List<TestInfo> testInfos = testInfoService.listBy(classInfo);
 		Project project = projectService.load(classInfo.getProject().getId());
-		ModelMap classDetails = new ModelMap();
-		classDetails.addAttribute("project", project);
-		classDetails.addAttribute("classInfos", classInfo);
-		classDetails.addAttribute("testInfos", testInfos);
-		return new ModelAndView("ShowClassDetails", classDetails);
+		ModelMap details = new ModelMap();
+		details.addAttribute("projectsList", projectService.list());
+		details.addAttribute("project", project);
+		details.addAttribute("classInfos", classInfo);
+		details.addAttribute("testInfos", testInfos);
+		return new ModelAndView("ShowClassDetails", details);
 	}
 }

@@ -1,6 +1,7 @@
 package bg.ceco.demo.springmvc;
 
 import java.io.File;
+import java.util.Date;
 import java.util.Iterator;
 
 import org.apache.commons.io.FileUtils;
@@ -20,24 +21,15 @@ import org.springframework.web.servlet.ModelAndView;
 import bg.ceco.demo.logic.ClassInfoService;
 import bg.ceco.demo.logic.ProjectService;
 import bg.ceco.demo.model.ClassInfo;
-import bg.ceco.demo.model.Project;
 import bg.ceco.demo.selenium.TestRunner;
 
 @Controller
-public class ShowTestClassesController {
+public class RunTestClassesController {
 	@Autowired
 	private ClassInfoService classInfoService;
 
 	@Autowired
 	private ProjectService projectService;
-
-	@RequestMapping(value = "/ShowTestClasses", method = RequestMethod.GET)
-	public ModelAndView showClasses(@RequestParam("id") long projectid) throws Exception {
-		ModelMap map = new ModelMap();
-		Project project = projectService.get(projectid);
-		map.addAttribute("dirInfo", classInfoService.listBy(project));
-		return new ModelAndView("ShowTestClasses", map);
-	}
 
 	@RequestMapping(value = "/RunClass", method = RequestMethod.GET)
 	public ModelAndView runClassWithJunit(@RequestParam("id") long id) {
@@ -48,10 +40,14 @@ public class ShowTestClassesController {
 			reslt = runner.runClass(classInfo);
 		} catch (Exception e) {
 			e.printStackTrace();
+		} finally {
+			classInfo.setExecutionDate(new Date());
+
+			if (reslt.getFailureCount() == 0) {
+				classInfo.setSuccess(true);
+			}
 		}
-		if (reslt.getFailureCount() == 0) {
-			classInfo.setSuccess(true);
-		}
+
 		classInfoService.update(classInfo);
 		return new ModelAndView("ShowTestClasses", "dirInfo", classInfoService.list());
 	}
