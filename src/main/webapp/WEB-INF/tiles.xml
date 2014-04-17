@@ -46,7 +46,6 @@
 	
 	<definition name="ShowClassDetails" extends="base">
 		<put-attribute name="left" value="/WEB-INF/jsp/LeftMenu.jsp" />		
-		<put-attribute name="upper-body" value="/WEB-INF/jsp/ShowProjectDetails.jsp" />
 		<put-attribute name="body" value="/WEB-INF/jsp/ShowClassDetails.jsp" />
 	</definition>
 	

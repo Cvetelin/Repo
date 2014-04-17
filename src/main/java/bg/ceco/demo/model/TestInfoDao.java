@@ -20,5 +20,4 @@ public interface TestInfoDao {
 
 	public abstract List<TestInfo> listBy(ClassInfo classInfo);
 
-
 }
