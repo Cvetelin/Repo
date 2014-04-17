@@ -4,12 +4,21 @@ import org.junit.runner.Description;
 import org.junit.runner.Result;
 import org.junit.runner.notification.Failure;
 import org.junit.runner.notification.RunListener;
+import org.springframework.beans.factory.annotation.Autowired;
 
 import bg.ceco.demo.model.ClassInfo;
+import bg.ceco.demo.model.ExecInfo;
+import bg.ceco.demo.model.TestInfo;
 
 public class TestListenerImpl extends RunListener {
+	@Autowired
+	public ClassInfoService classInfoService;
 
 	private ClassInfo classInfo;
+
+	private TestInfo testInfo = new TestInfo();
+
+	private ExecInfo execInfo = new ExecInfo();
 
 	public TestListenerImpl(ClassInfo classInfo) {
 		this.classInfo = classInfo;
@@ -18,7 +27,7 @@ public class TestListenerImpl extends RunListener {
 	/**
 	 * Called before any tests have been run.
 	 * */
-	public void testRunStarted(Description description, ClassInfo classInfo) throws java.lang.Exception {
+	public void testRunStarted(Description description) throws java.lang.Exception {
 		System.out.println("Number of testcases to execute : " + description.testCount());
 	}
 
@@ -28,6 +37,7 @@ public class TestListenerImpl extends RunListener {
 	public void testRunFinished(Result result) throws java.lang.Exception {
 		System.out.println("Number of testcases executed : " + result.getRunCount());
 		System.out.println("TEST RESULT : " + (result.getFailureCount() == 0 ? true : false));
+
 	}
 
 	/**
@@ -49,7 +59,7 @@ public class TestListenerImpl extends RunListener {
 	/**
 	 * Called when an atomic test fails.
 	 * */
-	public void testFailure(Failure failure, ClassInfo classInfo) throws java.lang.Exception {
+	public void testFailure(Failure failure) throws java.lang.Exception {
 		System.out.println("Execution of test case failed : " + failure.getMessage());
 	}
 
@@ -57,7 +67,7 @@ public class TestListenerImpl extends RunListener {
 	 * Called when a test will not be run, generally because a test method is
 	 * annotated with Ignore.
 	 * */
-	public void testIgnored(Description description, ClassInfo classInfo) throws java.lang.Exception {
+	public void testIgnored(Description description) throws java.lang.Exception {
 		System.out.println("Execution of test case ignored : " + description.getMethodName());
 	}
 }

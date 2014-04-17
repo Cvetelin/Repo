@@ -1,5 +1,7 @@
 package bg.ceco.demo.springmvc;
 
+import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,6 +17,7 @@ import bg.ceco.demo.logic.ExecInfoService;
 import bg.ceco.demo.logic.ProjectService;
 import bg.ceco.demo.logic.TestInfoService;
 import bg.ceco.demo.model.ClassInfo;
+import bg.ceco.demo.model.ExecInfo;
 import bg.ceco.demo.model.Project;
 import bg.ceco.demo.model.TestInfo;
 
@@ -36,6 +39,11 @@ public class ClassController {
 	public ModelAndView showMethodsOfClass(@RequestParam("classId") long classId) {
 		ClassInfo classInfo = classInfoService.load(classId);
 		List<TestInfo> testInfos = testInfoService.listBy(classInfo);
+		List<ExecInfo> execInfos = new ArrayList<ExecInfo>();
+		for (Iterator iterator = testInfos.iterator(); iterator.hasNext();) {
+			TestInfo testInfo2 = (TestInfo) iterator.next();
+		}
+
 		Project project = projectService.load(classInfo.getProject().getId());
 		ModelMap details = new ModelMap();
 		details.addAttribute("projectsList", projectService.list());
