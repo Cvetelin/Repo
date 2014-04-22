@@ -55,27 +55,35 @@ public class RunTestClassesController {
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
-			classInfo.setExecutionDate(new Date());
-
 			if (result.getFailureCount() == 0) {
 				classInfo.setSuccess(true);
 			}
+			Date date = new Date();
+			classInfo.setExecutionDate(date);
+
+			Set<TestInfo> testinfos = new HashSet<TestInfo>();
+			List<Failure> failures = result.getFailures();
+			TestInfo testInfo = new TestInfo();
+			ExecInfo execInfo = new ExecInfo();
+
+			for (Iterator iterator = failures.iterator(); iterator.hasNext();) {
+				Failure failure = (Failure) iterator.next();
+				testInfo = matchMethods(classInfo, failure.getDescription().getMethodName());
+				if (testInfo != null) {
+					failure.getException();
+					execInfo.setExecutionDate(date);
+					execInfo.setFailureReason(failure.getMessage() + "\n" + failure.getTrace());
+					execInfo.setTestInfo(testInfo);
+
+					testInfo.setExecutionDate(date);
+					testInfo.setClassInfo(classInfo);
+
+					execInfoService.save(execInfo);
+					testInfoService.update(testInfo);
+					classInfoService.update(classInfo);
+				}
+			}
 		}
-		Set<TestInfo> testinfos = new HashSet<TestInfo>();
-		List<Failure> failures = result.getFailures();
-		TestInfo testInfo = new TestInfo();
-		ExecInfo execInfo = new ExecInfo();
-		for (Iterator iterator = failures.iterator(); iterator.hasNext();) {
-			Failure failure = (Failure) iterator.next();
-			testInfo.setName(failure.getDescription().getMethodName());
-			execInfo.setExecutionDate(new Date());
-			failure.getException();
-			execInfo.setFailureReason(failure.getMessage() + "\n" + failure.getTrace());
-			execInfo.setTestInfo(testInfo);
-			testInfo.setClassInfo(classInfo);
-			testinfos.add(testInfo);
-		}
-		classInfoService.update(classInfo);
 		return new ModelAndView("ShowTestClasses", "dirInfo", classInfoService.list());
 	}
 
@@ -105,5 +113,18 @@ public class RunTestClassesController {
 				.replace(".java", StringUtils.EMPTY);
 		// qualifiedName.replace("java", "class");
 		return qualifiedName;
+	}
+
+	private TestInfo matchMethods(ClassInfo classInfo, String nameOfExecutedTest) {
+		TestInfo testInClass = null;
+		Set<TestInfo> testsInClass = classInfo.getTestInfo();
+		for (Iterator iterator = testsInClass.iterator(); iterator.hasNext();) {
+			TestInfo testInfo = (TestInfo) iterator.next();
+			if (testInfo.getName().equals(nameOfExecutedTest)) {
+				testInClass = testInfoService.loadBy(classInfo, testInfo.getName());
+				return testInClass;
+			}
+		}
+		return null;
 	}
 }

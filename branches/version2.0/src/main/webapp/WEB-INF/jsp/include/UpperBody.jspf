@@ -5,23 +5,19 @@
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 <%@ taglib prefix="tiles" uri="http://tiles.apache.org/tags-tiles" %>
 <%@ taglib prefix="tilesx" uri="http://tiles.apache.org/tags-tiles-extras" %>
-
+<%@ taglib prefix="tags" tagdir="/WEB-INF/tags"%>
 	<div class="row" id="projectDetails">
 		<display:table name="project" id="project"
 			class="col-sm-12 col-md-12 col-lg-12 table-bordered text-center table-hover title" requestURI="ShowProjects"
 			defaultsort="1">
 			<display:column title="Project Name" property="projectName" paramId="id" paramProperty="id" maxLength="20" />
 			<display:column title="Test JAR name" property="jarName" maxLength="20" />
+			<display:column title="Test JAR location" property="jarPath" maxLength="20" />
 			<display:column title="Description" property="description" maxLength="50" />
 			<display:column title="Dependency JAR name" property="dependencyJarName" maxLength="20" />
+			<display:column title="Dependency JAR location" property="dependencyJarPath" maxLength="20" />
 			<display:column title="Modified on" property="dateModification" format="{0,date,dd.MM.yyyy HH:mm:ss}" />
-			<display:column title="Created on" property="dateCreation" format="{0,date,dd.MM.yyyy HH:mm:ss}" />
-			<display:column href="/app/EditProject" paramId="id" paramProperty="id">
-				<button class="btn btn-primary btn-xs" name="projectForm">Edit</button>
-			</display:column>
-			<display:column href="/app/GenerateTree" paramId="id" paramProperty="id">
-				<button class="btn btn-primary btn-xs">Generate Project Tree</button>
-			</display:column>
+			<display:column title="Created on" property="dateCreation" format="{0,date,dd.MM.yyyy HH:mm:ss}" />		
 		</display:table>
 	</div>
 	<br></br>
@@ -36,7 +32,8 @@
 			</display:column>
 			<display:column title="#Failed">
 			</display:column>
-			<display:column title="Status" property="success" paramId="status" paramProperty="success">
+			<display:column title="Status">
+				<tags:yesno value="${status}"/>
 			</display:column>
 			<display:column title="Qualified name" property="qualifiedName" >
 			</display:column>

@@ -83,7 +83,9 @@ public class ProjectController {
 				String testJarPatj = constructSaveLocation(projectForm, testJar);
 				existingProject.setDateModification(new Date());
 				existingProject.setDependencyJar(depJar.getBytes());
-				existingProject.setDependencyJarName(depJar.getOriginalFilename());
+				if (!depJarPath.equals(null)) {
+					existingProject.setDependencyJarName(depJar.getOriginalFilename());
+				}
 				existingProject.setDependencyJarPath(depJarPath);
 				existingProject.setDescription(projectForm.getDescription());
 				existingProject.setJarName(testJar.getOriginalFilename());
@@ -159,6 +161,31 @@ public class ProjectController {
 		path.append(file.getOriginalFilename());
 		return path.toString();
 	}
+
+	// @RequestMapping("/download")
+	// public String downloadJar(@PathVariable("pojectId") Integer projectId,
+	// HttpServletResponse response) {
+	//
+	// Project project = projectService.get(projectId);
+	// try {
+	// response.setHeader("Content-Disposition", "inline;filename=\"" +
+	// project.getJarName() + "\"");
+	// OutputStream out = response.getOutputStream();
+	// ByteArrayInputStream bis = new
+	// ByteArrayInputStream(project.getTestJar());
+	// // response.setContentType(doc.getContentType());
+	// IOUtils.copy(bis, out);
+	// out.flush();
+	// out.close();
+	//
+	// } catch (IOException e) {
+	// e.printStackTrace();
+	// } // catch (SQLException e) {
+	// // e.printStackTrace();
+	// // }
+	//
+	// return null;
+	// }
 
 	private void generateClassSturcture(List<CtClass> classes, Project project) throws Exception {
 
