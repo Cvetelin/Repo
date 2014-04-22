@@ -50,7 +50,7 @@ public class ProjectTreeGenerator {
 
 			classes.add(ct);
 			// loadClassFormJar(project);
-			// Class<?> c = cl.loadClass(className);
+			 
 			// testClasses.add(c);
 		}
 		return classes;
