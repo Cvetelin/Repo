@@ -1,6 +1,9 @@
 package bg.ceco.demo.springmvc;
 
 import java.io.File;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.Date;
 import java.util.HashSet;
 import java.util.Iterator;
@@ -28,6 +31,7 @@ import bg.ceco.demo.logic.ProjectService;
 import bg.ceco.demo.logic.TestInfoService;
 import bg.ceco.demo.model.ClassInfo;
 import bg.ceco.demo.model.ExecInfo;
+import bg.ceco.demo.model.Project;
 import bg.ceco.demo.model.TestInfo;
 import bg.ceco.demo.selenium.TestRunner;
 
@@ -50,6 +54,8 @@ public class RunTestClassesController {
 		ClassInfo classInfo = classInfoService.load(id);
 		Result result = null;
 		TestRunner runner = new TestRunner();
+		TestInfo testInfo = new TestInfo();
+		ExecInfo execInfo = new ExecInfo();
 		try {
 			result = runner.runClass(classInfo);
 		} catch (Exception e) {
@@ -63,28 +69,56 @@ public class RunTestClassesController {
 
 			Set<TestInfo> testinfos = new HashSet<TestInfo>();
 			List<Failure> failures = result.getFailures();
-			TestInfo testInfo = new TestInfo();
-			ExecInfo execInfo = new ExecInfo();
 
-			for (Iterator iterator = failures.iterator(); iterator.hasNext();) {
-				Failure failure = (Failure) iterator.next();
-				testInfo = matchMethods(classInfo, failure.getDescription().getMethodName());
-				if (testInfo != null) {
-					failure.getException();
-					execInfo.setExecutionDate(date);
-					execInfo.setFailureReason(failure.getMessage() + "\n" + failure.getTrace());
-					execInfo.setTestInfo(testInfo);
+			if (!failures.isEmpty()) {
+				for (Iterator iterator = failures.iterator(); iterator.hasNext();) {
+					Failure failure = (Failure) iterator.next();
+					testInfo = matchMethods(classInfo, failure.getDescription().getMethodName());
+					if (testInfo != null) {
+						failure.getException();
+						execInfo.setExecutionDate(date);
+						execInfo.setFailureReason(failure.getMessage() + "\n" + failure.getTrace());
+						execInfo.setTestInfo(testInfo);
 
-					testInfo.setExecutionDate(date);
-					testInfo.setClassInfo(classInfo);
+						testInfo.setExecutionDate(date);
+						testInfo.setClassInfo(classInfo);
 
-					execInfoService.save(execInfo);
-					testInfoService.update(testInfo);
+						execInfoService.save(execInfo);
+						testInfoService.update(testInfo);
+					}
 					classInfoService.update(classInfo);
 				}
 			}
+			TestInfo testInClass = null;
+			Set<TestInfo> testsInClass = classInfo.getTestInfo();
+			for (Iterator iterator = testsInClass.iterator(); iterator.hasNext();) {
+				TestInfo tInfo = (TestInfo) iterator.next();
+				testInClass = testInfoService.loadBy(classInfo, tInfo.getName());
+				execInfo.setExecutionDate(date);
+				execInfo.setStatus(true);
+				execInfo.setTestInfo(testInClass);
+
+				testInClass.setExecutionDate(date);
+				testInClass.setClassInfo(classInfo);
+
+				execInfoService.save(execInfo);
+				testInfoService.update(testInClass);
+
+			}
+			classInfoService.update(classInfo);
+
 		}
-		return new ModelAndView("ShowTestClasses", "dirInfo", classInfoService.list());
+
+		Project project = projectService.load(classInfo.getProject().getId());
+		List<TestInfo> testInfos = testInfoService.listBy(classInfo);
+		ModelMap details = new ModelMap();
+		details.addAttribute("projectsList", projectService.list());
+		details.addAttribute("project", project);
+		details.addAttribute("classInfos", classInfo);
+		details.addAttribute("testInfos", testInfos);
+		List<ExecInfo> execInfos = getLastExecutionOfTest(testInfos);
+		details.addAttribute("execInfos", execInfos);
+		return new ModelAndView("ShowClassDetails", details);
 	}
 
 	@RequestMapping(value = "/GetTestClasses", method = RequestMethod.GET)
@@ -97,7 +131,8 @@ public class RunTestClassesController {
 	private void getAlltest() throws Exception {
 		FileUtils operate = new FileUtils();
 		IOFileFilter fileFilter = FileFilterUtils.suffixFileFilter("java");
-		Iterator<File> files = operate.iterateFiles(new File(Constants.testLocationPath()), fileFilter, TrueFileFilter.INSTANCE);
+		Iterator<File> files = operate.iterateFiles(new File(Constants.testLocationPath()), fileFilter,
+				TrueFileFilter.INSTANCE);
 		while (files.hasNext()) {
 			File file = (File) files.next();
 			ClassInfo info = new ClassInfo();
@@ -126,5 +161,15 @@ public class RunTestClassesController {
 			}
 		}
 		return null;
+	}
+
+	private List<ExecInfo> getLastExecutionOfTest(List<TestInfo> testInfos) {
+		List<ExecInfo> execInfos = new ArrayList<ExecInfo>();
+		for (Iterator iterator = testInfos.iterator(); iterator.hasNext();) {
+			TestInfo tInfo = (TestInfo) iterator.next();
+			List<ExecInfo> eInfos = execInfoService.listBy(tInfo);
+			execInfos.addAll(eInfos);
+		}
+		return execInfos;
 	}
 }

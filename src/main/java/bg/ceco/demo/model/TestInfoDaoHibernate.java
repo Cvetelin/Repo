@@ -24,7 +24,7 @@ public class TestInfoDaoHibernate implements TestInfoDao {
 		return (TestInfo) sessionFactory.getCurrentSession().load(TestInfo.class, id);
 
 	}
-
+	
 	/*
 	 * (non-Javadoc)
 	 * 

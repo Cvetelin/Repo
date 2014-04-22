@@ -35,7 +35,7 @@
 			<display:column title="Test method name" property="testInfo.name" paramId="id" paramProperty="id" sortable="true">
 			</display:column>
 			<display:column title="Status" sortable="true">
-				<tags:yesno value="${status}"/>
+				<tags:yesno value="${exec.status}"/>
 			</display:column>
 			<display:column title="Run Date" property="executionDate" format="{0,date,dd.MM.yyyy HH:mm:ss}" sortable="true">
 			</display:column>	

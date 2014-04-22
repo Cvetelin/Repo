@@ -45,29 +45,23 @@ public class TestRunner {
 
 	private Class<?> loadClassFormJar(ClassInfo classInfo) throws Exception {
 		Class<?> c = null;
+		
+		ClassLoader currentClassLoader = Thread.currentThread().getContextClassLoader();
 		Project project = classInfo.getProject();
 		FileUtils.writeByteArrayToFile(new File(project.getJarPath()), project.getTestJar());
-
-		File seleniumApi = new File("C:/Users/Ceco/.m2/repository/org/seleniumhq/selenium/selenium-api/2.40.0/selenium-api-2.40.0.jar");
-		File seleniumSupport = new File(
-				"C:/Users/Ceco/.m2/repository/org/seleniumhq/selenium/selenium-support/2.40.0/selenium-support-2.40.0.jar");
-		File junit = new File("C:/Users/Ceco/.m2/repository/junit/junit/4.10/junit-4.10.jar");
 
 		JarFile jarFile = new JarFile(project.getJarPath());
 		Enumeration<?> e = jarFile.entries();
 		File f = new File(project.getJarPath());
 
-		URL[] urls = { f.toURI().toURL(), seleniumApi.toURI().toURL(), seleniumSupport.toURI().toURL(), junit.toURI().toURL() };
+		URL[] urls = { f.toURI().toURL()};
 
-		URLClassLoader cl = URLClassLoader.newInstance(urls);
-
-		List<CtClass> classes = new ArrayList<CtClass>();
-
+		URLClassLoader cl = URLClassLoader.newInstance(urls, currentClassLoader);
+		
 		ClassPool cp = ClassPool.getDefault();
 		cp.insertClassPath(project.getJarPath());
 		while (e.hasMoreElements()) {
 			JarEntry je = (JarEntry) e.nextElement();
-			System.out.println("!!!---#---!!! " + je.getName());
 			if (je.isDirectory() || !je.getName().endsWith("Test.class")) {
 				continue;
 			}
@@ -87,17 +81,7 @@ public class TestRunner {
 					ct = ct.getSuperclass();
 				}
 
-				classes.add(ct);
-				Set<TestInfo> m = classInfo.getTestInfo();
-				List<TestInfo> met = new ArrayList<TestInfo>();
-				met.addAll(m);
 				c = cl.loadClass(className);
-				Method[] me = c.getMethods();
-				for (int i = 0; i < me.length; i++) {
-					System.out.println(me[i].getName());
-				}
-				Annotation[] an = c.getAnnotations();
-				// cl.getParent().getParent().loadClass(WebDriver.class.getName());
 			}
 		}
 		return c;

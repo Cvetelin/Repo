@@ -11,7 +11,10 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-<script language="JavaScript">
+<script type="text/javascript"
+	src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-2.0.0.min.js"></script>
+		<script type="text/javascript" src="/js/jquery.blockUI.js"></script>
+<script type="text/javascript">
 function showMethodOfClass(id) {
 	if(document.getElementById('listM').value=='List Methods'){
 	document.getElementById('listM').value = 'Hide Methods';
@@ -21,6 +24,20 @@ function showMethodOfClass(id) {
 	document.getElementById(id).style.display = 'inline';
 	}
 }
+
+$(document).ready(function() { 
+    $('#runClass').click(function() { 
+        $.blockUI({ css: { 
+            border: 'none', 
+            padding: '15px', 
+            backgroundColor: '#000', 
+            '-webkit-border-radius': '10px', 
+            '-moz-border-radius': '10px', 
+            opacity: .5, 
+            color: '#fff' 
+        } }); 
+    }); 
+}); 
 </script>
 </head>
 <body>
@@ -57,7 +74,7 @@ function showMethodOfClass(id) {
 			<display:column title="#Failed" sortable="true">
 			</display:column>
 			<display:column title="Status" sortable="true">
-				<tags:yesno value="${status}"/>
+				<tags:yesno value="${dir.success}"/>
 			</display:column>
 			<display:column title="Qualified name" property="qualifiedName" >
 			</display:column>
@@ -73,7 +90,7 @@ function showMethodOfClass(id) {
 			<%-- 			</display:column> --%>
 
 			<display:column href="/app/RunClass" paramId="id" paramProperty="id">
-				<button class="btn btn-primary btn-xs" name="projectForm">Execute Test Class</button>
+				<button class="btn btn-primary btn-xs" id="runClass" name="projectForm">Execute Test Class</button>
 			</display:column>
 		</display:table>
 	</div>

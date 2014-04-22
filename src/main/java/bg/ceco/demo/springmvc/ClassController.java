@@ -60,7 +60,7 @@ public class ClassController {
 		for (Iterator iterator = testInfos.iterator(); iterator.hasNext();) {
 			TestInfo tInfo = (TestInfo) iterator.next();
 			List<ExecInfo> eInfos = execInfoService.listBy(tInfo);
-			execInfos.addAll(sortByDate(eInfos));
+			execInfos.addAll(eInfos);
 		}
 		return execInfos;
 	}
