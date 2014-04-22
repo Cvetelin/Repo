@@ -29,6 +29,7 @@ public class TestListenerImpl extends RunListener {
 	 * */
 	public void testRunStarted(Description description) throws java.lang.Exception {
 		System.out.println("Number of testcases to execute : " + description.testCount());
+		System.out.println("Method name : " + description.getMethodName());
 	}
 
 	/**
@@ -61,6 +62,7 @@ public class TestListenerImpl extends RunListener {
 	 * */
 	public void testFailure(Failure failure) throws java.lang.Exception {
 		System.out.println("Execution of test case failed : " + failure.getMessage());
+		System.out.println("Execution of test case failed : " + failure.getException());
 	}
 
 	/**

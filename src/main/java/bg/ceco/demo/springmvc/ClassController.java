@@ -1,6 +1,8 @@
 package bg.ceco.demo.springmvc;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.Iterator;
 import java.util.List;
 
@@ -40,9 +42,6 @@ public class ClassController {
 		ClassInfo classInfo = classInfoService.load(classId);
 		List<TestInfo> testInfos = testInfoService.listBy(classInfo);
 		List<ExecInfo> execInfos = new ArrayList<ExecInfo>();
-		for (Iterator iterator = testInfos.iterator(); iterator.hasNext();) {
-			TestInfo testInfo2 = (TestInfo) iterator.next();
-		}
 
 		Project project = projectService.load(classInfo.getProject().getId());
 		ModelMap details = new ModelMap();
@@ -50,6 +49,36 @@ public class ClassController {
 		details.addAttribute("project", project);
 		details.addAttribute("classInfos", classInfo);
 		details.addAttribute("testInfos", testInfos);
+
+		execInfos = getLastExecutionOfTest(testInfos);
+		details.addAttribute("execInfos", execInfos);
 		return new ModelAndView("ShowClassDetails", details);
+	}
+
+	private List<ExecInfo> getLastExecutionOfTest(List<TestInfo> testInfos) {
+		List<ExecInfo> execInfos = new ArrayList<ExecInfo>();
+		for (Iterator iterator = testInfos.iterator(); iterator.hasNext();) {
+			TestInfo tInfo = (TestInfo) iterator.next();
+			List<ExecInfo> eInfos = execInfoService.listBy(tInfo);
+			execInfos.addAll(sortByDate(eInfos));
+		}
+		return execInfos;
+	}
+
+	@SuppressWarnings("unchecked")
+	private List<ExecInfo> sortByDate(List<ExecInfo> eInfos) {
+
+		// File files[] = folder.listFiles();
+		Collections.sort(eInfos, new Comparator<ExecInfo>() {
+			public int compare(ExecInfo ei1, ExecInfo ei2) {
+				return ei1.getExecutionDate().compareTo(ei2.getExecutionDate());
+			}
+
+			// public int compare(final Object o1, final Object o2) {
+			// return new Long(((File) o2).lastModified()).compareTo(new
+			// Long(((File) o1).lastModified()));
+			// }
+		});
+		return eInfos;
 	}
 }

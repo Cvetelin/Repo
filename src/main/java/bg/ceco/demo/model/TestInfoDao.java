@@ -20,4 +20,6 @@ public interface TestInfoDao {
 
 	public abstract List<TestInfo> listBy(ClassInfo classInfo);
 
+	public abstract TestInfo loadBy(ClassInfo classInfo, String methodName);
+
 }

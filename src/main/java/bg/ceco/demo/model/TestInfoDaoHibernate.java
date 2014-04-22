@@ -96,4 +96,12 @@ public class TestInfoDaoHibernate implements TestInfoDao {
 			sessionFactory.getCurrentSession().save(element.get(i));
 		}
 	}
+
+	@Override
+	public TestInfo loadBy(ClassInfo classInfo, String methodName) {
+		Criteria crit = sessionFactory.getCurrentSession().createCriteria(TestInfo.class).add(Restrictions.eq("classInfo", classInfo))
+				.add(Restrictions.eqOrIsNull("name", methodName));
+		TestInfo testInfo = (TestInfo) crit.uniqueResult();
+		return testInfo;
+	}
 }

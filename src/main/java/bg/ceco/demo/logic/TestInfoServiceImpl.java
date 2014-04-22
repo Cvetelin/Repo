@@ -74,4 +74,9 @@ public class TestInfoServiceImpl implements TestInfoService {
 	public void saveAll(List<TestInfo> testInfo) {
 		testInfoDao.saveAll(testInfo);
 	}
+
+	@Override
+	public TestInfo loadBy(ClassInfo classInfo, String methodName) {
+		return testInfoDao.loadBy(classInfo, methodName);
+	}
 }

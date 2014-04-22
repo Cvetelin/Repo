@@ -7,6 +7,7 @@
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 <%@ taglib prefix="tiles" uri="http://tiles.apache.org/tags-tiles" %>
 <%@ taglib prefix="tilesx" uri="http://tiles.apache.org/tags-tiles-extras" %>
+<%@ taglib prefix="tags" tagdir="/WEB-INF/tags"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -29,8 +30,10 @@ function showMethodOfClass(id) {
 			defaultsort="1">
 			<display:column title="Project Name" property="projectName" paramId="id" paramProperty="id" maxLength="20" />
 			<display:column title="Test JAR name" property="jarName" maxLength="20" />
+			<display:column title="Test JAR location" property="jarPath" maxLength="20" href="/app/download"/>
 			<display:column title="Description" property="description" maxLength="50" />
 			<display:column title="Dependency JAR name" property="dependencyJarName" maxLength="20" />
+			<display:column title="Dependency JAR location" property="dependencyJarPath" maxLength="20" />
 			<display:column title="Modified on" property="dateModification" format="{0,date,dd.MM.yyyy HH:mm:ss}" />
 			<display:column title="Created on" property="dateCreation" format="{0,date,dd.MM.yyyy HH:mm:ss}" />
 			<display:column href="/app/EditProject" paramId="id" paramProperty="id">
@@ -53,7 +56,8 @@ function showMethodOfClass(id) {
 			</display:column>
 			<display:column title="#Failed" sortable="true">
 			</display:column>
-			<display:column title="Status" property="success" paramId="status" paramProperty="success" sortable="true">
+			<display:column title="Status" sortable="true">
+				<tags:yesno value="${status}"/>
 			</display:column>
 			<display:column title="Qualified name" property="qualifiedName" >
 			</display:column>
