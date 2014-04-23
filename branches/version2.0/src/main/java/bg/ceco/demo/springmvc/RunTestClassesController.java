@@ -2,8 +2,7 @@ package bg.ceco.demo.springmvc;
 
 import java.io.File;
 import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Comparator;
+import java.util.Collection;
 import java.util.Date;
 import java.util.HashSet;
 import java.util.Iterator;
@@ -67,41 +66,41 @@ public class RunTestClassesController {
 			Date date = new Date();
 			classInfo.setExecutionDate(date);
 
-			Set<TestInfo> testinfos = new HashSet<TestInfo>();
+			Set<TestInfo> failedTests = new HashSet<TestInfo>();
 			List<Failure> failures = result.getFailures();
 
 			if (!failures.isEmpty()) {
 				for (Iterator iterator = failures.iterator(); iterator.hasNext();) {
 					Failure failure = (Failure) iterator.next();
 					testInfo = matchMethods(classInfo, failure.getDescription().getMethodName());
+					execInfo = new ExecInfo();
 					if (testInfo != null) {
+						failedTests.add(testInfo);
 						failure.getException();
 						execInfo.setExecutionDate(date);
 						execInfo.setFailureReason(failure.getMessage() + "\n" + failure.getTrace());
 						execInfo.setTestInfo(testInfo);
-
-						testInfo.setExecutionDate(date);
-						testInfo.setClassInfo(classInfo);
-
 						execInfoService.save(execInfo);
+						
+						testInfo.setExecutionDate(date);						
 						testInfoService.update(testInfo);
-					}
-					classInfoService.update(classInfo);
+					}					
 				}
 			}
 			TestInfo testInClass = null;
 			Set<TestInfo> testsInClass = classInfo.getTestInfo();
-			for (Iterator iterator = testsInClass.iterator(); iterator.hasNext();) {
+			Set<TestInfo> succesfulsTests =  removeFailedTest(testsInClass, failedTests);
+			for (Iterator iterator = succesfulsTests.iterator(); iterator.hasNext();) {
+				execInfo = new ExecInfo();
 				TestInfo tInfo = (TestInfo) iterator.next();
 				testInClass = testInfoService.loadBy(classInfo, tInfo.getName());
 				execInfo.setExecutionDate(date);
 				execInfo.setStatus(true);
 				execInfo.setTestInfo(testInClass);
-
-				testInClass.setExecutionDate(date);
-				testInClass.setClassInfo(classInfo);
-
 				execInfoService.save(execInfo);
+				
+				testInClass.setExecutionDate(date);
+				System.out.println("TEST NAME -------------" + testInClass.getName());				
 				testInfoService.update(testInClass);
 
 			}
@@ -170,6 +169,12 @@ public class RunTestClassesController {
 			List<ExecInfo> eInfos = execInfoService.listBy(tInfo);
 			execInfos.addAll(eInfos);
 		}
+		System.out.println("NUmber OF EXECUTED -------------" + execInfos.size());
 		return execInfos;
+	}
+	
+	private Set<TestInfo> removeFailedTest(Set<TestInfo> allTests, Set<TestInfo> failedTest) {
+		allTests.removeAll(failedTest);		
+		return allTests;
 	}
 }
