@@ -17,7 +17,7 @@
 	<div class="row" id="methods">
 		<display:table name="testInfos" id="test" class="col-md-6 table-bordered table-hover title text-center headtitle-link"
 			requestURI="ShowClassDetails" defaultsort="1">
-			<display:column title="Class name" property="classInfo.name" paramId="id" paramProperty="id" sortable="true">
+			<display:column title="Class name" property="classInfo.name" paramId="id" paramProperty="classInfo.id" sortable="true">
 			</display:column>
 			<display:column title="Methods in Class" property="name" paramId="id" paramProperty="id" sortable="true">
 			</display:column>
@@ -32,7 +32,7 @@
 	<div class="row" id="executions">
 		<display:table name="execInfos" id="exec" class="col-md-12 table-bordered table-hover title text-center headtitle-link"
 			requestURI="ShowClassDetails" defaultsort="1">
-			<display:column title="Test method name" property="testInfo.name" paramId="id" paramProperty="id" sortable="true">
+			<display:column title="Test method name" property="testInfo.name" paramId="id" paramProperty="testInfo.id" sortable="true">
 			</display:column>
 			<display:column title="Status" sortable="true">
 				<tags:yesno value="${exec.status}"/>
