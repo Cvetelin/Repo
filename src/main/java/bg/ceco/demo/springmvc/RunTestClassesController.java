@@ -88,21 +88,20 @@ public class RunTestClassesController {
 				}
 			}
 			TestInfo testInClass = null;
-			Set<TestInfo> testsInClass = classInfo.getTestInfo();
-			Set<TestInfo> succesfulsTests =  removeFailedTest(testsInClass, failedTests);
-			for (Iterator iterator = succesfulsTests.iterator(); iterator.hasNext();) {
-				execInfo = new ExecInfo();
-				TestInfo tInfo = (TestInfo) iterator.next();
-				testInClass = testInfoService.loadBy(classInfo, tInfo.getName());
-				execInfo.setExecutionDate(date);
-				execInfo.setStatus(true);
-				execInfo.setTestInfo(testInClass);
-				execInfoService.save(execInfo);
-				
-				testInClass.setExecutionDate(date);
-				System.out.println("TEST NAME -------------" + testInClass.getName());				
-				testInfoService.update(testInClass);
-
+			
+			for (TestInfo tInfo : classInfo.getTestInfo()) {
+				if(!failedTests.contains(tInfo)) {
+					execInfo = new ExecInfo();
+					testInClass = testInfoService.loadBy(classInfo, tInfo.getName());
+					execInfo.setExecutionDate(date);
+					execInfo.setStatus(true);
+					execInfo.setTestInfo(testInClass);
+					execInfoService.save(execInfo);
+					
+					testInClass.setExecutionDate(date);
+					System.out.println("TEST NAME -------------" + testInClass.getName());				
+					testInfoService.update(testInClass);
+				}
 			}
 			classInfoService.update(classInfo);
 
