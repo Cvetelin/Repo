@@ -16,4 +16,6 @@ public interface ExecInfoDao {
 
 	public abstract List<ExecInfo> listBy(TestInfo testInfo);
 
+	public abstract List<ExecInfo> listByExecDateDesc(TestInfo testInfo);
+
 }

@@ -26,7 +26,7 @@ function showMethodOfClass(id) {
 }
 
 $(document).ready(function() { 
-    $('#runClass').click(function() { 
+    $('#generate').click(function() { 
         $.blockUI({ css: { 
             border: 'none', 
             padding: '15px', 
@@ -38,6 +38,23 @@ $(document).ready(function() {
         } }); 
     }); 
 }); 
+
+
+$(document).ready(function() { 
+    $('[value~=Execute]').click(function() { 
+        $.blockUI({ css: { 
+            border: 'none', 
+            padding: '15px', 
+            backgroundColor: '#000', 
+            '-webkit-border-radius': '10px', 
+            '-moz-border-radius': '10px', 
+            opacity: .5, 
+            color: '#fff' 
+        } }); 
+    }); 
+}); 
+
+
 </script>
 </head>
 <body>
@@ -56,8 +73,8 @@ $(document).ready(function() {
 			<display:column href="/app/EditProject" paramId="id" paramProperty="id">
 				<button class="btn btn-primary btn-xs" name="projectForm">Edit</button>
 			</display:column>
-			<display:column href="/app/GenerateTree" paramId="id" paramProperty="id">
-				<button class="btn btn-primary btn-xs">Generate Project Tree</button>
+			<display:column href="/app/GenerateTree"  paramId="id" paramProperty="id">
+				<button class="btn btn-primary btn-xs" id="generate">Generate Project Tree</button>
 			</display:column>
 		</display:table>
 	</div>
@@ -87,10 +104,10 @@ $(document).ready(function() {
 			<%-- 				<c:forEach var="cl" items="${dir.testInfo}"> --%>
 			<%-- 					<c:out value="${cl.name}"></c:out> --%>
 			<%-- 				</c:forEach> --%>
-			<%-- 			</display:column> --%>
+			<%-- 			</display:column>  ${dir_rowNum} --%>
 
 			<display:column href="/app/RunClass" paramId="id" paramProperty="id">
-				<button class="btn btn-primary btn-xs" id="runClass" name="projectForm">Execute Test Class</button>
+				<button class="btn btn-primary btn-xs" id="runClass" name="projectForm" value="Execute Test Class">Execute Test Class</button>
 			</display:column>
 		</display:table>
 	</div>

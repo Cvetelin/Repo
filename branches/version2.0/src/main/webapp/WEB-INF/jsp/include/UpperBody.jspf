@@ -47,21 +47,21 @@ $(document).ready(function() {
 			</display:column>
 			<display:column title="Last Execution Date" property="executionDate"  format="{0,date,dd.MM.yyyy HH:mm:ss}">
 			</display:column>
-			<display:column title="#Successful">
+			<display:column title="#Successful tests">
 			</display:column>
-			<display:column title="#Failed">
+			<display:column title="#Failed tests">
 			</display:column>
-			<display:column title="Status">
+			<display:column title="Last run Status"  class="col-sm2 col-md-1 col-lg-1">
 				<tags:yesno value="${dir.success}"/>
 			</display:column>
 			<display:column title="Qualified name" property="qualifiedName" >
 			</display:column>
 			<display:column title="Folder Location" property="path" paramId="path" paramProperty="path">
 			</display:column>
-			<display:column title="Methods" paramId="classId" paramProperty="id" href="/app/ShowClassDetails">
+			<display:column paramId="classId" paramProperty="id" href="/app/ShowClassDetails">
 				<button class="btn btn-primary btn-xs" id="listM" value="List Methods" onclick="showMethodOfClass('methods')">List Methods</button>
 			</display:column>
-			<display:column href="/app/RunClass" paramId="id" paramProperty="id">
+			<display:column href="/app/RunClass" paramId="id" paramProperty="id" class="col-sm2 col-md-1 col-lg-1">
 				<button class="btn btn-primary btn-xs" name="projectForm" id="runClass">Execute Test Class</button>
 			</display:column>
 		</display:table>

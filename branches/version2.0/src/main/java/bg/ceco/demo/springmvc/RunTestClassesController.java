@@ -116,7 +116,7 @@ public class RunTestClassesController {
 		details.addAttribute("testInfos", testInfos);
 		List<ExecInfo> execInfos = getLastExecutionOfTest(testInfos);
 		details.addAttribute("execInfos", execInfos);
-		return new ModelAndView("ShowClassDetails", details);
+		return new ModelAndView("redirect:/app/ShowClassDetails", "classId",classInfo.getId());
 	}
 
 	@RequestMapping(value = "/GetTestClasses", method = RequestMethod.GET)

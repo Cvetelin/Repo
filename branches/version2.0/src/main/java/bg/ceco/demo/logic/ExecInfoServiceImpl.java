@@ -68,4 +68,9 @@ public class ExecInfoServiceImpl implements ExecInfoService {
 	public List<ExecInfo> listBy(TestInfo testInfo) {
 		return execInfoDao.listBy(testInfo);
 	}
+	
+	@Override
+	public List<ExecInfo> listByExecDatedesc(TestInfo testInfo) {
+		return execInfoDao.listByExecDateDesc(testInfo);
+	}
 }

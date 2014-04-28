@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.hibernate.Criteria;
 import org.hibernate.SessionFactory;
+import org.hibernate.criterion.Order;
 import org.hibernate.criterion.Restrictions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -72,5 +73,16 @@ public class ExecInfoDaoHibernate implements ExecInfoDao {
 			List<ExecInfo> execInfo = crit.list();
 			return execInfo;
 		}
+		
+
+		@Override
+		@SuppressWarnings("unchecked")
+		public List<ExecInfo> listByExecDateDesc(TestInfo testInfo) {
+			Criteria crit = sessionFactory.getCurrentSession().createCriteria(ExecInfo.class)
+					.add(Restrictions.eq("testInfo", testInfo)).addOrder(Order.desc("executionDate"));		
+			List<ExecInfo> execInfo = crit.list();
+			return execInfo;
+		}
+
 
 }
