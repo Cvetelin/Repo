@@ -18,4 +18,6 @@ public interface ExecInfoService {
 
 	public abstract List<ExecInfo> listBy(TestInfo testInfo);
 
+	public abstract List<ExecInfo> listByExecDatedesc(TestInfo testInfo);
+
 }

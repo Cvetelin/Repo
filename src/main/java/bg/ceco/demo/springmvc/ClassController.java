@@ -6,6 +6,7 @@ import java.util.Comparator;
 import java.util.Iterator;
 import java.util.List;
 
+import org.junit.rules.TestName;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -17,6 +18,7 @@ import org.springframework.web.servlet.ModelAndView;
 import bg.ceco.demo.logic.ClassInfoService;
 import bg.ceco.demo.logic.ExecInfoService;
 import bg.ceco.demo.logic.ProjectService;
+import bg.ceco.demo.logic.TestInfoBean;
 import bg.ceco.demo.logic.TestInfoService;
 import bg.ceco.demo.model.ClassInfo;
 import bg.ceco.demo.model.ExecInfo;
@@ -48,7 +50,7 @@ public class ClassController {
 		details.addAttribute("projectsList", projectService.list());
 		details.addAttribute("project", project);
 		details.addAttribute("classInfos", classInfo);
-		details.addAttribute("testInfos", testInfos);
+		details.addAttribute("testInfos", populateTestInofbean(testInfos));
 
 		execInfos = getLastExecutionOfTest(testInfos);
 		details.addAttribute("execInfos", execInfos);
@@ -80,5 +82,23 @@ public class ClassController {
 			// }
 		});
 		return eInfos;
+	}
+	
+	private List<TestInfoBean> populateTestInofbean (List<TestInfo> testInfos) {
+		List<TestInfoBean> tBeans = new ArrayList<TestInfoBean>();		
+		for (TestInfo testInfo : testInfos) {	
+			TestInfoBean tbean = new TestInfoBean();
+			List<ExecInfo> execI = execInfoService.listByExecDatedesc(testInfo);
+			if (!execI.isEmpty()) {
+				tbean.setLastRunStatus(execI.get(0).isStatus());
+				tbean.setNumberOfExections(execI.size());
+			}
+			tbean.setName(testInfo.getName());
+			tbean.setId(testInfo.getId());
+			tbean.setExecutionDate(testInfo.getExecutionDate());
+			tBeans.add(tbean);
+		}
+		
+		return tBeans;
 	}
 }

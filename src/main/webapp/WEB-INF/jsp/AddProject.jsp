@@ -143,9 +143,5 @@
 		http://viralpatel.net/blogs/spring-mvc-multi-row-submit-java-list/
 		http://howtodoinjava.com/2013/08/30/hibernate-example-of-insertselect-blob-from-database/
 		-->
-		
-		<a href="/app/GetTestClasses">GetTesClasses</a>
-	
-	
 </body>
 </html>
