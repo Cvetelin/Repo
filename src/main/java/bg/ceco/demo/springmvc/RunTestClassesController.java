@@ -18,6 +18,7 @@ import org.junit.runner.notification.Failure;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -131,6 +132,24 @@ public class RunTestClassesController {
 		return new ModelAndView("redirect:/app/ShowClassDetails", "classId", classInfo.getId());
 	}
 
+	
+	@RequestMapping(value = "{id}/method", method = RequestMethod.GET)
+	public ModelAndView runMethodWithJunit(@RequestParam("classId") long classId, @PathVariable long id) {
+		ClassInfo classInfo = classInfoService.load(classId);
+		Result result = null;
+		TestRunner runner = new TestRunner();
+		TestInfo testInfo = new TestInfo();
+		ExecInfo execInfo = new ExecInfo();
+		try {
+			result = runner.runClass(classInfo);
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			
+		}
+		return null;
+		}
+	
 	@RequestMapping(value = "/GetTestClasses", method = RequestMethod.GET)
 	public String getClasses() throws Exception {
 		ModelMap map = new ModelMap();

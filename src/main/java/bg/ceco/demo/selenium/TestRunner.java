@@ -1,14 +1,9 @@
 package bg.ceco.demo.selenium;
 
 import java.io.File;
-import java.lang.annotation.Annotation;
-import java.lang.reflect.Method;
 import java.net.URL;
 import java.net.URLClassLoader;
-import java.util.ArrayList;
 import java.util.Enumeration;
-import java.util.List;
-import java.util.Set;
 import java.util.jar.JarEntry;
 import java.util.jar.JarFile;
 
@@ -17,6 +12,7 @@ import javassist.CtClass;
 
 import org.apache.commons.io.FileUtils;
 import org.junit.runner.JUnitCore;
+import org.junit.runner.Request;
 import org.junit.runner.Result;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -37,9 +33,22 @@ public class TestRunner {
 		Class<?> cls = loadClassFormJar(classInfo);
 
 		JUnitCore runner = new JUnitCore();
-		runner.addListener(new TestListenerImpl(classInfo));
-
+		runner.addListener(new TestListenerImpl());
+		
 		return runner.run(cls);
+
+	}
+	
+	
+	public Result runMethod(ClassInfo classInfo, TestInfo testInfo) throws Exception {
+		Class<?> cls = loadClassFormJar(classInfo);		
+		
+		Request request = Request.method(cls, testInfo.getName());
+		
+		JUnitCore runner = new JUnitCore();
+		runner.addListener(new TestListenerImpl());
+		
+		return runner.run(request);
 
 	}
 

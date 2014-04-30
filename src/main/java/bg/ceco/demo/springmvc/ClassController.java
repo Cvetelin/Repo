@@ -56,7 +56,7 @@ public class ClassController {
 		return new ModelAndView("ShowClassDetails", details);
 	}
 
-	@RequestMapping(value = "/ShowTestMethodDetails", method = RequestMethod.GET)
+	@RequestMapping(value = "/{id}/ShowClassDetails", method = RequestMethod.GET)
 	public ModelAndView showRunsOfTest(@RequestParam("methodId") long methodId) {
 		TestInfo testInfo = testInfoService.load(methodId);
 		List<TestInfo> testInfos = testInfoService.listBy(testInfo.getClassInfo());
