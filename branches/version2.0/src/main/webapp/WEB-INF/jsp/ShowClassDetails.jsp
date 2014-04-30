@@ -15,7 +15,7 @@
 <body>
 	<%@ include file="include/UpperBody.jspf"%>
 	<div class="row" id="methods">
-		<display:table name="testInfos" id="test" class="col-md-5 table-bordered table-hover title text-center headtitle-link"
+		<display:table name="testInfos" id="test" class="col-md-8 table-bordered table-hover title text-center headtitle-link"
 			requestURI="ShowClassDetails" defaultsort="1">
 <%-- 			<display:column title="Class name" property="classInfo.name" paramId="id" paramProperty="classInfo.id" sortable="true"> --%>
 <%-- 			</display:column> --%>
@@ -26,20 +26,16 @@
 			<display:column title="Last run status" sortable="true">
 					<tags:yesno value="${test.lastRunStatus}"/>
 				</display:column>	
-			<display:column title="Last run on" property="executionDate" format="{0,date,dd.MM.yyyy HH:mm:ss}" sortable="true"> 
-<%-- 				<c:forEach var="cl" items="${test.execInfo}"> --%>
-<%-- 					<c:out value="${cl.executionDate}"></c:out> --%>
-<%-- 				</c:forEach> --%>
-			<display:column title="Methods" paramId="classId" paramProperty="id" href="/app/ShowClassDetails">
-				<button class="btn btn-primary btn-xs" id="listM" value="List Runs">List Runs</button>
-			</display:column>
-			</display:column>	
-			
-						
+			<display:column title="Last run on" property="executionDate" format="{0,date,dd.MM.yyyy HH:mm:ss}" sortable="true">
+			</display:column> 
+			<display:column title="Methods" paramId="methodId" paramProperty="id" href="/app/ShowTestMethodDetails">
+				<button class="btn btn-primary btn-xs" id="listM" value="List Runs">List Executions</button>
+			</display:column>									
 		</display:table>
 	</div>
-	<br></br>
+	<br></br>	
 	<div class="row" id="executions">
+	<c:if test="${not empty execInfos}">
 		<display:table name="execInfos" id="exec" class="col-md-12 table-bordered table-hover title text-center headtitle-link"
 			requestURI="ShowClassDetails" defaultsort="1">
 			<display:column title="Test method name" property="testInfo.name" paramId="id" paramProperty="testInfo.id" sortable="true">
@@ -52,6 +48,7 @@
 			<display:column title="Failure reason" property="failureReason" maxLength="150" >
 			</display:column>		
 		</display:table>
+		</c:if>
 	</div>
 
 </body>

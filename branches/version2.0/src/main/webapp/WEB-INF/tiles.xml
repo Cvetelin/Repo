@@ -51,7 +51,7 @@
 	
 	<definition name="ShowExecutions" extends="base">
 		<put-attribute name="left" value="/WEB-INF/jsp/LeftMenu.jsp" />		
-		<put-attribute name="body" value="/WEB-INF/jsp/ShowExecutions.jsp" />
+		<put-attribute name="body" value="/WEB-INF/jsp/ShowClassDetails.jsp" />
 	</definition>	
 	
 	

@@ -2,7 +2,6 @@ package bg.ceco.demo.springmvc;
 
 import java.io.File;
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.Date;
 import java.util.HashSet;
 import java.util.Iterator;
@@ -68,6 +67,19 @@ public class RunTestClassesController {
 
 			Set<TestInfo> failedTests = new HashSet<TestInfo>();
 			List<Failure> failures = result.getFailures();
+			if (failures.get(0).getDescription().getDisplayName().contains("initializationError")) {
+				for (TestInfo tInfo : classInfo.getTestInfo()) {
+					TestInfo tInClass = testInfoService.loadBy(classInfo, tInfo.getName());
+					execInfo = new ExecInfo();
+					execInfo.setExecutionDate(date);
+					execInfo.setFailureReason(failures.get(0).getMessage());
+					execInfo.setTestInfo(tInClass);
+					execInfoService.save(execInfo);
+
+					tInClass.setExecutionDate(date);
+					testInfoService.update(tInClass);
+				}
+			}
 
 			if (!failures.isEmpty()) {
 				for (Iterator iterator = failures.iterator(); iterator.hasNext();) {
@@ -81,25 +93,25 @@ public class RunTestClassesController {
 						execInfo.setFailureReason(failure.getMessage() + "\n" + failure.getTrace());
 						execInfo.setTestInfo(testInfo);
 						execInfoService.save(execInfo);
-						
-						testInfo.setExecutionDate(date);						
+
+						testInfo.setExecutionDate(date);
 						testInfoService.update(testInfo);
-					}					
+					}
 				}
 			}
 			TestInfo testInClass = null;
-			
+
 			for (TestInfo tInfo : classInfo.getTestInfo()) {
-				if(!failedTests.contains(tInfo)) {
+				if (!failedTests.contains(tInfo)) {
 					execInfo = new ExecInfo();
 					testInClass = testInfoService.loadBy(classInfo, tInfo.getName());
 					execInfo.setExecutionDate(date);
 					execInfo.setStatus(true);
 					execInfo.setTestInfo(testInClass);
 					execInfoService.save(execInfo);
-					
+
 					testInClass.setExecutionDate(date);
-					System.out.println("TEST NAME -------------" + testInClass.getName());				
+					System.out.println("TEST NAME -------------" + testInClass.getName());
 					testInfoService.update(testInClass);
 				}
 			}
@@ -116,7 +128,7 @@ public class RunTestClassesController {
 		details.addAttribute("testInfos", testInfos);
 		List<ExecInfo> execInfos = getLastExecutionOfTest(testInfos);
 		details.addAttribute("execInfos", execInfos);
-		return new ModelAndView("redirect:/app/ShowClassDetails", "classId",classInfo.getId());
+		return new ModelAndView("redirect:/app/ShowClassDetails", "classId", classInfo.getId());
 	}
 
 	@RequestMapping(value = "/GetTestClasses", method = RequestMethod.GET)
@@ -129,8 +141,7 @@ public class RunTestClassesController {
 	private void getAlltest() throws Exception {
 		FileUtils operate = new FileUtils();
 		IOFileFilter fileFilter = FileFilterUtils.suffixFileFilter("java");
-		Iterator<File> files = operate.iterateFiles(new File(Constants.testLocationPath()), fileFilter,
-				TrueFileFilter.INSTANCE);
+		Iterator<File> files = operate.iterateFiles(new File(Constants.testLocationPath()), fileFilter, TrueFileFilter.INSTANCE);
 		while (files.hasNext()) {
 			File file = (File) files.next();
 			ClassInfo info = new ClassInfo();
@@ -171,9 +182,9 @@ public class RunTestClassesController {
 		System.out.println("NUmber OF EXECUTED -------------" + execInfos.size());
 		return execInfos;
 	}
-	
+
 	private Set<TestInfo> removeFailedTest(Set<TestInfo> allTests, Set<TestInfo> failedTest) {
-		allTests.removeAll(failedTest);		
+		allTests.removeAll(failedTest);
 		return allTests;
 	}
 }

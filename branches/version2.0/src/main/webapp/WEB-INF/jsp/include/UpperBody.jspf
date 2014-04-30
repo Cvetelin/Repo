@@ -41,7 +41,7 @@ $(document).ready(function() {
 	</div>
 	<br></br>
 	<div class="row" id="classes">
-		<display:table name="classInfos" id="dir" class="col-sm-12 col-md-12 col-lg-12 text-center table-bordered table-hover title headtitle-link"
+		<display:table name="classInfo" id="dir" class="col-sm-12 col-md-12 col-lg-12 text-center table-bordered table-hover title headtitle-link"
 			requestURI="ShowProjectDetails" defaultsort="1">
 			<display:column title="Class name" property="name" paramId="id" paramProperty="id">
 			</display:column>
