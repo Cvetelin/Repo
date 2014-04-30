@@ -11,18 +11,7 @@ import bg.ceco.demo.model.ExecInfo;
 import bg.ceco.demo.model.TestInfo;
 
 public class TestListenerImpl extends RunListener {
-	@Autowired
-	public ClassInfoService classInfoService;
-
-	private ClassInfo classInfo;
-
-	private TestInfo testInfo = new TestInfo();
-
-	private ExecInfo execInfo = new ExecInfo();
-
-	public TestListenerImpl(ClassInfo classInfo) {
-		this.classInfo = classInfo;
-	}
+	
 
 	/**
 	 * Called before any tests have been run.

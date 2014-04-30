@@ -28,7 +28,7 @@
 				</display:column>	
 			<display:column title="Last run on" property="executionDate" format="{0,date,dd.MM.yyyy HH:mm:ss}" sortable="true">
 			</display:column> 
-			<display:column title="Methods" paramId="methodId" paramProperty="id" href="/app/ShowTestMethodDetails">
+			<display:column title="Methods" paramId="methodId" paramProperty="id" href="/app/${classInfo.id}/ShowClassDetails">
 				<button class="btn btn-primary btn-xs" id="listM" value="List Runs">List Executions</button>
 			</display:column>									
 		</display:table>
