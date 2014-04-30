@@ -6,7 +6,6 @@ import java.util.Comparator;
 import java.util.Iterator;
 import java.util.List;
 
-import org.junit.rules.TestName;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -49,12 +48,27 @@ public class ClassController {
 		ModelMap details = new ModelMap();
 		details.addAttribute("projectsList", projectService.list());
 		details.addAttribute("project", project);
-		details.addAttribute("classInfos", classInfo);
+		details.addAttribute("classInfo", classInfo);
 		details.addAttribute("testInfos", populateTestInofbean(testInfos));
 
 		execInfos = getLastExecutionOfTest(testInfos);
 		details.addAttribute("execInfos", execInfos);
 		return new ModelAndView("ShowClassDetails", details);
+	}
+
+	@RequestMapping(value = "/ShowTestMethodDetails", method = RequestMethod.GET)
+	public ModelAndView showRunsOfTest(@RequestParam("methodId") long methodId) {
+		TestInfo testInfo = testInfoService.load(methodId);
+		List<TestInfo> testInfos = testInfoService.listBy(testInfo.getClassInfo());
+		ModelMap details = new ModelMap();
+		details.addAttribute("projectsList", projectService.list());
+		details.addAttribute("project", testInfo.getClassInfo().getProject());
+		details.addAttribute("classInfo", testInfo.getClassInfo());
+		details.addAttribute("testInfos", populateTestInofbean(testInfos));
+		details.addAttribute("execInfos", testInfo.getExecInfo());
+
+		return new ModelAndView("ShowClassDetails", details);
+
 	}
 
 	private List<ExecInfo> getLastExecutionOfTest(List<TestInfo> testInfos) {
@@ -83,10 +97,10 @@ public class ClassController {
 		});
 		return eInfos;
 	}
-	
-	private List<TestInfoBean> populateTestInofbean (List<TestInfo> testInfos) {
-		List<TestInfoBean> tBeans = new ArrayList<TestInfoBean>();		
-		for (TestInfo testInfo : testInfos) {	
+
+	private List<TestInfoBean> populateTestInofbean(List<TestInfo> testInfos) {
+		List<TestInfoBean> tBeans = new ArrayList<TestInfoBean>();
+		for (TestInfo testInfo : testInfos) {
 			TestInfoBean tbean = new TestInfoBean();
 			List<ExecInfo> execI = execInfoService.listByExecDatedesc(testInfo);
 			if (!execI.isEmpty()) {
@@ -98,7 +112,7 @@ public class ClassController {
 			tbean.setExecutionDate(testInfo.getExecutionDate());
 			tBeans.add(tbean);
 		}
-		
+
 		return tBeans;
 	}
 }
