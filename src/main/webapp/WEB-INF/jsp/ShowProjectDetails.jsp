@@ -98,7 +98,7 @@ $(document).ready(function() {
 			<display:column title="Folder Location" property="path" paramId="path" paramProperty="path" sortable="true">
 			</display:column>
 			<display:column title="Methods" paramId="classId" paramProperty="id" href="/app/ShowClassDetails">
-				<button class="btn btn-primary btn-xs" id="listM" value="List Methods" onclick="showMethodOfClass('methods')">List Methods</button>
+				<button class="btn btn-info btn-xs" id="listM" value="List Methods" onclick="showMethodOfClass('methods')">List Methods</button>
 			</display:column>
 			<%-- 			<display:column title="Methods name"> --%>
 			<%-- 				<c:forEach var="cl" items="${dir.testInfo}"> --%>
