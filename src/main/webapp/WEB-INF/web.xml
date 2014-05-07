@@ -36,7 +36,10 @@ http://java.sun.com/xml/ns/j2ee/web-app_2_5.xsd">
 		<error-code>404</error-code>
 		<location>/app/index</location>
 	</error-page>
-	
+<!-- 	<error-page> -->
+<!-- 	    <exception-type>java.lang.Exception</exception-type> -->
+<!-- 	    <location>/app/error.jsp</location> -->
+<!-- 	</error-page> -->
 	<filter>
    		<filter-name>OpenSessionInViewFilter</filter-name>
    	    <filter-class>org.springframework.orm.hibernate4.support.OpenSessionInViewFilter</filter-class>
