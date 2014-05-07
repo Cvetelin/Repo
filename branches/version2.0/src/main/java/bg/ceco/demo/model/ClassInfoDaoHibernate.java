@@ -48,6 +48,7 @@ public class ClassInfoDaoHibernate implements ClassInfoDao {
 	}
 
 	@Override
+	@SuppressWarnings("unchecked")
 	public List<ClassInfo> loadBy(String qualifiedName) {
 		Criteria crit = sessionFactory.getCurrentSession().createCriteria(ClassInfo.class)
 				.add(Restrictions.eq("qualifiedName", qualifiedName));

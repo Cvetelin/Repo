@@ -68,7 +68,7 @@ public class RunTestClassesController {
 
 			Set<TestInfo> failedTests = new HashSet<TestInfo>();
 			List<Failure> failures = result.getFailures();
-			if (failures.get(0).getDescription().getDisplayName().contains("initializationError")) {
+			if (!failures.isEmpty() && failures.get(0).getDescription().getDisplayName().contains("initializationError")) {
 				for (TestInfo tInfo : classInfo.getTestInfo()) {
 					TestInfo tInClass = testInfoService.loadBy(classInfo, tInfo.getName());
 					execInfo = new ExecInfo();
@@ -132,7 +132,6 @@ public class RunTestClassesController {
 		return new ModelAndView("redirect:/app/ShowClassDetails", "classId", classInfo.getId());
 	}
 
-	
 	@RequestMapping(value = "{id}/method", method = RequestMethod.GET)
 	public ModelAndView runMethodWithJunit(@RequestParam("classId") long classId, @PathVariable long id) {
 		ClassInfo classInfo = classInfoService.load(classId);
@@ -145,11 +144,11 @@ public class RunTestClassesController {
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
-			
+
 		}
 		return null;
-		}
-	
+	}
+
 	@RequestMapping(value = "/GetTestClasses", method = RequestMethod.GET)
 	public String getClasses() throws Exception {
 		ModelMap map = new ModelMap();
