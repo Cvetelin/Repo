@@ -11,6 +11,21 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
+<script type="text/javascript">
+$(document).ready(function() { 
+    $('[value~=RunTest]').click(function() { 
+        $.blockUI({ css: { 
+            border: 'none', 
+            padding: '15px', 
+            backgroundColor: '#000', 
+            '-webkit-border-radius': '10px', 
+            '-moz-border-radius': '10px', 
+            opacity: .5, 
+            color: '#fff' 
+        } }); 
+    }); 
+}); 
+</script>
 </head>
 <body>
 	<%@ include file="include/UpperBody.jspf"%>
@@ -31,8 +46,8 @@
 			<display:column  paramId="methodId" paramProperty="id" href="/app/${classInfo.id}/ShowClassDetails">
 				<button class="btn btn-info btn-xs" id="listM" value="List Runs" >List Executions</button>
 			</display:column>
-			<display:column  paramId="methodId" paramProperty="id" >
-				<button class="btn btn-primary btn-xs" id="listM" value="Run Test" >Run Test</button>
+			<display:column  paramId="methodId" paramProperty="id"  href="/app/runTest">
+				<button class="btn btn-primary btn-xs" id="listM" value="RunTest" >Run Test</button>
 			</display:column>									
 		</display:table>
 	</div>

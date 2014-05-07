@@ -61,7 +61,7 @@ $(document).ready(function() {
 			<display:column paramId="classId" paramProperty="id" href="/app/ShowClassDetails">
 				<button class="btn btn-info btn-xs" id="listM" value="List Methods" onclick="showMethodOfClass('methods')">List Methods</button>
 			</display:column>
-			<display:column href="/app/RunClass" paramId="id" paramProperty="id" class="col-sm2 col-md-1 col-lg-1">
+			<display:column href="/app/runClass" paramId="classId" paramProperty="id" class="col-sm2 col-md-1 col-lg-1">
 				<button class="btn btn-primary btn-xs" name="projectForm" id="runClass">Execute Test Class</button>
 			</display:column>
 		</display:table>

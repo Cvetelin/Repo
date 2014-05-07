@@ -38,11 +38,11 @@ public class TestMestTest {
 		driver.findElement(By.name("A[profession]")).sendKeys("QA");
 		new Select(driver.findElement(By.name("A[pays_residence_fiscale]"))).selectByVisibleText("FRANCE");
 
-		new Select(driver.findElement(By.name("A[situation_famille]"))).selectByVisibleText("Célibataire");
+		new Select(driver.findElement(By.name("A[situation_famille]"))).selectByVisibleText("Pacs");
 		new Select(driver.findElement(By.name("A[contribuable_americain]"))).selectByVisibleText("Non");
 
-		new Select(driver.findElement(By.name("A[revenus]"))).selectByVisibleText("Entre 101 000 et 150 000 €");
-		new Select(driver.findElement(By.name("A[patrimoine]"))).selectByVisibleText("Entre 751 000 et 1 500 000 €");
+		new Select(driver.findElement(By.name("A[revenus]"))).selectByVisibleText("Entre 101 000 et 150 000 "+"\u20AC");
+		new Select(driver.findElement(By.name("A[patrimoine]"))).selectByVisibleText("Entre 751 000 et 1 500 000 "+"\u20AC");
 
 		new Select(driver.findElement(By.name("A[saving]"))).selectByVisibleText("Entre 30% et 60% de mon épargne");
 
