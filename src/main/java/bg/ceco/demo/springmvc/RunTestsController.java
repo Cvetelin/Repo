@@ -8,6 +8,8 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Set;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.apache.commons.io.FileUtils;
 import org.apache.commons.io.filefilter.FileFilterUtils;
 import org.apache.commons.io.filefilter.IOFileFilter;
@@ -16,6 +18,7 @@ import org.apache.commons.lang.StringUtils;
 import org.junit.runner.Result;
 import org.junit.runner.notification.Failure;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -120,7 +123,7 @@ public class RunTestsController {
 	}
 
 	@RequestMapping(value = "/runTest", method = RequestMethod.GET)
-	public ModelAndView runMethodWithJunit(@RequestParam("methodId") long methodId) {
+	public ModelAndView runMethodWithJunit(@RequestParam("methodId") long methodId, HttpServletRequest request) {
 		TestInfo testInfo = testInfoService.load(methodId);
 		ClassInfo classInfo = classInfoService.load(testInfo.getClassInfo().getId());
 		Result result = null;
@@ -166,7 +169,7 @@ public class RunTestsController {
 			return new ModelAndView("redirect:/app/ShowClassDetails", "classId", classInfo.getId());
 			
 		} catch (Exception e) {
-			e.printStackTrace();
+			request.getSession().setAttribute("error", e.getMessage());
 		} finally {
 
 		}
@@ -227,7 +230,7 @@ public class RunTestsController {
 		boolean siSuccesful = true;
 		for (Iterator<ExecInfo> iterator = getLastExecutionOfTest(testInfos).iterator(); iterator.hasNext();) {
 			ExecInfo execInfo = (ExecInfo) iterator.next();
-			if (!execInfo.getFailureReason().isEmpty()) {
+			if (execInfo.getFailureReason() != null) {
 				siSuccesful = false;
 				return siSuccesful;
 			}			

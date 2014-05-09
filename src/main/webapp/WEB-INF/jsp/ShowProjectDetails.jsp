@@ -80,7 +80,7 @@ $(document).ready(function() {
 	</div>
 	<br></br>
 	<div class="row" id="classes">
-		<display:table name="classInfos" id="dir" class="col-sm-12 col-md-12 col-lg-12 text-center table-bordered table-hover title headtitle-link"
+		<display:table name="classInfos" id="class" class="col-sm-12 col-md-12 col-lg-12 text-center table-bordered table-hover title headtitle-link"
 			requestURI="ShowProjectDetails" defaultsort="1">
 			<display:column title="Class name" property="name" paramId="id" paramProperty="id" sortable="true">
 			</display:column>
@@ -91,23 +91,30 @@ $(document).ready(function() {
 			<display:column title="#Failed" sortable="true">
 			</display:column>
 			<display:column title="Status" sortable="true">
-				<tags:yesno value="${dir.success}"/>
+				<tags:yesno value="${class.success}"/>
 			</display:column>
 			<display:column title="Qualified name" property="qualifiedName" >
 			</display:column>
 			<display:column title="Folder Location" property="path" paramId="path" paramProperty="path" sortable="true">
 			</display:column>
-			<display:column title="Methods" paramId="classId" paramProperty="id" href="/app/ShowClassDetails">
-				<button class="btn btn-info btn-xs" id="listM" value="List Methods" onclick="showMethodOfClass('methods')">List Methods</button>
+			<display:column paramId="classId" paramProperty="id" href="/app/ShowClassDetails">
+				<c:if test="${not empty class.testInfo}">
+					<button class="btn btn-info btn-xs" id="listM" value="List Methods" onclick="showMethodOfClass('methods')">List Methods</button>
+				</c:if>
 			</display:column>
-			<%-- 			<display:column title="Methods name"> --%>
-			<%-- 				<c:forEach var="cl" items="${dir.testInfo}"> --%>
-			<%-- 					<c:out value="${cl.name}"></c:out> --%>
-			<%-- 				</c:forEach> --%>
-			<%-- 			</display:column>  ${dir_rowNum} --%>
-
-			<display:column href="/app/RunClass" paramId="id" paramProperty="id">
-				<button class="btn btn-primary btn-xs" id="runClass" name="projectForm" value="Execute Test Class">Execute Test Class</button>
+			<display:column>
+				<c:choose>
+					<c:when test="${not empty class.testInfo}">
+						<a href="/app/runClass?classId=${class.id}">
+							<button class="btn btn-primary btn-xs" id="runClass" name="projectForm" value="Execute Test Class" >Execute Test Class</button>
+						</a>
+					</c:when>
+					<c:otherwise>
+						<font color="red">							
+							<c:out value="No methods found"/>
+						</font>	
+					</c:otherwise>
+				</c:choose>	
 			</display:column>
 		</display:table>
 	</div>
