@@ -73,7 +73,7 @@ public class ClassController {
 
 	private List<ExecInfo> getLastExecutionOfTest(List<TestInfo> testInfos) {
 		List<ExecInfo> execInfos = new ArrayList<ExecInfo>();
-		for (Iterator iterator = testInfos.iterator(); iterator.hasNext();) {
+		for (Iterator<TestInfo> iterator = testInfos.iterator(); iterator.hasNext();) {
 			TestInfo tInfo = (TestInfo) iterator.next();
 			List<ExecInfo> eInfos = execInfoService.listBy(tInfo);
 			execInfos.addAll(eInfos);

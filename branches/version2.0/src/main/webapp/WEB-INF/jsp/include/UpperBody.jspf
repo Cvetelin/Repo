@@ -41,7 +41,7 @@ $(document).ready(function() {
 	</div>
 	<br></br>
 	<div class="row" id="classes">
-		<display:table name="classInfo" id="dir" class="col-sm-12 col-md-12 col-lg-12 text-center table-bordered table-hover title headtitle-link"
+		<display:table name="classInfo" id="class" class="col-sm-12 col-md-12 col-lg-12 text-center table-bordered table-hover title headtitle-link"
 			requestURI="ShowProjectDetails" defaultsort="1">
 			<display:column title="Class name" property="name" paramId="id" paramProperty="id">
 			</display:column>
@@ -52,7 +52,7 @@ $(document).ready(function() {
 			<display:column title="#Failed tests">
 			</display:column>
 			<display:column title="Last run Status"  class="col-sm2 col-md-1 col-lg-1">
-				<tags:yesno value="${dir.success}"/>
+				<tags:yesno value="${class.success}"/>
 			</display:column>
 			<display:column title="Qualified name" property="qualifiedName" >
 			</display:column>
@@ -63,7 +63,7 @@ $(document).ready(function() {
 			</display:column>
 			<display:column href="/app/runClass" paramId="classId" paramProperty="id" class="col-sm2 col-md-1 col-lg-1">
 				<button class="btn btn-primary btn-xs" name="projectForm" id="runClass">Execute Test Class</button>
-			</display:column>
+			</display:column>			
 		</display:table>
 	</div>
 	<br></br>
