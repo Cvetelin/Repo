@@ -13,6 +13,8 @@ public interface ClassInfoService {
 
 	public abstract ClassInfo load(long id);
 
+	public abstract ClassInfo get(long id);
+
 	public abstract void save(ClassInfo classInfo);
 
 	public abstract void update(ClassInfo classInfo);

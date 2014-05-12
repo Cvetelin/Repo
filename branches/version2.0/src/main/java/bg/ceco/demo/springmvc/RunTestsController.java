@@ -1,6 +1,5 @@
 package bg.ceco.demo.springmvc;
 
-import java.io.File;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashSet;
@@ -10,15 +9,9 @@ import java.util.Set;
 
 import javax.servlet.http.HttpServletRequest;
 
-import org.apache.commons.io.FileUtils;
-import org.apache.commons.io.filefilter.FileFilterUtils;
-import org.apache.commons.io.filefilter.IOFileFilter;
-import org.apache.commons.io.filefilter.TrueFileFilter;
-import org.apache.commons.lang.StringUtils;
 import org.junit.runner.Result;
 import org.junit.runner.notification.Failure;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -50,19 +43,16 @@ public class RunTestsController {
 
 	@RequestMapping(value = "/runClass", method = RequestMethod.GET)
 	public ModelAndView runClassWithJunit(@RequestParam("classId") long id) {
-		ClassInfo classInfo = classInfoService.load(id);
+		ClassInfo classInfo = classInfoService.get(id);
 		Result result = null;
 		TestRunner runner = new TestRunner();
 		TestInfo testInfo = new TestInfo();
-		ExecInfo execInfo = new ExecInfo();
 		try {
 			result = runner.runClass(classInfo);
-		} catch (Exception e) {
-			e.printStackTrace();
-		} finally {
-			if (result.getFailureCount() == 0) {
-				classInfo.setSuccess(true);
-			}
+			// if (result.getFailureCount() == 0) {
+			// classInfo.setSuccess(true);
+			// }
+			classInfo.setSuccess(result.wasSuccessful());
 			Date date = new Date();
 			classInfo.setExecutionDate(date);
 
@@ -77,48 +67,34 @@ public class RunTestsController {
 				for (Iterator<Failure> iterator = failures.iterator(); iterator.hasNext();) {
 					Failure failure = (Failure) iterator.next();
 					testInfo = matchMethods(classInfo, failure.getDescription().getMethodName());
-					execInfo = new ExecInfo();
 					if (testInfo != null) {
-						failedTests.add(testInfo);
-						failure.getException();
-						execInfo.setExecutionDate(date);
-						execInfo.setFailureReason(failure.getMessage() + "\n" + failure.getTrace());
-						execInfo.setTestInfo(testInfo);
-						execInfoService.save(execInfo);
-
-						testInfo.setExecutionDate(date);
-						testInfoService.update(testInfo);
+						updateOnFailure(testInfo, failure, date);
 					}
 				}
 			}
-			
+
 			TestInfo testInClass = null;
 			for (TestInfo tInfo : classInfo.getTestInfo()) {
 				if (!failedTests.contains(tInfo)) {
-					execInfo = new ExecInfo();
 					testInClass = testInfoService.loadBy(classInfo, tInfo.getName());
-					execInfo.setExecutionDate(date);
-					execInfo.setStatus(true);
-					execInfo.setTestInfo(testInClass);
-					execInfoService.save(execInfo);
-
-					testInClass.setExecutionDate(date);
-					testInfoService.update(testInClass);
+					updateOnSuccess(testInClass, date);
 				}
 			}
 			classInfoService.update(classInfo);
 
+		} catch (Exception e) {
+			e.printStackTrace();
 		}
-
-//		Project project = projectService.load(classInfo.getProject().getId());
-//		List<TestInfo> testInfos = testInfoService.listBy(classInfo);
-//		ModelMap details = new ModelMap();
-//		details.addAttribute("projectsList", projectService.list());
-//		details.addAttribute("project", project);
-//		details.addAttribute("classInfos", classInfo);
-//		details.addAttribute("testInfos", testInfos);
-//		List<ExecInfo> execInfos = getLastExecutionOfTest(testInfos);
-//		details.addAttribute("execInfos", execInfos);
+		// Project project =
+		// projectService.load(classInfo.getProject().getId());
+		// List<TestInfo> testInfos = testInfoService.listBy(classInfo);
+		// ModelMap details = new ModelMap();
+		// details.addAttribute("projectsList", projectService.list());
+		// details.addAttribute("project", project);
+		// details.addAttribute("classInfos", classInfo);
+		// details.addAttribute("testInfos", testInfos);
+		// List<ExecInfo> execInfos = getLastExecutionOfTest(testInfos);
+		// details.addAttribute("execInfos", execInfos);
 		return new ModelAndView("redirect:/app/ShowClassDetails", "classId", classInfo.getId());
 	}
 
@@ -128,80 +104,33 @@ public class RunTestsController {
 		ClassInfo classInfo = classInfoService.load(testInfo.getClassInfo().getId());
 		Result result = null;
 		TestRunner runner = new TestRunner();
-//		TestInfo testInfo = new TestInfo();
-		ExecInfo execInfo = new ExecInfo();
 		try {
 			result = runner.runMethod(classInfo, testInfo);
 			List<Failure> failures = result.getFailures();
 			Date date = new Date();
-			
+
 			if (isInitializationError(failures, classInfo, date)) {
 				return new ModelAndView("redirect:/app/ShowClassDetails", "classId", classInfo.getId());
 			}
-			
-			if(!failures.isEmpty()){				
+
+			if (!failures.isEmpty()) {
 				for (Iterator<Failure> iterator = failures.iterator(); iterator.hasNext();) {
 					Failure failure = (Failure) iterator.next();
 					testInfo = matchMethods(classInfo, failure.getDescription().getMethodName());
-					execInfo = new ExecInfo();
-					execInfo.setExecutionDate(date);
-					execInfo.setFailureReason(failures.get(0).getMessage());
-					execInfo.setTestInfo(testInfo);
-					execInfoService.save(execInfo);
-
-					testInfo.setExecutionDate(date);
-					testInfoService.update(testInfo);
+					updateOnFailure(testInfo, failure, date);
 				}
 				return new ModelAndView("redirect:/app/ShowClassDetails", "classId", classInfo.getId());
 			}
-			
-			execInfo.setExecutionDate(date);
-			execInfo.setStatus(true);
-			execInfo.setTestInfo(testInfo);
-			execInfoService.save(execInfo);
+			updateOnSuccess(testInfo, date);
 
-			testInfo.setExecutionDate(date);
-			testInfoService.update(testInfo);
-			
 			classInfo.setSuccess(isClassSuccesful(classInfo.getTestInfo()));
 			classInfoService.update(classInfo);
-			
-			return new ModelAndView("redirect:/app/ShowClassDetails", "classId", classInfo.getId());
-			
+
 		} catch (Exception e) {
 			request.getSession().setAttribute("error", e.getMessage());
-		} finally {
-
 		}
-		return null;
+		return new ModelAndView("redirect:/app/ShowClassDetails", "classId", classInfo.getId());
 	}
-
-//	@RequestMapping(value = "/GetTestClasses", method = RequestMethod.GET)
-//	public String getClasses() throws Exception {
-//		getAlltest();
-//		return "redirect:/app/ShowTestClasses";
-//	}
-//
-//	private void getAlltest() throws Exception {
-//		FileUtils operate = new FileUtils();
-//		IOFileFilter fileFilter = FileFilterUtils.suffixFileFilter("java");
-//		Iterator<File> files = operate.iterateFiles(new File(Constants.testLocationPath()), fileFilter, TrueFileFilter.INSTANCE);
-//		while (files.hasNext()) {
-//			File file = (File) files.next();
-//			ClassInfo info = new ClassInfo();
-//			info.setName(file.getName());
-//			info.setPath(file.getCanonicalPath());
-//			info.setQualifiedName(constructQualifiedName(file.getCanonicalPath()));
-//			classInfoService.save(info);
-//		}
-//	}
-
-//	private String constructQualifiedName(String path) throws Exception {
-//		String qualifiedName = path.replace(Constants.testLocationPath() + "\\", StringUtils.EMPTY).replace("\\", ".")
-//				.replace(".java", StringUtils.EMPTY);
-//		// qualifiedName.replace("java", "class");
-//		return qualifiedName;
-//	}
 
 	private TestInfo matchMethods(ClassInfo classInfo, String nameOfExecutedTest) {
 		TestInfo testInClass = null;
@@ -225,20 +154,20 @@ public class RunTestsController {
 		}
 		return execInfos;
 	}
-	
-	private boolean isClassSuccesful (Set<TestInfo> testInfos) {
+
+	private boolean isClassSuccesful(Set<TestInfo> testInfos) {
 		boolean siSuccesful = true;
 		for (Iterator<ExecInfo> iterator = getLastExecutionOfTest(testInfos).iterator(); iterator.hasNext();) {
 			ExecInfo execInfo = (ExecInfo) iterator.next();
 			if (execInfo.getFailureReason() != null) {
 				siSuccesful = false;
 				return siSuccesful;
-			}			
+			}
 		}
 		return siSuccesful;
 	}
 
-	private boolean isInitializationError(List<Failure> failures , ClassInfo classInfo, Date date) {
+	private boolean isInitializationError(List<Failure> failures, ClassInfo classInfo, Date date) {
 		ExecInfo execInfo = new ExecInfo();
 		if (!failures.isEmpty() && failures.get(0).getDescription().getDisplayName().contains("initializationError")) {
 			for (TestInfo tInfo : classInfo.getTestInfo()) {
@@ -256,5 +185,29 @@ public class RunTestsController {
 		}
 		return false;
 	}
-	
+
+	private void updateOnSuccess(TestInfo testInfo, Date date) {
+		ExecInfo execInfo = new ExecInfo();
+		// TestInfo testInClass = testInfoService.loadBy(classInfo,
+		// testInfo.getName());
+		execInfo.setExecutionDate(date);
+		execInfo.setStatus(true);
+		execInfo.setTestInfo(testInfo);
+
+		execInfoService.save(execInfo);
+
+		testInfo.setExecutionDate(date);
+		testInfoService.update(testInfo);
+	}
+
+	private void updateOnFailure(TestInfo testInfo, Failure failure, Date date) {
+		ExecInfo execInfo = new ExecInfo();
+		execInfo.setExecutionDate(date);
+		execInfo.setFailureReason(failure.getMessage() + "\n" + failure.getTrace());
+		execInfo.setTestInfo(testInfo);
+		execInfoService.save(execInfo);
+
+		testInfo.setExecutionDate(date);
+		testInfoService.update(testInfo);
+	}
 }

@@ -6,6 +6,8 @@ public interface ClassInfoDao {
 
 	public ClassInfo load(long id);
 
+	public ClassInfo get(long id);
+
 	public void save(ClassInfo testClassDirInfo);
 
 	public void update(ClassInfo testClassDirInfo);

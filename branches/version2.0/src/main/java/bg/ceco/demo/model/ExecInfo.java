@@ -38,6 +38,9 @@ public class ExecInfo {
 	@Column(name = "STATUS")
 	private boolean status;
 
+	@Column(name = "RUN_TIME")
+	private Long runTime;
+
 	public ExecInfo() {
 
 	}
@@ -104,6 +107,14 @@ public class ExecInfo {
 
 	public void setStatus(boolean status) {
 		this.status = status;
+	}
+
+	public Long getRunTime() {
+		return runTime;
+	}
+
+	public void setRunTime(Long runTime) {
+		this.runTime = runTime;
 	}
 
 	// public String getPathToParentDir() {
