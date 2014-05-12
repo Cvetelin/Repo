@@ -37,7 +37,7 @@ $(document).ready(function() {
 		
 			<display:column title="Methods in Class" property="name" paramId="id" paramProperty="id" sortable="true" />
 			<display:column title="Number of runs" property="numberOfExections" sortable="true"/>
-			<display:column title="Last run status" sortable="true">
+			<display:column title="Last result" sortable="true">
 					<tags:yesno value="${test.lastRunStatus}"/>
 				</display:column>	
 			<display:column title="Last run on" property="executionDate" format="{0,date,dd.MM.yyyy HH:mm:ss}" sortable="true"/>			
@@ -57,10 +57,10 @@ $(document).ready(function() {
 		<display:table name="execInfos" id="exec" class="col-md-12 table-bordered table-hover title text-center headtitle-link"
 			requestURI="ShowClassDetails" defaultsort="1">
 			<display:column title="Test method name" property="testInfo.name" paramId="id" paramProperty="testInfo.id" sortable="true"/>			
-			<display:column title="Status" sortable="true">
+			<display:column title="Result" sortable="true">
 				<tags:yesno value="${exec.status}"/>
 			</display:column>
-			<display:column title="Run Date" property="executionDate" format="{0,date,dd.MM.yyyy HH:mm:ss}" sortable="true"/>
+			<display:column title="Run on" property="executionDate" format="{0,date,dd.MM.yyyy HH:mm:ss}" sortable="true"/>
 			<display:column title="Failure reason" property="failureReason" maxLength="150" />				
 		</display:table>
 		</c:if>

@@ -81,7 +81,6 @@ public class ClassController {
 		return execInfos;
 	}
 
-	@SuppressWarnings("unchecked")
 	private List<ExecInfo> sortByDate(List<ExecInfo> eInfos) {
 
 		// File files[] = folder.listFiles();

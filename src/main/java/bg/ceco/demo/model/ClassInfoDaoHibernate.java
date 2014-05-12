@@ -14,21 +14,27 @@ public class ClassInfoDaoHibernate implements ClassInfoDao {
 	@Autowired
 	private SessionFactory sessionFactory;
 
+	@Override
 	public ClassInfo load(long id) {
 		return (ClassInfo) sessionFactory.getCurrentSession().load(ClassInfo.class, id);
-
 	}
 
+	@Override
+	public ClassInfo get(long id) {
+		return (ClassInfo) sessionFactory.getCurrentSession().get(ClassInfo.class, id);
+	}
+
+	@Override
 	public void save(ClassInfo classInfo) {
 		sessionFactory.getCurrentSession().save(classInfo);
-
 	}
 
+	@Override
 	public void update(ClassInfo classInfo) {
 		sessionFactory.getCurrentSession().update(classInfo);
-
 	}
 
+	@Override
 	public void delete(ClassInfo classInfo) {
 		sessionFactory.getCurrentSession().delete(classInfo);
 	}
@@ -41,6 +47,7 @@ public class ClassInfoDaoHibernate implements ClassInfoDao {
 	}
 
 	@SuppressWarnings("unchecked")
+	@Override
 	public List<ClassInfo> listBy(Project project) {
 		Criteria crit = sessionFactory.getCurrentSession().createCriteria(ClassInfo.class).add(Restrictions.eq("project", project));
 		List<ClassInfo> classInfo = crit.list();
@@ -70,5 +77,4 @@ public class ClassInfoDaoHibernate implements ClassInfoDao {
 			sessionFactory.getCurrentSession().save(element.get(i));
 		}
 	}
-
 }

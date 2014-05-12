@@ -38,6 +38,16 @@ public class ClassInfoServiceImpl implements ClassInfoService {
 	/*
 	 * (non-Javadoc)
 	 * 
+	 * @see bg.ceco.demo.logic.ClassInfoService#get(long)
+	 */
+	@Override
+	public ClassInfo get(long id) {
+		return classInfoDao.get(id);
+	}
+
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see
 	 * bg.ceco.demo.logic.ClassInfoService#save(bg.ceco.demo.model.ClassInfo)
 	 */

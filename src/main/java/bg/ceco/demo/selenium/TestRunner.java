@@ -13,26 +13,18 @@ import javassist.CtClass;
 import org.junit.runner.JUnitCore;
 import org.junit.runner.Request;
 import org.junit.runner.Result;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
 
-import bg.ceco.demo.logic.ProjectService;
-import bg.ceco.demo.logic.TestListenerImpl;
 import bg.ceco.demo.model.ClassInfo;
 import bg.ceco.demo.model.Project;
 import bg.ceco.demo.model.TestInfo;
 
-@Controller
 public class TestRunner {
-
-	@Autowired
-	public ProjectService projectService;
 
 	public Result runClass(ClassInfo classInfo) throws Exception {
 		Class<?> cls = loadClassFormJar(classInfo);
 
 		JUnitCore runner = new JUnitCore();
-		runner.addListener(new TestListenerImpl());
+		runner.addListener(new TestListener());
 
 		return runner.run(cls);
 
@@ -44,7 +36,7 @@ public class TestRunner {
 		Request request = Request.method(cls, testInfo.getName());
 
 		JUnitCore runner = new JUnitCore();
-		runner.addListener(new TestListenerImpl());
+		runner.addListener(new TestListener());
 
 		return runner.run(request);
 

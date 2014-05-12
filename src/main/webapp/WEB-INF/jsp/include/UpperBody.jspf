@@ -45,13 +45,13 @@ $(document).ready(function() {
 			requestURI="ShowProjectDetails" defaultsort="1">
 			<display:column title="Class name" property="name" paramId="id" paramProperty="id">
 			</display:column>
-			<display:column title="Last Execution Date" property="executionDate"  format="{0,date,dd.MM.yyyy HH:mm:ss}">
+			<display:column title="Last run on" property="executionDate"  format="{0,date,dd.MM.yyyy HH:mm:ss}">
 			</display:column>
 			<display:column title="#Successful tests">
 			</display:column>
 			<display:column title="#Failed tests">
 			</display:column>
-			<display:column title="Last run Status"  class="col-sm2 col-md-1 col-lg-1">
+			<display:column title="Latest result"  class="col-sm2 col-md-1 col-lg-1">
 				<tags:yesno value="${class.success}"/>
 			</display:column>
 			<display:column title="Qualified name" property="qualifiedName" >
@@ -62,7 +62,7 @@ $(document).ready(function() {
 				<button class="btn btn-info btn-xs" id="listM" value="List Methods" onclick="showMethodOfClass('methods')">List Methods</button>
 			</display:column>
 			<display:column href="/app/runClass" paramId="classId" paramProperty="id" class="col-sm2 col-md-1 col-lg-1">
-				<button class="btn btn-primary btn-xs" name="projectForm" id="runClass">Execute Test Class</button>
+				<button class="btn btn-primary btn-xs" name="projectForm" id="runClass">Run Class</button>
 			</display:column>			
 		</display:table>
 	</div>
