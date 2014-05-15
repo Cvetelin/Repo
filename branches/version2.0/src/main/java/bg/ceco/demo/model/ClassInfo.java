@@ -48,18 +48,14 @@ public class ClassInfo {
 	@JoinColumn(name = "PPROJECT_ID", nullable = false)
 	private Project project;
 
-	public Project getProject() {
-		return project;
-	}
-
 	@OneToMany(mappedBy = "classInfo", cascade = CascadeType.ALL, fetch = FetchType.LAZY, orphanRemoval = true)
 	private Set<TestInfo> testInfo;
 
-	public void setProject(Project project) {
-		this.project = project;
-	}
+	@Column(name = "NUBER_TESTS")
+	private Integer numberOfTests;
 
-	public ClassInfo() {
+	public Project getProject() {
+		return project;
 	}
 
 	public ClassInfo(long id, String name, String qualifiedName, String path, Date executionDate, boolean success, Project project) {
@@ -70,6 +66,21 @@ public class ClassInfo {
 		this.executionDate = executionDate;
 		this.success = success;
 		this.project = project;
+	}
+
+	public Integer getNumberOfTests() {
+		return numberOfTests;
+	}
+
+	public void setNumberOfTests(Integer numberOfTests) {
+		this.numberOfTests = numberOfTests;
+	}
+
+	public void setProject(Project project) {
+		this.project = project;
+	}
+
+	public ClassInfo() {
 	}
 
 	public Set<TestInfo> getTestInfo() {

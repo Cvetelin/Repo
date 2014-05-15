@@ -13,18 +13,24 @@ import javassist.CtClass;
 import org.junit.runner.JUnitCore;
 import org.junit.runner.Request;
 import org.junit.runner.Result;
+import org.springframework.stereotype.Controller;
 
+import bg.ceco.demo.logic.listener.TestListenerImpl;
 import bg.ceco.demo.model.ClassInfo;
+import bg.ceco.demo.model.ExecInfo;
 import bg.ceco.demo.model.Project;
 import bg.ceco.demo.model.TestInfo;
 
+@Controller
 public class TestRunner {
 
 	public Result runClass(ClassInfo classInfo) throws Exception {
 		Class<?> cls = loadClassFormJar(classInfo);
+		TestInfo testInfo = new TestInfo();
+		ExecInfo execInfo = new ExecInfo();
 
 		JUnitCore runner = new JUnitCore();
-		runner.addListener(new TestListener());
+		runner.addListener(new TestListenerImpl(classInfo, testInfo, execInfo));
 
 		return runner.run(cls);
 

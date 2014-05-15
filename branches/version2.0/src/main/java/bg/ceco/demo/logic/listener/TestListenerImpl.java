@@ -1,15 +1,17 @@
 package bg.ceco.demo.logic.listener;
 
+import java.util.Date;
+import java.util.Iterator;
+import java.util.Set;
+
 import org.junit.runner.Description;
 import org.junit.runner.Result;
 import org.junit.runner.notification.Failure;
 import org.junit.runner.notification.RunListener;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import bg.ceco.demo.logic.ClassInfoService;
-import bg.ceco.demo.logic.TestInfoService;
 import bg.ceco.demo.model.ClassInfo;
+import bg.ceco.demo.model.ExecInfo;
 import bg.ceco.demo.model.TestInfo;
 
 @Component
@@ -19,11 +21,7 @@ public class TestListenerImpl extends RunListener {
 
 	private TestInfo testInfo;
 
-	@Autowired
-	ClassInfoService classInfoService;
-
-	@Autowired
-	TestInfoService testInfoService;
+	private ExecInfo execInfo;
 
 	public TestListenerImpl(ClassInfo cnfo) {
 		this.classInfo = cnfo;
@@ -35,6 +33,13 @@ public class TestListenerImpl extends RunListener {
 		this.testInfo = tInfo;
 	}
 
+	public TestListenerImpl(ClassInfo cnfo, TestInfo tInfo, ExecInfo eInfo) {
+		super();
+		this.classInfo = cnfo;
+		this.testInfo = tInfo;
+		this.execInfo = eInfo;
+	}
+
 	public TestListenerImpl() {
 	}
 
@@ -42,8 +47,8 @@ public class TestListenerImpl extends RunListener {
 	 * Called before any tests have been run.
 	 * */
 	public void testRunStarted(Description description) throws java.lang.Exception {
+		classInfo.setNumberOfTests(description.testCount());
 		System.out.println("Number of testcases to execute : " + description.testCount());
-		System.out.println("Method name : " + description.getMethodName());
 	}
 
 	/**
@@ -60,9 +65,10 @@ public class TestListenerImpl extends RunListener {
 	 * */
 	@Override
 	public void testStarted(Description description) throws java.lang.Exception {
-		matchMethods(classInfo, description.getMethodName());
+		Date date = new Date();
+		execInfo.setExecutionDate(date);
+		testInfo = matchMethods(classInfo, description.getMethodName());
 		System.out.println("Starting execution of test case : " + description.getMethodName());
-
 	}
 
 	/**
@@ -91,13 +97,13 @@ public class TestListenerImpl extends RunListener {
 	}
 
 	private TestInfo matchMethods(ClassInfo classInfo, String nameOfExecutedTest) {
-		try {
-			TestInfo testInfo = testInfoService.loadBy(classInfo, nameOfExecutedTest);
-			if (testInfo != null) {
+		TestInfo testInClass = null;
+		Set<TestInfo> testsInClass = classInfo.getTestInfo();
+		for (Iterator<TestInfo> iterator = testsInClass.iterator(); iterator.hasNext();) {
+			TestInfo testInfo = (TestInfo) iterator.next();
+			if (testInfo.getName().equals(nameOfExecutedTest)) {
 				return testInfo;
 			}
-		} catch (Exception e) {
-			e.printStackTrace();
 		}
 		return null;
 	}
