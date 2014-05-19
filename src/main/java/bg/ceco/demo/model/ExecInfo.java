@@ -45,12 +45,17 @@ public class ExecInfo {
 
 	}
 
-	public ExecInfo(long id, String name, String path, Date executionDate, TestInfo testInfo) {
+	public ExecInfo(long id, String name, String path, Date executionDate, String failureReason, TestInfo testInfo, boolean status,
+			Long runTime) {
+		super();
 		this.id = id;
 		this.name = name;
 		this.path = path;
 		this.executionDate = executionDate;
+		this.failureReason = failureReason;
 		this.testInfo = testInfo;
+		this.status = status;
+		this.runTime = runTime;
 	}
 
 	public String getFailureReason() {

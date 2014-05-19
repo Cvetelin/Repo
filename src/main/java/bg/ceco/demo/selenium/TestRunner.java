@@ -38,11 +38,11 @@ public class TestRunner {
 
 	public Result runMethod(ClassInfo classInfo, TestInfo testInfo) throws Exception {
 		Class<?> cls = loadClassFormJar(classInfo);
-
+		ExecInfo execInfo = new ExecInfo();
 		Request request = Request.method(cls, testInfo.getName());
 
 		JUnitCore runner = new JUnitCore();
-		runner.addListener(new TestListener());
+		runner.addListener(new TestListenerImpl(classInfo, testInfo, execInfo));
 
 		return runner.run(request);
 

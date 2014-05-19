@@ -54,11 +54,15 @@ public class ClassInfo {
 	@Column(name = "NUBER_TESTS")
 	private Integer numberOfTests;
 
+	@Column(name = "RUN_TIME")
+	private Long runTime;
+
 	public Project getProject() {
 		return project;
 	}
 
-	public ClassInfo(long id, String name, String qualifiedName, String path, Date executionDate, boolean success, Project project) {
+	public ClassInfo(long id, String name, String qualifiedName, String path, Date executionDate, boolean success, Project project,
+			Set<TestInfo> testInfo, Integer numberOfTests, Long runTime) {
 		this.id = id;
 		this.name = name;
 		this.qualifiedName = qualifiedName;
@@ -66,6 +70,17 @@ public class ClassInfo {
 		this.executionDate = executionDate;
 		this.success = success;
 		this.project = project;
+		this.testInfo = testInfo;
+		this.numberOfTests = numberOfTests;
+		this.runTime = runTime;
+	}
+
+	public Long getRunTime() {
+		return runTime;
+	}
+
+	public void setRunTime(Long runTime) {
+		this.runTime = runTime;
 	}
 
 	public Integer getNumberOfTests() {
