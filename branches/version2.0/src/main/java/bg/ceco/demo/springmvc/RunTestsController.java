@@ -55,7 +55,8 @@ public class RunTestsController {
 			classInfo.setSuccess(result.wasSuccessful());
 			Date date = new Date();
 			classInfo.setExecutionDate(date);
-
+			classInfo.setNumberOfTests(result.getRunCount());
+			classInfo.setRunTime(result.getRunTime());
 			Set<TestInfo> failedTests = new HashSet<TestInfo>();
 			List<Failure> failures = result.getFailures();
 			if (isInitializationError(failures, classInfo, date)) {
@@ -77,7 +78,7 @@ public class RunTestsController {
 			for (TestInfo tInfo : classInfo.getTestInfo()) {
 				if (!failedTests.contains(tInfo)) {
 					testInClass = testInfoService.loadBy(classInfo, tInfo.getName());
-					updateOnSuccess(testInClass, date);
+					updateOnSuccessClass(testInClass, date);
 				}
 			}
 			classInfoService.update(classInfo);
@@ -121,7 +122,7 @@ public class RunTestsController {
 				}
 				return new ModelAndView("redirect:/app/ShowClassDetails", "classId", classInfo.getId());
 			}
-			updateOnSuccess(testInfo, date);
+			updateOnSuccessMethod(testInfo, date, result);
 
 			classInfo.setSuccess(isClassSuccesful(classInfo.getTestInfo()));
 			classInfoService.update(classInfo);
@@ -186,7 +187,7 @@ public class RunTestsController {
 		return false;
 	}
 
-	private void updateOnSuccess(TestInfo testInfo, Date date) {
+	private void updateOnSuccessClass(TestInfo testInfo, Date date) {
 		ExecInfo execInfo = new ExecInfo();
 		// TestInfo testInClass = testInfoService.loadBy(classInfo,
 		// testInfo.getName());
@@ -194,6 +195,21 @@ public class RunTestsController {
 		execInfo.setStatus(true);
 		execInfo.setTestInfo(testInfo);
 
+		execInfoService.save(execInfo);
+
+		testInfo.setExecutionDate(date);
+		testInfoService.update(testInfo);
+	}
+
+	private void updateOnSuccessMethod(TestInfo testInfo, Date date, Result result) {
+		ExecInfo execInfo = new ExecInfo();
+		// TestInfo testInClass = testInfoService.loadBy(classInfo,
+		// testInfo.getName());
+		execInfo.setExecutionDate(date);
+		execInfo.setStatus(true);
+		execInfo.setTestInfo(testInfo);
+		execInfo.setStatus(result.wasSuccessful());
+		execInfo.setRunTime(result.getRunTime());
 		execInfoService.save(execInfo);
 
 		testInfo.setExecutionDate(date);

@@ -47,6 +47,8 @@ public class TestListenerImpl extends RunListener {
 	 * Called before any tests have been run.
 	 * */
 	public void testRunStarted(Description description) throws java.lang.Exception {
+		classInfo.setSuccess(true);
+		execInfo.setStatus(true);
 		classInfo.setNumberOfTests(description.testCount());
 		System.out.println("Number of testcases to execute : " + description.testCount());
 	}
@@ -55,6 +57,13 @@ public class TestListenerImpl extends RunListener {
 	 * Called when all tests have finished
 	 * */
 	public void testRunFinished(Result result) throws java.lang.Exception {
+		if (result.getRunCount() == 1) {
+			execInfo.setRunTime(result.getRunTime());
+			execInfo.setStatus(result.wasSuccessful());
+		} else {
+			classInfo.setSuccess(result.wasSuccessful());
+		}
+
 		System.out.println("Number of testcases executed : " + result.getRunCount());
 		System.out.println("TEST RESULT : " + (result.getFailureCount() == 0 ? true : false));
 
@@ -77,7 +86,6 @@ public class TestListenerImpl extends RunListener {
 	 * */
 	public void testFinished(Description description) throws java.lang.Exception {
 		System.out.println("Finished execution of test case : " + description.getMethodName());
-
 	}
 
 	/**
@@ -86,6 +94,7 @@ public class TestListenerImpl extends RunListener {
 	public void testFailure(Failure failure) throws java.lang.Exception {
 		System.out.println("Execution of test case failed : " + failure.getMessage());
 		System.out.println("Execution of test case failed : " + failure.getException());
+
 	}
 
 	/**
