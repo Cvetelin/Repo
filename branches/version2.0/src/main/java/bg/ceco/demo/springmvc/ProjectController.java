@@ -3,6 +3,7 @@ package bg.ceco.demo.springmvc;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Date;
+import java.util.HashSet;
 import java.util.Iterator;
 import java.util.List;
 
@@ -131,11 +132,11 @@ public class ProjectController {
 	public ModelAndView generate(@RequestParam("id") long id) throws Exception {
 		Project project = projectService.load(id);
 		ProjectTreeGenerator generator = new ProjectTreeGenerator();
-		List<CtClass> classes = generator.loadJar(project);
-		clearOldData(project);
+		clearOldData(project);		
+		List<CtClass> classes = generator.loadJar(project);		
 		generateClassSturcture(classes, project);
-		ModelMap map = new ModelMap();
-		map = listPorejectDetils(project);
+		
+		ModelMap map = listPorejectDetils(project);
 		return new ModelAndView("ShowProjectDetails", map);
 	}
 
@@ -198,15 +199,16 @@ public class ProjectController {
 			classInfo.setName(class1.getSimpleName());
 			classInfo.setQualifiedName(class1.getName());
 			classInfo.setProject(project);
-			classInfos.add(classInfo);
-
 			classInfoService.save(classInfo);
-
+			if (classInfo.getTestInfo()== null) {
+				classInfo.setTestInfo(new HashSet<TestInfo>());
+			}
 			for (int i = 0; i < methods.length; i++) {
 				TestInfo testInfo = new TestInfo();
 				testInfo.setName(methods[i].getName());
-				testInfo.setClassInfo(classInfoService.loadBy(project, class1.getName()));
+				testInfo.setClassInfo(classInfo);			
 				testInfos.add(testInfo);
+				classInfo.getTestInfo().add(testInfo);
 			}
 			testInfoService.saveAll(testInfos);
 		}
