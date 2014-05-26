@@ -57,6 +57,7 @@ public class RunTestsController {
 			classInfo.setExecutionDate(date);
 			classInfo.setNumberOfTests(result.getRunCount());
 			classInfo.setRunTime(result.getRunTime());
+			classInfo.setNumberOfFailedTests(result.getFailureCount());
 			Set<TestInfo> failedTests = new HashSet<TestInfo>();
 			List<Failure> failures = result.getFailures();
 			if (isInitializationError(failures, classInfo, date)) {
@@ -70,6 +71,7 @@ public class RunTestsController {
 					testInfo = matchMethods(classInfo, failure.getDescription().getMethodName());
 					if (testInfo != null) {
 						updateOnFailure(testInfo, failure, date);
+						failedTests.add(testInfo);
 					}
 				}
 			}
@@ -100,8 +102,8 @@ public class RunTestsController {
 	}
 
 	@RequestMapping(value = "/runTest", method = RequestMethod.GET)
-	public ModelAndView runMethodWithJunit(@RequestParam("methodId") long methodId, HttpServletRequest request) {
-		TestInfo testInfo = testInfoService.load(methodId);
+	public ModelAndView runMethodWithJunit(@RequestParam("classId") long classid, HttpServletRequest request) {
+		TestInfo testInfo = testInfoService.load(classid);
 		ClassInfo classInfo = classInfoService.load(testInfo.getClassInfo().getId());
 		Result result = null;
 		TestRunner runner = new TestRunner();
@@ -130,6 +132,47 @@ public class RunTestsController {
 		} catch (Exception e) {
 			request.getSession().setAttribute("error", e.getMessage());
 		}
+		return new ModelAndView("redirect:/app/ShowClassDetails", "classId", classInfo.getId());
+	}
+
+	@RequestMapping(value = "/runMethods", method = RequestMethod.GET)
+	public ModelAndView runMethodsWithJunit(@RequestParam("classId") long id, HttpServletRequest request) {
+		ClassInfo classInfo = classInfoService.get(id);
+		TestInfo testInfo = new TestInfo();
+		// TestInfo testInfo = testInfoService.load(id);
+		// ClassInfo classInfo =
+		// classInfoService.load(testInfo.getClassInfo().getId());
+		List<Result> results = new ArrayList<Result>();
+		TestRunner runner = new TestRunner();
+		try {
+			results = runner.runMethods(classInfo);
+			for (Result result : results) {
+				// result = runner.runMethods(classInfo, testInfo);
+				List<Failure> failures = result.getFailures();
+				Date date = new Date();
+
+				if (isInitializationError(failures, classInfo, date)) {
+					return new ModelAndView("redirect:/app/ShowClassDetails", "classId", classInfo.getId());
+				}
+
+				if (!failures.isEmpty()) {
+					for (Iterator<Failure> iterator = failures.iterator(); iterator.hasNext();) {
+						Failure failure = (Failure) iterator.next();
+						testInfo = matchMethods(classInfo, failure.getDescription().getMethodName());
+						updateOnFailure(testInfo, failure, date);
+					}
+					return new ModelAndView("redirect:/app/ShowClassDetails", "classId", classInfo.getId());
+				}
+				updateOnSuccessMethod(testInfo, date, result);
+
+				classInfo.setSuccess(isClassSuccesful(classInfo.getTestInfo()));
+				classInfoService.update(classInfo);
+			}
+		} catch (Exception e) {
+			request.getSession().setAttribute("error", e.getMessage());
+			e.printStackTrace();
+		}
+
 		return new ModelAndView("redirect:/app/ShowClassDetails", "classId", classInfo.getId());
 	}
 

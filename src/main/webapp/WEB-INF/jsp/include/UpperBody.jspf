@@ -47,9 +47,11 @@ $(document).ready(function() {
 			</display:column>
 			<display:column title="Last run on" property="executionDate"  format="{0,date,dd.MM.yyyy HH:mm:ss}">
 			</display:column>
-			<display:column title="#Successful tests">
+			<display:column title="Run time" property="runTime"  format="{0,date, mm:ss:SSS} m">
 			</display:column>
-			<display:column title="#Failed tests">
+			<display:column title="#Tests"  property="numberOfTests">
+			</display:column>
+			<display:column title="#Failed" property="numberOfFailedTests">
 			</display:column>
 			<display:column title="Latest result"  class="col-sm2 col-md-1 col-lg-1">
 				<tags:yesno value="${class.success}"/>

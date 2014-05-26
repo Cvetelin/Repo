@@ -1,15 +1,19 @@
 package bg.ceco.demo.selenium;
 
 import java.io.File;
+import java.lang.reflect.Method;
 import java.net.URL;
 import java.net.URLClassLoader;
+import java.util.ArrayList;
 import java.util.Enumeration;
+import java.util.List;
 import java.util.jar.JarEntry;
 import java.util.jar.JarFile;
 
 import javassist.ClassPool;
 import javassist.CtClass;
 
+import org.junit.Test;
 import org.junit.runner.JUnitCore;
 import org.junit.runner.Request;
 import org.junit.runner.Result;
@@ -17,7 +21,6 @@ import org.springframework.stereotype.Controller;
 
 import bg.ceco.demo.logic.listener.TestListenerImpl;
 import bg.ceco.demo.model.ClassInfo;
-import bg.ceco.demo.model.ExecInfo;
 import bg.ceco.demo.model.Project;
 import bg.ceco.demo.model.TestInfo;
 
@@ -26,26 +29,41 @@ public class TestRunner {
 
 	public Result runClass(ClassInfo classInfo) throws Exception {
 		Class<?> cls = loadClassFormJar(classInfo);
-		TestInfo testInfo = new TestInfo();
-		ExecInfo execInfo = new ExecInfo();
-
 		JUnitCore runner = new JUnitCore();
-		runner.addListener(new TestListenerImpl(classInfo, testInfo, execInfo));
+		runner.addListener(new TestListenerImpl());
 
 		return runner.run(cls);
-
 	}
 
 	public Result runMethod(ClassInfo classInfo, TestInfo testInfo) throws Exception {
 		Class<?> cls = loadClassFormJar(classInfo);
-		ExecInfo execInfo = new ExecInfo();
-		Request request = Request.method(cls, testInfo.getName());
 
+		Request request = Request.method(cls, testInfo.getName());
 		JUnitCore runner = new JUnitCore();
-		runner.addListener(new TestListenerImpl(classInfo, testInfo, execInfo));
+		runner.addListener(new TestListenerImpl());
 
 		return runner.run(request);
 
+	}
+
+	public List<Result> runMethods(ClassInfo classInfo) throws Exception {
+		Request request = null;
+		List<Result> resultRequests = new ArrayList<Result>();
+		Class<?> cls = loadClassFormJar(classInfo);
+		JUnitCore runner = new JUnitCore();
+		for (Method method : cls.getDeclaredMethods()) {
+			// for (Object object : method.getAnnotations()) {
+			if (method.getAnnotation(Test.class) != null) {
+				request = Request.method(cls, method.getName());
+				if (request != null) {
+					runner.addListener(new TestListenerImpl());
+					resultRequests.add(runner.run(request));
+				}
+			}
+			// }
+
+		}
+		return resultRequests;
 	}
 
 	private Class<?> loadClassFormJar(ClassInfo classInfo) throws Exception {

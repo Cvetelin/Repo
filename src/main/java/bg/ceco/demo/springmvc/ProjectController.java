@@ -132,10 +132,10 @@ public class ProjectController {
 	public ModelAndView generate(@RequestParam("id") long id) throws Exception {
 		Project project = projectService.load(id);
 		ProjectTreeGenerator generator = new ProjectTreeGenerator();
-		clearOldData(project);		
-		List<CtClass> classes = generator.loadJar(project);		
+		clearOldData(project);
+		List<CtClass> classes = generator.loadJar(project);
 		generateClassSturcture(classes, project);
-		
+
 		ModelMap map = listPorejectDetils(project);
 		return new ModelAndView("ShowProjectDetails", map);
 	}
@@ -200,15 +200,19 @@ public class ProjectController {
 			classInfo.setQualifiedName(class1.getName());
 			classInfo.setProject(project);
 			classInfoService.save(classInfo);
-			if (classInfo.getTestInfo()== null) {
+			if (classInfo.getTestInfo() == null) {
 				classInfo.setTestInfo(new HashSet<TestInfo>());
 			}
 			for (int i = 0; i < methods.length; i++) {
 				TestInfo testInfo = new TestInfo();
-				testInfo.setName(methods[i].getName());
-				testInfo.setClassInfo(classInfo);			
-				testInfos.add(testInfo);
-				classInfo.getTestInfo().add(testInfo);
+				for (Object method : methods[i].getAnnotations()) {
+					if (method.toString().equals("@org.junit.Test")) {
+						testInfo.setName(methods[i].getName());
+						testInfo.setClassInfo(classInfo);
+						testInfos.add(testInfo);
+						classInfo.getTestInfo().add(testInfo);
+					}
+				}
 			}
 			testInfoService.saveAll(testInfos);
 		}

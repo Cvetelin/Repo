@@ -84,11 +84,11 @@ $(document).ready(function() {
 			requestURI="ShowProjectDetails" defaultsort="1">
 			<display:column title="Class name" property="name" paramId="id" paramProperty="id" sortable="true">
 			</display:column>
-			<display:column title="Last Execution Date" property="executionDate"  format="{0,date,dd.MM.yyyy HH:mm:ss}" sortable="true">
+			<display:column title="Last run on" property="executionDate"  format="{0,date,dd.MM.yyyy HH:mm:ss}" sortable="true">
 			</display:column>
-			<display:column title="#Successful" sortable="true">
+			<display:column title="#Tests" sortable="true" property="numberOfTests">
 			</display:column>
-			<display:column title="#Failed" sortable="true">
+			<display:column title="#Failed" sortable="true" property="numberOfFailedTests">
 			</display:column>
 			<display:column title="Status" sortable="true">
 				<tags:yesno value="${class.success}"/>
@@ -105,7 +105,7 @@ $(document).ready(function() {
 			<display:column>
 				<c:choose>
 					<c:when test="${not empty class.testInfo}">
-						<a href="/app/runClass?classId=${class.id}">
+						<a href="/app/runMethods?classId=${class.id}">
 							<button class="btn btn-primary btn-xs" id="runClass" name="projectForm" value="Execute Test Class" >Execute Test Class</button>
 						</a>
 					</c:when>
