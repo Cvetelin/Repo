@@ -54,6 +54,9 @@ public class ClassInfo {
 	@Column(name = "NUBER_TESTS")
 	private Integer numberOfTests;
 
+	@Column(name = "NUBER_FAILED_TESTS")
+	private Integer numberOfFailedTests;
+
 	@Column(name = "RUN_TIME")
 	private Long runTime;
 
@@ -62,7 +65,7 @@ public class ClassInfo {
 	}
 
 	public ClassInfo(long id, String name, String qualifiedName, String path, Date executionDate, boolean success, Project project,
-			Set<TestInfo> testInfo, Integer numberOfTests, Long runTime) {
+			Set<TestInfo> testInfo, Integer numberOfTests, Integer numberOfFailedTests, Long runTime) {
 		this.id = id;
 		this.name = name;
 		this.qualifiedName = qualifiedName;
@@ -72,7 +75,16 @@ public class ClassInfo {
 		this.project = project;
 		this.testInfo = testInfo;
 		this.numberOfTests = numberOfTests;
+		this.numberOfFailedTests = numberOfFailedTests;
 		this.runTime = runTime;
+	}
+
+	public Integer getNumberOfFailedTests() {
+		return numberOfFailedTests;
+	}
+
+	public void setNumberOfFailedTests(Integer numberOfFailedTests) {
+		this.numberOfFailedTests = numberOfFailedTests;
 	}
 
 	public Long getRunTime() {

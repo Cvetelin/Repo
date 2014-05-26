@@ -45,9 +45,9 @@ $(document).ready(function() {
 				<button class="btn btn-info btn-xs" id="listM" value="List Runs" >List Executions</button>
 			</display:column>
 			<display:column  paramId="methodId" paramProperty="id"  href="/app/runTest">	
-			<c:if test="${(test.name != 'setUp') and (test.name != 'after') and (test.name != 'before')}">			
+				<c:if test="${(test.name != 'setUp') and (test.name != 'after') and (test.name != 'before')}">			
 					<button class="btn btn-primary btn-xs" id="listM" value="RunTest" >Run Test</button>	
-					</c:if>		
+				</c:if>		
 			</display:column>		
 		</display:table>		
 	</div>
@@ -61,6 +61,7 @@ $(document).ready(function() {
 				<tags:yesno value="${exec.status}"/>
 			</display:column>
 			<display:column title="Run on" property="executionDate" format="{0,date,dd.MM.yyyy HH:mm:ss}" sortable="true"/>
+			<display:column title="Run time" property="runTime" format="{0,date,dd.MM.yyyy HH:mm:ss}" sortable="true"/>
 			<display:column title="Failure reason" property="failureReason" maxLength="150" />				
 		</display:table>
 		</c:if>

@@ -6,8 +6,6 @@ import java.text.SimpleDateFormat;
 import java.util.Map;
 
 import org.apache.commons.io.FileUtils;
-import org.junit.Rule;
-import org.junit.rules.TestName;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.remote.Command;
@@ -23,45 +21,44 @@ public class FFScreenshotDriver extends FirefoxDriver {
 	private static final String SCREEN_LOCATION = "\\src\\main\\webapp\\screenshots\\";
 	private static final SimpleDateFormat FILE_NAME_FORMATTER = new SimpleDateFormat("dd.MM.yyyy HH-mm-ss-S");
 	private static final SimpleDateFormat SAVE_DIR_FORMATTER = new SimpleDateFormat("dd.MM.yyyy HH-mm-ss");
-	
+
 	private String testName;
 	private String saveLocation;
 	private String calssName;
-	
+
 	public FFScreenshotDriver() {
 		super();
 		this.testName = DEFAULT_TEST_NAME;
 		createSaveLoacation();
 	}
-	
+
 	public FFScreenshotDriver(String testName) {
 		super();
 		this.testName = testName;
 		createSaveLoacation();
 	}
-	
+
 	public FFScreenshotDriver(String testName, String calssName) {
 		super();
 		this.testName = testName;
 		this.calssName = calssName;
 		createSaveLoacation();
 	}
-	
+
 	@Override
 	protected Response execute(String driverCommand, Map<String, ?> parameters) {
-		takeScreenshot(driverCommand);
+		// takeScreenshot(driverCommand);
 		Response response = super.execute(driverCommand, parameters);
 		takeScreenshot(driverCommand);
 		return response;
 	}
-	
+
 	private void takeScreenshot(String driverCommand) {
 		if (DriverCommand.NEW_SESSION.equals(driverCommand)) {
 			return;
 		}
-		
-		Command takeScreenshot = new Command(getSessionId(),
-				DriverCommand.SCREENSHOT, ImmutableMap.<String, Object> of());
+
+		Command takeScreenshot = new Command(getSessionId(), DriverCommand.SCREENSHOT, ImmutableMap.<String, Object> of());
 
 		try {
 			// Get the screenshot as base64.
@@ -72,11 +69,10 @@ public class FFScreenshotDriver extends FirefoxDriver {
 			FileUtils.copyFile(screenshot, new File(fileToSave()));
 		} catch (IOException e) {
 			log(getSessionId(), takeScreenshot.getName(), takeScreenshot, When.EXCEPTION);
-			throw new UnreachableBrowserException(
-					"Error communicating with the remote browser. It may have died.", e);
+			throw new UnreachableBrowserException("Error communicating with the remote browser. It may have died.", e);
 		}
 	}
-	
+
 	private String fileToSave() {
 		StringBuilder location = new StringBuilder();
 		location.append(saveLocation);
@@ -84,7 +80,7 @@ public class FFScreenshotDriver extends FirefoxDriver {
 		location.append(".png");
 		return location.toString();
 	}
-	
+
 	private void createSaveLoacation() {
 		StringBuilder pathToFile = new StringBuilder();
 		try {
