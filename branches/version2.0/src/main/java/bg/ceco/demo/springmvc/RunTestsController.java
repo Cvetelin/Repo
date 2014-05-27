@@ -22,6 +22,7 @@ import bg.ceco.demo.logic.ClassInfoService;
 import bg.ceco.demo.logic.ExecInfoService;
 import bg.ceco.demo.logic.ProjectService;
 import bg.ceco.demo.logic.TestInfoService;
+import bg.ceco.demo.logic.listener.TestExecutionResult;
 import bg.ceco.demo.model.ClassInfo;
 import bg.ceco.demo.model.ExecInfo;
 import bg.ceco.demo.model.TestInfo;
@@ -102,8 +103,8 @@ public class RunTestsController {
 	}
 
 	@RequestMapping(value = "/runTest", method = RequestMethod.GET)
-	public ModelAndView runMethodWithJunit(@RequestParam("classId") long classid, HttpServletRequest request) {
-		TestInfo testInfo = testInfoService.load(classid);
+	public ModelAndView runMethodWithJunit(@RequestParam("methodId") long methodId, HttpServletRequest request) {
+		TestInfo testInfo = testInfoService.load(methodId);
 		ClassInfo classInfo = classInfoService.load(testInfo.getClassInfo().getId());
 		Result result = null;
 		TestRunner runner = new TestRunner();
@@ -139,18 +140,17 @@ public class RunTestsController {
 	public ModelAndView runMethodsWithJunit(@RequestParam("classId") long id, HttpServletRequest request) {
 		ClassInfo classInfo = classInfoService.get(id);
 		TestInfo testInfo = new TestInfo();
-		// TestInfo testInfo = testInfoService.load(id);
-		// ClassInfo classInfo =
-		// classInfoService.load(testInfo.getClassInfo().getId());
-		List<Result> results = new ArrayList<Result>();
+		int testFailureCount = 0;
+		Long classRunTime = 0L;
+		List<TestExecutionResult> testExecutionResult = new ArrayList<TestExecutionResult>();
 		TestRunner runner = new TestRunner();
 		try {
-			results = runner.runMethods(classInfo);
-			for (Result result : results) {
-				// result = runner.runMethods(classInfo, testInfo);
-				List<Failure> failures = result.getFailures();
+			testExecutionResult = runner.runMethods(classInfo);
+			for (TestExecutionResult result : testExecutionResult) {
+				List<Failure> failures = result.getResult().getFailures();
 				Date date = new Date();
-
+				testFailureCount += result.getResult().getFailureCount();
+				classRunTime += result.getResult().getRunTime();
 				if (isInitializationError(failures, classInfo, date)) {
 					return new ModelAndView("redirect:/app/ShowClassDetails", "classId", classInfo.getId());
 				}
@@ -160,14 +160,18 @@ public class RunTestsController {
 						Failure failure = (Failure) iterator.next();
 						testInfo = matchMethods(classInfo, failure.getDescription().getMethodName());
 						updateOnFailure(testInfo, failure, date);
-					}
-					return new ModelAndView("redirect:/app/ShowClassDetails", "classId", classInfo.getId());
+					}					
 				}
-				updateOnSuccessMethod(testInfo, date, result);
-
-				classInfo.setSuccess(isClassSuccesful(classInfo.getTestInfo()));
-				classInfoService.update(classInfo);
+				
+				testInfo = testInfoService.loadBy(classInfo, result.getTestName());
+				updateOnSuccessMethod(testInfo, date, result.getResult());
 			}
+			
+			classInfo.setSuccess(isClassSuccesful(classInfo.getTestInfo()));
+			classInfo.setNumberOfTests(testExecutionResult.size());
+			classInfo.setNumberOfFailedTests(testFailureCount);
+			classInfo.setRunTime(classRunTime);
+			classInfoService.update(classInfo);
 		} catch (Exception e) {
 			request.getSession().setAttribute("error", e.getMessage());
 			e.printStackTrace();
@@ -246,8 +250,6 @@ public class RunTestsController {
 
 	private void updateOnSuccessMethod(TestInfo testInfo, Date date, Result result) {
 		ExecInfo execInfo = new ExecInfo();
-		// TestInfo testInClass = testInfoService.loadBy(classInfo,
-		// testInfo.getName());
 		execInfo.setExecutionDate(date);
 		execInfo.setStatus(true);
 		execInfo.setTestInfo(testInfo);

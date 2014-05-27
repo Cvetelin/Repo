@@ -33,7 +33,7 @@ public class TestInfo {
 	@Column(name = "EXECUTION_DATE")
 	private Date executionDate;
 
-	@ManyToOne(targetEntity = ClassInfo.class, fetch = FetchType.LAZY)
+	@ManyToOne(targetEntity = ClassInfo.class, fetch = FetchType.EAGER)
 	@JoinColumn(name = "CLASS_ID", nullable = false)
 	private ClassInfo classInfo;
 

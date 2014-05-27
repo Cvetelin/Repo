@@ -37,6 +37,7 @@ public class ClassInfoDaoHibernate implements ClassInfoDao {
 	@Override
 	public void delete(ClassInfo classInfo) {
 		sessionFactory.getCurrentSession().delete(classInfo);
+		sessionFactory.getCurrentSession().flush();
 	}
 
 	@SuppressWarnings("unchecked")
