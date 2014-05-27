@@ -19,6 +19,7 @@ import org.junit.runner.Request;
 import org.junit.runner.Result;
 import org.springframework.stereotype.Controller;
 
+import bg.ceco.demo.logic.listener.TestExecutionResult;
 import bg.ceco.demo.logic.listener.TestListenerImpl;
 import bg.ceco.demo.model.ClassInfo;
 import bg.ceco.demo.model.Project;
@@ -46,9 +47,10 @@ public class TestRunner {
 
 	}
 
-	public List<Result> runMethods(ClassInfo classInfo) throws Exception {
+	public List<TestExecutionResult> runMethods(ClassInfo classInfo) throws Exception {
 		Request request = null;
-		List<Result> resultRequests = new ArrayList<Result>();
+		List<TestExecutionResult> testExecutionResults = new ArrayList<TestExecutionResult>();
+		//List<Result> resultRequests = new ArrayList<Result>();
 		Class<?> cls = loadClassFormJar(classInfo);
 		JUnitCore runner = new JUnitCore();
 		for (Method method : cls.getDeclaredMethods()) {
@@ -56,14 +58,20 @@ public class TestRunner {
 			if (method.getAnnotation(Test.class) != null) {
 				request = Request.method(cls, method.getName());
 				if (request != null) {
+					TestExecutionResult testExecutioResult = new TestExecutionResult();
 					runner.addListener(new TestListenerImpl());
-					resultRequests.add(runner.run(request));
+					//resultRequests.add(runner.run(request));
+					testExecutioResult.setResult(runner.run(request));
+					testExecutioResult.setTestName(method.getName());
+					testExecutioResult.setClassQualifiedName(cls.getName());
+					testExecutionResults.add(testExecutioResult);
 				}
 			}
 			// }
 
 		}
-		return resultRequests;
+		
+		return testExecutionResults;
 	}
 
 	private Class<?> loadClassFormJar(ClassInfo classInfo) throws Exception {

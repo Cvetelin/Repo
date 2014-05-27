@@ -61,7 +61,7 @@ $(document).ready(function() {
 				<tags:yesno value="${exec.status}"/>
 			</display:column>
 			<display:column title="Run on" property="executionDate" format="{0,date,dd.MM.yyyy HH:mm:ss}" sortable="true"/>
-			<display:column title="Run time" property="runTime" format="{0,date,dd.MM.yyyy HH:mm:ss}" sortable="true"/>
+			<display:column title="Run time" property="runTime" format="{0,date, mm:ss:SSS} m" sortable="true"/>
 			<display:column title="Failure reason" property="failureReason" maxLength="150" />				
 		</display:table>
 		</c:if>
