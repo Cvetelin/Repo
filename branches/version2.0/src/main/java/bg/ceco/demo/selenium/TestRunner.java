@@ -50,7 +50,7 @@ public class TestRunner {
 	public List<TestExecutionResult> runMethods(ClassInfo classInfo) throws Exception {
 		Request request = null;
 		List<TestExecutionResult> testExecutionResults = new ArrayList<TestExecutionResult>();
-		//List<Result> resultRequests = new ArrayList<Result>();
+		// List<Result> resultRequests = new ArrayList<Result>();
 		Class<?> cls = loadClassFormJar(classInfo);
 		JUnitCore runner = new JUnitCore();
 		for (Method method : cls.getDeclaredMethods()) {
@@ -58,9 +58,10 @@ public class TestRunner {
 			if (method.getAnnotation(Test.class) != null) {
 				request = Request.method(cls, method.getName());
 				if (request != null) {
+					System.out.println("PRINTING TEST NAME BEFORE RUN " + method.getName());
 					TestExecutionResult testExecutioResult = new TestExecutionResult();
 					runner.addListener(new TestListenerImpl());
-					//resultRequests.add(runner.run(request));
+					// resultRequests.add(runner.run(request));
 					testExecutioResult.setResult(runner.run(request));
 					testExecutioResult.setTestName(method.getName());
 					testExecutioResult.setClassQualifiedName(cls.getName());
@@ -70,7 +71,7 @@ public class TestRunner {
 			// }
 
 		}
-		
+
 		return testExecutionResults;
 	}
 

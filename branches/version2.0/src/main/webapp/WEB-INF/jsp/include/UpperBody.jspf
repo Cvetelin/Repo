@@ -23,6 +23,7 @@ $(document).ready(function() {
         } }); 
     }); 
 }); 
+
 </script>
 
 	<div class="row" id="projectDetails">
