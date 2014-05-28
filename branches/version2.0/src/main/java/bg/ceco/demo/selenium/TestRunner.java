@@ -5,6 +5,7 @@ import java.lang.reflect.Method;
 import java.net.URL;
 import java.net.URLClassLoader;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.Enumeration;
 import java.util.List;
 import java.util.jar.JarEntry;
@@ -50,6 +51,7 @@ public class TestRunner {
 	public List<TestExecutionResult> runMethods(ClassInfo classInfo) throws Exception {
 		Request request = null;
 		List<TestExecutionResult> testExecutionResults = new ArrayList<TestExecutionResult>();
+	
 		// List<Result> resultRequests = new ArrayList<Result>();
 		Class<?> cls = loadClassFormJar(classInfo);
 		JUnitCore runner = new JUnitCore();
@@ -61,10 +63,12 @@ public class TestRunner {
 					System.out.println("PRINTING TEST NAME BEFORE RUN " + method.getName());
 					TestExecutionResult testExecutioResult = new TestExecutionResult();
 					runner.addListener(new TestListenerImpl());
+					Date date = new Date();
 					// resultRequests.add(runner.run(request));
 					testExecutioResult.setResult(runner.run(request));
 					testExecutioResult.setTestName(method.getName());
 					testExecutioResult.setClassQualifiedName(cls.getName());
+					testExecutioResult.setExecutionDate(date);
 					testExecutionResults.add(testExecutioResult);
 				}
 			}
