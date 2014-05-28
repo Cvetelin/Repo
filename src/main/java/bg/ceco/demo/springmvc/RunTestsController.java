@@ -71,7 +71,7 @@ public class RunTestsController {
 					Failure failure = (Failure) iterator.next();
 					testInfo = matchMethods(classInfo, failure.getDescription().getMethodName());
 					if (testInfo != null) {
-						updateOnFailure(testInfo, failure, date);
+						updateOnFailureClass(testInfo, date, failure);
 						failedTests.add(testInfo);
 					}
 				}
@@ -121,7 +121,7 @@ public class RunTestsController {
 				for (Iterator<Failure> iterator = failures.iterator(); iterator.hasNext();) {
 					Failure failure = (Failure) iterator.next();
 					testInfo = matchMethods(classInfo, failure.getDescription().getMethodName());
-					updateOnFailure(testInfo, failure, date);
+					updateOnFailure(testInfo, date, result);
 				}
 				return new ModelAndView("redirect:/app/ShowClassDetails", "classId", classInfo.getId());
 			}
@@ -159,14 +159,14 @@ public class RunTestsController {
 					for (Iterator<Failure> iterator = failures.iterator(); iterator.hasNext();) {
 						Failure failure = (Failure) iterator.next();
 						testInfo = matchMethods(classInfo, failure.getDescription().getMethodName());
-						updateOnFailure(testInfo, failure, date);
-					}					
+						updateOnFailure(testInfo, date, result.getResult());
+					}
+				} else {
+					testInfo = testInfoService.loadBy(classInfo, result.getTestName());
+					updateOnSuccessMethod(testInfo, date, result.getResult());
 				}
-				
-				testInfo = testInfoService.loadBy(classInfo, result.getTestName());
-				updateOnSuccessMethod(testInfo, date, result.getResult());
 			}
-			
+
 			classInfo.setSuccess(isClassSuccesful(classInfo.getTestInfo()));
 			classInfo.setNumberOfTests(testExecutionResult.size());
 			classInfo.setNumberOfFailedTests(testFailureCount);
@@ -261,7 +261,20 @@ public class RunTestsController {
 		testInfoService.update(testInfo);
 	}
 
-	private void updateOnFailure(TestInfo testInfo, Failure failure, Date date) {
+	private void updateOnFailure(TestInfo testInfo, Date date, Result result) {
+		ExecInfo execInfo = new ExecInfo();
+		execInfo.setExecutionDate(date);
+		execInfo.setFailureReason(result.getFailures().get(0).getMessage() + "\n" + result.getFailures().get(0).getTrace());
+		execInfo.setRunTime(result.getRunTime());
+		execInfo.setStatus(result.wasSuccessful());
+		execInfo.setTestInfo(testInfo);
+		execInfoService.save(execInfo);
+
+		testInfo.setExecutionDate(date);
+		testInfoService.update(testInfo);
+	}
+
+	private void updateOnFailureClass(TestInfo testInfo, Date date, Failure failure) {
 		ExecInfo execInfo = new ExecInfo();
 		execInfo.setExecutionDate(date);
 		execInfo.setFailureReason(failure.getMessage() + "\n" + failure.getTrace());
