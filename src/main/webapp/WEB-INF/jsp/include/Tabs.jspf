@@ -1,0 +1,22 @@
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jstl/fmt" %>
+<%@ taglib prefix="display" uri="http://displaytag.sf.net" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
+<%@ taglib prefix="tiles" uri="http://tiles.apache.org/tags-tiles" %>
+<%@ taglib prefix="tilesx" uri="http://tiles.apache.org/tags-tiles-extras" %>
+<%@ taglib prefix="tags" tagdir="/WEB-INF/tags"%>
+<script type="text/javascript"
+	src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-2.0.0.min.js"></script>
+		<script type="text/javascript" src="/js/jquery.blockUI.js"></script>
+<script type="text/javascript">
+
+</script>
+<div class="row tabs" id="tab">
+	<ul class="nav nav-tabs ">
+	  <li class="active"><a href="#">View</a></li>
+	  <li><a href="#">Edit</a></li>
+	</ul>
+</div>
+<div class="row">
+</div>

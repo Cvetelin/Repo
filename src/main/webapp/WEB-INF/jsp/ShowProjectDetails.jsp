@@ -58,6 +58,7 @@ $(document).ready(function() {
 </script>
 </head>
 <body>
+	<%@ include file="include/Tabs.jspf"%>	
 	<div class="row" id="projectDetails">
 		<display:table name="project" id="project"
 			class="col-sm-12 col-md-12 col-lg-12 table-bordered text-center table-hover title" requestURI="ShowProjects"

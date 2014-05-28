@@ -1,5 +1,6 @@
 package bg.ceco.demo.springmvc;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashSet;
@@ -9,6 +10,7 @@ import java.util.Set;
 
 import javax.servlet.http.HttpServletRequest;
 
+import org.apache.commons.lang.time.DurationFormatUtils;
 import org.junit.runner.Result;
 import org.junit.runner.notification.Failure;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -109,10 +111,9 @@ public class RunTestsController {
 		Result result = null;
 		TestRunner runner = new TestRunner();
 		try {
+			Date date = new Date();
 			result = runner.runMethod(classInfo, testInfo);
 			List<Failure> failures = result.getFailures();
-			Date date = new Date();
-
 			if (isInitializationError(failures, classInfo, date)) {
 				return new ModelAndView("redirect:/app/ShowClassDetails", "classId", classInfo.getId());
 			}
@@ -145,10 +146,10 @@ public class RunTestsController {
 		List<TestExecutionResult> testExecutionResult = new ArrayList<TestExecutionResult>();
 		TestRunner runner = new TestRunner();
 		try {
+			Date date = new Date();
 			testExecutionResult = runner.runMethods(classInfo);
 			for (TestExecutionResult result : testExecutionResult) {
-				List<Failure> failures = result.getResult().getFailures();
-				Date date = new Date();
+				List<Failure> failures = result.getResult().getFailures();				
 				testFailureCount += result.getResult().getFailureCount();
 				classRunTime += result.getResult().getRunTime();
 				if (isInitializationError(failures, classInfo, date)) {
@@ -159,11 +160,11 @@ public class RunTestsController {
 					for (Iterator<Failure> iterator = failures.iterator(); iterator.hasNext();) {
 						Failure failure = (Failure) iterator.next();
 						testInfo = matchMethods(classInfo, failure.getDescription().getMethodName());
-						updateOnFailure(testInfo, date, result.getResult());
+						updateOnFailure(testInfo, result.getExecutionDate(), result.getResult());
 					}
 				} else {
 					testInfo = testInfoService.loadBy(classInfo, result.getTestName());
-					updateOnSuccessMethod(testInfo, date, result.getResult());
+					updateOnSuccessMethod(testInfo, result.getExecutionDate(), result.getResult());
 				}
 			}
 
@@ -171,6 +172,7 @@ public class RunTestsController {
 			classInfo.setNumberOfTests(testExecutionResult.size());
 			classInfo.setNumberOfFailedTests(testFailureCount);
 			classInfo.setRunTime(classRunTime);
+			classInfo.setExecutionDate(date);
 			classInfoService.update(classInfo);
 		} catch (Exception e) {
 			request.getSession().setAttribute("error", e.getMessage());
@@ -283,5 +285,12 @@ public class RunTestsController {
 
 		testInfo.setExecutionDate(date);
 		testInfoService.update(testInfo);
+	}
+	
+	private String convertToTime (Long time) {
+		Date date = new Date(time);
+		SimpleDateFormat formatter = new SimpleDateFormat("mm:ss:SSS");
+		String thetime = formatter.format(date);
+		return thetime;
 	}
 }

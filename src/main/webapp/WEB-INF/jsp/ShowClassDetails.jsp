@@ -28,6 +28,7 @@ $(document).ready(function() {
 </script>
 </head>
 <body>
+	<%@ include file="include/Tabs.jspf"%>	
 	<%@ include file="include/UpperBody.jspf"%>
 	<div class="row" id="methods">		
 		<display:table name="testInfos" id="test" class="col-md-8 table-bordered table-hover title text-center headtitle-link"
