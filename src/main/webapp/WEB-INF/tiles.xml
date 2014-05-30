@@ -10,6 +10,11 @@
  		<put-attribute name="left" value="" />
 	</definition>
 	
+	<definition name="index"  template="/WEB-INF/jsp/BaseIndex.jsp">
+		<put-attribute name="menu" value="/WEB-INF/jsp/MainManu.jsp" />	
+		<put-attribute name="body" value="/WEB-INF/jsp/index.jsp" />		
+	</definition>
+	
 	<definition name="ShowExecutedTests" extends="base">
 		<put-attribute name="body" value="/WEB-INF/jsp/ShowExecutedTests.jsp" />
 	</definition>
@@ -21,11 +26,7 @@
 	<definition name="PrepareGallery" extends="base">
 		<put-attribute name="menu" value="/WEB-INF/jsp/GalleryMenu.jsp" />
 		<put-attribute name="body" value="/WEB-INF/jsp/PrepareGallery.jsp" />
-	</definition>
-	
-	<definition name="index" extends="base">
-		<put-attribute name="body" value="/WEB-INF/jsp/index.jsp" />
-	</definition>
+	</definition>	
 	
 	<definition name="ShowTestClasses" extends="base">
 		<put-attribute name="body" value="/WEB-INF/jsp/ShowTestClasses.jsp" />
@@ -53,6 +54,11 @@
 		<put-attribute name="left" value="/WEB-INF/jsp/LeftMenu.jsp" />		
 		<put-attribute name="body" value="/WEB-INF/jsp/ShowClassDetails.jsp" />
 	</definition>	
+	
+	<definition name="ManageProject" extends="base">
+		<put-attribute name="left" value="/WEB-INF/jsp/LeftMenu.jsp" />		
+		<put-attribute name="body" value="/WEB-INF/jsp/ManageProject.jsp" />
+	</definition>
 	
 	
 </tiles-definitions> 

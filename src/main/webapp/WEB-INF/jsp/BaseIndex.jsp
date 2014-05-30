@@ -12,11 +12,7 @@
 	<div id="menu">
 		<tiles:insertAttribute name="menu" />
 	</div>
-	<div id="leftMenu" style="padding: 0px 50px 50px 20px" class="col-sm-2 col-md-2 sidebar-offcanvas ">
-		<tiles:insertAttribute name="left" />
-	</div>
-	<div id="body" style="padding: 0px 50px 50px 0px" class="col-sm-10 col-md-10">
-		<tiles:insertAttribute name="upper-body" />
+	<div id="body" style="padding: 0px 50px 50px 0px" class="col-sm-12 col-md-12">
 		<tiles:insertAttribute name="body" />
 	</div>
 </body>
