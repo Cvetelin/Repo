@@ -147,6 +147,13 @@ public class ProjectController {
 		return new ModelAndView("ShowProjectDetails", projectDetails);
 	}
 
+	@RequestMapping(value = "/ManageProject", method = RequestMethod.GET)
+	public ModelAndView manageProject(@RequestParam("id") long id) {
+		Project project = projectService.load(id);
+		ModelMap projectDetails = listPorejectDetils(project);
+		return new ModelAndView("ManageProject", projectDetails);
+	}
+
 	private String constructSaveLocation(ProjectForm projectForm, MultipartFile file) {
 		String rootDir = "C:\\";
 		StringBuilder path = new StringBuilder();
@@ -190,9 +197,9 @@ public class ProjectController {
 
 	private void generateClassSturcture(List<CtClass> classes, Project project) throws Exception {
 
-		List<ClassInfo> classInfos = new ArrayList<ClassInfo>();
-		List<TestInfo> testInfos = new ArrayList<TestInfo>();
+		// List<ClassInfo> classInfos = new ArrayList<ClassInfo>();
 		for (CtClass class1 : classes) {
+			List<TestInfo> testInfos = new ArrayList<TestInfo>();
 			CtMethod[] methods = class1.getDeclaredMethods();
 			ClassInfo classInfo = new ClassInfo();
 
@@ -215,6 +222,8 @@ public class ProjectController {
 				}
 			}
 			testInfoService.saveAll(testInfos);
+			classInfo.setNumberOfTests(testInfos.size());
+			classInfoService.update(classInfo);
 		}
 	}
 

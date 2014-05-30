@@ -63,8 +63,28 @@ a.brand {
 	 padding-bottom:1px;
 	 font-size:small; 
 }
-
+/* tab offset */
 .tabs ul> li > a{
 	 padding-top:2px; 
 	 padding-bottom:2px;
+}
+
+/* tab color */
+.nav-tabs>li>a {
+  color: #fff;
+  background-color: #666;
+  border: 1px solid #888888;
+}
+
+/* active tab color */
+.nav-tabs>li.active>a, .nav-tabs>li.active>a:hover, .nav-tabs>li.active>a:focus {
+  background-color: #333333; 
+  border-color: #777777;
+  color:#fff;
+}
+
+/* hover tab color */
+.nav-tabs>li>a:hover {
+  border-color: #000000;
+  background-color: #111111;
 }

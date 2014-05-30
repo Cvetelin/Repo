@@ -121,13 +121,13 @@
 		   	 			<p class="help-block text-center">The JAR containing the test classes</p>
 		   	 		</div>			   					   			
 		 	 </div>	
-		 	 <div class="form-group">
-		  	    	<label for="depJar" class="col-sm-3 control-label">Dependency jar</label>
-		  	    	<div class="col-sm-4">
-		   	 			<input type="file" id="depJar" name="depJar" class="form-control  onchange="checkExtension(this.value,'submit','depJar');"/>		   	 		
-		   	 			<p class="help-block text-center">The JAR containing classes not in test src folder</p>
-		   	 		</div>	   				
-		 	 </div>	
+<!-- 		 	 <div class="form-group"> -->
+<!-- 		  	    	<label for="depJar" class="col-sm-3 control-label">Dependency jar</label> -->
+<!-- 		  	    	<div class="col-sm-4"> -->
+<!-- 		   	 			<input type="file" id="depJar" name="depJar" class="form-control  onchange="checkExtension(this.value,'submit','depJar');"/>		   	 		 -->
+<!-- 		   	 			<p class="help-block text-center">The JAR containing classes not in test src folder</p> -->
+<!-- 		   	 		</div>	   				 -->
+<!-- 		 	 </div>	 -->
 		 	 <div class="form-group">
 				<div class="col-sm-offset-1 col-sm-6 pull-right">
 					<input type="button" id="cancelBtn" class="btn btn-default"  value=Back onClick="history.go(-1)" />

@@ -13,7 +13,7 @@
 <head>
 <script type="text/javascript">
 $(document).ready(function() { 
-    $('[value~=RunTest]').click(function() { 
+    $('[value~=RunTests]').click(function() { 
         $.blockUI({ css: { 
             border: 'none', 
             padding: '15px', 
@@ -28,8 +28,13 @@ $(document).ready(function() {
 </script>
 </head>
 <body>
-	<%@ include file="include/Tabs.jspf"%>	
-	<%@ include file="include/UpperBody.jspf"%>
+	<div class="row tabs" id="tab">
+		<ul class="nav nav-tabs ">
+			<li class="active"><a href="/app/ShowProjectDetails?id=${project.id}">View</a></li>
+			<li><a href="/app/ManageProject?id=${project.id}">Edit</a></li>
+		</ul>
+	</div>
+	<%@ include file="include/UpperBody.jspf"%>	
 	<div class="row" id="methods">		
 		<display:table name="testInfos" id="test" class="col-md-8 table-bordered table-hover title text-center headtitle-link"
 			requestURI="ShowClassDetails" defaultsort="1">			
@@ -47,7 +52,7 @@ $(document).ready(function() {
 			</display:column>
 			<display:column  paramId="methodId" paramProperty="id"  href="/app/runTest">	
 				<c:if test="${(test.name != 'setUp') and (test.name != 'after') and (test.name != 'before')}">			
-					<button class="btn btn-primary btn-xs" id="listM" value="RunTest" >Run Test</button>	
+					<button class="btn btn-primary btn-xs" id="listM" value="RunTests" >Run Test</button>	
 				</c:if>		
 			</display:column>		
 		</display:table>		
