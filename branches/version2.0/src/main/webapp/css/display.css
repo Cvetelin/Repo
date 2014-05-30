@@ -14,6 +14,25 @@ table, tr:nth-child(odd) {
   text-decoration: none;
   font-size: 12px;
 }
+/* title row of table*/
+table.table-title thead tr th{
+/* 	border:	solid; */
+/* 	border-width: thin; */
+	background-color:  	#726e6e; 
+	text-align: center;
+	padding-top:0px; 
+	padding-bottom:0px;
+	
+}
+
+/* body row of table*/
+table.table-body tbody tr td{
+/* 	border:	solid; */
+/* 	border-width: thin; */
+	text-align: center;
+	padding-top:0px; 
+	padding-bottom:0px;
+}
 
 .title {
 	border:	solid;
