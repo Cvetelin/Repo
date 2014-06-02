@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Date;
 import java.util.HashSet;
-import java.util.Iterator;
 import java.util.List;
 
 import javassist.CtClass;
@@ -151,6 +150,45 @@ public class ProjectController {
 	public ModelAndView manageProject(@RequestParam("id") long id) {
 		Project project = projectService.load(id);
 		ModelMap projectDetails = listPorejectDetils(project);
+
+		// Collection<ClassInfoBean> cBeans = new ArrayList<ClassInfoBean>();
+		// for (ClassInfo classInfo : project.getClassInfos()) {
+		// int allexecutions = 0;
+		// ClassInfoBean classInfoBean = new ClassInfoBean();
+		// if (classInfo.getTestInfo() != null) {
+		// classInfoBean.setNumberOfTests(classInfo.getTestInfo().size());
+		// classInfoBean.setClasInfo(classInfo);
+		// Collection<TestInfoBean> testInfoBeans = new
+		// ArrayList<TestInfoBean>();
+		// for (TestInfo testInfo : classInfo.getTestInfo()) {
+		// TestInfoBean testInfoBean = new TestInfoBean();
+		// if (testInfo.getExecInfo() != null) {
+		// allexecutions += testInfo.getExecInfo().size();
+		// testInfoBean.setNumebrOfRuns(testInfo.getExecInfo().size());
+		// testInfoBean.setTestInfo(testInfo);
+		// Collection<ExecInfoBean> execInfoBeans = new
+		// ArrayList<ExecInfoBean>();
+		// for (ExecInfo execInfo : testInfo.getExecInfo()) {
+		// ExecInfoBean execInfoBean = new ExecInfoBean();
+		// execInfoBean.setExecInfo(execInfo);
+		// execInfoBeans.add(execInfoBean);
+		// }
+		// testInfoBean.setExecInfoBeans(execInfoBeans);
+		// }
+		// testInfoBeans.add(testInfoBean);
+		// }
+		// classInfoBean.setTestInfoBeans(testInfoBeans);
+		// if (allexecutions == 0) {
+		// allexecutions = 1;
+		// }
+		// classInfoBean.setNumberOfAllExecutions(allexecutions);
+		// }
+		// cBeans.add(classInfoBean);
+		// }
+		// ModelMap manageProject = new ModelMap();
+		// manageProject.addAttribute("classInfos", cBeans);
+		// manageProject.addAttribute("project", project);
+		// manageProject.addAttribute("projectsList", projectService.list());
 		return new ModelAndView("ManageProject", projectDetails);
 	}
 
@@ -230,8 +268,8 @@ public class ProjectController {
 	private void clearOldData(Project project) {
 		List<ClassInfo> classSet = classInfoService.listBy(project);
 		try {
-			for (Iterator classIterator = classSet.iterator(); classIterator.hasNext();) {
-				ClassInfo classInfo = (ClassInfo) classIterator.next();
+			for (ClassInfo classInfo : classSet) {
+				// classInfo = (ClassInfo) classIterator.next();
 				// List<TestInfo> testSet = testInfoService.listBy(classInfo);
 				// for (Iterator testIteretor = testSet.iterator();
 				// testIteretor.hasNext();) {
@@ -257,8 +295,7 @@ public class ProjectController {
 		List<ClassInfo> classes = classInfoService.listBy(project);
 		projectDetails.addAttribute("classInfos", classes);
 		Collection<TestInfo> methods = new ArrayList<TestInfo>();
-		for (Iterator iterator = classes.iterator(); iterator.hasNext();) {
-			ClassInfo classInfo = (ClassInfo) iterator.next();
+		for (ClassInfo classInfo : classes) {
 			methods.addAll(testInfoService.listBy(classInfo));
 		}
 		projectDetails.addAttribute("testInfos", methods);

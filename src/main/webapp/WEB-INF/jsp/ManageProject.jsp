@@ -33,32 +33,23 @@
 			<li class="active"><a href="/app/ManageProject?id=${project.id}">Edit</a></li>
 		</ul>
 	</div>
-	<div class="row" id="project">
+	<div class="row " id="project">
 		<display:table name="project" id="project"
 			class="col-sm-12 col-md-12 col-lg-12 table-bordered text-center table-hover title"
 			requestURI="ShowProjects" defaultsort="1">
-			<display:column title="Project Name" property="projectName"
-				paramId="id" paramProperty="id" maxLength="20" />
+			<display:column title="Project Name" property="projectName"	paramId="id" paramProperty="id" maxLength="20" />
 			<display:column title="Test JAR name" property="jarName"
 				maxLength="20" />
-			<display:column title="Test JAR location" property="jarPath"
-				maxLength="20" href="/app/download" />
-			<display:column title="Description" property="description"
-				maxLength="50" />
-			<display:column title="Dependency JAR name"
-				property="dependencyJarName" maxLength="20" />
-			<display:column title="Dependency JAR location"
-				property="dependencyJarPath" maxLength="20" />
-			<display:column title="Modified on" property="dateModification"
-				format="{0,date,dd.MM.yyyy HH:mm:ss}" />
-			<display:column title="Created on" property="dateCreation"
-				format="{0,date,dd.MM.yyyy HH:mm:ss}" />
-			<display:column href="/app/EditProject" paramId="id"
-				paramProperty="id">
+			<display:column title="Test JAR location" property="jarPath" maxLength="20" href="/app/download" />
+			<display:column title="Description" property="description" maxLength="50" />
+			<display:column title="Dependency JAR name"	property="dependencyJarName" maxLength="20" />
+			<display:column title="Dependency JAR location"	property="dependencyJarPath" maxLength="20" />
+			<display:column title="Modified on" property="dateModification"	format="{0,date,dd.MM.yyyy HH:mm:ss}" />
+			<display:column title="Created on" property="dateCreation"	format="{0,date,dd.MM.yyyy HH:mm:ss}" />
+			<display:column href="/app/EditProject" paramId="id"paramProperty="id">
 				<button class="btn btn-primary btn-xs" name="projectForm">Edit</button>
 			</display:column>
-			<display:column href="/app/GenerateTree" paramId="id"
-				paramProperty="id">
+			<display:column href="/app/GenerateTree" paramId="id" paramProperty="id">
 				<button class="btn btn-primary btn-xs" id="generate">Generate
 					Project Tree</button>
 			</display:column>
@@ -71,73 +62,57 @@
 		</display:table>
 	</div>
 	<br></br>
-	<div class="row" id="class">
-		<display:table name="classInfos" id="class"
-			class="col-sm-12 col-md-12 col-lg-12 text-center table-bordered table-hover title headtitle-link"
-			requestURI="ShowProjectDetails" defaultsort="1">
-			<display:column title="Class name" property="name" paramId="id"
-				paramProperty="id" />
-			<display:column title="Latest result"
-				class="col-sm2 col-md-1 col-lg-1">
-				<tags:yesno value="${class.success}" />
-			</display:column>
-			<display:column title="Last run on" property="executionDate"
-				format="{0,date,dd.MM.yyyy HH:mm:ss}" />
-			<display:column title="#Tests" property="numberOfTests" />
-			<display:column title="Qualified name" property="qualifiedName" />
-		</display:table>
+	<div class="row table-bordered img-rounded" id="details" style="padding: 20px 0px 20px 20px">
+	<div class="row col-sm-2 col-md-2 text-left sidebar-custom"  style="padding: 20px 0px 0px 20px" id="info">
+		<ul class="nav nav-pills nav-stacked">
+			<li class="active"><a href="#" class="table-bordered text-center table-hover">Home</a></li>
+			<li><a href="#" class="table-bordered text-center table-hover">Profile</a></li>
+			<li><a href="#" class="table-bordered text-center table-hover">Messages</a></li>
+		</ul>
 	</div>
-	<br></br>
-	<div class="row" id="info">
+	<div class=" col-sm-10 col-md-10" style="padding: 0px 0px 0px 20px" id="info">
 		<table
-			class="table table-bordered col-sm-12 col-md-12 col-lg-12 table-title table-body">
+			class="table table-bordered col-sm-10 col-md-10 col-lg-10 table-title table-body">
 			<thead>
 				<tr>
 					<th class="col-sm-1 col-md-1">Class name</th>
 					<th>Tests</th>
 					<th>Executions</th>
-					<th>Email</th>
 				</tr>
 			</thead>
 			<tbody>
-				<c:forEach var="class" items="${classInfos}">
-					<c:forEach var="test" items="${class.testInfo}">
-						<c:forEach var="exec" items="${test.execInfo}">
 					<tr>
-						<td rowspan="${fn:length(class.testInfo)}"><c:out value="${class.name}"></c:out></td>
-						<td>
-							<table class="table table-bordered table-body">
-							<tbody>
-								<c:forEach var="test" items="${class.testInfo}">
-									<tr>
-										<td><c:out value="${test.name}"></c:out></td>
-									</tr>
-								</c:forEach>
-								</tbody>
-							</table>
-						</td>
-						<td>
-							<table class="table table-bordered table-body">
-							<tbody>
-								<c:forEach var="test" items="${class.testInfo}">
-									<c:forEach var="exec" items="${test.execInfo}">
-										<tr>
-											<td><c:out value="${exec.executionDate}"></c:out></td>
-										</tr>
-									</c:forEach>
-								</c:forEach>
-								</tbody>
-							</table>
-						</td>
+					<td>asdas</td>	
 					</tr>
-					</c:forEach>
-					</c:forEach>
-				</c:forEach>
+			
 			</tbody>
 		</table>
 	</div>
+	</div>
 	<br></br>
-	<div class="row" id="executions"></div>
+	<div class="row" id="executions">
+	 <c:forEach var="class" items="${classInfos}">
+	 	<div class="row  table-bordered img-rounded">
+	 		<c:out value="${class.name}"></c:out>	 
+	 			 <div class="row">	 	 	
+	 	 			 <c:forEach var="test" items="${class.testInfo}">
+	 	 				
+	 	 					 <c:out value="${test.name}"></c:out>	 
+	 	 	 		
+	 	 			 </c:forEach>
+	 			 </div>
+	 	
+<%-- 	 	<display:table name="${class.testInfo}" id="testInfo"  --%>
+<%-- 			class="col-sm-12 col-md-12 col-lg-12 table-bordered text-center table-hover title"> --%>
+<%-- 			<display:column title="Project Name" property="${testInfo.name}" paramId="id" paramProperty="id" maxLength="20" />		 --%>
+<%-- 		</display:table> --%>
+		 </div>	
+		 <br></br>
+	 </c:forEach>
+	 
+	</div>
+	 
+	
 
 
 </body>
