@@ -1,5 +1,6 @@
 package bg.ceco.demo.springmvc;
 
+import java.io.File;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Date;
@@ -9,6 +10,8 @@ import java.util.List;
 import javassist.CtClass;
 import javassist.CtMethod;
 
+import org.apache.commons.io.FileUtils;
+import org.apache.commons.lang.ArrayUtils;
 import org.apache.commons.lang.RandomStringUtils;
 import org.apache.commons.lang.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -191,6 +194,35 @@ public class ProjectController {
 		// manageProject.addAttribute("projectsList", projectService.list());
 		return new ModelAndView("ManageProject", projectDetails);
 	}
+	
+//	@RequestMapping(value="/dirInfoForm", method = RequestMethod.POST)
+//	public ModelAndView deleteGaleryList (@ModelAttribute("dirInfoForm") DirInfoForm dirInfoForm, ModelMap model) throws Exception {
+//		List<ClassInfo> info = Constants.getTestClassesDirInfo();
+//		model.addAttribute("dirInfo", info);
+//		model.addAttribute(new DirInfoForm());
+//		
+//		String [] testsExecutionsDirsToDelete= dirInfoForm.getDelete();
+//		if(!ArrayUtils.isEmpty(testsExecutionsDirsToDelete)) {
+//			File testExecutionDirToDelete = new File("defult");
+//			for (int i = 0; i < testsExecutionsDirsToDelete.length; i++) {
+//				testExecutionDirToDelete = new File(testsExecutionsDirsToDelete[i]);
+//				FileUtils.forceDelete(testExecutionDirToDelete);
+//				
+//			}
+//			
+//			if (new File(testExecutionDirToDelete.getParent()).list().length <= 0 ) {
+//				File testDir = new File(testExecutionDirToDelete.getParent());
+//				FileUtils.forceDelete(testDir);
+//				
+//				ClassInfo classInfo = Constants.getTestClassDirInfo(testDir.getParent());
+////				model.addAttribute("testInfo", classInfo.getTestInfo());
+//				return new ModelAndView("ShowProjectDetails");				
+//			}					
+//				
+//				return new ModelAndView("ShowProjectDetails");
+//		}
+//		return new ModelAndView("redirect:/app/ShowProjectDetails", "path",  info);
+//	}
 
 	private String constructSaveLocation(ProjectForm projectForm, MultipartFile file) {
 		String rootDir = "C:\\";
