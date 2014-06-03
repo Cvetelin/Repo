@@ -83,6 +83,14 @@ public class ExecInfoDaoHibernate implements ExecInfoDao {
 			List<ExecInfo> execInfo = crit.list();
 			return execInfo;
 		}
+		
+		@Override
+		@SuppressWarnings("unchecked")
+		public ExecInfo getLasteExecution(TestInfo testInfo) {
+			Criteria crit = sessionFactory.getCurrentSession().createCriteria(ExecInfo.class)
+					.add(Restrictions.eq("testInfo", testInfo)).addOrder(Order.desc("executionDate")).setMaxResults(1);				
+			return (ExecInfo) crit.uniqueResult();
+		}
 
 
 }

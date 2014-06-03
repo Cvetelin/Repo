@@ -38,9 +38,6 @@ $(document).ready(function() {
 	<div class="row" id="methods">		
 		<display:table name="testInfos" id="test" class="col-md-8 table-bordered table-hover title text-center headtitle-link"
 			requestURI="ShowClassDetails" defaultsort="1">			
-<%-- 			<display:column title="Class name" property="classInfo.name" paramId="id" paramProperty="classInfo.id" sortable="true"> --%>
-<%-- 			</display:column> --%>
-		
 			<display:column title="Methods in Class" property="name" paramId="id" paramProperty="id" sortable="true" />
 			<display:column title="Number of runs" property="numberOfExections" sortable="true"/>
 			<display:column title="Last result" sortable="true">

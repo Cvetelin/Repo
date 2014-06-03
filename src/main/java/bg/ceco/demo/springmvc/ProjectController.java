@@ -27,9 +27,12 @@ import org.springframework.web.servlet.ModelAndView;
 
 import bg.ceco.demo.logic.ClassInfoService;
 import bg.ceco.demo.logic.ExecInfoService;
+import bg.ceco.demo.logic.ManageProjectBean;
 import bg.ceco.demo.logic.ProjectService;
+import bg.ceco.demo.logic.TestInfoBean;
 import bg.ceco.demo.logic.TestInfoService;
 import bg.ceco.demo.model.ClassInfo;
+import bg.ceco.demo.model.ExecInfo;
 import bg.ceco.demo.model.Project;
 import bg.ceco.demo.model.TestInfo;
 
@@ -56,7 +59,8 @@ public class ProjectController {
 	}
 
 	@RequestMapping(value = "/EditProject", method = RequestMethod.GET)
-	public ModelAndView editProject(@RequestParam("id") long id, @ModelAttribute("projectForm") ProjectForm projectForm) {
+	public ModelAndView editProject(@RequestParam("id") long id,
+			@ModelAttribute("projectForm") ProjectForm projectForm) {
 		Project project = projectService.load(id);
 		projectForm.setName(project.getProjectName());
 		projectForm.setProjectId(String.valueOf(id));
@@ -69,25 +73,33 @@ public class ProjectController {
 	}
 
 	@RequestMapping(value = "/AddProject", method = RequestMethod.GET)
-	public String showAdd(@ModelAttribute ProjectForm projectForm, BindingResult result) {
+	public String showAdd(@ModelAttribute ProjectForm projectForm,
+			BindingResult result) {
 		return "AddProject";
 	}
 
 	@RequestMapping(value = "/CreateProject", method = RequestMethod.POST)
-	public ModelAndView add(@ModelAttribute("projectForm") ProjectForm projectForm, BindingResult result,
-			@RequestParam("testJar") MultipartFile testJar, @RequestParam("depJar") MultipartFile depJar) {
+	public ModelAndView add(
+			@ModelAttribute("projectForm") ProjectForm projectForm,
+			BindingResult result,
+			@RequestParam("testJar") MultipartFile testJar,
+			@RequestParam("depJar") MultipartFile depJar) {
 		FileValidator fileValidator = new FileValidator();
 		fileValidator.validate(testJar, result);
 		try {
-			if (!StringUtils.isBlank(projectForm.getProjectId()) && projectService.load(Long.valueOf(projectForm.getProjectId())) != null) {
-				Project existingProject = projectService.load(Long.valueOf(projectForm.getProjectId()));
+			if (!StringUtils.isBlank(projectForm.getProjectId())
+					&& projectService.load(Long.valueOf(projectForm
+							.getProjectId())) != null) {
+				Project existingProject = projectService.load(Long
+						.valueOf(projectForm.getProjectId()));
 
 				String depJarPath = constructSaveLocation(projectForm, depJar);
 				String testJarPatj = constructSaveLocation(projectForm, testJar);
 				existingProject.setDateModification(new Date());
 				existingProject.setDependencyJar(depJar.getBytes());
 				if (!depJarPath.equals(null)) {
-					existingProject.setDependencyJarName(depJar.getOriginalFilename());
+					existingProject.setDependencyJarName(depJar
+							.getOriginalFilename());
 				}
 				existingProject.setDependencyJarPath(depJarPath);
 				existingProject.setDescription(projectForm.getDescription());
@@ -152,79 +164,56 @@ public class ProjectController {
 	@RequestMapping(value = "/ManageProject", method = RequestMethod.GET)
 	public ModelAndView manageProject(@RequestParam("id") long id) {
 		Project project = projectService.load(id);
-		ModelMap projectDetails = listPorejectDetils(project);
+		// ModelMap projectDetails = listPorejectDetils(project);
+		ModelMap projectDetails = new ModelMap();
+		projectDetails.addAttribute("project", project);
+		List<ClassInfo> classes = classInfoService.listBy(project);
+		//projectDetails.addAttribute("classInfos", classes);
+		Collection<ManageProjectBean> manageProjectBeans = new ArrayList<ManageProjectBean>();
+		for (ClassInfo classInfo : classes) {
+			ManageProjectBean manageProjectBean = new ManageProjectBean();
+			Collection<TestInfoBean> testInfoBeans = new ArrayList<TestInfoBean>();
+			for (TestInfo testInfo : testInfoService.listBy(classInfo)) {
+				TestInfoBean testInfoBean = new TestInfoBean();				
+				
+				manageProjectBean.setClassId(classInfo.getId());
+				manageProjectBean.setClassName(classInfo.getName());
+				testInfoBean.setName(testInfo.getName());
+				testInfoBean.setId(testInfo.getId());
+				
+				ExecInfo execInfo = execInfoService.getlastExecution(testInfo);
+				if (execInfo != null) {
+					testInfoBean.setExecutionDate(execInfo.getExecutionDate());
+					testInfoBean.setLastRunStatus(execInfo.isStatus());
+					testInfoBean.setNumberOfExections(execInfoService.listBy(
+							testInfo).size());
+				}
+				
+				
+				testInfoBeans.add(testInfoBean);
+				manageProjectBean.setTestBeans(testInfoBeans);
+			}
+			manageProjectBeans.add(manageProjectBean);
+		}
+		projectDetails.addAttribute("manageProject", manageProjectBeans);
+		projectDetails.addAttribute("projectsList", projectService.list());
 
-		// Collection<ClassInfoBean> cBeans = new ArrayList<ClassInfoBean>();
-		// for (ClassInfo classInfo : project.getClassInfos()) {
-		// int allexecutions = 0;
-		// ClassInfoBean classInfoBean = new ClassInfoBean();
-		// if (classInfo.getTestInfo() != null) {
-		// classInfoBean.setNumberOfTests(classInfo.getTestInfo().size());
-		// classInfoBean.setClasInfo(classInfo);
-		// Collection<TestInfoBean> testInfoBeans = new
-		// ArrayList<TestInfoBean>();
-		// for (TestInfo testInfo : classInfo.getTestInfo()) {
-		// TestInfoBean testInfoBean = new TestInfoBean();
-		// if (testInfo.getExecInfo() != null) {
-		// allexecutions += testInfo.getExecInfo().size();
-		// testInfoBean.setNumebrOfRuns(testInfo.getExecInfo().size());
-		// testInfoBean.setTestInfo(testInfo);
-		// Collection<ExecInfoBean> execInfoBeans = new
-		// ArrayList<ExecInfoBean>();
-		// for (ExecInfo execInfo : testInfo.getExecInfo()) {
-		// ExecInfoBean execInfoBean = new ExecInfoBean();
-		// execInfoBean.setExecInfo(execInfo);
-		// execInfoBeans.add(execInfoBean);
-		// }
-		// testInfoBean.setExecInfoBeans(execInfoBeans);
-		// }
-		// testInfoBeans.add(testInfoBean);
-		// }
-		// classInfoBean.setTestInfoBeans(testInfoBeans);
-		// if (allexecutions == 0) {
-		// allexecutions = 1;
-		// }
-		// classInfoBean.setNumberOfAllExecutions(allexecutions);
-		// }
-		// cBeans.add(classInfoBean);
-		// }
-		// ModelMap manageProject = new ModelMap();
-		// manageProject.addAttribute("classInfos", cBeans);
-		// manageProject.addAttribute("project", project);
-		// manageProject.addAttribute("projectsList", projectService.list());
 		return new ModelAndView("ManageProject", projectDetails);
 	}
-	
-//	@RequestMapping(value="/dirInfoForm", method = RequestMethod.POST)
-//	public ModelAndView deleteGaleryList (@ModelAttribute("dirInfoForm") DirInfoForm dirInfoForm, ModelMap model) throws Exception {
-//		List<ClassInfo> info = Constants.getTestClassesDirInfo();
-//		model.addAttribute("dirInfo", info);
-//		model.addAttribute(new DirInfoForm());
-//		
-//		String [] testsExecutionsDirsToDelete= dirInfoForm.getDelete();
-//		if(!ArrayUtils.isEmpty(testsExecutionsDirsToDelete)) {
-//			File testExecutionDirToDelete = new File("defult");
-//			for (int i = 0; i < testsExecutionsDirsToDelete.length; i++) {
-//				testExecutionDirToDelete = new File(testsExecutionsDirsToDelete[i]);
-//				FileUtils.forceDelete(testExecutionDirToDelete);
-//				
-//			}
-//			
-//			if (new File(testExecutionDirToDelete.getParent()).list().length <= 0 ) {
-//				File testDir = new File(testExecutionDirToDelete.getParent());
-//				FileUtils.forceDelete(testDir);
-//				
-//				ClassInfo classInfo = Constants.getTestClassDirInfo(testDir.getParent());
-////				model.addAttribute("testInfo", classInfo.getTestInfo());
-//				return new ModelAndView("ShowProjectDetails");				
-//			}					
-//				
-//				return new ModelAndView("ShowProjectDetails");
-//		}
-//		return new ModelAndView("redirect:/app/ShowProjectDetails", "path",  info);
-//	}
 
-	private String constructSaveLocation(ProjectForm projectForm, MultipartFile file) {
+	@RequestMapping(value = "/ClearTestExecutions", method = RequestMethod.GET)
+	public ModelAndView clearExecutionsOfTests(@RequestParam("methodId") long id) {
+		TestInfo testInfo = testInfoService.load(id);
+		for (ExecInfo execInfo : execInfoService.listBy(testInfo)) {
+			execInfoService.delete(execInfo);
+		}
+		long projectId = testInfo.getClassInfo().getProject().getId();
+		
+		return new ModelAndView("redirect:/app/ManageProject", "id", projectId);
+	}
+
+	private String constructSaveLocation(ProjectForm projectForm,
+			MultipartFile file) {
 		String rootDir = "C:\\";
 		StringBuilder path = new StringBuilder();
 
@@ -265,7 +254,8 @@ public class ProjectController {
 	// return null;
 	// }
 
-	private void generateClassSturcture(List<CtClass> classes, Project project) throws Exception {
+	private void generateClassSturcture(List<CtClass> classes, Project project)
+			throws Exception {
 
 		// List<ClassInfo> classInfos = new ArrayList<ClassInfo>();
 		for (CtClass class1 : classes) {
