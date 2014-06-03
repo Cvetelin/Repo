@@ -18,4 +18,6 @@ public interface ExecInfoDao {
 
 	public abstract List<ExecInfo> listByExecDateDesc(TestInfo testInfo);
 
+	public abstract ExecInfo getLasteExecution(TestInfo testInfo);
+
 }

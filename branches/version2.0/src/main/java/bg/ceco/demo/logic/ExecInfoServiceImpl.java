@@ -73,4 +73,9 @@ public class ExecInfoServiceImpl implements ExecInfoService {
 	public List<ExecInfo> listByExecDatedesc(TestInfo testInfo) {
 		return execInfoDao.listByExecDateDesc(testInfo);
 	}
+	
+	@Override
+	public ExecInfo getlastExecution(TestInfo testInfo) {
+		return execInfoDao.getLasteExecution(testInfo);
+	}
 }

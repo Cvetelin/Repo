@@ -45,7 +45,8 @@ public class ExecInfo {
 
 	}
 
-	public ExecInfo(long id, String name, String path, Date executionDate, String failureReason, TestInfo testInfo, boolean status,
+	public ExecInfo(long id, String name, String path, Date executionDate,
+			String failureReason, TestInfo testInfo, boolean status,
 			Long runTime) {
 		super();
 		this.id = id;

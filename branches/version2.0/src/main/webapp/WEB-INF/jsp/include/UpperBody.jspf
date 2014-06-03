@@ -51,7 +51,7 @@ $(document).ready(function() {
 			</display:column>
 			<display:column title="Last run on" property="executionDate"  format="{0,date,dd.MM.yyyy HH:mm:ss}">
 			</display:column>
-			<display:column title="Run time" property="runTime"  format="{0,date, mm:ss:SSS} m">
+			<display:column title="Run time" property="runTime" format="{0,date, mm:ss:SSS} m" >
 			</display:column>
 			<display:column title="#Tests"  property="numberOfTests">
 			</display:column>

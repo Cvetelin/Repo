@@ -20,4 +20,6 @@ public interface ExecInfoService {
 
 	public abstract List<ExecInfo> listByExecDatedesc(TestInfo testInfo);
 
+	public abstract ExecInfo getlastExecution(TestInfo testInfo);
+
 }
