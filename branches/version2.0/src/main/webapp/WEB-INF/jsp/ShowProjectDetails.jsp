@@ -14,33 +14,9 @@
 <script type="text/javascript" src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-2.0.0.min.js"></script>
 <script type="text/javascript" src="/js/jquery.blockUI.js"></script>
 <script type="text/javascript">
-// function showMethodOfClass(id) {
-// 	if(document.getElementById('listM').value=='List Methods'){
-// 	document.getElementById('listM').value = 'Hide Methods';
-// 	document.getElementById(id).style.display = 'none';
-// 	}else{
-// 	document.getElementById('listM').value = 'List Methods';
-// 	document.getElementById(id).style.display = 'inline';
-// 	}
-// }
 
 $(document).ready(function() { 
-    $('#generate').click(function() { 
-        $.blockUI({ css: { 
-            border: 'none', 
-            padding: '15px', 
-            backgroundColor: '#000', 
-            '-webkit-border-radius': '10px', 
-            '-moz-border-radius': '10px', 
-            opacity: .5, 
-            color: '#fff' 
-        } }); 
-    }); 
-}); 
-
-
-$(document).ready(function() { 
-    $('[value~=Execute]').click(function() { 
+    $('[value~=RunTests]').click(function() { 
         $.blockUI({ css: { 
             border: 'none', 
             padding: '15px', 
@@ -106,7 +82,7 @@ $(document).ready(function() {
 				<c:choose>
 					<c:when test="${not empty class.testInfo}">
 						<a href="/app/runMethods?classId=${class.id}">
-							<button class="btn btn-primary btn-xs" id="runClass" name="projectForm" value="Run Tests">Run Tests</button>
+							<button class="btn btn-primary btn-xs" id="runTests" name="projectForm" value="RunTests">Run Tests</button>
 						</a>
 					</c:when>
 					<c:otherwise>

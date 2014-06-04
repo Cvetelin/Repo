@@ -16,6 +16,7 @@
 <head>
 <script type="text/javascript"
 	src="http://code.jquery.com/jquery-2.0.0.min.js"></script>
+<script type="text/javascript" src="/js/jquery.blockUI.js"></script>
 <script type="text/javascript">
 	function showMethodOfClass(id) {
 		if (document.getElementById('listM').value == 'List Methods') {
@@ -27,20 +28,52 @@
 		}
 	}
 
-	function addElement() {
-		var hiddenInput = document.createElement("li");
-		hiddenInput.setAttribute("id", "uniqueIdentifier");
-		hiddenInput.setAttribute("type", "hidden");
-		hiddenInput.setAttribute("value", 'ID');
-		hiddenInput.setAttribute("class", "ListItem");
-
-		$('body').append(hiddenInput);
+	
+	function warnOnDelete(event) {
+		var answer = confirm("All data will be lost! Are you sure?")
+		if (answer == true ){
+			return true;
+		} else 
+			event.preventDefault();
+			return false;
 	}
-
-	window.onload = function() {
-		document.getElementById("MyElement").addEventListener('click',
-				changeClass);
+	
+	
+	function warnOnGenerate(event) {		
+		var answer = confirm("Regenerating the project will erase all previous data! Are you sure?")
+		if (answer){
+			return true;
+		} else {
+			event.preventDefault();
+			return false;
+		}
 	}
+	
+	function warn(event) {
+		var answer = confirm("All data for the selected element will be lost! Are you sure?")
+		if (answer  == true){
+			return true;
+		}  else
+			event.preventDefault();
+			return false;
+	}
+	
+
+	$(document).ready(function() { 
+		$('#generate').click(function(event) {
+			if (warnOnGenerate(event)) {
+				$.blockUI({ css: { 
+		            border: 'none', 
+		            padding: '15px', 
+		            backgroundColor: '#000', 
+		            '-webkit-border-radius': '10px', 
+		            '-moz-border-radius': '10px', 
+		            opacity: .5, 
+		            color: '#fff' 
+		        } });
+			}
+		});	
+	}); 
 </script>
 </head>
 <body>
@@ -54,36 +87,27 @@
 		<display:table name="project" id="project"
 			class="col-sm-12 col-md-12 col-lg-12 table-bordered text-center table-hover title"
 			requestURI="ShowProjects" defaultsort="1">
-			<display:column title="Project Name" property="projectName"
-				paramId="id" paramProperty="id" maxLength="20" />
-			<display:column title="Test JAR name" property="jarName"
-				maxLength="20" />
-			<display:column title="Test JAR location" property="jarPath"
-				maxLength="20" href="/app/download" />
-			<display:column title="Description" property="description"
-				maxLength="50" />
-			<display:column title="Dependency JAR name"
-				property="dependencyJarName" maxLength="20" />
-			<display:column title="Dependency JAR location"
-				property="dependencyJarPath" maxLength="20" />
-			<display:column title="Modified on" property="dateModification"
-				format="{0,date,dd.MM.yyyy HH:mm:ss}" />
-			<display:column title="Created on" property="dateCreation"
-				format="{0,date,dd.MM.yyyy HH:mm:ss}" />
-			<display:column href="/app/EditProject" paramId="id"
-				paramProperty="id">
+			<display:column title="Project Name" property="projectName"	paramId="id" paramProperty="id" maxLength="20" />
+			<display:column title="Test JAR name" property="jarName" maxLength="20" />
+			<display:column title="Test JAR location" property="jarPath" maxLength="20" href="/app/download" />
+			<display:column title="Description" property="description"	maxLength="50" />
+			<display:column title="Dependency JAR name"	property="dependencyJarName" maxLength="20" />
+			<display:column title="Dependency JAR location"	property="dependencyJarPath" maxLength="20" />
+			<display:column title="Modified on" property="dateModification"	format="{0,date,dd.MM.yyyy HH:mm:ss}" />
+			<display:column title="Created on" property="dateCreation"	format="{0,date,dd.MM.yyyy HH:mm:ss}" />
+			<display:column href="/app/EditProject" paramId="id" paramProperty="id">
 				<button class="btn btn-primary btn-xs" name="projectForm">Edit</button>
 			</display:column>
-			<display:column href="/app/GenerateTree" paramId="id"
-				paramProperty="id">
-				<button class="btn btn-primary btn-xs" id="generate">Generate
-					Project Tree</button>
+			<display:column href="/app/Generate" paramId="id" paramProperty="id">				
+					<button class="btn btn-primary btn-xs" id="generate">Regenerate Project</button>				
 			</display:column>
+			<display:column >
+				<a href="/app/DeleteProject?projectId=${project.id}" onclick="warnOnDelete(event)">
+					<button class="btn btn-primary btn-xs" id="delete"  value="Delete">Delete</button>
+				</a>
+			</display:column>			
 			<display:column href="#" paramId="id" paramProperty="id">
-				<button class="btn btn-primary btn-xs" id="delete">Delete</button>
-			</display:column>
-			<display:column href="#" paramId="id" paramProperty="id">
-				<button class="btn btn-primary btn-xs" id="delete"></button>
+				<button class="btn btn-primary btn-xs" id="deactivate"></button>
 			</display:column>
 		</display:table>
 	</div>
@@ -95,7 +119,7 @@
 					<tr>
 					<td>Class name:
 				<c:out value="${data.className} " default="" />
-				<a href="" class="text-right">Clear data for this class</a></td>
+				<a href="" class="text-right" onclick="warn()">Clear data for this class</a></td>
 					</tr>
 				</table>
 				
@@ -122,7 +146,7 @@
 								<td><tags:yesno value="${test.lastRunStatus}" /></td>								
 								<td>
 									<a href="/app/ClearTestExecutions?methodId=${test.id}">
-										<button class="btn btn-primary btn-xs" id="delete">Clear data</button>
+										<button class="btn btn-primary btn-xs" id="clear" onclick="warn(event)">Clear data</button>
 									</a>
 								</td>
 							</tr>

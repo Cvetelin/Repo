@@ -13,6 +13,7 @@ import javax.persistence.Id;
 import javax.persistence.Lob;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.validation.constraints.NotNull;
 
 @Entity
 @Table(name = "PROJECT")
@@ -56,6 +57,14 @@ public class Project {
 	
 	@OneToMany(mappedBy = "project", cascade = CascadeType.ALL, fetch = FetchType.LAZY, orphanRemoval = true)
 	private Set<ClassInfo> classInfos;
+	
+	@Column(name = "TEST_COUNT")
+	@NotNull
+	private int testCount;
+	
+	@Column(name = "CLASS_COUUN")
+	@NotNull
+	private int classCount;
 
 	public Project() {
 	}
@@ -171,5 +180,21 @@ public class Project {
 
 	public void setDateModification(Date dateModification) {
 		this.dateModification = dateModification;
+	}
+
+	public int getTestCount() {
+		return testCount;
+	}
+
+	public void setTestCount(int testCount) {
+		this.testCount = testCount;
+	}
+
+	public int getClassCount() {
+		return classCount;
+	}
+
+	public void setClassCount(int classCount) {
+		this.classCount = classCount;
 	}
 }
