@@ -10,6 +10,25 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
+<script type="text/javascript"
+	src="http://code.jquery.com/jquery-2.0.0.min.js"></script>
+<script type="text/javascript" src="/js/jquery.blockUI.js"></script>
+<script type="text/javascript">
+	$(document).ready(function() { 
+	    $('[value~=GenerateProject]').click(function() { 
+	        $.blockUI({ css: { 
+	            border: 'none', 
+	            padding: '15px', 
+	            backgroundColor: '#000', 
+	            '-webkit-border-radius': '10px', 
+	            '-moz-border-radius': '10px', 
+	            opacity: .5, 
+	            color: '#fff' 
+	        } }); 
+	    }); 
+	}); 
+</script>
+
 </head>
 <body>
 	<div class="text-center">
@@ -20,10 +39,9 @@
 			<display:column  title="Status" sortable="true"/>	
 			<display:column  title="Modified on" property ="dateModification"  format="{0,date,dd.MM.yyyy HH:mm:ss}" sortable="true"/>
 			<display:column  title="Created on" property ="dateCreation"  format="{0,date,dd.MM.yyyy HH:mm:ss}" sortable="true"/>
-			<display:column  title="Last execution time" format="{0,date,dd.MM.yyyy HH:mm:ss}" sortable="true"/>
-			
-			<display:column href="/app/GenerateTree" paramId="id" paramProperty="id">
-					<button  class="btn btn-primary btn-xs">Generate Project Tree</button>		
+<%-- 		<display:column  title="Last execution time" format="{0,date,dd.MM.yyyy HH:mm:ss}" sortable="true"/> --%>			
+			<display:column href="/app/Generate" paramId="id" paramProperty="id">
+					<button  class="btn btn-primary btn-xs" value="GenerateProject">Generate Project Tree</button>		
 			</display:column>
 		</display:table> 		
 	</div>

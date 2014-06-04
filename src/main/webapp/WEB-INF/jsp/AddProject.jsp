@@ -98,7 +98,7 @@
 		<div class="col-md-10 text-center">
 			<p class="lead">Add/Modify project</p>			
 		</div>	
-		<form:form commandName="projectForm" method="POST"  action="CreateProject"  cssClass="form-horizontal" enctype="multipart/form-data" id="submitForm">
+		<form:form commandName="projectForm" method="POST"  action="CreateProject"  cssClass="form-horizontal" enctype="multipart/form-data" id="submitForm" >
 			<div class="form-group">
 				<label for="projectName" class="col-sm-3 control-label">Project name</label>
 				<div class="col-sm-4">

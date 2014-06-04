@@ -15,6 +15,7 @@ import org.apache.commons.lang.ArrayUtils;
 import org.apache.commons.lang.RandomStringUtils;
 import org.apache.commons.lang.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
@@ -79,13 +80,12 @@ public class ProjectController {
 	}
 
 	@RequestMapping(value = "/CreateProject", method = RequestMethod.POST)
+	@Scope(value = "request")
 	public ModelAndView add(
 			@ModelAttribute("projectForm") ProjectForm projectForm,
 			BindingResult result,
-			@RequestParam("testJar") MultipartFile testJar,
-			@RequestParam("depJar") MultipartFile depJar) {
-		FileValidator fileValidator = new FileValidator();
-		fileValidator.validate(testJar, result);
+			@RequestParam("testJar") MultipartFile testJar) {
+//			@RequestParam("depJar") MultipartFile depJar) {
 		try {
 			if (!StringUtils.isBlank(projectForm.getProjectId())
 					&& projectService.load(Long.valueOf(projectForm
@@ -93,15 +93,15 @@ public class ProjectController {
 				Project existingProject = projectService.load(Long
 						.valueOf(projectForm.getProjectId()));
 
-				String depJarPath = constructSaveLocation(projectForm, depJar);
+				//String depJarPath = constructSaveLocation(projectForm, depJar);
 				String testJarPatj = constructSaveLocation(projectForm, testJar);
 				existingProject.setDateModification(new Date());
-				existingProject.setDependencyJar(depJar.getBytes());
-				if (!depJarPath.equals(null)) {
-					existingProject.setDependencyJarName(depJar
-							.getOriginalFilename());
-				}
-				existingProject.setDependencyJarPath(depJarPath);
+//				existingProject.setDependencyJar(depJar.getBytes());
+//				if (!depJarPath.equals(null)) {
+//					existingProject.setDependencyJarName(depJar
+//							.getOriginalFilename());
+//				}
+//				existingProject.setDependencyJarPath(depJarPath);
 				existingProject.setDescription(projectForm.getDescription());
 				existingProject.setJarName(testJar.getOriginalFilename());
 				existingProject.setJarPath(testJarPatj);
@@ -115,25 +115,23 @@ public class ProjectController {
 			// fileValidator.validate(depJar, result);
 			// }
 
-			String depJarPath = constructSaveLocation(projectForm, depJar);
+			//String depJarPath = constructSaveLocation(projectForm, depJar);
 			String testJarPatj = constructSaveLocation(projectForm, testJar);
 			project.setDateCreation(new Date());
-			project.setDependencyJar(depJar.getBytes());
-			project.setDependencyJarName(depJar.getOriginalFilename());
-			project.setDependencyJarPath(depJarPath);
+//			project.setDependencyJar(depJar.getBytes());
+//			project.setDependencyJarName(depJar.getOriginalFilename());
+//			project.setDependencyJarPath(depJarPath);
 			project.setDescription(projectForm.getDescription());
 			project.setJarName(testJar.getOriginalFilename());
 			project.setJarPath(testJarPatj);
 			project.setProjectName(projectForm.getName());
 			project.setTestJar(testJar.getBytes());
 			projectService.save(project);
-			// Blob b = lh.createBlob(file.getInputStream(), file.);
-			// byte[] bytes = testJar.getBytes();
-			// BufferedOutputStream stream =
-			// new BufferedOutputStream(new FileOutputStream(new File(name +
-			// "-uploaded")));
-			// stream.write(bytes);
-			// stream.close();
+			
+			ProjectTreeGenerator generator = new ProjectTreeGenerator();
+			List<CtClass> classes = generator.loadJar(project);
+			generateClassSturcture(classes, project);		
+			
 			return new ModelAndView("redirect:/app/ShowProjects");
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -142,7 +140,7 @@ public class ProjectController {
 		}
 	}
 
-	@RequestMapping(value = "/GenerateTree", method = RequestMethod.GET)
+	@RequestMapping(value = "/Generate", method = RequestMethod.GET)
 	public ModelAndView generate(@RequestParam("id") long id) throws Exception {
 		Project project = projectService.load(id);
 		ProjectTreeGenerator generator = new ProjectTreeGenerator();
@@ -210,6 +208,14 @@ public class ProjectController {
 		long projectId = testInfo.getClassInfo().getProject().getId();
 		
 		return new ModelAndView("redirect:/app/ManageProject", "id", projectId);
+	}
+	
+	
+	@RequestMapping(value = "/DeleteProject", method = RequestMethod.GET)
+	public ModelAndView deleteProject(@RequestParam("projectId") long id) {
+		Project project = projectService.load(id);
+		projectService.delete(project);		
+		return new ModelAndView("redirect:/app//ShowProjects");
 	}
 
 	private String constructSaveLocation(ProjectForm projectForm,

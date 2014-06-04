@@ -13,7 +13,7 @@
 <head>
 <script type="text/javascript">
 $(document).ready(function() { 
-    $('[value~=RunTests]').click(function() { 
+    $('[value~=RunTest]').click(function() { 
         $.blockUI({ css: { 
             border: 'none', 
             padding: '15px', 
@@ -49,7 +49,7 @@ $(document).ready(function() {
 			</display:column>
 			<display:column  paramId="methodId" paramProperty="id"  href="/app/runTest">	
 				<c:if test="${(test.name != 'setUp') and (test.name != 'after') and (test.name != 'before')}">			
-					<button class="btn btn-primary btn-xs" id="listM" value="RunTests" >Run Test</button>	
+					<button class="btn btn-primary btn-xs" id="listM" value="RunTest" >Run Test</button>	
 				</c:if>		
 			</display:column>		
 		</display:table>		
