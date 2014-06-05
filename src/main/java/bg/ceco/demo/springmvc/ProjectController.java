@@ -28,14 +28,14 @@ import org.springframework.web.servlet.ModelAndView;
 
 import bg.ceco.demo.logic.ClassInfoService;
 import bg.ceco.demo.logic.ExecInfoService;
-import bg.ceco.demo.logic.ManageProjectBean;
 import bg.ceco.demo.logic.ProjectService;
-import bg.ceco.demo.logic.TestInfoBean;
 import bg.ceco.demo.logic.TestInfoService;
 import bg.ceco.demo.model.ClassInfo;
 import bg.ceco.demo.model.ExecInfo;
 import bg.ceco.demo.model.Project;
 import bg.ceco.demo.model.TestInfo;
+import bg.ceco.demo.springmvc.beans.ManageProjectBean;
+import bg.ceco.demo.springmvc.beans.TestInfoBean;
 
 @Controller
 public class ProjectController {
@@ -200,7 +200,7 @@ public class ProjectController {
 	}
 
 	@RequestMapping(value = "/ClearTestExecutions", method = RequestMethod.GET)
-	public ModelAndView clearExecutionsOfTests(@RequestParam("methodId") long id) {
+	public ModelAndView clearExecutionsOfTest(@RequestParam("methodId") long id) {
 		TestInfo testInfo = testInfoService.load(id);
 		for (ExecInfo execInfo : execInfoService.listBy(testInfo)) {
 			execInfoService.delete(execInfo);
@@ -210,6 +210,18 @@ public class ProjectController {
 		return new ModelAndView("redirect:/app/ManageProject", "id", projectId);
 	}
 	
+	@RequestMapping(value = "/ClearAllTestsExecutions", method = RequestMethod.GET)
+	public ModelAndView clearAllTestsExecutions(@RequestParam("classId") long id) {
+		ClassInfo classInfo = classInfoService.load(id);
+		for(TestInfo testInfo : classInfo.getTestInfo()) {
+			for (ExecInfo execInfo : execInfoService.listBy(testInfo)) {
+				execInfoService.delete(execInfo);
+			}
+		}
+		long projectId = classInfo.getProject().getId();
+		
+		return new ModelAndView("redirect:/app/ManageProject", "id", projectId);
+	}
 	
 	@RequestMapping(value = "/DeleteProject", method = RequestMethod.GET)
 	public ModelAndView deleteProject(@RequestParam("projectId") long id) {

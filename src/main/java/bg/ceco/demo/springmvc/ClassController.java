@@ -17,12 +17,12 @@ import org.springframework.web.servlet.ModelAndView;
 import bg.ceco.demo.logic.ClassInfoService;
 import bg.ceco.demo.logic.ExecInfoService;
 import bg.ceco.demo.logic.ProjectService;
-import bg.ceco.demo.logic.TestInfoBean;
 import bg.ceco.demo.logic.TestInfoService;
 import bg.ceco.demo.model.ClassInfo;
 import bg.ceco.demo.model.ExecInfo;
 import bg.ceco.demo.model.Project;
 import bg.ceco.demo.model.TestInfo;
+import bg.ceco.demo.springmvc.beans.TestInfoBean;
 
 @Controller
 public class ClassController {
