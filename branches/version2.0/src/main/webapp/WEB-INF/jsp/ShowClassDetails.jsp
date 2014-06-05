@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="UTF-8"%>
 <%@ page isELIgnored="false"%>
-<%@ taglib prefix="fmt" uri="http://java.sun.com/jstl/fmt"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ taglib prefix="display" uri="http://displaytag.sf.net"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
@@ -45,11 +45,11 @@ $(document).ready(function() {
 				</display:column>	
 			<display:column title="Last run on" property="executionDate" format="{0,date,dd.MM.yyyy HH:mm:ss}" sortable="true"/>			
 			<display:column  paramId="methodId" paramProperty="id" href="/app/${classInfo.id}/ShowClassDetails">
-				<button class="btn btn-info btn-xs" id="listM" value="List Runs" >List Executions</button>
+				<button class="btn btn-info btn-xs active" id="listM" value="List Runs" >List Executions</button>
 			</display:column>
 			<display:column  paramId="methodId" paramProperty="id"  href="/app/runTest">	
 				<c:if test="${(test.name != 'setUp') and (test.name != 'after') and (test.name != 'before')}">			
-					<button class="btn btn-primary btn-xs" id="listM" value="RunTest" >Run Test</button>	
+					<button class="btn btn-primary btn-xs active" id="listM" value="RunTest" >Run Test</button>	
 				</c:if>		
 			</display:column>		
 		</display:table>		
@@ -64,7 +64,9 @@ $(document).ready(function() {
 				<tags:yesno value="${exec.status}"/>
 			</display:column>
 			<display:column title="Run on" property="executionDate" format="{0,date,dd.MM.yyyy HH:mm:ss}" sortable="true"/>
-			<display:column title="Run time" property="runTime" format="{0,date, mm:ss:SSS} m" sortable="true"/>
+			<display:column title="Run time (min)"  property="runTime"  format="{0,date, mm:ss:SSS} m" sortable="true">
+<%-- 				<fmt:formatDate value="${exec.runTime}" pattern="mm:ss:SSS"/> --%>
+			</display:column>
 			<display:column title="Failure reason" property="failureReason" maxLength="150" />				
 		</display:table>
 		</c:if>

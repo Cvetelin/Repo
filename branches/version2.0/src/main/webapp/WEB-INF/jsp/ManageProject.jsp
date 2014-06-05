@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="UTF-8"%>
 <%@ page isELIgnored="false"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ taglib prefix="display" uri="http://displaytag.sf.net"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
@@ -82,7 +82,7 @@
 			<li><a href="/app/ShowProjectDetails?id=${project.id}">View</a></li>
 			<li class="active"><a href="/app/ManageProject?id=${project.id}">Edit</a></li>
 		</ul>
-	</div>
+	</div> 
 	<div class="row " id="project">
 		<display:table name="project" id="project"
 			class="col-sm-12 col-md-12 col-lg-12 table-bordered text-center table-hover title"
@@ -96,35 +96,37 @@
 			<display:column title="Modified on" property="dateModification"	format="{0,date,dd.MM.yyyy HH:mm:ss}" />
 			<display:column title="Created on" property="dateCreation"	format="{0,date,dd.MM.yyyy HH:mm:ss}" />
 			<display:column href="/app/EditProject" paramId="id" paramProperty="id">
-				<button class="btn btn-primary btn-xs" name="projectForm">Edit</button>
+				<button class="btn btn-primary btn-xs active" name="projectForm">Edit</button>
 			</display:column>
 			<display:column href="/app/Generate" paramId="id" paramProperty="id">				
-					<button class="btn btn-primary btn-xs" id="generate">Regenerate Project</button>				
+					<button class="btn btn-primary btn-xs active" id="generate" >Regenerate Project</button>				
 			</display:column>
 			<display:column >
 				<a href="/app/DeleteProject?projectId=${project.id}" onclick="warnOnDelete(event)">
-					<button class="btn btn-primary btn-xs" id="delete"  value="Delete">Delete</button>
+					<button class="btn btn-danger btn-xs active" id="delete"  value="Delete" title="Delete the project">Delete</button>
 				</a>
 			</display:column>			
 			<display:column href="#" paramId="id" paramProperty="id">
-				<button class="btn btn-primary btn-xs" id="deactivate"></button>
+				<button class="btn btn-primary btn-xs active" id="deactivate"></button>
 			</display:column>
 		</display:table>
 	</div>
 	<br></br>
 	<c:forEach var="data" items="${manageProject}">
 		<c:if test="${not empty data.testBeans}">
-			<div class="row ">
+			<div class="row overtable">
 				<table class="col-sm-8 col-md-8 col-lg-8 table-bordered">
 					<tr>
-					<td>Class name:
-				<c:out value="${data.className} " default="" />
-				<a href="" class="text-right" onclick="warn()">Clear data for this class</a></td>
+						<td><b>Class name:</b>
+							<a href="/app/ShowClassDetails?classId=${data.classId}"  class="btn btn-link btn-xs active">
+								<c:out value="${data.className} " default="" />
+							</a>								
+							<a href="/app/ClearAllTestsExecutions?classId=${data.classId}" class="btn btn-link btn-xs active" 
+							onclick="warn(event)" style="float:right" title="Delete all exectution data for this class">Clear data for this class</a>
+						</td>
 					</tr>
 				</table>
-				
 			</div>
-
 			<div class="row ">
 				<table
 					class="col-sm-8 col-md-8 col-lg-8 table-bordered text-center table-hover title">
@@ -145,8 +147,8 @@
 								<td><fmt:formatDate value="${test.executionDate}" pattern="dd.MM.yyyy HH:mm:ss"/></td>
 								<td><tags:yesno value="${test.lastRunStatus}" /></td>								
 								<td>
-									<a href="/app/ClearTestExecutions?methodId=${test.id}">
-										<button class="btn btn-primary btn-xs" id="clear" onclick="warn(event)">Clear data</button>
+									<a href="/app/ClearTestExecutions?methodId=${test.id}" class="btn btn-default btn-xs active" onclick="warn(event)" 
+									title="Deletes all execturion data for this test">Clear data
 									</a>
 								</td>
 							</tr>

@@ -107,3 +107,7 @@ a.brand {
   border-color: #000000;
   background-color: #111111;
 }
+/*div over the table containing the calss data */
+div.overtable  table > tbody > tr > td{
+	 background-color: #E4EEF4;
+}

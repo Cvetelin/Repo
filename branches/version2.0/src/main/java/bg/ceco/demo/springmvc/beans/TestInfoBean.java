@@ -1,4 +1,4 @@
-package bg.ceco.demo.logic;
+package bg.ceco.demo.springmvc.beans;
 
 import java.util.Date;
 

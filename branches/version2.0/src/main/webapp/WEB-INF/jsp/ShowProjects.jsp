@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="UTF-8"%>
 <%@ page isELIgnored="false"%>
-<%@ taglib prefix="fmt" uri="http://java.sun.com/jstl/fmt" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ taglib prefix="display" uri="http://displaytag.sf.net" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
@@ -41,7 +41,7 @@
 			<display:column  title="Created on" property ="dateCreation"  format="{0,date,dd.MM.yyyy HH:mm:ss}" sortable="true"/>
 <%-- 		<display:column  title="Last execution time" format="{0,date,dd.MM.yyyy HH:mm:ss}" sortable="true"/> --%>			
 			<display:column href="/app/Generate" paramId="id" paramProperty="id">
-					<button  class="btn btn-primary btn-xs" value="GenerateProject">Generate Project Tree</button>		
+					<button  class="btn btn-primary btn-xs active" value="GenerateProject">Generate Project Tree</button>		
 			</display:column>
 		</display:table> 		
 	</div>

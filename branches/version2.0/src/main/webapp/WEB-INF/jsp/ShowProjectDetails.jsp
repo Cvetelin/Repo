@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="UTF-8"%>
 <%@ page isELIgnored="false"%>
-<%@ taglib prefix="fmt" uri="http://java.sun.com/jstl/fmt"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ taglib prefix="display" uri="http://displaytag.sf.net"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
@@ -75,14 +75,14 @@ $(document).ready(function() {
 			</display:column>
 			<display:column paramId="classId" paramProperty="id" href="/app/ShowClassDetails">
 				<c:if test="${not empty class.testInfo}">
-					<button class="btn btn-info btn-xs" id="listM" value="List Methods">List Methods</button>
+					<button class="btn btn-info btn-xs active" id="listM" value="List Methods">List Methods</button>
 				</c:if>
 			</display:column>
 			<display:column>
 				<c:choose>
 					<c:when test="${not empty class.testInfo}">
 						<a href="/app/runMethods?classId=${class.id}">
-							<button class="btn btn-primary btn-xs" id="runTests" name="projectForm" value="RunTests">Run Tests</button>
+							<button class="btn btn-primary btn-xs active" id="runTests" name="projectForm" value="RunTests">Run Tests</button>
 						</a>
 					</c:when>
 					<c:otherwise>
