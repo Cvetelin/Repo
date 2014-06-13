@@ -10,7 +10,7 @@
 
 </head>
 <body>
-<div class="row"  align="left" style="padding: 50px 50px 50px 50px"> 
+<div align="left" style="padding: 50px 50px 50px 50px"> 
  <c:out value="${reason}"></c:out>
  </div>
 </body>

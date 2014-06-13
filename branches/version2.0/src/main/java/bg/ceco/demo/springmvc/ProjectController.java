@@ -1,6 +1,9 @@
 package bg.ceco.demo.springmvc;
 
+import java.io.ByteArrayInputStream;
 import java.io.File;
+import java.io.FileInputStream;
+import java.io.OutputStream;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Date;
@@ -10,8 +13,10 @@ import java.util.List;
 import javassist.CtClass;
 import javassist.CtMethod;
 
-import org.apache.commons.io.FileUtils;
-import org.apache.commons.lang.ArrayUtils;
+import javax.servlet.ServletContext;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
 import org.apache.commons.lang.RandomStringUtils;
 import org.apache.commons.lang.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,6 +25,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -247,30 +253,64 @@ public class ProjectController {
 		return path.toString();
 	}
 
-	// @RequestMapping("/download")
-	// public String downloadJar(@PathVariable("pojectId") Integer projectId,
-	// HttpServletResponse response) {
-	//
-	// Project project = projectService.get(projectId);
-	// try {
-	// response.setHeader("Content-Disposition", "inline;filename=\"" +
-	// project.getJarName() + "\"");
-	// OutputStream out = response.getOutputStream();
-	// ByteArrayInputStream bis = new
-	// ByteArrayInputStream(project.getTestJar());
-	// // response.setContentType(doc.getContentType());
-	// IOUtils.copy(bis, out);
-	// out.flush();
-	// out.close();
-	//
-	// } catch (IOException e) {
-	// e.printStackTrace();
-	// } // catch (SQLException e) {
-	// // e.printStackTrace();
-	// // }
-	//
-	// return null;
-	// }
+	@RequestMapping(value="/download", method = RequestMethod.GET)
+	public void downloadJar(@RequestParam("projectId") long projectId, HttpServletRequest request,
+			HttpServletResponse response) throws Exception {
+
+		Project project = projectService.get(projectId);
+		
+		//ServletContext context = request.getServletContext();
+		
+		File downloadFile = new File(project.getJarPath());
+		FileInputStream inputStream = new FileInputStream(downloadFile);
+
+		String mimeType = project.getJarPath();
+		
+		// set content attributes for the response
+		response.setContentType(mimeType);
+		response.setContentLength((int) downloadFile.length());
+
+		// set headers for the response
+		String headerKey = "The test jar";
+		String headerValue = String.format("attachment; filename=\"%s\"", downloadFile.getName());
+		response.setHeader(headerKey, headerValue);
+
+		// get output stream of the response
+		OutputStream outStream = response.getOutputStream();
+
+		byte[] buffer = new byte[4096];
+		int bytesRead = -1;
+
+		ByteArrayInputStream bis = new ByteArrayInputStream(project.getTestJar());
+		
+		// write bytes read from the input stream into the output stream
+		while ((bytesRead = inputStream.read(buffer)) != -1) {
+		outStream.write(buffer, 0, bytesRead);
+		}
+		inputStream.close();
+		outStream.close();
+		
+//		try {
+//			response.setHeader("Content-Disposition", "inline;filename=\""
+//					+ project.getJarName() + "\"");
+//			OutputStream out = response.getOutputStream();
+//			
+//			ByteArrayInputStream bis = new ByteArrayInputStream(
+//					project.getTestJar());
+//			// response.setContentType(doc.getContentType());			
+//				
+//			out.write(IOUtils.copy(bis, out));
+//			
+//			out.flush();
+//			out.close();
+//			
+//			
+//		} catch (IOException e) {
+//			e.printStackTrace();
+//		} // catch (SQLException e) {
+//			// e.printStackTrace();
+//			// }
+		}
 
 	private void generateClassSturcture(List<CtClass> classes, Project project)
 			throws Exception {
