@@ -60,5 +60,10 @@
 		<put-attribute name="body" value="/WEB-INF/jsp/ManageProject.jsp" />
 	</definition>
 	
+	<definition name="/popups/FailureDetails" extends="index">
+		<put-attribute name="menu" value="" />
+		<put-attribute name="body" value="/WEB-INF/jsp/popups/FailureDetailsPopup.jsp" />
+	</definition>
+	
 	
 </tiles-definitions> 
