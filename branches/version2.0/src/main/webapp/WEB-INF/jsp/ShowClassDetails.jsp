@@ -1,5 +1,4 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="UTF-8"%>
-<%@ page isELIgnored="false"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ taglib prefix="display" uri="http://displaytag.sf.net"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
@@ -11,7 +10,15 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
+<script type="text/javascript"
+	src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-2.0.0.min.js"></script>
+		<script type="text/javascript" src="/js/jquery.blockUI.js"></script>
 <script type="text/javascript">
+
+function openPopup(execId) {
+	window.open("/app/FailureDetails?id=" + execId,"_blank","toolbar=no, location=no, menubar=no, scrollbars=yes, resizable=yes, top=200, left=900, width=500, height=600");
+}
+
 $(document).ready(function() { 
     $('[value~=RunTest]').click(function() { 
         $.blockUI({ css: { 
@@ -23,7 +30,7 @@ $(document).ready(function() {
             opacity: .5, 
             color: '#fff' 
         } }); 
-    }); 
+    });  
 }); 
 </script>
 </head>
@@ -49,7 +56,7 @@ $(document).ready(function() {
 			</display:column>
 			<display:column  paramId="methodId" paramProperty="id"  href="/app/runTest">	
 				<c:if test="${(test.name != 'setUp') and (test.name != 'after') and (test.name != 'before')}">			
-					<button class="btn btn-primary btn-xs active" id="listM" value="RunTest" >Run Test</button>	
+					<button class="btn btn-primary btn-xs active" id="runTheTest" value="RunTest" >Run Test</button>	
 				</c:if>		
 			</display:column>		
 		</display:table>		
@@ -57,7 +64,7 @@ $(document).ready(function() {
 	<br></br>	
 	<div class="row" id="executions">
 	<c:if test="${not empty execInfos}">
-		<display:table name="execInfos" id="exec" class="col-md-12 table-bordered table-hover title text-center headtitle-link"
+		<display:table name="execInfos" id="exec" class="col-md-8 table-bordered table-hover title text-center headtitle-link"
 			requestURI="ShowClassDetails" defaultsort="1">
 			<display:column title="Test method name" property="testInfo.name" paramId="id" paramProperty="testInfo.id" sortable="true"/>			
 			<display:column title="Result" sortable="true">
@@ -67,7 +74,13 @@ $(document).ready(function() {
 			<display:column title="Run time (min)"  property="runTime"  format="{0,date, mm:ss:SSS} m" sortable="true">
 <%-- 				<fmt:formatDate value="${exec.runTime}" pattern="mm:ss:SSS"/> --%>
 			</display:column>
-			<display:column title="Failure reason" property="failureReason" maxLength="150" />				
+			<c:if test="${not empty exec.failureReason}">		
+				<display:column  maxLength="50" title="Failure reason">
+						<a onclick="openPopup(${exec.id});" href="#">
+							<c:out value="${exec.failureReason}"></c:out>
+						</a>	
+				</display:column>
+			</c:if>		
 		</display:table>
 		</c:if>
 	</div>

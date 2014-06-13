@@ -70,6 +70,16 @@ public class ClassController {
 		return new ModelAndView("ShowClassDetails", details);
 
 	}
+	
+
+	@RequestMapping(value = "/FailureDetails", method = RequestMethod.GET)
+	public ModelAndView showFailureDetails(@RequestParam("id") long execId) {
+		ModelMap details = new ModelMap();
+		execInfoService.load(execId);
+		details.addAttribute("reason", execInfoService.load(execId).getFailureReason());	
+		return new ModelAndView("/popups/FailureDetails", details);
+
+	}
 
 	private List<ExecInfo> getLastExecutionOfTest(List<TestInfo> testInfos) {
 		List<ExecInfo> execInfos = new ArrayList<ExecInfo>();
