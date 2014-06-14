@@ -35,8 +35,8 @@ $(document).ready(function() {
 <body>
 	<div class="row tabs" id="tab">
 		<ul class="nav nav-tabs ">
-			<li class="active"><a href="/app/ShowProjectDetails?id=${project.id}">View</a></li>
-			<li><a href="/app/ManageProject?id=${project.id}">Edit</a></li>
+			<li class="active"><a href="/ShowProjectDetails?id=${project.id}">View</a></li>
+			<li><a href="/ManageProject?id=${project.id}">Edit</a></li>
 		</ul>
 	</div>
 	<div class="row" id="projectDetails">
@@ -45,7 +45,7 @@ $(document).ready(function() {
 			defaultsort="1">
 			<display:column title="Project Name" property="projectName" paramId="id" paramProperty="id" maxLength="20" />
 			<display:column title="Test JAR name" property="jarName" maxLength="20" />
-			<display:column title="Test JAR location" property="jarPath" maxLength="20" href="/app/download" />
+			<display:column title="Test JAR location" property="jarPath" maxLength="20" href="/download" />
 			<display:column title="Description" property="description" maxLength="50" />
 			<display:column title="Dependency JAR name" property="dependencyJarName" maxLength="20" />
 			<display:column title="Dependency JAR location" property="dependencyJarPath" maxLength="20" />
@@ -73,7 +73,7 @@ $(document).ready(function() {
 			</display:column>
 			<display:column title="Folder Location" property="path" paramId="path" paramProperty="path" sortable="true">
 			</display:column>
-			<display:column paramId="classId" paramProperty="id" href="/app/ShowClassDetails">
+			<display:column paramId="classId" paramProperty="id" href="/ShowClassDetails">
 				<c:if test="${not empty class.testInfo}">
 					<button class="btn btn-info btn-xs active" id="listM" value="List Methods">List Methods</button>
 				</c:if>
@@ -81,7 +81,7 @@ $(document).ready(function() {
 			<display:column>
 				<c:choose>
 					<c:when test="${not empty class.testInfo}">
-						<a href="/app/runMethods?classId=${class.id}">
+						<a href="/runMethods?classId=${class.id}">
 							<button class="btn btn-primary btn-xs active" id="runTests" name="projectForm" value="RunTests">Run Tests</button>
 						</a>
 					</c:when>

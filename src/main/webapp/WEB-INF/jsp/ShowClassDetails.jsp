@@ -16,7 +16,7 @@
 <script type="text/javascript">
 
 function openPopup(execId) {
-	window.open("/app/FailureDetails?id=" + execId,"_blank","toolbar=no, location=no, menubar=no, scrollbars=yes, resizable=yes, top=200, left=900, width=500, height=600");
+	window.open("/FailureDetails?id=" + execId,"_blank","toolbar=no, location=no, menubar=no, scrollbars=yes, resizable=yes, top=200, left=900, width=500, height=600");
 }
 
 $(document).ready(function() { 
@@ -37,8 +37,8 @@ $(document).ready(function() {
 <body>
 	<div class="row tabs" id="tab">
 		<ul class="nav nav-tabs ">
-			<li class="active"><a href="/app/ShowProjectDetails?id=${project.id}">View</a></li>
-			<li><a href="/app/ManageProject?id=${project.id}">Edit</a></li>
+			<li class="active"><a href="/ShowProjectDetails?id=${project.id}">View</a></li>
+			<li><a href="/ManageProject?id=${project.id}">Edit</a></li>
 		</ul>
 	</div>
 	<%@ include file="include/UpperBody.jspf"%>	
@@ -51,10 +51,10 @@ $(document).ready(function() {
 					<tags:yesno value="${test.lastRunStatus}"/>
 				</display:column>	
 			<display:column title="Last run on" property="executionDate" format="{0,date,dd.MM.yyyy HH:mm:ss}" sortable="true"/>			
-			<display:column  paramId="methodId" paramProperty="id" href="/app/${classInfo.id}/ShowClassDetails">
+			<display:column  paramId="methodId" paramProperty="id" href="/${classInfo.id}/ShowClassDetails">
 				<button class="btn btn-info btn-xs active" id="listM" value="List Runs" >List Executions</button>
 			</display:column>
-			<display:column  paramId="methodId" paramProperty="id"  href="/app/runTest">	
+			<display:column  paramId="methodId" paramProperty="id"  href="/runTest">	
 				<c:if test="${(test.name != 'setUp') and (test.name != 'after') and (test.name != 'before')}">			
 					<button class="btn btn-primary btn-xs active" id="runTheTest" value="RunTest" >Run Test</button>	
 				</c:if>		

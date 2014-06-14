@@ -32,6 +32,6 @@ public class UserController {
 		user.setPassword(userForm.getPassword());
 		user.setRole("admin");
 		userService.save(user);
-		return new ModelAndView("redirect:/app/ShowProjects");
+		return new ModelAndView("redirect:/ShowProjects");
 	}
 }

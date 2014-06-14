@@ -10,7 +10,6 @@ import java.util.Set;
 
 import javax.servlet.http.HttpServletRequest;
 
-import org.apache.commons.lang.time.DurationFormatUtils;
 import org.junit.runner.Result;
 import org.junit.runner.notification.Failure;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -65,7 +64,7 @@ public class RunTestsController {
 			List<Failure> failures = result.getFailures();
 			if (isInitializationError(failures, classInfo, date)) {
 				classInfoService.update(classInfo);
-				return new ModelAndView("redirect:/app/ShowClassDetails", "classId", classInfo.getId());
+				return new ModelAndView("redirect:/ShowClassDetails", "classId", classInfo.getId());
 			}
 
 			if (!failures.isEmpty()) {
@@ -101,7 +100,7 @@ public class RunTestsController {
 		// details.addAttribute("testInfos", testInfos);
 		// List<ExecInfo> execInfos = getLastExecutionOfTest(testInfos);
 		// details.addAttribute("execInfos", execInfos);
-		return new ModelAndView("redirect:/app/ShowClassDetails", "classId", classInfo.getId());
+		return new ModelAndView("redirect:/ShowClassDetails", "classId", classInfo.getId());
 	}
 
 	@RequestMapping(value = "/runTest", method = RequestMethod.GET)
@@ -115,7 +114,7 @@ public class RunTestsController {
 			result = runner.runMethod(classInfo, testInfo);
 			List<Failure> failures = result.getFailures();
 			if (isInitializationError(failures, classInfo, date)) {
-				return new ModelAndView("redirect:/app/ShowClassDetails", "classId", classInfo.getId());
+				return new ModelAndView("redirect:/ShowClassDetails", "classId", classInfo.getId());
 			}
 
 			if (!failures.isEmpty()) {
@@ -124,7 +123,7 @@ public class RunTestsController {
 					testInfo = matchMethods(classInfo, failure.getDescription().getMethodName());
 					updateOnFailure(testInfo, date, result);
 				}
-				return new ModelAndView("redirect:/app/ShowClassDetails", "classId", classInfo.getId());
+				return new ModelAndView("redirect:/ShowClassDetails", "classId", classInfo.getId());
 			}
 			updateOnSuccessMethod(testInfo, date, result);
 
@@ -134,7 +133,7 @@ public class RunTestsController {
 		} catch (Exception e) {
 			request.getSession().setAttribute("error", e.getMessage());
 		}
-		return new ModelAndView("redirect:/app/ShowClassDetails", "classId", classInfo.getId());
+		return new ModelAndView("redirect:/ShowClassDetails", "classId", classInfo.getId());
 	}
 
 	@RequestMapping(value = "/runMethods", method = RequestMethod.GET)
@@ -149,11 +148,11 @@ public class RunTestsController {
 			Date date = new Date();
 			testExecutionResult = runner.runMethods(classInfo);
 			for (TestExecutionResult result : testExecutionResult) {
-				List<Failure> failures = result.getResult().getFailures();				
+				List<Failure> failures = result.getResult().getFailures();
 				testFailureCount += result.getResult().getFailureCount();
 				classRunTime += result.getResult().getRunTime();
 				if (isInitializationError(failures, classInfo, date)) {
-					return new ModelAndView("redirect:/app/ShowClassDetails", "classId", classInfo.getId());
+					return new ModelAndView("redirect:/ShowClassDetails", "classId", classInfo.getId());
 				}
 
 				if (!failures.isEmpty()) {
@@ -179,7 +178,7 @@ public class RunTestsController {
 			e.printStackTrace();
 		}
 
-		return new ModelAndView("redirect:/app/ShowClassDetails", "classId", classInfo.getId());
+		return new ModelAndView("redirect:/ShowClassDetails", "classId", classInfo.getId());
 	}
 
 	private TestInfo matchMethods(ClassInfo classInfo, String nameOfExecutedTest) {
@@ -286,8 +285,8 @@ public class RunTestsController {
 		testInfo.setExecutionDate(date);
 		testInfoService.update(testInfo);
 	}
-	
-	private String convertToTime (Long time) {
+
+	private String convertToTime(Long time) {
 		Date date = new Date(time);
 		SimpleDateFormat formatter = new SimpleDateFormat("mm:ss:SSS");
 		String thetime = formatter.format(date);

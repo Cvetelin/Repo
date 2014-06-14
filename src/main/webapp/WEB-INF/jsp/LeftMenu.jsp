@@ -19,7 +19,7 @@
 		<div class="table-bordered text-center custom lead" style="font-size: 14px; color: #FFFFFF">Projects</div>
 		<ul class="nav nav-pills nav-stacked">
 			<c:forEach var="name" items="${projectsList}">
-				<li><a href="/app/ShowProjectDetails?id=${name.id}" class="table-bordered text-center table-hover">
+				<li><a href="/ShowProjectDetails?id=${name.id}" class="table-bordered text-center table-hover">
 						<c:out value="${name.projectName}"></c:out>
 					</a>
 				</li>
