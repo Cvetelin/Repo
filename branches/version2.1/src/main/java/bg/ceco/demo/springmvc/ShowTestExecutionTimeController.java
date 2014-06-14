@@ -7,7 +7,6 @@ import java.util.List;
 
 import org.apache.commons.io.FileUtils;
 import org.apache.commons.lang.ArrayUtils;
-import org.apache.commons.lang.StringUtils;
 import org.apache.commons.lang.time.DateUtils;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -20,14 +19,14 @@ import org.springframework.web.servlet.ModelAndView;
 import bg.ceco.demo.model.ClassInfo;
 import bg.ceco.demo.model.ExecInfo;
 
-
 @Controller
 public class ShowTestExecutionTimeController {
 	private String pathToTestDir;
-	@RequestMapping(value="/ShowTestExecutionTime", method = RequestMethod.GET)
+
+	@RequestMapping(value = "/ShowTestExecutionTime", method = RequestMethod.GET)
 	public ModelAndView detailTestsDisplay(@RequestParam("path") String path, ModelMap model) throws Exception {
 		List<ClassInfo> info = Constants.getTestClassesDirInfo();
-		pathToTestDir = path;		
+		pathToTestDir = path;
 		ClassInfo classInfo = Constants.getTestClassDirInfo(new File(path).getParent());
 		model.addAttribute(new DirInfoForm());
 		model.addAttribute("exectutionInfo", getTestExecutions(path));
@@ -35,58 +34,58 @@ public class ShowTestExecutionTimeController {
 		model.addAttribute("classInfo", classInfo);
 		return new ModelAndView("ShowTestExecutionTime", model);
 	}
-	
-	@RequestMapping(value="/DeleteTestExecutionTime", method = RequestMethod.GET)
-	public ModelAndView deleteGalery (@RequestParam("fileRoot") String pathToExecDir, ModelMap model) throws Exception {
+
+	@RequestMapping(value = "/DeleteTestExecutionTime", method = RequestMethod.GET)
+	public ModelAndView deleteGalery(@RequestParam("fileRoot") String pathToExecDir, ModelMap model) throws Exception {
 		List<ClassInfo> info = Constants.getTestClassesDirInfo();
 		model.addAttribute("dirInfo", info);
 		model.addAttribute(new DirInfoForm());
-		
+
 		File testExecutionDirToDelete = new File(pathToExecDir);
 		FileUtils.forceDelete(testExecutionDirToDelete);
-		
-		if (new File(testExecutionDirToDelete.getParent()).list().length <= 0 ) {
+
+		if (new File(testExecutionDirToDelete.getParent()).list().length <= 0) {
 			File testDir = new File(testExecutionDirToDelete.getParent());
 			FileUtils.forceDelete(testDir);
 			ClassInfo classInfo = Constants.getTestClassDirInfo(testDir.getParent());
-//			model.addAttribute("testInfo", classInfo.getTestInfo());
+			// model.addAttribute("testInfo", classInfo.getTestInfo());
 			return new ModelAndView("ShowExecutedTests");
 		}
-		
-		model.addAttribute("exectutionInfo", getTestExecutions(testExecutionDirToDelete.getParent()));		
+
+		model.addAttribute("exectutionInfo", getTestExecutions(testExecutionDirToDelete.getParent()));
 		return detailTestsDisplay(new File(pathToExecDir).getParent(), new ModelMap());
 	}
-	
-	@RequestMapping(value="/dirInfoForm", method = RequestMethod.POST)
-	public ModelAndView deleteGaleryList (@ModelAttribute("dirInfoForm") DirInfoForm dirInfoForm, ModelMap model) throws Exception {
+
+	@RequestMapping(value = "/dirInfoForm", method = RequestMethod.POST)
+	public ModelAndView deleteGaleryList(@ModelAttribute("dirInfoForm") DirInfoForm dirInfoForm, ModelMap model) throws Exception {
 		List<ClassInfo> info = Constants.getTestClassesDirInfo();
 		model.addAttribute("dirInfo", info);
 		model.addAttribute(new DirInfoForm());
-		
-		String [] testsExecutionsDirsToDelete= dirInfoForm.getDelete();
-		if(!ArrayUtils.isEmpty(testsExecutionsDirsToDelete)) {
+
+		String[] testsExecutionsDirsToDelete = dirInfoForm.getDelete();
+		if (!ArrayUtils.isEmpty(testsExecutionsDirsToDelete)) {
 			File testExecutionDirToDelete = new File("defult");
 			for (int i = 0; i < testsExecutionsDirsToDelete.length; i++) {
 				testExecutionDirToDelete = new File(testsExecutionsDirsToDelete[i]);
 				FileUtils.forceDelete(testExecutionDirToDelete);
-				
+
 			}
-			
-			if (new File(testExecutionDirToDelete.getParent()).list().length <= 0 ) {
+
+			if (new File(testExecutionDirToDelete.getParent()).list().length <= 0) {
 				File testDir = new File(testExecutionDirToDelete.getParent());
 				FileUtils.forceDelete(testDir);
-				
+
 				ClassInfo classInfo = Constants.getTestClassDirInfo(testDir.getParent());
-//				model.addAttribute("testInfo", classInfo.getTestInfo());
-				return new ModelAndView("ShowExecutedTests");				
-			}			
-		
-				model.addAttribute("exectutionInfo",getTestExecutions(testExecutionDirToDelete.getParent()));
-				return new ModelAndView("ShowTestExecutionTime");
+				// model.addAttribute("testInfo", classInfo.getTestInfo());
+				return new ModelAndView("ShowExecutedTests");
+			}
+
+			model.addAttribute("exectutionInfo", getTestExecutions(testExecutionDirToDelete.getParent()));
+			return new ModelAndView("ShowTestExecutionTime");
 		}
-		return new ModelAndView("redirect:/app/ShowTestExecutionTime", "path",  pathToTestDir);
+		return new ModelAndView("redirect:/ShowTestExecutionTime", "path", pathToTestDir);
 	}
-	
+
 	protected List<ExecInfo> getTestExecutions(String pathToDir) throws Exception {
 
 		List<ExecInfo> execInfos = new ArrayList<ExecInfo>();
@@ -96,15 +95,15 @@ public class ShowTestExecutionTimeController {
 			if (".".equals(child.getName()) || "..".equals(child.getName())) {
 				continue; // Ignore the self and parent aliases.\
 			}
-			
-			Date dateExecuted = DateUtils.parseDate(child.getName().replace("-", ":"), new String[]{"dd.MM.yyyy HH:mm:ss"});
-			
-			ExecInfo bean = new ExecInfo();			
+
+			Date dateExecuted = DateUtils.parseDate(child.getName().replace("-", ":"), new String[] { "dd.MM.yyyy HH:mm:ss" });
+
+			ExecInfo bean = new ExecInfo();
 			bean.setName(child.getName());
 			bean.setPath(child.getCanonicalPath());
 			bean.setExecutionDate(dateExecuted);
-//			bean.setPathToParentDir(child.getParent());
-//			bean.setParentName(dir.getName());
+			// bean.setPathToParentDir(child.getParent());
+			// bean.setParentName(dir.getName());
 			execInfos.add(bean);
 		}
 		return execInfos;
@@ -132,6 +131,5 @@ public class ShowTestExecutionTimeController {
 
 		} finally {
 		}
-	}	
+	}
 }
-

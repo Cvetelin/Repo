@@ -25,18 +25,18 @@
 	<div class="container center-block text-center row ">
 			<div class="col-md-8 table-bordered title col-md-offset-1 bg-primary headtitle-link">
 				<b> Test list of class: 
-					<a href="/app/ShowExecutedTests?path=${classInfo.path}">${classInfo.name}</a>
+					<a href="/ShowExecutedTests?path=${classInfo.path}">${classInfo.name}</a>
 				</b>	
 			</div>			
 <!-- 			<div class="col-md-8 table-bordered title col-md-offset-1 row">Test List </div>	 -->
 		<display:table name="testInfo" id="dir" class="col-md-8  table-bordered title col-md-offset-1"  requestURI="ShowExecutedTests" defaultsort="1">	
-			<display:column title="Test name" property="name" href="/app/ShowTestExecutionTime" paramId="path"
+			<display:column title="Test name" property="name" href="/ShowTestExecutionTime" paramId="path"
 				paramProperty="path" class="col-md-4 table-bordered" sortable="true">
 			</display:column>
 			<display:column title="Last run time" property="executionDate" format="{0,date,dd.MM.yyyy HH:mm:ss}"
 				class="col-md-3 table-bordered text-center" sortable="true" >
 			</display:column>
-			<display:column value="Delete" href="/app/DeleteTest" paramProperty="path" paramId="fileRoot"
+			<display:column value="Delete" href="/DeleteTest" paramProperty="path" paramId="fileRoot"
 					class="col-md-1 table-bordered text-center">
 			</display:column>
 		</display:table>

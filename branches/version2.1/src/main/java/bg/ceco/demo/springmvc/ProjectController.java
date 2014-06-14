@@ -13,7 +13,6 @@ import java.util.List;
 import javassist.CtClass;
 import javassist.CtMethod;
 
-import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -25,7 +24,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -66,8 +64,7 @@ public class ProjectController {
 	}
 
 	@RequestMapping(value = "/EditProject", method = RequestMethod.GET)
-	public ModelAndView editProject(@RequestParam("id") long id,
-			@ModelAttribute("projectForm") ProjectForm projectForm) {
+	public ModelAndView editProject(@RequestParam("id") long id, @ModelAttribute("projectForm") ProjectForm projectForm) {
 		Project project = projectService.load(id);
 		projectForm.setName(project.getProjectName());
 		projectForm.setProjectId(String.valueOf(id));
@@ -80,65 +77,60 @@ public class ProjectController {
 	}
 
 	@RequestMapping(value = "/AddProject", method = RequestMethod.GET)
-	public String showAdd(@ModelAttribute ProjectForm projectForm,
-			BindingResult result) {
+	public String showAdd(@ModelAttribute ProjectForm projectForm, BindingResult result) {
 		return "AddProject";
 	}
 
 	@RequestMapping(value = "/CreateProject", method = RequestMethod.POST)
 	@Scope(value = "request")
-	public ModelAndView add(
-			@ModelAttribute("projectForm") ProjectForm projectForm,
-			BindingResult result,
+	public ModelAndView add(@ModelAttribute("projectForm") ProjectForm projectForm, BindingResult result,
 			@RequestParam("testJar") MultipartFile testJar) {
-//			@RequestParam("depJar") MultipartFile depJar) {
+		// @RequestParam("depJar") MultipartFile depJar) {
 		try {
-			if (!StringUtils.isBlank(projectForm.getProjectId())
-					&& projectService.load(Long.valueOf(projectForm
-							.getProjectId())) != null) {
-				Project existingProject = projectService.load(Long
-						.valueOf(projectForm.getProjectId()));
+			if (!StringUtils.isBlank(projectForm.getProjectId()) && projectService.load(Long.valueOf(projectForm.getProjectId())) != null) {
+				Project existingProject = projectService.load(Long.valueOf(projectForm.getProjectId()));
 
-				//String depJarPath = constructSaveLocation(projectForm, depJar);
+				// String depJarPath = constructSaveLocation(projectForm,
+				// depJar);
 				String testJarPatj = constructSaveLocation(projectForm, testJar);
 				existingProject.setDateModification(new Date());
-//				existingProject.setDependencyJar(depJar.getBytes());
-//				if (!depJarPath.equals(null)) {
-//					existingProject.setDependencyJarName(depJar
-//							.getOriginalFilename());
-//				}
-//				existingProject.setDependencyJarPath(depJarPath);
+				// existingProject.setDependencyJar(depJar.getBytes());
+				// if (!depJarPath.equals(null)) {
+				// existingProject.setDependencyJarName(depJar
+				// .getOriginalFilename());
+				// }
+				// existingProject.setDependencyJarPath(depJarPath);
 				existingProject.setDescription(projectForm.getDescription());
 				existingProject.setJarName(testJar.getOriginalFilename());
 				existingProject.setJarPath(testJarPatj);
 				existingProject.setProjectName(projectForm.getName());
 				existingProject.setTestJar(testJar.getBytes());
 				projectService.update(existingProject);
-				return new ModelAndView("redirect:/app/ShowProjects");
+				return new ModelAndView("redirect:/ShowProjects");
 			}
 			Project project = new Project();
 			// if (!(depJar.getSize() == 0)) {
 			// fileValidator.validate(depJar, result);
 			// }
 
-			//String depJarPath = constructSaveLocation(projectForm, depJar);
+			// String depJarPath = constructSaveLocation(projectForm, depJar);
 			String testJarPatj = constructSaveLocation(projectForm, testJar);
 			project.setDateCreation(new Date());
-//			project.setDependencyJar(depJar.getBytes());
-//			project.setDependencyJarName(depJar.getOriginalFilename());
-//			project.setDependencyJarPath(depJarPath);
+			// project.setDependencyJar(depJar.getBytes());
+			// project.setDependencyJarName(depJar.getOriginalFilename());
+			// project.setDependencyJarPath(depJarPath);
 			project.setDescription(projectForm.getDescription());
 			project.setJarName(testJar.getOriginalFilename());
 			project.setJarPath(testJarPatj);
 			project.setProjectName(projectForm.getName());
 			project.setTestJar(testJar.getBytes());
 			projectService.save(project);
-			
+
 			ProjectTreeGenerator generator = new ProjectTreeGenerator();
 			List<CtClass> classes = generator.loadJar(project);
-			generateClassSturcture(classes, project);		
-			
-			return new ModelAndView("redirect:/app/ShowProjects");
+			generateClassSturcture(classes, project);
+
+			return new ModelAndView("redirect:/ShowProjects");
 		} catch (Exception e) {
 			e.printStackTrace();
 			return new ModelAndView("AddProject");
@@ -172,28 +164,26 @@ public class ProjectController {
 		ModelMap projectDetails = new ModelMap();
 		projectDetails.addAttribute("project", project);
 		List<ClassInfo> classes = classInfoService.listBy(project);
-		//projectDetails.addAttribute("classInfos", classes);
+		// projectDetails.addAttribute("classInfos", classes);
 		Collection<ManageProjectBean> manageProjectBeans = new ArrayList<ManageProjectBean>();
 		for (ClassInfo classInfo : classes) {
 			ManageProjectBean manageProjectBean = new ManageProjectBean();
 			Collection<TestInfoBean> testInfoBeans = new ArrayList<TestInfoBean>();
 			for (TestInfo testInfo : testInfoService.listBy(classInfo)) {
-				TestInfoBean testInfoBean = new TestInfoBean();				
-				
+				TestInfoBean testInfoBean = new TestInfoBean();
+
 				manageProjectBean.setClassId(classInfo.getId());
 				manageProjectBean.setClassName(classInfo.getName());
 				testInfoBean.setName(testInfo.getName());
 				testInfoBean.setId(testInfo.getId());
-				
+
 				ExecInfo execInfo = execInfoService.getlastExecution(testInfo);
 				if (execInfo != null) {
 					testInfoBean.setExecutionDate(execInfo.getExecutionDate());
 					testInfoBean.setLastRunStatus(execInfo.isStatus());
-					testInfoBean.setNumberOfExections(execInfoService.listBy(
-							testInfo).size());
+					testInfoBean.setNumberOfExections(execInfoService.listBy(testInfo).size());
 				}
-				
-				
+
 				testInfoBeans.add(testInfoBean);
 				manageProjectBean.setTestBeans(testInfoBeans);
 			}
@@ -212,32 +202,31 @@ public class ProjectController {
 			execInfoService.delete(execInfo);
 		}
 		long projectId = testInfo.getClassInfo().getProject().getId();
-		
-		return new ModelAndView("redirect:/app/ManageProject", "id", projectId);
+
+		return new ModelAndView("redirect:/ManageProject", "id", projectId);
 	}
-	
+
 	@RequestMapping(value = "/ClearAllTestsExecutions", method = RequestMethod.GET)
 	public ModelAndView clearAllTestsExecutions(@RequestParam("classId") long id) {
 		ClassInfo classInfo = classInfoService.load(id);
-		for(TestInfo testInfo : classInfo.getTestInfo()) {
+		for (TestInfo testInfo : classInfo.getTestInfo()) {
 			for (ExecInfo execInfo : execInfoService.listBy(testInfo)) {
 				execInfoService.delete(execInfo);
 			}
 		}
 		long projectId = classInfo.getProject().getId();
-		
-		return new ModelAndView("redirect:/app/ManageProject", "id", projectId);
+
+		return new ModelAndView("redirect:/ManageProject", "id", projectId);
 	}
-	
+
 	@RequestMapping(value = "/DeleteProject", method = RequestMethod.GET)
 	public ModelAndView deleteProject(@RequestParam("projectId") long id) {
 		Project project = projectService.load(id);
-		projectService.delete(project);		
-		return new ModelAndView("redirect:/app//ShowProjects");
+		projectService.delete(project);
+		return new ModelAndView("redirect:/ShowProjects");
 	}
 
-	private String constructSaveLocation(ProjectForm projectForm,
-			MultipartFile file) {
+	private String constructSaveLocation(ProjectForm projectForm, MultipartFile file) {
 		String rootDir = "C:\\";
 		StringBuilder path = new StringBuilder();
 
@@ -253,19 +242,19 @@ public class ProjectController {
 		return path.toString();
 	}
 
-	@RequestMapping(value="/download", method = RequestMethod.GET)
-	public void downloadJar(@RequestParam("projectId") long projectId, HttpServletRequest request,
-			HttpServletResponse response) throws Exception {
+	@RequestMapping(value = "/download", method = RequestMethod.GET)
+	public void downloadJar(@RequestParam("projectId") long projectId, HttpServletRequest request, HttpServletResponse response)
+			throws Exception {
 
 		Project project = projectService.get(projectId);
-		
-		//ServletContext context = request.getServletContext();
-		
+
+		// ServletContext context = request.getServletContext();
+
 		File downloadFile = new File(project.getJarPath());
 		FileInputStream inputStream = new FileInputStream(downloadFile);
 
 		String mimeType = project.getJarPath();
-		
+
 		// set content attributes for the response
 		response.setContentType(mimeType);
 		response.setContentLength((int) downloadFile.length());
@@ -282,38 +271,37 @@ public class ProjectController {
 		int bytesRead = -1;
 
 		ByteArrayInputStream bis = new ByteArrayInputStream(project.getTestJar());
-		
+
 		// write bytes read from the input stream into the output stream
 		while ((bytesRead = inputStream.read(buffer)) != -1) {
-		outStream.write(buffer, 0, bytesRead);
+			outStream.write(buffer, 0, bytesRead);
 		}
 		inputStream.close();
 		outStream.close();
-		
-//		try {
-//			response.setHeader("Content-Disposition", "inline;filename=\""
-//					+ project.getJarName() + "\"");
-//			OutputStream out = response.getOutputStream();
-//			
-//			ByteArrayInputStream bis = new ByteArrayInputStream(
-//					project.getTestJar());
-//			// response.setContentType(doc.getContentType());			
-//				
-//			out.write(IOUtils.copy(bis, out));
-//			
-//			out.flush();
-//			out.close();
-//			
-//			
-//		} catch (IOException e) {
-//			e.printStackTrace();
-//		} // catch (SQLException e) {
-//			// e.printStackTrace();
-//			// }
-		}
 
-	private void generateClassSturcture(List<CtClass> classes, Project project)
-			throws Exception {
+		// try {
+		// response.setHeader("Content-Disposition", "inline;filename=\""
+		// + project.getJarName() + "\"");
+		// OutputStream out = response.getOutputStream();
+		//
+		// ByteArrayInputStream bis = new ByteArrayInputStream(
+		// project.getTestJar());
+		// // response.setContentType(doc.getContentType());
+		//
+		// out.write(IOUtils.copy(bis, out));
+		//
+		// out.flush();
+		// out.close();
+		//
+		//
+		// } catch (IOException e) {
+		// e.printStackTrace();
+		// } // catch (SQLException e) {
+		// // e.printStackTrace();
+		// // }
+	}
+
+	private void generateClassSturcture(List<CtClass> classes, Project project) throws Exception {
 
 		// List<ClassInfo> classInfos = new ArrayList<ClassInfo>();
 		for (CtClass class1 : classes) {

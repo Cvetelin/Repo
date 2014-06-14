@@ -45,7 +45,7 @@
 <!-- 		<div class="row col-md-10 table-bordered title text-center">	</div>	 -->
 <!-- 		<div class="row col-md-10 table-bordered title text-center">	</div>		 -->
 			<display:table name="dirInfo" id="dir" class="col-md-4  table-bordered title"  requestURI="ShowExecutedTests" defaultsort="1">
-			<display:column title="Executest test classes" property="name" href="/app/RunClass" paramId="id"
+			<display:column title="Executest test classes" property="name" href="/RunClass" paramId="id"
 				paramProperty="id" class="col-md-4 table-bordered" sortable="true">
 			</display:column>
 		</display:table> 
@@ -57,7 +57,7 @@
 	</div>
 	
 </div>
-		<a href="/app/GetTestClasses">GetTesClasses</a>
+		<a href="/GetTestClasses">GetTesClasses</a>
 	
 	
 </body>

@@ -79,8 +79,8 @@
 <body>
 	<div class="row tabs" id="tab">
 		<ul class="nav nav-tabs ">
-			<li><a href="/app/ShowProjectDetails?id=${project.id}">View</a></li>
-			<li class="active"><a href="/app/ManageProject?id=${project.id}">Edit</a></li>
+			<li><a href="/ShowProjectDetails?id=${project.id}">View</a></li>
+			<li class="active"><a href="/ManageProject?id=${project.id}">Edit</a></li>
 		</ul>
 	</div> 
 	<div class="row " id="project">
@@ -89,20 +89,20 @@
 			requestURI="ShowProjects" defaultsort="1">
 			<display:column title="Project Name" property="projectName"	paramId="id" paramProperty="id" maxLength="20" />
 			<display:column title="Test JAR name" property="jarName" maxLength="20" />
-			<display:column title="Test JAR location" property="jarPath" paramId="projectId" paramProperty="id" maxLength="20" href="/app/download" />
+			<display:column title="Test JAR location" property="jarPath" paramId="projectId" paramProperty="id" maxLength="20" href="/download" />
 			<display:column title="Description" property="description"	maxLength="50" />
 <%-- 			<display:column title="Dependency JAR name"	property="dependencyJarName" maxLength="20" /> --%>
 <%-- 			<display:column title="Dependency JAR location"	property="dependencyJarPath" maxLength="20" /> --%>
 			<display:column title="Modified on" property="dateModification"	format="{0,date,dd.MM.yyyy HH:mm:ss}" />
 			<display:column title="Created on" property="dateCreation"	format="{0,date,dd.MM.yyyy HH:mm:ss}" />
-			<display:column href="/app/EditProject" paramId="id" paramProperty="id">
+			<display:column href="/EditProject" paramId="id" paramProperty="id">
 				<button class="btn btn-primary btn-xs active" name="projectForm">Edit</button>
 			</display:column>
-			<display:column href="/app/Generate" paramId="id" paramProperty="id">				
+			<display:column href="/Generate" paramId="id" paramProperty="id">				
 					<button class="btn btn-primary btn-xs active" id="generate" >Regenerate Project</button>				
 			</display:column>
 			<display:column >
-				<a href="/app/DeleteProject?projectId=${project.id}" onclick="warnOnDelete(event)">
+				<a href="/DeleteProject?projectId=${project.id}" onclick="warnOnDelete(event)">
 					<button class="btn btn-danger btn-xs active" id="delete"  value="Delete" title="Delete the project">Delete</button>
 				</a>
 			</display:column>			
@@ -118,10 +118,10 @@
 				<table class="col-sm-8 col-md-8 col-lg-8 table-bordered">
 					<tr>
 						<td><b>Class name:</b>
-							<a href="/app/ShowClassDetails?classId=${data.classId}"  class="btn btn-link btn-xs active">
+							<a href="/ShowClassDetails?classId=${data.classId}"  class="btn btn-link btn-xs active">
 								<c:out value="${data.className} " default="" />
 							</a>								
-							<a href="/app/ClearAllTestsExecutions?classId=${data.classId}" class="btn btn-link btn-xs active" 
+							<a href="/ClearAllTestsExecutions?classId=${data.classId}" class="btn btn-link btn-xs active" 
 							onclick="warn(event)" style="float:right" title="Delete all exectution data for this class">Clear data for this class</a>
 						</td>
 					</tr>
@@ -147,7 +147,7 @@
 								<td><fmt:formatDate value="${test.executionDate}" pattern="dd.MM.yyyy HH:mm:ss"/></td>
 								<td><tags:yesno value="${test.lastRunStatus}" /></td>								
 								<td>
-									<a href="/app/ClearTestExecutions?methodId=${test.id}" class="btn btn-default btn-xs active" onclick="warn(event)" 
+									<a href="/ClearTestExecutions?methodId=${test.id}" class="btn btn-default btn-xs active" onclick="warn(event)" 
 									title="Deletes all execturion data for this test">Clear data
 									</a>
 								</td>

@@ -18,14 +18,14 @@
 <body>
 	<div class="navbar navbar-static-top custom"> 
 			<div class="container">
-				<a href="/app/index" class="navbar-brand brand">Selenium
+				<a href="/index" class="navbar-brand brand">Selenium
 					Gallery</a>
 				<div class="collapse navbar-collapse ">
 					<ul class="nav navbar-nav navbar-center">
-						<li><a href="/app/ShowProjects">Projects</a></li>
-<!-- 						<li><a href="/app/index">Run</a></li> -->
-						<li><a href="/app/AddProject">Add project</a></li>
-						<li><a href="/app/AddUser">Add user</a></li>
+						<li><a href="/ShowProjects">Projects</a></li>
+<!-- 						<li><a href="/index">Run</a></li> -->
+						<li><a href="/AddProject">Add project</a></li>
+						<li><a href="/AddUser">Add user</a></li>
 					</ul>
 				</div>
 			</div>

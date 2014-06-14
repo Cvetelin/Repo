@@ -86,7 +86,7 @@
 			$('input[name="name"]').focus();
 			
 			$('#cancelBtn').on('click', function() {
-				window.location.href = "<c:url value='/app/ShowProjects' />";
+				window.location.href = "<c:url value='/ShowProjects' />";
 			})
 		});
 	</script>
@@ -130,8 +130,8 @@
 <!-- 		 	 </div>	 -->
 		 	 <div class="form-group">
 				<div class="col-sm-offset-1 col-sm-6 pull-right">
-					<input type="button" id="cancelBtn" class="btn btn-default"  value=Back onClick="history.go(-1)" />
-					<a href="/app/ShowProjects" >
+<!-- 					<input type="button" id="cancelBtn" class="btn btn-default"  value=Back onClick="history.go(-1)" /> -->
+					<a href="/ShowProjects" >
 						<input type="button" id="cancelBtn" class="btn btn-default"  value="Cancel"></input>
 					</a>
 					<input type="submit" id="submit" class="btn btn-default" onclick="return validateAddProject();" value="Save" />

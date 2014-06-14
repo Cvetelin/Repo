@@ -48,14 +48,14 @@
 	</servlet>
 	<servlet-mapping>
 		<servlet-name>springapp</servlet-name>
-		<url-pattern>/app/*</url-pattern>
+		<url-pattern>/</url-pattern>
 	</servlet-mapping>
 	<welcome-file-list>
 		<welcome-file>Index.jsp</welcome-file>
 	</welcome-file-list>
 	<error-page>
 		<error-code>404</error-code>
-		<location>/app/index</location>
+		<location>/index</location>
 	</error-page>
 <!-- 	<error-page> -->
 <!-- 	    <exception-type>java.lang.Exception</exception-type> -->
@@ -71,7 +71,8 @@
   	</filter>
  	<filter-mapping>
     	<filter-name>OpenSessionInViewFilter</filter-name>
-    	<url-pattern>/app/*</url-pattern>
+    	<url-pattern>/*</url-pattern>
+    	<dispatcher>REQUEST</dispatcher>
   	</filter-mapping>
 	
 	<listener>

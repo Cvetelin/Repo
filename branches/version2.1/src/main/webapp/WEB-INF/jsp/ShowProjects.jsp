@@ -34,13 +34,13 @@
 	<div class="text-center">
 		<display:table name="projects" id="projects" class="col-sm-10 col-md-10 col-lg-10 table-bordered text-center table-hover title headtitle-link "    
 		requestURI="ShowProjects" defaultsort="1" >
-			<display:column title="Project Name" property="projectName" href="/app/ShowProjectDetails" paramId="id"
+			<display:column title="Project Name" property="projectName" href="/ShowProjectDetails" paramId="id"
 				paramProperty="id" sortable="true" maxLength="20" />	
 			<display:column  title="Status" sortable="true"/>	
 			<display:column  title="Modified on" property ="dateModification"  format="{0,date,dd.MM.yyyy HH:mm:ss}" sortable="true"/>
 			<display:column  title="Created on" property ="dateCreation"  format="{0,date,dd.MM.yyyy HH:mm:ss}" sortable="true"/>
 <%-- 		<display:column  title="Last execution time" format="{0,date,dd.MM.yyyy HH:mm:ss}" sortable="true"/> --%>			
-			<display:column href="/app/Generate" paramId="id" paramProperty="id">
+			<display:column href="/Generate" paramId="id" paramProperty="id">
 					<button  class="btn btn-primary btn-xs active" value="GenerateProject">Generate Project Tree</button>		
 			</display:column>
 		</display:table> 		

@@ -20,7 +20,7 @@
 <div class="navbar navbar-inverse navbar-static-top custom">
 		<div class="navbar-inner">
 			<div class="container">
-				<a href="/app/index" class="navbar-brand brand">Selenium
+				<a href="/index" class="navbar-brand brand">Selenium
 					Gallery</a>
 				<div class="collapse navbar-collapse navHeaderCollapse">
 					<ul class="nav navbar-nav navbar-center">
