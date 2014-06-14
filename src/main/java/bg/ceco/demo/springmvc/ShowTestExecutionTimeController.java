@@ -17,15 +17,18 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import bg.ceco.demo.model.ClassInfo;
+import bg.ceco.demo.model.ExecInfo;
+
 
 @Controller
 public class ShowTestExecutionTimeController {
 	private String pathToTestDir;
 	@RequestMapping(value="/ShowTestExecutionTime", method = RequestMethod.GET)
 	public ModelAndView detailTestsDisplay(@RequestParam("path") String path, ModelMap model) throws Exception {
-		List<TestClassDirInfo> info = Constants.getTestClassesDirInfo();
+		List<ClassInfo> info = Constants.getTestClassesDirInfo();
 		pathToTestDir = path;		
-		TestClassDirInfo classInfo = Constants.getTestClassDirInfo(new File(path).getParent());
+		ClassInfo classInfo = Constants.getTestClassDirInfo(new File(path).getParent());
 		model.addAttribute(new DirInfoForm());
 		model.addAttribute("exectutionInfo", getTestExecutions(path));
 		model.addAttribute("dirInfo", info);
@@ -35,7 +38,7 @@ public class ShowTestExecutionTimeController {
 	
 	@RequestMapping(value="/DeleteTestExecutionTime", method = RequestMethod.GET)
 	public ModelAndView deleteGalery (@RequestParam("fileRoot") String pathToExecDir, ModelMap model) throws Exception {
-		List<TestClassDirInfo> info = Constants.getTestClassesDirInfo();
+		List<ClassInfo> info = Constants.getTestClassesDirInfo();
 		model.addAttribute("dirInfo", info);
 		model.addAttribute(new DirInfoForm());
 		
@@ -45,8 +48,8 @@ public class ShowTestExecutionTimeController {
 		if (new File(testExecutionDirToDelete.getParent()).list().length <= 0 ) {
 			File testDir = new File(testExecutionDirToDelete.getParent());
 			FileUtils.forceDelete(testDir);
-			TestClassDirInfo classInfo = Constants.getTestClassDirInfo(testDir.getParent());
-			model.addAttribute("testInfo", classInfo.getTestInfo());
+			ClassInfo classInfo = Constants.getTestClassDirInfo(testDir.getParent());
+//			model.addAttribute("testInfo", classInfo.getTestInfo());
 			return new ModelAndView("ShowExecutedTests");
 		}
 		
@@ -56,7 +59,7 @@ public class ShowTestExecutionTimeController {
 	
 	@RequestMapping(value="/dirInfoForm", method = RequestMethod.POST)
 	public ModelAndView deleteGaleryList (@ModelAttribute("dirInfoForm") DirInfoForm dirInfoForm, ModelMap model) throws Exception {
-		List<TestClassDirInfo> info = Constants.getTestClassesDirInfo();
+		List<ClassInfo> info = Constants.getTestClassesDirInfo();
 		model.addAttribute("dirInfo", info);
 		model.addAttribute(new DirInfoForm());
 		
@@ -73,8 +76,8 @@ public class ShowTestExecutionTimeController {
 				File testDir = new File(testExecutionDirToDelete.getParent());
 				FileUtils.forceDelete(testDir);
 				
-				TestClassDirInfo classInfo = Constants.getTestClassDirInfo(testDir.getParent());
-				model.addAttribute("testInfo", classInfo.getTestInfo());
+				ClassInfo classInfo = Constants.getTestClassDirInfo(testDir.getParent());
+//				model.addAttribute("testInfo", classInfo.getTestInfo());
 				return new ModelAndView("ShowExecutedTests");				
 			}			
 		
@@ -84,9 +87,9 @@ public class ShowTestExecutionTimeController {
 		return new ModelAndView("redirect:/app/ShowTestExecutionTime", "path",  pathToTestDir);
 	}
 	
-	protected List<TestExecDirInfo> getTestExecutions(String pathToDir) throws Exception {
+	protected List<ExecInfo> getTestExecutions(String pathToDir) throws Exception {
 
-		List<TestExecDirInfo> execInfos = new ArrayList<TestExecDirInfo>();
+		List<ExecInfo> execInfos = new ArrayList<ExecInfo>();
 		File dir = new File(pathToDir);
 		for (File child : Constants.dirListByDescendingDate(dir)) {
 
@@ -96,28 +99,28 @@ public class ShowTestExecutionTimeController {
 			
 			Date dateExecuted = DateUtils.parseDate(child.getName().replace("-", ":"), new String[]{"dd.MM.yyyy HH:mm:ss"});
 			
-			TestExecDirInfo bean = new TestExecDirInfo();			
+			ExecInfo bean = new ExecInfo();			
 			bean.setName(child.getName());
 			bean.setPath(child.getCanonicalPath());
 			bean.setExecutionDate(dateExecuted);
-			bean.setPathToParentDir(child.getParent());
-			bean.setParentName(dir.getName());
+//			bean.setPathToParentDir(child.getParent());
+//			bean.setParentName(dir.getName());
 			execInfos.add(bean);
 		}
 		return execInfos;
 	}
 
-	private List<TestClassDirInfo> getTestsNames() throws Exception {
+	private List<ClassInfo> getTestsNames() throws Exception {
 
 		try {
-			List<TestClassDirInfo> dirInfos = new ArrayList<TestClassDirInfo>();
+			List<ClassInfo> dirInfos = new ArrayList<ClassInfo>();
 			File dir = new File(Constants.sceensLocationPath());
 			for (File child : Constants.dirListByAscendingDate(dir)) {
 
 				if (".".equals(child.getName()) || "..".equals(child.getName())) {
 					continue; // Ignore the self and parent aliases.\
 				}
-				TestClassDirInfo bean = new TestClassDirInfo();
+				ClassInfo bean = new ClassInfo();
 				bean.setName(child.getName());
 				bean.setPath(child.getCanonicalPath());
 				Date dateExecuted = Constants.getLastTestExecutionDate(child.getCanonicalPath());

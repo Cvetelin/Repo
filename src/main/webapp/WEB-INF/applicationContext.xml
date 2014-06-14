@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:task="http://www.springframework.org/schema/task"
+	xmlns:mvc="http://www.springframework.org/schema/mvc"
+	xsi:schemaLocation="
+		http://www.springframework.org/schema/beans
+		http://www.springframework.org/schema/beans/spring-beans-3.2.xsd
+		http://www.springframework.org/schema/context
+		http://www.springframework.org/schema/context/spring-context-3.2.xsd
+		http://www.springframework.org/schema/task
+		http://www.springframework.org/schema/task/spring-task-3.2.xsd
+		http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-3.2.xsd"	
+	default-autowire="byType">
+
+	<context:component-scan base-package="bg.ceco.demo">
+	   <context:exclude-filter type="annotation" expression="org.springframework.stereotype.Controller" />
+    </context:component-scan>
+    <context:annotation-config/>
+	
+	<bean class="org.springframework.web.servlet.view.UrlBasedViewResolver">
+		<property name="viewClass" value="org.springframework.web.servlet.view.tiles3.TilesView"/>
+	</bean>
+	
+	<bean id="tilesConfigurer" class="org.springframework.web.servlet.view.tiles3.TilesConfigurer" >
+		<property name="definitions" value="/WEB-INF/tiles.xml"></property>
+	</bean>
+	
+	<bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+   		<property name="maxUploadSize" value=" 33554432"/> <!-- 32 Mb -->									   
+	</bean>
+	
+	<bean id="txManager"  class="org.springframework.orm.hibernate4.HibernateTransactionManager">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	
+		<bean id="shiroFilter" class="org.apache.shiro.spring.web.ShiroFilterFactoryBean">
+		<property name="securityManager" ref="securityManager" />
+		<property name="loginUrl" value="/login.jsp"/> 
+		<property name="successUrl" value="/app/Index.jsp"/> 
+		<property name="unauthorizedUrl" value="/unauthorized.jsp"/>
+		<property name="filterChainDefinitions">
+			<value>
+            # some example chain definitions:
+            /admin/** = authc, roles[admin]
+            /docs/** = authc, perms[document:read]
+            /** = authc
+            # more URL-to-FilterChain definitions here		
+			</value>
+		</property>
+	</bean>
+	<bean id="securityManager" class="org.apache.shiro.web.mgt.DefaultWebSecurityManager">
+		<property name="realm" ref="myRealm" />
+	</bean>
+	<bean id="myRealm" class="org.apache.shiro.realm.jdbc.JdbcRealm">
+		<property name="dataSource" ref="dataSource" />
+		<property name="authenticationQuery" value="select PASSWORD from USER where USER_NAME = ?" />
+		<!-- permissionsquery method is overriden in the bg.proxiad.demo.misc.shiro.CustomShiroRealm.class -->
+	</bean>
+	<bean id="lifecycleBeanPostProcessor" class="org.apache.shiro.spring.LifecycleBeanPostProcessor" />
+	
+	<bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+		<property name="url" value="jdbc:mysql://localhost:3306/gallery" />
+		<property name="username" value="root" />
+		<property name="password" value="account@root"/>
+		<property name="driverClassName" value="com.mysql.jdbc.Driver"/>
+		<!--	<property name="connection.driver_class">com.mysql.jdbc.Driver</property>
+		<property name="driverClassName" value="org.hsqldb.jdbcDriver" />
+		<property name="url" value="jdbc:hsqldb:file:demodb;shutdown=true;hsqldb.default_table_type=cached" />
+		<property name="username" value="sa" />
+		<property name="password" value="" /> -->
+	</bean>
+	
+	<bean id="sessionFactory"
+	class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">
+		<property name="dataSource" ref="dataSource" />
+		<property name="packagesToScan">
+			<array>
+        		<value>bg.ceco.demo.*</value>
+      		</array>
+		</property>	
+		<!--<property name="mappingResources"/>-->
+		<property name="hibernateProperties">
+			<props>
+				<prop key="hibernate.dialect">org.hibernate.dialect.MySQL5Dialect</prop>
+				<prop key="hibernate.show_sql">true</prop>
+				<prop key="hibernate.hbm2ddl.auto">update</prop>
+				<prop key="hibernate.generate_statistics">true</prop>
+				<prop key="hibernate.cache.use_query_cache">false</prop>
+			</props>
+		</property>
+	</bean>
+	
+</beans>

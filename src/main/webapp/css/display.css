@@ -1,14 +1,37 @@
-body, table {
-	padding: 0px;
-	background: #F5F5DC;
-	color: #000;
+body {
+	color: #000000;
+	font-size:12px;
+	background-color: #EEFFFF;
 }
 
+table, tr:nth-child(odd) {
+	color: #000;
+	font-size:12px;
+}
 
-.headtitle-link a{
-  color: #D1D0CE;
+.headtitle-link th>a{
+  color: #2E0808;
   text-decoration: none;
-  font-size:15px
+  font-size: 12px;
+}
+/* title row of table*/
+table.table-title thead tr th{
+/* 	border:	solid; */
+/* 	border-width: thin; */
+	background-color:  	#726e6e; 
+	text-align: center;
+	padding-top:0px; 
+	padding-bottom:0px;
+	
+}
+
+/* body row of table*/
+table.table-body tbody tr td{
+/* 	border:	solid; */
+/* 	border-width: thin; */
+	text-align: center;
+	padding-top:0px; 
+	padding-bottom:0px;
 }
 
 .title {
@@ -17,33 +40,38 @@ body, table {
 }
 
 .title thead th{
-	border:	solid;
-	border-width: thin; 
-	background-color:  	#504A4B;
+	background-color:  	#726e6e; 
 	text-align: center;
-}> li > a
 	
-.title tbody td{
-	border:	solid;
-	border-width: 
-	thin; 
-	background-color: #FEFCFF;
-}
+}> li > a
+
+.top-buffer {
+	margin-top:20px; 
+}	
 
 div.custom {
 	 background-color: #2B3856;
-	 min-height:20px;
+	 min-height: -30px;
 }
 
 .colordiv div{
 	background-color:  	#504A4B;
 }
 div.custom > li > a{
+	 color: #FFFFFF;
 	 padding-top:2px; 
 	 padding-bottom:2px;
 }
 
 div.custom ul > li > a{
+	 color: #FFFFFF;
+	 padding-top:1px; 
+	 padding-bottom:1px;
+	 font-size:small; 
+}
+
+div.sidebar-custom ul > li > a{
+	 color: #000000;
 	 padding-top:1px; 
 	 padding-bottom:1px;
 	 font-size:small; 
@@ -54,4 +82,32 @@ a.brand {
 	 padding-bottom:1px;
 	 font-size:small; 
 }
+/* tab offset */
+.tabs ul> li > a{
+	 padding-top:2px; 
+	 padding-bottom:2px;
+}
 
+/* tab color */
+.nav-tabs>li>a {
+  color: #fff;
+  background-color: #666;
+  border: 1px solid #888888;
+}
+
+/* active tab color */
+.nav-tabs>li.active>a, .nav-tabs>li.active>a:hover, .nav-tabs>li.active>a:focus {
+  background-color: #333333; 
+  border-color: #777777;
+  color:#fff;
+}
+
+/* hover tab color */
+.nav-tabs>li>a:hover {
+  border-color: #000000;
+  background-color: #111111;
+}
+/*div over the table containing the calss data */
+div.overtable  table > tbody > tr > td{
+	 background-color: #E4EEF4;
+}
