@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+	"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping >
+  <class name="bg.ceco.demo.model.Permission" lazy="false">
+  	<id name="id">
+			<generator class="native" />
+		</id>
+		<property name="type" type="string"/>
+		<property name="createAllowed" />
+		<property name="deleteAllowed" />
+		<property name="modifyAllowed" />
+		<property name="readAllowed" />
+  </class>
+</hibernate-mapping>
