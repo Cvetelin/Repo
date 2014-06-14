@@ -13,7 +13,6 @@ import javax.persistence.Id;
 import javax.persistence.Lob;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
-import javax.validation.constraints.NotNull;
 
 @Entity
 @Table(name = "PROJECT")
@@ -54,25 +53,24 @@ public class Project {
 
 	@Column(name = "DATE_MODIFICATION")
 	private Date dateModification;
-	
+
 	@OneToMany(mappedBy = "project", cascade = CascadeType.ALL, fetch = FetchType.LAZY, orphanRemoval = true)
 	private Set<ClassInfo> classInfos;
-	
-	@Column(name = "TEST_COUNT")
-	@NotNull
-	private int testCount;
-	
-	@Column(name = "CLASS_COUUN")
-	@NotNull
-	private int classCount;
+
+	// @Column(name = "TEST_COUNT")
+	// @NotNull
+	// private int testCount;
+
+	// @Column(name = "CLASS_COUUN")
+	// @NotNull
+	// private int classCount;
 
 	public Project() {
 	}
-	
-	public Project(Long id, String projectName, String jarName, String dependencyJarName, String jarPath,
-			String dependencyJarPath, String description, byte[] testJar, byte[] dependencyJar, Date dateCreation,
-			Date dateModification, Set<ClassInfo> classInfos) {
-			this.id = id;
+
+	public Project(Long id, String projectName, String jarName, String dependencyJarName, String jarPath, String dependencyJarPath,
+			String description, byte[] testJar, byte[] dependencyJar, Date dateCreation, Date dateModification, Set<ClassInfo> classInfos) {
+		this.id = id;
 		this.projectName = projectName;
 		this.jarName = jarName;
 		this.dependencyJarName = dependencyJarName;
@@ -182,19 +180,19 @@ public class Project {
 		this.dateModification = dateModification;
 	}
 
-	public int getTestCount() {
-		return testCount;
-	}
+	// public int getTestCount() {
+	// return testCount;
+	// }
+	//
+	// public void setTestCount(int testCount) {
+	// this.testCount = testCount;
+	// }
 
-	public void setTestCount(int testCount) {
-		this.testCount = testCount;
-	}
-
-	public int getClassCount() {
-		return classCount;
-	}
-
-	public void setClassCount(int classCount) {
-		this.classCount = classCount;
-	}
+	// public int getClassCount() {
+	// return classCount;
+	// }
+	//
+	// public void setClassCount(int classCount) {
+	// this.classCount = classCount;
+	// }
 }

@@ -35,6 +35,31 @@
 		<property name="sessionFactory" ref="sessionFactory" />
 	</bean>
 	
+		<bean id="shiroFilter" class="org.apache.shiro.spring.web.ShiroFilterFactoryBean">
+		<property name="securityManager" ref="securityManager" />
+		<property name="loginUrl" value="/login.jsp"/> 
+		<property name="successUrl" value="/app/Index.jsp"/> 
+		<property name="unauthorizedUrl" value="/unauthorized.jsp"/>
+		<property name="filterChainDefinitions">
+			<value>
+            # some example chain definitions:
+            /admin/** = authc, roles[admin]
+            /docs/** = authc, perms[document:read]
+            /** = authc
+            # more URL-to-FilterChain definitions here		
+			</value>
+		</property>
+	</bean>
+	<bean id="securityManager" class="org.apache.shiro.web.mgt.DefaultWebSecurityManager">
+		<property name="realm" ref="myRealm" />
+	</bean>
+	<bean id="myRealm" class="org.apache.shiro.realm.jdbc.JdbcRealm">
+		<property name="dataSource" ref="dataSource" />
+		<property name="authenticationQuery" value="select PASSWORD from USER where USER_NAME = ?" />
+		<!-- permissionsquery method is overriden in the bg.proxiad.demo.misc.shiro.CustomShiroRealm.class -->
+	</bean>
+	<bean id="lifecycleBeanPostProcessor" class="org.apache.shiro.spring.LifecycleBeanPostProcessor" />
+	
 	<bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
 		<property name="url" value="jdbc:mysql://localhost:3306/gallery" />
 		<property name="username" value="root" />

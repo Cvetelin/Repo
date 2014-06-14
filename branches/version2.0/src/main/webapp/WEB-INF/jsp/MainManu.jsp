@@ -23,8 +23,9 @@
 				<div class="collapse navbar-collapse ">
 					<ul class="nav navbar-nav navbar-center">
 						<li><a href="/app/ShowProjects">Projects</a></li>
-						<li><a href="/app/index">Run</a></li>
+<!-- 						<li><a href="/app/index">Run</a></li> -->
 						<li><a href="/app/AddProject">Add project</a></li>
+						<li><a href="/app/AddUser">Add user</a></li>
 					</ul>
 				</div>
 			</div>

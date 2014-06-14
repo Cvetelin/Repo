@@ -65,5 +65,8 @@
 		<put-attribute name="body" value="/WEB-INF/jsp/popups/FailureDetailsPopup.jsp" />
 	</definition>
 	
+	<definition name="AddUser" extends="base">
+		<put-attribute name="body" value="/WEB-INF/jsp/AddUser.jsp" />
+	</definition>
 	
 </tiles-definitions> 
