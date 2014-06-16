@@ -9,25 +9,39 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<%@ taglib prefix="shiro" uri="http://shiro.apache.org/tags"%>
+
 <html>
-<link type="text/css" rel="stylesheet" href="/css/bootstrap.css">
-<link type="text/css" rel="stylesheet" href="/css/display.css">
 <head>
 </head>
+<c:set var="username">
+	<shiro:principal />
+</c:set>
 <body>
 	<div class="navbar navbar-static-top custom"> 
-			<div class="container">
-				<a href="/index" class="navbar-brand brand">Selenium
-					Gallery</a>
-				<div class="collapse navbar-collapse ">
-					<ul class="nav navbar-nav navbar-center">
+			<div class="container custom-drop">
+				<a href="/index" class="navbar-brand brand">Selenium Gallery</a>				
+					<ul class="nav navbar-nav">
 						<li><a href="/ShowProjects">Projects</a></li>
 <!-- 						<li><a href="/index">Run</a></li> -->
-						<li><a href="/AddProject">Add project</a></li>
-						<li><a href="/AddUser">Add user</a></li>
 					</ul>
-				</div>
+					<ul class="nav navbar-nav">
+				    	<li class="dropdown">
+				       	 <a href="#" class="dropdown-toggle" data-toggle="dropdown">Admin<b class="caret"></b></a>
+				         <ul class="dropdown-menu">
+				        	<li><a href="/AddProject">Add project</a></li>
+							<li><a href="/AddUser">Add user</a></li>
+				         </ul>
+		      			</li>
+		   		   </ul>
+					<ul class="nav navbar-nav navbar-right">
+				    	<li class="dropdown">
+				       	 <a href="#" class="dropdown-toggle" data-toggle="dropdown">User: ${username}<b class="caret"></b></a>
+				         <ul class="dropdown-menu">
+				        	<li><a href="/logout">Logout</a></li>
+				         </ul>
+		      			</li>
+		   		   </ul>				
 			</div>
 		</div>
 </body>
