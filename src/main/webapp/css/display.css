@@ -70,6 +70,20 @@ div.custom ul > li > a{
 	 font-size:small; 
 }
 
+/* custom-drop down*/
+div.custom-drop ul > li > ul{
+	 background-color: #ABB2B7;
+
+}
+
+/* custom-drop down*/
+div.custom-drop ul > li > ul > li >a{
+	
+	 padding-top:1px; 
+	 padding-bottom:1px;
+	 font-size:small; 
+}
+
 div.sidebar-custom ul > li > a{
 	 color: #000000;
 	 padding-top:1px; 

@@ -3,10 +3,11 @@
 <%@ taglib uri="http://tiles.apache.org/tags-tiles-extras" prefix="tilesx"%>
 <%@ taglib uri="http://java.sun.com/jstl/core_rt" prefix="c"%>
 <html>
-<link type="text/css" rel="stylesheet" href="/css/bootstrap.css">
-<link type="text/css" rel="stylesheet" href="/css/display.css">
 <head>
-
+<link type="text/css" rel="stylesheet" href="/css/bootstrap.css">
+<script type="text/javascript" src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-2.0.0.min.js"></script>
+<script type="text/javascript" src="<c:url value='/js/bootstrap.js' />"></script>
+<link type="text/css" rel="stylesheet" href="/css/display.css">
 </head>
 <body>
 	<div id="menu">
