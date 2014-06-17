@@ -55,7 +55,7 @@
 	</welcome-file-list>
 	<error-page>
 		<error-code>404</error-code>
-		<location>/index</location>
+		<location>/</location>
 	</error-page>
 <!-- 	<error-page> -->
 <!-- 	    <exception-type>java.lang.Exception</exception-type> -->

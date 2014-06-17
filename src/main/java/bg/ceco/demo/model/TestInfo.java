@@ -27,9 +27,6 @@ public class TestInfo {
 	@Column(name = "NAME")
 	private String name;
 
-	@Column(name = "PATH")
-	private String path;
-
 	@Column(name = "EXECUTION_DATE")
 	private Date executionDate;
 
@@ -43,10 +40,9 @@ public class TestInfo {
 	public TestInfo() {
 	}
 
-	public TestInfo(long id, String name, String path, Date executionDate, ClassInfo classInfo) {
+	public TestInfo(long id, String name, Date executionDate, ClassInfo classInfo) {
 		this.id = id;
 		this.name = name;
-		this.path = path;
 		this.executionDate = executionDate;
 		this.classInfo = classInfo;
 	}
@@ -81,14 +77,6 @@ public class TestInfo {
 
 	public void setName(String name) {
 		this.name = name;
-	}
-
-	public String getPath() {
-		return path;
-	}
-
-	public void setPath(String path) {
-		this.path = path;
 	}
 
 	public Date getExecutionDate() {

@@ -71,8 +71,6 @@ $(document).ready(function() {
 			</display:column>
 			<display:column title="Qualified name" property="qualifiedName">
 			</display:column>
-			<display:column title="Folder Location" property="path" paramId="path" paramProperty="path" sortable="true">
-			</display:column>
 			<display:column paramId="classId" paramProperty="id" href="/ShowClassDetails">
 				<c:if test="${not empty class.testInfo}">
 					<button class="btn btn-info btn-xs active" id="listM" value="List Methods">List Methods</button>
