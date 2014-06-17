@@ -49,10 +49,10 @@ public class ClassInfo {
 	@OneToMany(mappedBy = "classInfo", cascade = CascadeType.ALL, fetch = FetchType.LAZY, orphanRemoval = true)
 	private Set<TestInfo> testInfo;
 
-	@Column(name = "NUBER_TESTS")
+	@Column(name = "NUMBER_TESTS")
 	private Integer numberOfTests;
 
-	@Column(name = "NUBER_FAILED_TESTS")
+	@Column(name = "NUMBER_FAILED_TESTS")
 	private Integer numberOfFailedTests;
 
 	@Column(name = "RUN_TIME")
