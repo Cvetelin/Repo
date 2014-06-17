@@ -55,6 +55,13 @@ public class ProjectController {
 
 	@Autowired
 	public ExecInfoService execInfoService;
+	
+	@RequestMapping(value = "/", method = RequestMethod.GET)
+	public ModelAndView index() {
+		ModelMap map = new ModelMap();
+		map.addAttribute("projects", projectService.list());
+		return new ModelAndView("index");
+	}
 
 	@RequestMapping(value = "/ShowProjects", method = RequestMethod.GET)
 	public ModelAndView showProjects() {

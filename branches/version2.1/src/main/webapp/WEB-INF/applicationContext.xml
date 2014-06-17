@@ -38,15 +38,15 @@
 	<bean id="shiroFilter" class="org.apache.shiro.spring.web.ShiroFilterFactoryBean">
 		<property name="securityManager" ref="securityManager" />
 		<property name="loginUrl" value="/login.jsp"/> 
-		<property name="successUrl" value="/index"/> 
+		<property name="successUrl" value="/"/> 
 		<property name="unauthorizedUrl" value="/unauthorized.jsp"/>
 		<property name="filterChainDefinitions">
 			<value>
             # some example chain definitions:
-            /index.html = anon
-			/css/** = anon
+         	/css/** = anon
 			/js/** = anon
 			/img/** = anon
+			/login.jsp = authc
             /** = authc
             # more URL-to-FilterChain definitions here		
 			</value>

@@ -35,9 +35,6 @@ public class ClassInfo {
 	@Column(name = "QUALIFIED_NAME")
 	private String qualifiedName;
 
-	@Column(name = "PATH")
-	private String path;
-
 	@Column(name = "EXCUTION_DATE")
 	private Date executionDate;
 	// private List<TestDirInfo> testInfo;
@@ -65,12 +62,11 @@ public class ClassInfo {
 		return project;
 	}
 
-	public ClassInfo(long id, String name, String qualifiedName, String path, Date executionDate, boolean success, Project project,
+	public ClassInfo(long id, String name, String qualifiedName, Date executionDate, boolean success, Project project,
 			Set<TestInfo> testInfo, Integer numberOfTests, Integer numberOfFailedTests, Long runTime) {
 		this.id = id;
 		this.name = name;
 		this.qualifiedName = qualifiedName;
-		this.path = path;
 		this.executionDate = executionDate;
 		this.success = success;
 		this.project = project;
@@ -149,14 +145,6 @@ public class ClassInfo {
 
 	public void setName(String name) {
 		this.name = name;
-	}
-
-	public String getPath() {
-		return path;
-	}
-
-	public void setPath(String path) {
-		this.path = path;
 	}
 
 	public Date getExecutionDate() {
