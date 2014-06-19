@@ -10,6 +10,7 @@ public class TestExecutionResult {
 	private Result result;
 	private String classQualifiedName;
 	private Date executionDate;
+	private boolean isSuccessful;
 	
 	public String getTestName() {
 		return testName;
@@ -34,6 +35,12 @@ public class TestExecutionResult {
 	}
 	public void setExecutionDate(Date executionDate) {
 		this.executionDate = executionDate;
+	}
+	public boolean isSuccessful() {
+		return isSuccessful;
+	}
+	public void setSuccessful(boolean isSuccesful) {
+		this.isSuccessful = isSuccesful;
 	}
 	
 	

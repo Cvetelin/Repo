@@ -27,7 +27,6 @@ import bg.ceco.demo.logic.listener.TestExecutionResult;
 import bg.ceco.demo.model.ClassInfo;
 import bg.ceco.demo.model.ExecInfo;
 import bg.ceco.demo.model.TestInfo;
-import bg.ceco.demo.selenium.TestRunner;
 
 @Controller
 public class RunTestsController {
@@ -141,12 +140,11 @@ public class RunTestsController {
 		ClassInfo classInfo = classInfoService.get(id);
 		TestInfo testInfo = new TestInfo();
 		int testFailureCount = 0;
-		Long classRunTime = 0L;
-		List<TestExecutionResult> testExecutionResult = new ArrayList<TestExecutionResult>();
+		Long classRunTime = 0L;		
 		TestRunner runner = new TestRunner();
 		try {
 			Date date = new Date();
-			testExecutionResult = runner.runMethods(classInfo);
+			List<TestExecutionResult> testExecutionResult = runner.runMethods(classInfo);
 			for (TestExecutionResult result : testExecutionResult) {
 				List<Failure> failures = result.getResult().getFailures();
 				testFailureCount += result.getResult().getFailureCount();
@@ -156,8 +154,8 @@ public class RunTestsController {
 				}
 
 				if (!failures.isEmpty()) {
-					for (Iterator<Failure> iterator = failures.iterator(); iterator.hasNext();) {
-						Failure failure = (Failure) iterator.next();
+					for (Failure failure : failures) {
+						testInfo = testInfoService.loadBy(classInfo, result.getTestName());
 						testInfo = matchMethods(classInfo, failure.getDescription().getMethodName());
 						updateOnFailure(testInfo, result.getExecutionDate(), result.getResult());
 					}
@@ -184,8 +182,7 @@ public class RunTestsController {
 	private TestInfo matchMethods(ClassInfo classInfo, String nameOfExecutedTest) {
 		TestInfo testInClass = null;
 		Set<TestInfo> testsInClass = classInfo.getTestInfo();
-		for (Iterator<TestInfo> iterator = testsInClass.iterator(); iterator.hasNext();) {
-			TestInfo testInfo = (TestInfo) iterator.next();
+		for (TestInfo testInfo : testsInClass) {
 			if (testInfo.getName().equals(nameOfExecutedTest)) {
 				testInClass = testInfoService.loadBy(classInfo, testInfo.getName());
 				return testInClass;
@@ -196,8 +193,7 @@ public class RunTestsController {
 
 	private List<ExecInfo> getLastExecutionOfTest(Set<TestInfo> testInfos) {
 		List<ExecInfo> execInfos = new ArrayList<ExecInfo>();
-		for (Iterator<TestInfo> iterator = testInfos.iterator(); iterator.hasNext();) {
-			TestInfo tInfo = (TestInfo) iterator.next();
+		for (TestInfo tInfo : testInfos) {
 			List<ExecInfo> eInfos = execInfoService.listBy(tInfo);
 			execInfos.addAll(eInfos);
 		}
@@ -205,15 +201,13 @@ public class RunTestsController {
 	}
 
 	private boolean isClassSuccesful(Set<TestInfo> testInfos) {
-		boolean siSuccesful = true;
-		for (Iterator<ExecInfo> iterator = getLastExecutionOfTest(testInfos).iterator(); iterator.hasNext();) {
-			ExecInfo execInfo = (ExecInfo) iterator.next();
+		List<ExecInfo> execInfos =  getLastExecutionOfTest(testInfos);
+		for (ExecInfo execInfo : execInfos) {
 			if (execInfo.getFailureReason() != null) {
-				siSuccesful = false;
-				return siSuccesful;
+				return false;
 			}
 		}
-		return siSuccesful;
+		return true;
 	}
 
 	private boolean isInitializationError(List<Failure> failures, ClassInfo classInfo, Date date) {
