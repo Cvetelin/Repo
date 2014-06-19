@@ -309,9 +309,9 @@ public class ProjectController {
 	}
 
 	private void generateClassSturcture(List<CtClass> classes, Project project) throws Exception {
-
-		// List<ClassInfo> classInfos = new ArrayList<ClassInfo>();
+		
 		for (CtClass class1 : classes) {
+			try {			
 			List<TestInfo> testInfos = new ArrayList<TestInfo>();
 			CtMethod[] methods = class1.getDeclaredMethods();
 			ClassInfo classInfo = new ClassInfo();
@@ -337,6 +337,10 @@ public class ProjectController {
 			testInfoService.saveAll(testInfos);
 			classInfo.setNumberOfTests(testInfos.size());
 			classInfoService.update(classInfo);
+			} finally {
+				class1.detach();
+			}
+			
 		}
 	}
 

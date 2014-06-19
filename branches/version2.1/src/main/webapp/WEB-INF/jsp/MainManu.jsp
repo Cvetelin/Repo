@@ -20,7 +20,7 @@
 <body>
 	<div class="navbar navbar-static-top custom"> 
 			<div class="container custom-drop">
-				<a href="/index" class="navbar-brand brand">Selenium Gallery</a>				
+				<a href="/index" class="navbar-brand brand">Test Runner</a>				
 					<ul class="nav navbar-nav">
 						<li><a href="/ShowProjects">Projects</a></li>
 <!-- 						<li><a href="/index">Run</a></li> -->

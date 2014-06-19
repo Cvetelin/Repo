@@ -1,4 +1,4 @@
-package bg.ceco.demo.selenium;
+package bg.ceco.demo.springmvc;
 
 import org.junit.runner.Description;
 import org.junit.runner.Result;
