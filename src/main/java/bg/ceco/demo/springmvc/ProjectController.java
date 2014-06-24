@@ -55,7 +55,7 @@ public class ProjectController {
 
 	@Autowired
 	public ExecInfoService execInfoService;
-	
+
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public ModelAndView index() {
 		ModelMap map = new ModelMap();
@@ -90,59 +90,37 @@ public class ProjectController {
 
 	@RequestMapping(value = "/CreateProject", method = RequestMethod.POST)
 	@Scope(value = "request")
-	public ModelAndView add(@ModelAttribute("projectForm") ProjectForm projectForm, BindingResult result,
-			@RequestParam("testJar") MultipartFile testJar) {
+	public ModelAndView addOrModify(@ModelAttribute("projectForm") ProjectForm projectForm, BindingResult result,
+			@RequestParam("testJar") MultipartFile testJar) throws Exception {
 		// @RequestParam("depJar") MultipartFile depJar) {
-		try {
-			if (!StringUtils.isBlank(projectForm.getProjectId()) && projectService.load(Long.valueOf(projectForm.getProjectId())) != null) {
-				Project existingProject = projectService.load(Long.valueOf(projectForm.getProjectId()));
-
-				// String depJarPath = constructSaveLocation(projectForm,
-				// depJar);
-				String testJarPatj = constructSaveLocation(projectForm, testJar);
-				existingProject.setDateModification(new Date());
-				// existingProject.setDependencyJar(depJar.getBytes());
-				// if (!depJarPath.equals(null)) {
-				// existingProject.setDependencyJarName(depJar
-				// .getOriginalFilename());
-				// }
-				// existingProject.setDependencyJarPath(depJarPath);
-				existingProject.setDescription(projectForm.getDescription());
-				existingProject.setJarName(testJar.getOriginalFilename());
-				existingProject.setJarPath(testJarPatj);
-				existingProject.setProjectName(projectForm.getName());
-				existingProject.setTestJar(testJar.getBytes());
-				projectService.update(existingProject);
-				return new ModelAndView("redirect:/ShowProjects");
-			}
-			Project project = new Project();
-			// if (!(depJar.getSize() == 0)) {
-			// fileValidator.validate(depJar, result);
-			// }
-
-			// String depJarPath = constructSaveLocation(projectForm, depJar);
+		if (!StringUtils.isBlank(projectForm.getProjectId()) && projectService.load(Long.valueOf(projectForm.getProjectId())) != null) {
+			Project existingProject = projectService.load(Long.valueOf(projectForm.getProjectId()));
 			String testJarPatj = constructSaveLocation(projectForm, testJar);
-			project.setDateCreation(new Date());
-			// project.setDependencyJar(depJar.getBytes());
-			// project.setDependencyJarName(depJar.getOriginalFilename());
-			// project.setDependencyJarPath(depJarPath);
-			project.setDescription(projectForm.getDescription());
-			project.setJarName(testJar.getOriginalFilename());
-			project.setJarPath(testJarPatj);
-			project.setProjectName(projectForm.getName());
-			project.setTestJar(testJar.getBytes());
-			projectService.save(project);
+			existingProject.setDateModification(new Date());
 
-			ProjectTreeGenerator generator = new ProjectTreeGenerator();
-			List<CtClass> classes = generator.loadJar(project);
-			generateClassSturcture(classes, project);
-
+			existingProject.setDescription(projectForm.getDescription());
+			existingProject.setJarName(testJar.getOriginalFilename());
+			existingProject.setJarPath(testJarPatj);
+			existingProject.setProjectName(projectForm.getName());
+			existingProject.setTestJar(testJar.getBytes());
+			projectService.update(existingProject);
 			return new ModelAndView("redirect:/ShowProjects");
-		} catch (Exception e) {
-			e.printStackTrace();
-			return new ModelAndView("AddProject");
-
 		}
+		Project project = new Project();
+		String testJarPatj = constructSaveLocation(projectForm, testJar);
+		project.setDateCreation(new Date());
+		project.setDescription(projectForm.getDescription());
+		project.setJarName(testJar.getOriginalFilename());
+		project.setJarPath(testJarPatj);
+		project.setProjectName(projectForm.getName());
+		project.setTestJar(testJar.getBytes());
+		projectService.save(project);
+
+		ProjectTreeGenerator generator = new ProjectTreeGenerator();
+		List<CtClass> classes = generator.readJar(project);
+		generateClassSturcture(classes, project);
+
+		return new ModelAndView("redirect:/ShowProjects");
 	}
 
 	@RequestMapping(value = "/Generate", method = RequestMethod.GET)
@@ -150,7 +128,7 @@ public class ProjectController {
 		Project project = projectService.load(id);
 		ProjectTreeGenerator generator = new ProjectTreeGenerator();
 		clearOldData(project);
-		List<CtClass> classes = generator.loadJar(project);
+		List<CtClass> classes = generator.readJar(project);
 		generateClassSturcture(classes, project);
 
 		ModelMap map = listPorejectDetils(project);
@@ -167,11 +145,9 @@ public class ProjectController {
 	@RequestMapping(value = "/ManageProject", method = RequestMethod.GET)
 	public ModelAndView manageProject(@RequestParam("id") long id) {
 		Project project = projectService.load(id);
-		// ModelMap projectDetails = listPorejectDetils(project);
 		ModelMap projectDetails = new ModelMap();
 		projectDetails.addAttribute("project", project);
 		List<ClassInfo> classes = classInfoService.listBy(project);
-		// projectDetails.addAttribute("classInfos", classes);
 		Collection<ManageProjectBean> manageProjectBeans = new ArrayList<ManageProjectBean>();
 		for (ClassInfo classInfo : classes) {
 			ManageProjectBean manageProjectBean = new ManageProjectBean();
@@ -309,38 +285,38 @@ public class ProjectController {
 	}
 
 	private void generateClassSturcture(List<CtClass> classes, Project project) throws Exception {
-		
-		for (CtClass class1 : classes) {
-			try {			
-			List<TestInfo> testInfos = new ArrayList<TestInfo>();
-			CtMethod[] methods = class1.getDeclaredMethods();
-			ClassInfo classInfo = new ClassInfo();
 
-			classInfo.setName(class1.getSimpleName());
-			classInfo.setQualifiedName(class1.getName());
-			classInfo.setProject(project);
-			classInfoService.save(classInfo);
-			if (classInfo.getTestInfo() == null) {
-				classInfo.setTestInfo(new HashSet<TestInfo>());
-			}
-			for (int i = 0; i < methods.length; i++) {
-				TestInfo testInfo = new TestInfo();
-				for (Object method : methods[i].getAnnotations()) {
-					if (method.toString().equals("@org.junit.Test")) {
-						testInfo.setName(methods[i].getName());
-						testInfo.setClassInfo(classInfo);
-						testInfos.add(testInfo);
-						classInfo.getTestInfo().add(testInfo);
+		for (CtClass class1 : classes) {
+			try {
+				List<TestInfo> testInfos = new ArrayList<TestInfo>();
+				CtMethod[] methods = class1.getDeclaredMethods();
+				ClassInfo classInfo = new ClassInfo();
+
+				classInfo.setName(class1.getSimpleName());
+				classInfo.setQualifiedName(class1.getName());
+				classInfo.setProject(project);
+				classInfoService.save(classInfo);
+				if (classInfo.getTestInfo() == null) {
+					classInfo.setTestInfo(new HashSet<TestInfo>());
+				}
+				for (int i = 0; i < methods.length; i++) {
+					TestInfo testInfo = new TestInfo();
+					for (Object method : methods[i].getAnnotations()) {
+						if (method.toString().equals("@org.junit.Test")) {
+							testInfo.setName(methods[i].getName());
+							testInfo.setClassInfo(classInfo);
+							testInfos.add(testInfo);
+							classInfo.getTestInfo().add(testInfo);
+						}
 					}
 				}
-			}
-			testInfoService.saveAll(testInfos);
-			classInfo.setNumberOfTests(testInfos.size());
-			classInfoService.update(classInfo);
+				testInfoService.saveAll(testInfos);
+				classInfo.setNumberOfTests(testInfos.size());
+				classInfoService.update(classInfo);
 			} finally {
 				class1.detach();
 			}
-			
+
 		}
 	}
 

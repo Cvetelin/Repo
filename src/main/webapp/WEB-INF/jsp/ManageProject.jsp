@@ -106,9 +106,9 @@
 					<button class="btn btn-danger btn-xs active" id="delete"  value="Delete" title="Delete the project">Delete</button>
 				</a>
 			</display:column>			
-			<display:column href="#" paramId="id" paramProperty="id">
-				<button class="btn btn-primary btn-xs active" id="deactivate"></button>
-			</display:column>
+<%-- 			<display:column href="#" paramId="id" paramProperty="id"> --%>
+<!-- 				<button class="btn btn-primary btn-xs active" id="deactivate"></button> -->
+<%-- 			</display:column> --%>
 		</display:table>
 	</div>
 	<br></br>

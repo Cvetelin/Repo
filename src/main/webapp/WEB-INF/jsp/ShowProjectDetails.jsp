@@ -45,10 +45,10 @@ $(document).ready(function() {
 			defaultsort="1">
 			<display:column title="Project Name" property="projectName" paramId="id" paramProperty="id" maxLength="20" />
 			<display:column title="Test JAR name" property="jarName" maxLength="20" />
-			<display:column title="Test JAR location" property="jarPath" maxLength="20" href="/download" />
+			<display:column title="Test JAR location" property="jarPath" maxLength="60" href="/download" />
 			<display:column title="Description" property="description" maxLength="50" />
-			<display:column title="Dependency JAR name" property="dependencyJarName" maxLength="20" />
-			<display:column title="Dependency JAR location" property="dependencyJarPath" maxLength="20" />
+<%-- 			<display:column title="Dependency JAR name" property="dependencyJarName" maxLength="20" /> --%>
+<%-- 			<display:column title="Dependency JAR location" property="dependencyJarPath" maxLength="20" /> --%>
 			<display:column title="Modified on" property="dateModification" format="{0,date,dd.MM.yyyy HH:mm:ss}" />
 			<display:column title="Created on" property="dateCreation" format="{0,date,dd.MM.yyyy HH:mm:ss}" />
 		</display:table>

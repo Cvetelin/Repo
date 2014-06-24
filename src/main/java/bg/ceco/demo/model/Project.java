@@ -61,7 +61,7 @@ public class Project {
 	// @NotNull
 	// private int testCount;
 
-	// @Column(name = "CLASS_COUUN")
+	// @Column(name = "CLASS_COUNT")
 	// @NotNull
 	// private int classCount;
 
