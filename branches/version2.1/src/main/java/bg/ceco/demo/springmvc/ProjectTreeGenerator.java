@@ -18,10 +18,9 @@ import bg.ceco.demo.model.Project;
 
 public class ProjectTreeGenerator {
 
-	public List<CtClass> loadJar(Project project) throws Exception {
+	public List<CtClass> readJar(Project project) throws Exception {
 
-		FileUtils.writeByteArrayToFile(new File(project.getJarPath()),
-				project.getTestJar());
+		FileUtils.writeByteArrayToFile(new File(project.getJarPath()), project.getTestJar());
 
 		JarFile jarFile = new JarFile(project.getJarPath());
 		Enumeration<?> e = jarFile.entries();
@@ -37,8 +36,7 @@ public class ProjectTreeGenerator {
 				}
 				// -6 because of .class
 				// -5 because of .java
-				String className = je.getName().substring(0,
-						je.getName().length() - 6);
+				String className = je.getName().substring(0, je.getName().length() - 6);
 				className = className.replace('/', '.');
 
 				CtClass ct = cp.get(className);

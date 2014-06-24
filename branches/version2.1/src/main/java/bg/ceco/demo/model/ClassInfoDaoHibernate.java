@@ -67,7 +67,7 @@ public class ClassInfoDaoHibernate implements ClassInfoDao {
 	@Override
 	public ClassInfo loadBy(Project project, String qualifiedName) {
 		Criteria crit = sessionFactory.getCurrentSession().createCriteria(ClassInfo.class).add(Restrictions.eq("project", project))
-				.add(Restrictions.eqOrIsNull("qualifiedName", qualifiedName));
+				.add(Restrictions.eq("qualifiedName", qualifiedName));
 		ClassInfo classInfo = (ClassInfo) crit.uniqueResult();
 		return classInfo;
 	}

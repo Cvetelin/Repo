@@ -7,10 +7,10 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.support.ui.Select;
 
-public class TestMestTest {
+public class BankTest {
 
 	@Test
-	public void testMest() {
+	public void testThisOneShouldFail() {
 		WebDriver driver = new FirefoxDriver();
 		driver.get("https://www.boursorama.com/banque-en-ligne/compte-bancaire/souscrire-en-ligne/");
 		Select s = new Select(driver.findElement(By.name("A[civilite]")));
@@ -133,6 +133,7 @@ public class TestMestTest {
 		new Select(driver.findElement(By.name("A[contribuable_americain]"))).selectByVisibleText("Non");
 	}
 
+	@Test
 	public void testWithoutAnotation() {
 		WebDriver driver = new FirefoxDriver();
 		driver.get("https://www.boursorama.com/banque-en-ligne/compte-bancaire/souscrire-en-ligne/");

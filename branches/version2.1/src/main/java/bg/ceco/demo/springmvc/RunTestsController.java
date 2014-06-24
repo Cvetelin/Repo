@@ -89,16 +89,6 @@ public class RunTestsController {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		// Project project =
-		// projectService.load(classInfo.getProject().getId());
-		// List<TestInfo> testInfos = testInfoService.listBy(classInfo);
-		// ModelMap details = new ModelMap();
-		// details.addAttribute("projectsList", projectService.list());
-		// details.addAttribute("project", project);
-		// details.addAttribute("classInfos", classInfo);
-		// details.addAttribute("testInfos", testInfos);
-		// List<ExecInfo> execInfos = getLastExecutionOfTest(testInfos);
-		// details.addAttribute("execInfos", execInfos);
 		return new ModelAndView("redirect:/ShowClassDetails", "classId", classInfo.getId());
 	}
 
@@ -140,24 +130,29 @@ public class RunTestsController {
 		ClassInfo classInfo = classInfoService.get(id);
 		TestInfo testInfo = new TestInfo();
 		int testFailureCount = 0;
-		Long classRunTime = 0L;		
+		Long classRunTime = 0L;
 		TestRunner runner = new TestRunner();
 		try {
-			Date date = new Date();
+			Date executionDate = null;
 			List<TestExecutionResult> testExecutionResult = runner.runMethods(classInfo);
 			for (TestExecutionResult result : testExecutionResult) {
 				List<Failure> failures = result.getResult().getFailures();
 				testFailureCount += result.getResult().getFailureCount();
 				classRunTime += result.getResult().getRunTime();
-				if (isInitializationError(failures, classInfo, date)) {
+				executionDate = result.getExecutionDate();
+				if (isInitializationError(failures, classInfo, result.getExecutionDate())) {
+
 					return new ModelAndView("redirect:/ShowClassDetails", "classId", classInfo.getId());
 				}
 
 				if (!failures.isEmpty()) {
 					for (Failure failure : failures) {
-						testInfo = testInfoService.loadBy(classInfo, result.getTestName());
+						// testInfo = testInfoService.loadBy(classInfo,
+						// result.getTestName());
 						testInfo = matchMethods(classInfo, failure.getDescription().getMethodName());
-						updateOnFailure(testInfo, result.getExecutionDate(), result.getResult());
+						if (testInfo != null) {
+							updateOnFailure(testInfo, result.getExecutionDate(), result.getResult());
+						}
 					}
 				} else {
 					testInfo = testInfoService.loadBy(classInfo, result.getTestName());
@@ -169,7 +164,7 @@ public class RunTestsController {
 			classInfo.setNumberOfTests(testExecutionResult.size());
 			classInfo.setNumberOfFailedTests(testFailureCount);
 			classInfo.setRunTime(classRunTime);
-			classInfo.setExecutionDate(date);
+			classInfo.setExecutionDate(executionDate);
 			classInfoService.update(classInfo);
 		} catch (Exception e) {
 			request.getSession().setAttribute("error", e.getMessage());
@@ -201,7 +196,7 @@ public class RunTestsController {
 	}
 
 	private boolean isClassSuccesful(Set<TestInfo> testInfos) {
-		List<ExecInfo> execInfos =  getLastExecutionOfTest(testInfos);
+		List<ExecInfo> execInfos = getLastExecutionOfTest(testInfos);
 		for (ExecInfo execInfo : execInfos) {
 			if (execInfo.getFailureReason() != null) {
 				return false;
