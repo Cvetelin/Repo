@@ -1,5 +1,7 @@
 package bg.ceco.demo.selenium;
 import java.util.concurrent.TimeUnit;
+
+import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -32,9 +34,11 @@ public class ListenerThatHiglilightsElements extends AbstractWebDriverEventListe
 		flash(element, driver);
 	}
 	
-//	public void afterFindBy(By by, WebElement element, WebDriver driver) {
-//	    flash(by, element, driver);
-//	  }
+	@Override
+	public void afterFindBy(By by, WebElement element, WebDriver driver) {
+		element = driver.findElement(by);
+	    flash(by, element, driver);
+	  }
 
 	private void flash(WebElement element, WebDriver driver) {
 		JavascriptExecutor js = ((JavascriptExecutor) driver);
@@ -44,15 +48,15 @@ public class ListenerThatHiglilightsElements extends AbstractWebDriverEventListe
 			changeColor(bgcolor, element, js);
 		}
 	}
-	
-//	private void flash(By by, WebElement element, WebDriver driver) {
-//		JavascriptExecutor js = ((JavascriptExecutor) driver);
-//		String bgcolor = element.getCssValue("backgroundColor");
-//		for (int i = 0; i < count; i++) {
-//			changeColor(color, element, js);
-//			changeColor(bgcolor, element, js);
-//		}
-//	}
+	//green #33FF33 - mark find by
+	private void flash(By by, WebElement element, WebDriver driver) {
+		JavascriptExecutor js = ((JavascriptExecutor) driver);
+		String bgcolor = element.getCssValue("backgroundColor");
+		for (int i = 0; i < count; i++) {
+			changeColor("#33FF33", element, js);
+			changeColor(bgcolor, element, js);
+		}
+	}
 
 	private void changeColor(String color, WebElement element, JavascriptExecutor js) {
 		js.executeScript("arguments[0].style.backgroundColor = '"+color+"'", element);
