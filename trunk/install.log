@@ -1,0 +1,2035 @@
++ Error stacktraces are turned on.
+Maven version: 2.0.8
+Java version: 1.6.0_02
+OS name: "windows xp" version: "5.1" arch: "x86" Family: "windows"
+[DEBUG] Building Maven user-level plugin registry from: 'C:\Documents and Settings\Admin\.m2\plugin-registry.xml'
+[DEBUG] Building Maven global-level plugin registry from: 'C:\Java\maven2.0\conf\plugin-registry.xml'
+[INFO] Scanning for projects...
+[INFO] ------------------------------------------------------------------------
+[INFO] Building Unnamed - bg.proxiad.demo:TechDemo:war:1.0-SNAPSHOT
+[INFO]    task-segment: [install]
+[INFO] ------------------------------------------------------------------------
+[DEBUG] maven-resources-plugin: resolved to version 2.2 from repository central
+[DEBUG] Retrieving parent-POM: org.apache.maven.plugins:maven-plugins::1 for project: null:maven-resources-plugin:maven-plugin:2.2 from the repository.
+[DEBUG] Retrieving parent-POM: org.apache.maven:maven-parent::1 for project: org.apache.maven.plugins:maven-plugins:pom:1 from the repository.
+[DEBUG] Retrieving parent-POM: org.apache:apache::1 for project: org.apache.maven:maven-parent:pom:1 from the repository.
+[DEBUG] maven-compiler-plugin: resolved to version 2.0.2 from repository central
+[DEBUG] Retrieving parent-POM: org.apache.maven.plugins:maven-plugins::8 for project: null:maven-compiler-plugin:maven-plugin:2.0.2 from the repository.
+[DEBUG] Retrieving parent-POM: org.apache.maven:maven-parent::5 for project: org.apache.maven.plugins:maven-plugins:pom:8 from the repository.
+[DEBUG] Retrieving parent-POM: org.apache:apache::3 for project: org.apache.maven:maven-parent:pom:5 from the repository.
+[DEBUG] maven-surefire-plugin: resolved to version 2.3.1 from repository central
+[DEBUG] Retrieving parent-POM: org.apache.maven.surefire:surefire::2.3.1 for project: org.apache.maven.plugins:maven-surefire-plugin:maven-plugin:null from the repository.
+[DEBUG] Adding managed dependencies for org.apache.maven.plugins:maven-surefire-plugin
+[DEBUG]   org.apache.maven.surefire:surefire-api:jar:2.3.1
+[DEBUG]   org.apache.maven.surefire:surefire-booter:jar:2.3.1
+[DEBUG] maven-war-plugin: resolved to version 2.1-alpha-1 from repository central
+[DEBUG] maven-install-plugin: resolved to version 2.2 from repository central
+[DEBUG] Retrieving parent-POM: org.mortbay.jetty:project::6.1.4 for project: org.mortbay.jetty:maven-jetty-plugin:maven-plugin:null from the repository.
+[DEBUG] Adding managed dependencies for org.mortbay.jetty:maven-jetty-plugin
+[DEBUG]   org.apache.maven:maven-plugin-tools-api:jar:2.0
+[DEBUG]   junit:junit:jar:3.8.2
+[DEBUG]   org.slf4j:jcl104-over-slf4j:jar:1.3.1
+[DEBUG]   org.slf4j:slf4j-simple:jar:1.3.1
+[DEBUG]   mx4j:mx4j:jar:3.0.1
+[DEBUG]   mx4j:mx4j-tools:jar:3.0.1
+[DEBUG]   xerces:xercesImpl:jar:${xerces-version}
+[DEBUG]   commons-el:commons-el:jar:1.0
+[DEBUG]   ant:ant:jar:1.6.5
+[DEBUG]   javax.mail:mail:jar:1.4
+[DEBUG]   javax.activation:activation:jar:1.1
+[DEBUG] org.apache.maven.plugins:maven-resources-plugin:maven-plugin:2.2:runtime (selected for runtime)
+[DEBUG] Retrieving parent-POM: org.apache.maven:maven::2.0 for project: null:maven-project:jar:2.0 from the repository.
+[DEBUG] Adding managed dependencies for unknown:maven-project
+[DEBUG]   org.codehaus.plexus:plexus-container-default:jar:1.0-alpha-8
+[DEBUG]   org.codehaus.plexus:plexus-utils:jar:1.0.4
+[DEBUG]   org.apache.maven.wagon:wagon-provider-api:jar:1.0-alpha-5
+[DEBUG]   org.apache.maven.wagon:wagon-ssh:jar:1.0-alpha-5
+[DEBUG]   org.apache.maven.wagon:wagon-file:jar:1.0-alpha-5
+[DEBUG]   org.apache.maven.wagon:wagon-http-lightweight:jar:1.0-alpha-5
+[DEBUG]   org.apache.maven:maven-project:jar:2.0:runtime (selected for runtime)
+[DEBUG] Adding managed dependencies for unknown:maven-profile
+[DEBUG]   org.codehaus.plexus:plexus-container-default:jar:1.0-alpha-8
+[DEBUG]   org.codehaus.plexus:plexus-utils:jar:1.0.4
+[DEBUG]   org.apache.maven.wagon:wagon-provider-api:jar:1.0-alpha-5
+[DEBUG]   org.apache.maven.wagon:wagon-ssh:jar:1.0-alpha-5
+[DEBUG]   org.apache.maven.wagon:wagon-file:jar:1.0-alpha-5
+[DEBUG]   org.apache.maven.wagon:wagon-http-lightweight:jar:1.0-alpha-5
+[DEBUG]     org.apache.maven:maven-profile:jar:2.0:runtime (selected for runtime)
+[DEBUG] Adding managed dependencies for org.apache.maven:maven-model
+[DEBUG]   org.codehaus.plexus:plexus-container-default:jar:1.0-alpha-8
+[DEBUG]   org.codehaus.plexus:plexus-utils:jar:1.0.4
+[DEBUG]   org.apache.maven.wagon:wagon-provider-api:jar:1.0-alpha-5
+[DEBUG]   org.apache.maven.wagon:wagon-ssh:jar:1.0-alpha-5
+[DEBUG]   org.apache.maven.wagon:wagon-file:jar:1.0-alpha-5
+[DEBUG]   org.apache.maven.wagon:wagon-http-lightweight:jar:1.0-alpha-5
+[DEBUG]       org.apache.maven:maven-model:jar:2.0:runtime (selected for runtime)
+[DEBUG]         org.codehaus.plexus:plexus-utils:jar:1.0.4:runtime (selected for runtime)
+[DEBUG]       org.codehaus.plexus:plexus-utils:jar:1.0.4:runtime (selected for runtime)
+[DEBUG]       org.codehaus.plexus:plexus-container-default:jar:1.0-alpha-8:runtime (selected for runtime)
+[DEBUG]         junit:junit:jar:3.8.1:runtime (selected for runtime)
+[DEBUG]         classworlds:classworlds:jar:1.1-alpha-2:runtime (selected for runtime)
+[DEBUG]     org.apache.maven:maven-model:jar:2.0:runtime (selected for runtime)
+[DEBUG] Adding managed dependencies for org.apache.maven:maven-artifact-manager
+[DEBUG]   org.codehaus.plexus:plexus-container-default:jar:1.0-alpha-8
+[DEBUG]   org.codehaus.plexus:plexus-utils:jar:1.0.4
+[DEBUG]   org.apache.maven.wagon:wagon-provider-api:jar:1.0-alpha-5
+[DEBUG]   org.apache.maven.wagon:wagon-ssh:jar:1.0-alpha-5
+[DEBUG]   org.apache.maven.wagon:wagon-file:jar:1.0-alpha-5
+[DEBUG]   org.apache.maven.wagon:wagon-http-lightweight:jar:1.0-alpha-5
+[DEBUG]     org.apache.maven:maven-artifact-manager:jar:2.0:runtime (selected for runtime)
+[DEBUG] Adding managed dependencies for org.apache.maven:maven-repository-metadata
+[DEBUG]   org.codehaus.plexus:plexus-container-default:jar:1.0-alpha-8
+[DEBUG]   org.codehaus.plexus:plexus-utils:jar:1.0.4
+[DEBUG]   org.apache.maven.wagon:wagon-provider-api:jar:1.0-alpha-5
+[DEBUG]   org.apache.maven.wagon:wagon-ssh:jar:1.0-alpha-5
+[DEBUG]   org.apache.maven.wagon:wagon-file:jar:1.0-alpha-5
+[DEBUG]   org.apache.maven.wagon:wagon-http-lightweight:jar:1.0-alpha-5
+[DEBUG]       org.apache.maven:maven-repository-metadata:jar:2.0:runtime (selected for runtime)
+[DEBUG] Adding managed dependencies for org.apache.maven:maven-artifact
+[DEBUG]   org.codehaus.plexus:plexus-container-default:jar:1.0-alpha-8
+[DEBUG]   org.codehaus.plexus:plexus-utils:jar:1.0.4
+[DEBUG]   org.apache.maven.wagon:wagon-provider-api:jar:1.0-alpha-5
+[DEBUG]   org.apache.maven.wagon:wagon-ssh:jar:1.0-alpha-5
+[DEBUG]   org.apache.maven.wagon:wagon-file:jar:1.0-alpha-5
+[DEBUG]   org.apache.maven.wagon:wagon-http-lightweight:jar:1.0-alpha-5
+[DEBUG]       org.apache.maven:maven-artifact:jar:2.0:runtime (selected for runtime)
+[DEBUG]       org.apache.maven.wagon:wagon-provider-api:jar:1.0-alpha-5:runtime (selected for runtime)
+[DEBUG]     org.codehaus.plexus:plexus-utils:jar:1.0.4:runtime (selected for runtime)
+[DEBUG]     org.apache.maven:maven-artifact:jar:2.0:runtime (selected for runtime)
+[DEBUG]     org.codehaus.plexus:plexus-container-default:jar:1.0-alpha-8:runtime (selected for runtime)
+[DEBUG]       junit:junit:jar:3.8.1:runtime (selected for runtime)
+[DEBUG]       classworlds:classworlds:jar:1.1-alpha-2:runtime (selected for runtime)
+[DEBUG] Adding managed dependencies for org.apache.maven:maven-plugin-api
+[DEBUG]   org.codehaus.plexus:plexus-container-default:jar:1.0-alpha-8
+[DEBUG]   org.codehaus.plexus:plexus-utils:jar:1.0.4
+[DEBUG]   org.apache.maven.wagon:wagon-provider-api:jar:1.0-alpha-5
+[DEBUG]   org.apache.maven.wagon:wagon-ssh:jar:1.0-alpha-5
+[DEBUG]   org.apache.maven.wagon:wagon-file:jar:1.0-alpha-5
+[DEBUG]   org.apache.maven.wagon:wagon-http-lightweight:jar:1.0-alpha-5
+[DEBUG]   org.apache.maven:maven-plugin-api:jar:2.0:runtime (selected for runtime)
+[DEBUG]   org.apache.maven:maven-model:jar:2.0:runtime (selected for runtime)
+[DEBUG] Retrieving parent-POM: org.codehaus.plexus:plexus::1.0.4 for project: null:plexus-utils:jar:1.1 from the repository.
+[DEBUG]   org.codehaus.plexus:plexus-utils:jar:1.0.4:runtime (removed - nearer found: 1.1)
+[DEBUG]   org.codehaus.plexus:plexus-utils:jar:1.1:runtime (selected for runtime)
+[DEBUG] Configuring mojo 'org.apache.maven.plugins:maven-resources-plugin:2.2:resources' -->
+[DEBUG]   (f) filters = []
+[DEBUG]   (f) outputDirectory = D:\testspace\TechDemo\target\classes
+[DEBUG]   (f) project = MavenProject: bg.proxiad.demo:TechDemo:1.0-SNAPSHOT @ D:\testspace\TechDemo\pom.xml
+[DEBUG]   (f) resources = [org.apache.maven.model.Resource@941db6]
+[DEBUG] -- end configuration --
+[INFO] [resources:resources]
+[INFO] Using default encoding to copy filtered resources.
+[DEBUG] bg.proxiad.demo:TechDemo:war:1.0-SNAPSHOT (selected for null)
+[DEBUG]   org.springframework:spring-core:jar:2.5.6:compile (selected for compile)
+[DEBUG] Retrieving parent-POM: org.apache.commons:commons-parent::5 for project: commons-logging:commons-logging:jar:1.1.1 from the repository.
+[DEBUG] Retrieving parent-POM: org.apache:apache::4 for project: org.apache.commons:commons-parent:pom:5 from the repository.
+[DEBUG]     commons-logging:commons-logging:jar:1.1.1:compile (selected for compile)
+[DEBUG]   org.springframework:spring-context:jar:2.5.6:compile (selected for compile)
+[DEBUG]     aopalliance:aopalliance:jar:1.0:compile (selected for compile)
+[DEBUG]     org.springframework:spring-beans:jar:2.5.6:compile (selected for compile)
+[DEBUG]   org.springframework:spring-aspects:jar:2.5.6:compile (selected for compile)
+[DEBUG]     org.aspectj:aspectjrt:jar:1.6.1:compile (selected for compile)
+[DEBUG]     org.aspectj:aspectjweaver:jar:1.6.1:compile (selected for compile)
+[DEBUG]   org.springframework:spring-aop:jar:2.5.6:compile (selected for compile)
+[DEBUG]   org.springframework:spring-tx:jar:2.5.6:compile (selected for compile)
+[DEBUG]   org.springframework:spring-hibernate3:jar:2.0.8:compile (selected for compile)
+[DEBUG]     commons-logging:commons-logging:jar:1.1:compile (removed - nearer found: 1.1.1)
+[DEBUG]     org.hibernate:hibernate:jar:3.2.5.ga:compile (selected for compile)
+[DEBUG]       net.sf.ehcache:ehcache:jar:1.2.3:compile (selected for compile)
+[DEBUG]         commons-logging:commons-logging:jar:1.0.4:compile (removed - nearer found: 1.1.1)
+[DEBUG]         commons-collections:commons-collections:jar:2.1:compile (selected for compile)
+[DEBUG]       javax.transaction:jta:jar:1.0.1B:compile (selected for compile)
+[DEBUG]       commons-logging:commons-logging:jar:1.0.4:compile (removed - nearer found: 1.1.1)
+[DEBUG]       asm:asm-attrs:jar:1.5.3:compile (selected for compile)
+[DEBUG]       dom4j:dom4j:jar:1.6.1:compile (selected for compile)
+[DEBUG]       antlr:antlr:jar:2.7.6:compile (selected for compile)
+[DEBUG]       cglib:cglib:jar:2.1_3:compile (selected for compile)
+[DEBUG]         asm:asm:jar:1.5.3:compile (selected for compile)
+[DEBUG]       asm:asm:jar:1.5.3:compile (selected for compile)
+[DEBUG]       commons-collections:commons-collections:jar:2.1:compile (removed - nearer found: 2.1.1)
+[DEBUG]       commons-collections:commons-collections:jar:2.1.1:compile (selected for compile)
+[DEBUG]     org.springframework:spring-beans:jar:2.0.8:compile (removed - nearer found: 2.5.6)
+[DEBUG]     org.springframework:spring-context:jar:2.0.8:compile (removed - nearer found: 2.5.6)
+[DEBUG]     org.springframework:spring-core:jar:2.0.8:compile (removed - nearer found: 2.5.6)
+[DEBUG]     org.springframework:spring-dao:jar:2.0.8:compile (selected for compile)
+[DEBUG]       commons-logging:commons-logging:jar:1.1:compile (removed - nearer found: 1.1.1)
+[DEBUG]       org.springframework:spring-beans:jar:2.0.8:compile (removed - nearer found: 2.5.6)
+[DEBUG]       org.springframework:spring-context:jar:2.0.8:compile (removed - nearer found: 2.5.6)
+[DEBUG]       org.springframework:spring-core:jar:2.0.8:compile (removed - nearer found: 2.5.6)
+[DEBUG]     org.springframework:spring-jdbc:jar:2.0.8:compile (selected for compile)
+[DEBUG]       commons-logging:commons-logging:jar:1.1:compile (removed - nearer found: 1.1.1)
+[DEBUG]       org.springframework:spring-beans:jar:2.0.8:compile (removed - nearer found: 2.5.6)
+[DEBUG]       org.springframework:spring-context:jar:2.0.8:compile (removed - nearer found: 2.5.6)
+[DEBUG]       org.springframework:spring-core:jar:2.0.8:compile (removed - nearer found: 2.5.6)
+[DEBUG]   org.springframework:spring-struts:jar:2.0.8:compile (selected for compile)
+[DEBUG]     commons-beanutils:commons-beanutils:jar:1.7.0:compile (selected for compile)
+[DEBUG]       commons-logging:commons-logging:jar:1.0.3:compile (removed - nearer found: 1.1.1)
+[DEBUG]     commons-logging:commons-logging:jar:1.1:compile (removed - nearer found: 1.1.1)
+[DEBUG]     struts:struts:jar:1.2.9:compile (selected for compile)
+[DEBUG]       commons-digester:commons-digester:jar:1.6:compile (selected for compile)
+[DEBUG]         commons-beanutils:commons-beanutils:jar:1.6:compile (removed - nearer found: 1.7.0)
+[DEBUG]         commons-logging:commons-logging:jar:1.0:compile (removed - nearer found: 1.1.1)
+[DEBUG]         commons-collections:commons-collections:jar:2.1:compile (removed - nearer found: 2.1.1)
+[DEBUG]         xml-apis:xml-apis:jar:1.0.b2:compile (selected for compile)
+[DEBUG]       commons-fileupload:commons-fileupload:jar:1.0:compile (selected for compile)
+[DEBUG]       commons-logging:commons-logging:jar:1.0.4:compile (removed - nearer found: 1.1.1)
+[DEBUG]       commons-validator:commons-validator:jar:1.1.4:compile (selected for compile)
+[DEBUG]       oro:oro:jar:2.0.7:compile (selected for compile)
+[DEBUG]       antlr:antlr:jar:2.7.2:compile (removed - nearer found: 2.7.6)
+[DEBUG]       xalan:xalan:jar:2.5.1:compile (selected for compile)
+[DEBUG]     org.springframework:spring-beans:jar:2.0.8:compile (removed - nearer found: 2.5.6)
+[DEBUG]     org.springframework:spring-context:jar:2.0.8:compile (removed - nearer found: 2.5.6)
+[DEBUG]     org.springframework:spring-core:jar:2.0.8:compile (removed - nearer found: 2.5.6)
+[DEBUG]     org.springframework:spring-web:jar:2.0.8:compile (selected for compile)
+[DEBUG]       commons-logging:commons-logging:jar:1.1:compile (removed - nearer found: 1.1.1)
+[DEBUG]       org.springframework:spring-beans:jar:2.0.8:compile (removed - nearer found: 2.5.6)
+[DEBUG]       org.springframework:spring-context:jar:2.0.8:compile (removed - nearer found: 2.5.6)
+[DEBUG]       org.springframework:spring-core:jar:2.0.8:compile (removed - nearer found: 2.5.6)
+[DEBUG]   org.springframework:spring-web:jar:2.0.8:compile (removed - nearer found: 2.5.6)
+[DEBUG]   org.springframework:spring-web:jar:2.5.6:compile (selected for compile)
+[DEBUG] Retrieving parent-POM: org.apache.struts:struts-parent::1.3.8 for project: org.apache.struts:struts-core:jar:1.3.8 from the repository.
+[DEBUG] Retrieving parent-POM: org.apache.struts:struts-master::4 for project: org.apache.struts:struts-parent:pom:1.3.8 from the repository.
+[DEBUG] Retrieving parent-POM: org.apache:apache::2 for project: org.apache.struts:struts-master:pom:4 from the repository.
+[DEBUG]   org.apache.struts:struts-core:jar:1.3.8:compile (selected for compile)
+[DEBUG]     antlr:antlr:jar:2.7.6:compile (removed - nearer found: 2.7.2)
+[DEBUG]     antlr:antlr:jar:2.7.2:compile (selected for compile)
+[DEBUG]     commons-chain:commons-chain:jar:1.1:compile (selected for compile)
+[DEBUG]       commons-logging:commons-logging:jar:1.0.3:compile (removed - nearer found: 1.1.1)
+[DEBUG]     commons-digester:commons-digester:jar:1.6:compile (removed - nearer found: 1.8)
+[DEBUG]     commons-digester:commons-digester:jar:1.8:compile (selected for compile)
+[DEBUG]       commons-logging:commons-logging:jar:1.1:compile (removed - nearer found: 1.1.1)
+[DEBUG]     commons-logging:commons-logging:jar:1.0.4:compile (removed - nearer found: 1.1.1)
+[DEBUG]     commons-validator:commons-validator:jar:1.1.4:compile (removed - nearer found: 1.3.1)
+[DEBUG]     commons-validator:commons-validator:jar:1.3.1:compile (selected for compile)
+[DEBUG]       commons-digester:commons-digester:jar:1.6:compile (removed - nearer found: 1.8)
+[DEBUG]       commons-logging:commons-logging:jar:1.0.4:compile (removed - nearer found: 1.1.1)
+[DEBUG]     oro:oro:jar:2.0.7:compile (removed - nearer found: 2.0.8)
+[DEBUG]     oro:oro:jar:2.0.8:compile (selected for compile)
+[DEBUG]   org.apache.struts:struts-taglib:jar:1.3.8:compile (selected for compile)
+[DEBUG]   commons-validator:commons-validator:jar:1.3.1:compile (selected for compile)
+[DEBUG]     commons-digester:commons-digester:jar:1.6:compile (removed - nearer found: 1.8)
+[DEBUG]     commons-logging:commons-logging:jar:1.0.4:compile (removed - nearer found: 1.1.1)
+[DEBUG] Adding managed dependencies for org.mortbay.jetty:servlet-api-2.5
+[DEBUG]   org.apache.maven:maven-plugin-tools-api:jar:2.0
+[DEBUG]   junit:junit:jar:3.8.2
+[DEBUG]   org.slf4j:jcl104-over-slf4j:jar:1.3.1
+[DEBUG]   org.slf4j:slf4j-simple:jar:1.3.1
+[DEBUG]   mx4j:mx4j:jar:3.0.1
+[DEBUG]   mx4j:mx4j-tools:jar:3.0.1
+[DEBUG]   xerces:xercesImpl:jar:${xerces-version}
+[DEBUG]   commons-el:commons-el:jar:1.0
+[DEBUG]   ant:ant:jar:1.6.5
+[DEBUG]   javax.mail:mail:jar:1.4
+[DEBUG]   javax.activation:activation:jar:1.1
+[DEBUG]   org.mortbay.jetty:servlet-api-2.5:jar:6.1.4:provided (selected for provided)
+[DEBUG]   junit:junit:jar:4.4:test (selected for test)
+[DEBUG]   hsqldb:hsqldb:jar:1.8.0.7:compile (selected for compile)
+[DEBUG]   org.hibernate:hibernate:jar:3.2.5.ga:compile (selected for compile)
+[DEBUG]     net.sf.ehcache:ehcache:jar:1.2.3:compile (selected for compile)
+[DEBUG]       commons-logging:commons-logging:jar:1.0.4:compile (removed - nearer found: 1.1.1)
+[DEBUG]       commons-collections:commons-collections:jar:2.1:compile (selected for compile)
+[DEBUG]     javax.transaction:jta:jar:1.0.1B:compile (selected for compile)
+[DEBUG]     commons-logging:commons-logging:jar:1.0.4:compile (removed - nearer found: 1.1.1)
+[DEBUG]     asm:asm-attrs:jar:1.5.3:compile (selected for compile)
+[DEBUG]     dom4j:dom4j:jar:1.6.1:compile (selected for compile)
+[DEBUG]     antlr:antlr:jar:2.7.6:compile (removed - nearer found: 2.7.2)
+[DEBUG]     cglib:cglib:jar:2.1_3:compile (selected for compile)
+[DEBUG]       asm:asm:jar:1.5.3:compile (selected for compile)
+[DEBUG]     asm:asm:jar:1.5.3:compile (selected for compile)
+[DEBUG]     commons-collections:commons-collections:jar:2.1:compile (removed - nearer found: 2.1.1)
+[DEBUG]     commons-collections:commons-collections:jar:2.1.1:compile (selected for compile)
+[DEBUG]   taglibs:standard:jar:1.1.2:compile (selected for compile)
+[DEBUG]   javax.servlet:jstl:jar:1.1.2:compile (selected for compile)
+[DEBUG] org.apache.maven.plugins:maven-compiler-plugin:maven-plugin:2.0.2:runtime (selected for runtime)
+[DEBUG] Retrieving parent-POM: org.codehaus.plexus:plexus-compiler::1.5.3 for project: null:plexus-compiler-manager:jar:1.5.3 from the repository.
+[DEBUG] Retrieving parent-POM: org.codehaus.plexus:plexus-components::1.1.6 for project: null:plexus-compiler:pom:1.5.3 from the repository.
+[DEBUG] Retrieving parent-POM: org.codehaus.plexus:plexus::1.0.8 for project: org.codehaus.plexus:plexus-components:pom:1.1.6 from the repository.
+[DEBUG]   org.codehaus.plexus:plexus-compiler-manager:jar:1.5.3:runtime (selected for runtime)
+[DEBUG]     org.codehaus.plexus:plexus-container-default:jar:1.0-alpha-8:runtime (selected for runtime)
+[DEBUG]       org.codehaus.plexus:plexus-utils:jar:1.0.4:runtime (selected for runtime)
+[DEBUG]       junit:junit:jar:3.8.1:runtime (selected for runtime)
+[DEBUG]       classworlds:classworlds:jar:1.1-alpha-2:runtime (selected for runtime)
+[DEBUG]     org.codehaus.plexus:plexus-compiler-api:jar:1.5.3:runtime (selected for runtime)
+[DEBUG]   org.apache.maven:maven-plugin-api:jar:2.0:runtime (selected for runtime)
+[DEBUG]   org.codehaus.plexus:plexus-utils:jar:1.0.4:runtime (selected for runtime)
+[DEBUG]   org.codehaus.plexus:plexus-utils:jar:1.1:runtime (removed - nearer found: 1.0.4)
+[DEBUG]   org.codehaus.plexus:plexus-compiler-api:jar:1.5.3:runtime (selected for runtime)
+[DEBUG]   org.apache.maven:maven-artifact:jar:2.0:runtime (selected for runtime)
+[DEBUG] Retrieving parent-POM: org.codehaus.plexus:plexus-compilers::1.5.3 for project: null:plexus-compiler-javac:jar:1.5.3 from the repository.
+[DEBUG]   org.codehaus.plexus:plexus-compiler-javac:jar:1.5.3:runtime (selected for runtime)
+[DEBUG]     org.codehaus.plexus:plexus-utils:jar:1.0.5:runtime (removed - nearer found: 1.0.4)
+[DEBUG] Configuring mojo 'org.apache.maven.plugins:maven-compiler-plugin:2.0.2:compile' -->
+[DEBUG]   (f) basedir = D:\testspace\TechDemo
+[DEBUG]   (f) buildDirectory = D:\testspace\TechDemo\target
+[DEBUG]   (f) classpathElements = [D:\testspace\TechDemo\target\classes, C:\Documents and Settings\Admin\.m2\repository\org\springframework\spring-core\2.5.6\spring-core-2.5.6.jar, C:\Documents and Settings\Admin\.m2\repository\commons-logging\commons-logging\1.1.1\commons-logging-1.1.1.jar, C:\Documents and Settings\Admin\.m2\repository\org\springframework\spring-context\2.5.6\spring-context-2.5.6.jar, C:\Documents and Settings\Admin\.m2\repository\aopalliance\aopalliance\1.0\aopalliance-1.0.jar, C:\Documents and Settings\Admin\.m2\repository\org\springframework\spring-beans\2.5.6\spring-beans-2.5.6.jar, C:\Documents and Settings\Admin\.m2\repository\org\springframework\spring-aspects\2.5.6\spring-aspects-2.5.6.jar, C:\Documents and Settings\Admin\.m2\repository\org\aspectj\aspectjrt\1.6.1\aspectjrt-1.6.1.jar, C:\Documents and Settings\Admin\.m2\repository\org\aspectj\aspectjweaver\1.6.1\aspectjweaver-1.6.1.jar, C:\Documents and Settings\Admin\.m2\repository\org\springframework\spring-aop\2.5.6\spring-aop-2.5.6.jar, C:\Documents and Settings\Admin\.m2\repository\org\springframework\spring-tx\2.5.6\spring-tx-2.5.6.jar, C:\Documents and Settings\Admin\.m2\repository\org\springframework\spring-hibernate3\2.0.8\spring-hibernate3-2.0.8.jar, C:\Documents and Settings\Admin\.m2\repository\org\hibernate\hibernate\3.2.5.ga\hibernate-3.2.5.ga.jar, C:\Documents and Settings\Admin\.m2\repository\net\sf\ehcache\ehcache\1.2.3\ehcache-1.2.3.jar, C:\Documents and Settings\Admin\.m2\repository\commons-collections\commons-collections\2.1.1\commons-collections-2.1.1.jar, C:\Documents and Settings\Admin\.m2\repository\javax\transaction\jta\1.0.1B\jta-1.0.1B.jar, C:\Documents and Settings\Admin\.m2\repository\asm\asm-attrs\1.5.3\asm-attrs-1.5.3.jar, C:\Documents and Settings\Admin\.m2\repository\dom4j\dom4j\1.6.1\dom4j-1.6.1.jar, C:\Documents and Settings\Admin\.m2\repository\antlr\antlr\2.7.2\antlr-2.7.2.jar, C:\Documents and Settings\Admin\.m2\repository\cglib\cglib\2.1_3\cglib-2.1_3.jar, C:\Documents and Settings\Admin\.m2\repository\asm\asm\1.5.3\asm-1.5.3.jar, C:\Documents and Settings\Admin\.m2\repository\org\springframework\spring-dao\2.0.8\spring-dao-2.0.8.jar, C:\Documents and Settings\Admin\.m2\repository\org\springframework\spring-jdbc\2.0.8\spring-jdbc-2.0.8.jar, C:\Documents and Settings\Admin\.m2\repository\org\springframework\spring-struts\2.0.8\spring-struts-2.0.8.jar, C:\Documents and Settings\Admin\.m2\repository\commons-beanutils\commons-beanutils\1.7.0\commons-beanutils-1.7.0.jar, C:\Documents and Settings\Admin\.m2\repository\struts\struts\1.2.9\struts-1.2.9.jar, C:\Documents and Settings\Admin\.m2\repository\commons-digester\commons-digester\1.8\commons-digester-1.8.jar, C:\Documents and Settings\Admin\.m2\repository\commons-fileupload\commons-fileupload\1.0\commons-fileupload-1.0.jar, C:\Documents and Settings\Admin\.m2\repository\commons-validator\commons-validator\1.3.1\commons-validator-1.3.1.jar, C:\Documents and Settings\Admin\.m2\repository\oro\oro\2.0.8\oro-2.0.8.jar, C:\Documents and Settings\Admin\.m2\repository\xalan\xalan\2.5.1\xalan-2.5.1.jar, C:\Documents and Settings\Admin\.m2\repository\org\springframework\spring-web\2.5.6\spring-web-2.5.6.jar, C:\Documents and Settings\Admin\.m2\repository\org\apache\struts\struts-core\1.3.8\struts-core-1.3.8.jar, C:\Documents and Settings\Admin\.m2\repository\commons-chain\commons-chain\1.1\commons-chain-1.1.jar, C:\Documents and Settings\Admin\.m2\repository\org\apache\struts\struts-taglib\1.3.8\struts-taglib-1.3.8.jar, C:\Documents and Settings\Admin\.m2\repository\org\mortbay\jetty\servlet-api-2.5\6.1.4\servlet-api-2.5-6.1.4.jar, C:\Documents and Settings\Admin\.m2\repository\hsqldb\hsqldb\1.8.0.7\hsqldb-1.8.0.7.jar, C:\Documents and Settings\Admin\.m2\repository\taglibs\standard\1.1.2\standard-1.1.2.jar, C:\Documents and Settings\Admin\.m2\repository\javax\servlet\jstl\1.1.2\jstl-1.1.2.jar]
+[DEBUG]   (f) compileSourceRoots = [D:\testspace\TechDemo\src\main\java]
+[DEBUG]   (f) compilerId = javac
+[DEBUG]   (f) debug = true
+[DEBUG]   (f) failOnError = true
+[DEBUG]   (f) fork = false
+[DEBUG]   (f) optimize = false
+[DEBUG]   (f) outputDirectory = D:\testspace\TechDemo\target\classes
+[DEBUG]   (f) outputFileName = TechDemo
+[DEBUG]   (f) projectArtifact = bg.proxiad.demo:TechDemo:war:1.0-SNAPSHOT
+[DEBUG]   (f) showDeprecation = false
+[DEBUG]   (f) showWarnings = false
+[DEBUG]   (f) source = 5
+[DEBUG]   (f) staleMillis = 0
+[DEBUG]   (f) target = 5
+[DEBUG]   (f) verbose = false
+[DEBUG] -- end configuration --
+[INFO] [compiler:compile]
+[DEBUG] Using compiler 'javac'.
+[DEBUG] Source directories: [D:\testspace\TechDemo\src\main\java]
+[DEBUG] Classpath: [D:\testspace\TechDemo\target\classes
+ C:\Documents and Settings\Admin\.m2\repository\org\springframework\spring-core\2.5.6\spring-core-2.5.6.jar
+ C:\Documents and Settings\Admin\.m2\repository\commons-logging\commons-logging\1.1.1\commons-logging-1.1.1.jar
+ C:\Documents and Settings\Admin\.m2\repository\org\springframework\spring-context\2.5.6\spring-context-2.5.6.jar
+ C:\Documents and Settings\Admin\.m2\repository\aopalliance\aopalliance\1.0\aopalliance-1.0.jar
+ C:\Documents and Settings\Admin\.m2\repository\org\springframework\spring-beans\2.5.6\spring-beans-2.5.6.jar
+ C:\Documents and Settings\Admin\.m2\repository\org\springframework\spring-aspects\2.5.6\spring-aspects-2.5.6.jar
+ C:\Documents and Settings\Admin\.m2\repository\org\aspectj\aspectjrt\1.6.1\aspectjrt-1.6.1.jar
+ C:\Documents and Settings\Admin\.m2\repository\org\aspectj\aspectjweaver\1.6.1\aspectjweaver-1.6.1.jar
+ C:\Documents and Settings\Admin\.m2\repository\org\springframework\spring-aop\2.5.6\spring-aop-2.5.6.jar
+ C:\Documents and Settings\Admin\.m2\repository\org\springframework\spring-tx\2.5.6\spring-tx-2.5.6.jar
+ C:\Documents and Settings\Admin\.m2\repository\org\springframework\spring-hibernate3\2.0.8\spring-hibernate3-2.0.8.jar
+ C:\Documents and Settings\Admin\.m2\repository\org\hibernate\hibernate\3.2.5.ga\hibernate-3.2.5.ga.jar
+ C:\Documents and Settings\Admin\.m2\repository\net\sf\ehcache\ehcache\1.2.3\ehcache-1.2.3.jar
+ C:\Documents and Settings\Admin\.m2\repository\commons-collections\commons-collections\2.1.1\commons-collections-2.1.1.jar
+ C:\Documents and Settings\Admin\.m2\repository\javax\transaction\jta\1.0.1B\jta-1.0.1B.jar
+ C:\Documents and Settings\Admin\.m2\repository\asm\asm-attrs\1.5.3\asm-attrs-1.5.3.jar
+ C:\Documents and Settings\Admin\.m2\repository\dom4j\dom4j\1.6.1\dom4j-1.6.1.jar
+ C:\Documents and Settings\Admin\.m2\repository\antlr\antlr\2.7.2\antlr-2.7.2.jar
+ C:\Documents and Settings\Admin\.m2\repository\cglib\cglib\2.1_3\cglib-2.1_3.jar
+ C:\Documents and Settings\Admin\.m2\repository\asm\asm\1.5.3\asm-1.5.3.jar
+ C:\Documents and Settings\Admin\.m2\repository\org\springframework\spring-dao\2.0.8\spring-dao-2.0.8.jar
+ C:\Documents and Settings\Admin\.m2\repository\org\springframework\spring-jdbc\2.0.8\spring-jdbc-2.0.8.jar
+ C:\Documents and Settings\Admin\.m2\repository\org\springframework\spring-struts\2.0.8\spring-struts-2.0.8.jar
+ C:\Documents and Settings\Admin\.m2\repository\commons-beanutils\commons-beanutils\1.7.0\commons-beanutils-1.7.0.jar
+ C:\Documents and Settings\Admin\.m2\repository\struts\struts\1.2.9\struts-1.2.9.jar
+ C:\Documents and Settings\Admin\.m2\repository\commons-digester\commons-digester\1.8\commons-digester-1.8.jar
+ C:\Documents and Settings\Admin\.m2\repository\commons-fileupload\commons-fileupload\1.0\commons-fileupload-1.0.jar
+ C:\Documents and Settings\Admin\.m2\repository\commons-validator\commons-validator\1.3.1\commons-validator-1.3.1.jar
+ C:\Documents and Settings\Admin\.m2\repository\oro\oro\2.0.8\oro-2.0.8.jar
+ C:\Documents and Settings\Admin\.m2\repository\xalan\xalan\2.5.1\xalan-2.5.1.jar
+ C:\Documents and Settings\Admin\.m2\repository\org\springframework\spring-web\2.5.6\spring-web-2.5.6.jar
+ C:\Documents and Settings\Admin\.m2\repository\org\apache\struts\struts-core\1.3.8\struts-core-1.3.8.jar
+ C:\Documents and Settings\Admin\.m2\repository\commons-chain\commons-chain\1.1\commons-chain-1.1.jar
+ C:\Documents and Settings\Admin\.m2\repository\org\apache\struts\struts-taglib\1.3.8\struts-taglib-1.3.8.jar
+ C:\Documents and Settings\Admin\.m2\repository\org\mortbay\jetty\servlet-api-2.5\6.1.4\servlet-api-2.5-6.1.4.jar
+ C:\Documents and Settings\Admin\.m2\repository\hsqldb\hsqldb\1.8.0.7\hsqldb-1.8.0.7.jar
+ C:\Documents and Settings\Admin\.m2\repository\taglibs\standard\1.1.2\standard-1.1.2.jar
+ C:\Documents and Settings\Admin\.m2\repository\javax\servlet\jstl\1.1.2\jstl-1.1.2.jar]
+[DEBUG] Output directory: D:\testspace\TechDemo\target\classes
+[INFO] Nothing to compile - all classes are up to date
+[DEBUG] Configuring mojo 'org.apache.maven.plugins:maven-resources-plugin:2.2:testResources' -->
+[DEBUG]   (f) filters = []
+[DEBUG]   (f) outputDirectory = D:\testspace\TechDemo\target\test-classes
+[DEBUG]   (f) project = MavenProject: bg.proxiad.demo:TechDemo:1.0-SNAPSHOT @ D:\testspace\TechDemo\pom.xml
+[DEBUG]   (f) resources = [org.apache.maven.model.Resource@20fa83]
+[DEBUG] -- end configuration --
+[INFO] [resources:testResources]
+[INFO] Using default encoding to copy filtered resources.
+[DEBUG] bg.proxiad.demo:TechDemo:war:1.0-SNAPSHOT (selected for null)
+[DEBUG]   org.springframework:spring-core:jar:2.5.6:compile (selected for compile)
+[DEBUG]     commons-logging:commons-logging:jar:1.1.1:compile (selected for compile)
+[DEBUG]   org.springframework:spring-context:jar:2.5.6:compile (selected for compile)
+[DEBUG]     aopalliance:aopalliance:jar:1.0:compile (selected for compile)
+[DEBUG]     org.springframework:spring-beans:jar:2.5.6:compile (selected for compile)
+[DEBUG]   org.springframework:spring-aspects:jar:2.5.6:compile (selected for compile)
+[DEBUG]     org.aspectj:aspectjrt:jar:1.6.1:compile (selected for compile)
+[DEBUG]     org.aspectj:aspectjweaver:jar:1.6.1:compile (selected for compile)
+[DEBUG]   org.springframework:spring-aop:jar:2.5.6:compile (selected for compile)
+[DEBUG]   org.springframework:spring-tx:jar:2.5.6:compile (selected for compile)
+[DEBUG]   org.springframework:spring-hibernate3:jar:2.0.8:compile (selected for compile)
+[DEBUG]     commons-logging:commons-logging:jar:1.1:compile (removed - nearer found: 1.1.1)
+[DEBUG]     org.hibernate:hibernate:jar:3.2.5.ga:compile (selected for compile)
+[DEBUG]       net.sf.ehcache:ehcache:jar:1.2.3:compile (selected for compile)
+[DEBUG]         commons-logging:commons-logging:jar:1.0.4:compile (removed - nearer found: 1.1.1)
+[DEBUG]         commons-collections:commons-collections:jar:2.1:compile (selected for compile)
+[DEBUG]       javax.transaction:jta:jar:1.0.1B:compile (selected for compile)
+[DEBUG]       commons-logging:commons-logging:jar:1.0.4:compile (removed - nearer found: 1.1.1)
+[DEBUG]       asm:asm-attrs:jar:1.5.3:compile (selected for compile)
+[DEBUG]       dom4j:dom4j:jar:1.6.1:compile (selected for compile)
+[DEBUG]       antlr:antlr:jar:2.7.6:compile (selected for compile)
+[DEBUG]       cglib:cglib:jar:2.1_3:compile (selected for compile)
+[DEBUG]         asm:asm:jar:1.5.3:compile (selected for compile)
+[DEBUG]       asm:asm:jar:1.5.3:compile (selected for compile)
+[DEBUG]       commons-collections:commons-collections:jar:2.1:compile (removed - nearer found: 2.1.1)
+[DEBUG]       commons-collections:commons-collections:jar:2.1.1:compile (selected for compile)
+[DEBUG]     org.springframework:spring-beans:jar:2.0.8:compile (removed - nearer found: 2.5.6)
+[DEBUG]     org.springframework:spring-context:jar:2.0.8:compile (removed - nearer found: 2.5.6)
+[DEBUG]     org.springframework:spring-core:jar:2.0.8:compile (removed - nearer found: 2.5.6)
+[DEBUG]     org.springframework:spring-dao:jar:2.0.8:compile (selected for compile)
+[DEBUG]       commons-logging:commons-logging:jar:1.1:compile (removed - nearer found: 1.1.1)
+[DEBUG]       org.springframework:spring-beans:jar:2.0.8:compile (removed - nearer found: 2.5.6)
+[DEBUG]       org.springframework:spring-context:jar:2.0.8:compile (removed - nearer found: 2.5.6)
+[DEBUG]       org.springframework:spring-core:jar:2.0.8:compile (removed - nearer found: 2.5.6)
+[DEBUG]     org.springframework:spring-jdbc:jar:2.0.8:compile (selected for compile)
+[DEBUG]       commons-logging:commons-logging:jar:1.1:compile (removed - nearer found: 1.1.1)
+[DEBUG]       org.springframework:spring-beans:jar:2.0.8:compile (removed - nearer found: 2.5.6)
+[DEBUG]       org.springframework:spring-context:jar:2.0.8:compile (removed - nearer found: 2.5.6)
+[DEBUG]       org.springframework:spring-core:jar:2.0.8:compile (removed - nearer found: 2.5.6)
+[DEBUG]   org.springframework:spring-struts:jar:2.0.8:compile (selected for compile)
+[DEBUG]     commons-beanutils:commons-beanutils:jar:1.7.0:compile (selected for compile)
+[DEBUG]       commons-logging:commons-logging:jar:1.0.3:compile (removed - nearer found: 1.1.1)
+[DEBUG]     commons-logging:commons-logging:jar:1.1:compile (removed - nearer found: 1.1.1)
+[DEBUG]     struts:struts:jar:1.2.9:compile (selected for compile)
+[DEBUG]       commons-digester:commons-digester:jar:1.6:compile (selected for compile)
+[DEBUG]         commons-beanutils:commons-beanutils:jar:1.6:compile (removed - nearer found: 1.7.0)
+[DEBUG]         commons-logging:commons-logging:jar:1.0:compile (removed - nearer found: 1.1.1)
+[DEBUG]         commons-collections:commons-collections:jar:2.1:compile (removed - nearer found: 2.1.1)
+[DEBUG]         xml-apis:xml-apis:jar:1.0.b2:compile (selected for compile)
+[DEBUG]       commons-fileupload:commons-fileupload:jar:1.0:compile (selected for compile)
+[DEBUG]       commons-logging:commons-logging:jar:1.0.4:compile (removed - nearer found: 1.1.1)
+[DEBUG]       commons-validator:commons-validator:jar:1.1.4:compile (selected for compile)
+[DEBUG]       oro:oro:jar:2.0.7:compile (selected for compile)
+[DEBUG]       antlr:antlr:jar:2.7.2:compile (removed - nearer found: 2.7.6)
+[DEBUG]       xalan:xalan:jar:2.5.1:compile (selected for compile)
+[DEBUG]     org.springframework:spring-beans:jar:2.0.8:compile (removed - nearer found: 2.5.6)
+[DEBUG]     org.springframework:spring-context:jar:2.0.8:compile (removed - nearer found: 2.5.6)
+[DEBUG]     org.springframework:spring-core:jar:2.0.8:compile (removed - nearer found: 2.5.6)
+[DEBUG]     org.springframework:spring-web:jar:2.0.8:compile (selected for compile)
+[DEBUG]       commons-logging:commons-logging:jar:1.1:compile (removed - nearer found: 1.1.1)
+[DEBUG]       org.springframework:spring-beans:jar:2.0.8:compile (removed - nearer found: 2.5.6)
+[DEBUG]       org.springframework:spring-context:jar:2.0.8:compile (removed - nearer found: 2.5.6)
+[DEBUG]       org.springframework:spring-core:jar:2.0.8:compile (removed - nearer found: 2.5.6)
+[DEBUG]   org.springframework:spring-web:jar:2.0.8:compile (removed - nearer found: 2.5.6)
+[DEBUG]   org.springframework:spring-web:jar:2.5.6:compile (selected for compile)
+[DEBUG]   org.apache.struts:struts-core:jar:1.3.8:compile (selected for compile)
+[DEBUG]     antlr:antlr:jar:2.7.6:compile (removed - nearer found: 2.7.2)
+[DEBUG]     antlr:antlr:jar:2.7.2:compile (selected for compile)
+[DEBUG]     commons-chain:commons-chain:jar:1.1:compile (selected for compile)
+[DEBUG]       commons-logging:commons-logging:jar:1.0.3:compile (removed - nearer found: 1.1.1)
+[DEBUG]     commons-digester:commons-digester:jar:1.6:compile (removed - nearer found: 1.8)
+[DEBUG]     commons-digester:commons-digester:jar:1.8:compile (selected for compile)
+[DEBUG]       commons-logging:commons-logging:jar:1.1:compile (removed - nearer found: 1.1.1)
+[DEBUG]     commons-logging:commons-logging:jar:1.0.4:compile (removed - nearer found: 1.1.1)
+[DEBUG]     commons-validator:commons-validator:jar:1.1.4:compile (removed - nearer found: 1.3.1)
+[DEBUG]     commons-validator:commons-validator:jar:1.3.1:compile (selected for compile)
+[DEBUG]       commons-digester:commons-digester:jar:1.6:compile (removed - nearer found: 1.8)
+[DEBUG]       commons-logging:commons-logging:jar:1.0.4:compile (removed - nearer found: 1.1.1)
+[DEBUG]     oro:oro:jar:2.0.7:compile (removed - nearer found: 2.0.8)
+[DEBUG]     oro:oro:jar:2.0.8:compile (selected for compile)
+[DEBUG]   org.apache.struts:struts-taglib:jar:1.3.8:compile (selected for compile)
+[DEBUG]   commons-validator:commons-validator:jar:1.3.1:compile (selected for compile)
+[DEBUG]     commons-digester:commons-digester:jar:1.6:compile (removed - nearer found: 1.8)
+[DEBUG]     commons-logging:commons-logging:jar:1.0.4:compile (removed - nearer found: 1.1.1)
+[DEBUG]   org.mortbay.jetty:servlet-api-2.5:jar:6.1.4:provided (selected for provided)
+[DEBUG]   junit:junit:jar:4.4:test (selected for test)
+[DEBUG]   hsqldb:hsqldb:jar:1.8.0.7:compile (selected for compile)
+[DEBUG]   org.hibernate:hibernate:jar:3.2.5.ga:compile (selected for compile)
+[DEBUG]     net.sf.ehcache:ehcache:jar:1.2.3:compile (selected for compile)
+[DEBUG]       commons-logging:commons-logging:jar:1.0.4:compile (removed - nearer found: 1.1.1)
+[DEBUG]       commons-collections:commons-collections:jar:2.1:compile (selected for compile)
+[DEBUG]     javax.transaction:jta:jar:1.0.1B:compile (selected for compile)
+[DEBUG]     commons-logging:commons-logging:jar:1.0.4:compile (removed - nearer found: 1.1.1)
+[DEBUG]     asm:asm-attrs:jar:1.5.3:compile (selected for compile)
+[DEBUG]     dom4j:dom4j:jar:1.6.1:compile (selected for compile)
+[DEBUG]     antlr:antlr:jar:2.7.6:compile (removed - nearer found: 2.7.2)
+[DEBUG]     cglib:cglib:jar:2.1_3:compile (selected for compile)
+[DEBUG]       asm:asm:jar:1.5.3:compile (selected for compile)
+[DEBUG]     asm:asm:jar:1.5.3:compile (selected for compile)
+[DEBUG]     commons-collections:commons-collections:jar:2.1:compile (removed - nearer found: 2.1.1)
+[DEBUG]     commons-collections:commons-collections:jar:2.1.1:compile (selected for compile)
+[DEBUG]   taglibs:standard:jar:1.1.2:compile (selected for compile)
+[DEBUG]   javax.servlet:jstl:jar:1.1.2:compile (selected for compile)
+[DEBUG] Configuring mojo 'org.apache.maven.plugins:maven-compiler-plugin:2.0.2:testCompile' -->
+[DEBUG]   (f) basedir = D:\testspace\TechDemo
+[DEBUG]   (f) buildDirectory = D:\testspace\TechDemo\target
+[DEBUG]   (f) classpathElements = [D:\testspace\TechDemo\target\test-classes, D:\testspace\TechDemo\target\classes, C:\Documents and Settings\Admin\.m2\repository\org\springframework\spring-core\2.5.6\spring-core-2.5.6.jar, C:\Documents and Settings\Admin\.m2\repository\commons-logging\commons-logging\1.1.1\commons-logging-1.1.1.jar, C:\Documents and Settings\Admin\.m2\repository\org\springframework\spring-context\2.5.6\spring-context-2.5.6.jar, C:\Documents and Settings\Admin\.m2\repository\aopalliance\aopalliance\1.0\aopalliance-1.0.jar, C:\Documents and Settings\Admin\.m2\repository\org\springframework\spring-beans\2.5.6\spring-beans-2.5.6.jar, C:\Documents and Settings\Admin\.m2\repository\org\springframework\spring-aspects\2.5.6\spring-aspects-2.5.6.jar, C:\Documents and Settings\Admin\.m2\repository\org\aspectj\aspectjrt\1.6.1\aspectjrt-1.6.1.jar, C:\Documents and Settings\Admin\.m2\repository\org\aspectj\aspectjweaver\1.6.1\aspectjweaver-1.6.1.jar, C:\Documents and Settings\Admin\.m2\repository\org\springframework\spring-aop\2.5.6\spring-aop-2.5.6.jar, C:\Documents and Settings\Admin\.m2\repository\org\springframework\spring-tx\2.5.6\spring-tx-2.5.6.jar, C:\Documents and Settings\Admin\.m2\repository\org\springframework\spring-hibernate3\2.0.8\spring-hibernate3-2.0.8.jar, C:\Documents and Settings\Admin\.m2\repository\org\hibernate\hibernate\3.2.5.ga\hibernate-3.2.5.ga.jar, C:\Documents and Settings\Admin\.m2\repository\net\sf\ehcache\ehcache\1.2.3\ehcache-1.2.3.jar, C:\Documents and Settings\Admin\.m2\repository\commons-collections\commons-collections\2.1.1\commons-collections-2.1.1.jar, C:\Documents and Settings\Admin\.m2\repository\javax\transaction\jta\1.0.1B\jta-1.0.1B.jar, C:\Documents and Settings\Admin\.m2\repository\asm\asm-attrs\1.5.3\asm-attrs-1.5.3.jar, C:\Documents and Settings\Admin\.m2\repository\dom4j\dom4j\1.6.1\dom4j-1.6.1.jar, C:\Documents and Settings\Admin\.m2\repository\antlr\antlr\2.7.2\antlr-2.7.2.jar, C:\Documents and Settings\Admin\.m2\repository\cglib\cglib\2.1_3\cglib-2.1_3.jar, C:\Documents and Settings\Admin\.m2\repository\asm\asm\1.5.3\asm-1.5.3.jar, C:\Documents and Settings\Admin\.m2\repository\org\springframework\spring-dao\2.0.8\spring-dao-2.0.8.jar, C:\Documents and Settings\Admin\.m2\repository\org\springframework\spring-jdbc\2.0.8\spring-jdbc-2.0.8.jar, C:\Documents and Settings\Admin\.m2\repository\org\springframework\spring-struts\2.0.8\spring-struts-2.0.8.jar, C:\Documents and Settings\Admin\.m2\repository\commons-beanutils\commons-beanutils\1.7.0\commons-beanutils-1.7.0.jar, C:\Documents and Settings\Admin\.m2\repository\struts\struts\1.2.9\struts-1.2.9.jar, C:\Documents and Settings\Admin\.m2\repository\commons-digester\commons-digester\1.8\commons-digester-1.8.jar, C:\Documents and Settings\Admin\.m2\repository\commons-fileupload\commons-fileupload\1.0\commons-fileupload-1.0.jar, C:\Documents and Settings\Admin\.m2\repository\commons-validator\commons-validator\1.3.1\commons-validator-1.3.1.jar, C:\Documents and Settings\Admin\.m2\repository\oro\oro\2.0.8\oro-2.0.8.jar, C:\Documents and Settings\Admin\.m2\repository\xalan\xalan\2.5.1\xalan-2.5.1.jar, C:\Documents and Settings\Admin\.m2\repository\org\springframework\spring-web\2.5.6\spring-web-2.5.6.jar, C:\Documents and Settings\Admin\.m2\repository\org\apache\struts\struts-core\1.3.8\struts-core-1.3.8.jar, C:\Documents and Settings\Admin\.m2\repository\commons-chain\commons-chain\1.1\commons-chain-1.1.jar, C:\Documents and Settings\Admin\.m2\repository\org\apache\struts\struts-taglib\1.3.8\struts-taglib-1.3.8.jar, C:\Documents and Settings\Admin\.m2\repository\org\mortbay\jetty\servlet-api-2.5\6.1.4\servlet-api-2.5-6.1.4.jar, C:\Documents and Settings\Admin\.m2\repository\junit\junit\4.4\junit-4.4.jar, C:\Documents and Settings\Admin\.m2\repository\hsqldb\hsqldb\1.8.0.7\hsqldb-1.8.0.7.jar, C:\Documents and Settings\Admin\.m2\repository\taglibs\standard\1.1.2\standard-1.1.2.jar, C:\Documents and Settings\Admin\.m2\repository\javax\servlet\jstl\1.1.2\jstl-1.1.2.jar]
+[DEBUG]   (f) compileSourceRoots = [D:\testspace\TechDemo\src\test\java]
+[DEBUG]   (f) compilerId = javac
+[DEBUG]   (f) debug = true
+[DEBUG]   (f) failOnError = true
+[DEBUG]   (f) fork = false
+[DEBUG]   (f) optimize = false
+[DEBUG]   (f) outputDirectory = D:\testspace\TechDemo\target\test-classes
+[DEBUG]   (f) outputFileName = TechDemo
+[DEBUG]   (f) showDeprecation = false
+[DEBUG]   (f) showWarnings = false
+[DEBUG]   (f) source = 5
+[DEBUG]   (f) staleMillis = 0
+[DEBUG]   (f) target = 5
+[DEBUG]   (f) verbose = false
+[DEBUG] -- end configuration --
+[INFO] [compiler:testCompile]
+[DEBUG] Using compiler 'javac'.
+[DEBUG] Source directories: [D:\testspace\TechDemo\src\test\java]
+[DEBUG] Classpath: [D:\testspace\TechDemo\target\test-classes
+ D:\testspace\TechDemo\target\classes
+ C:\Documents and Settings\Admin\.m2\repository\org\springframework\spring-core\2.5.6\spring-core-2.5.6.jar
+ C:\Documents and Settings\Admin\.m2\repository\commons-logging\commons-logging\1.1.1\commons-logging-1.1.1.jar
+ C:\Documents and Settings\Admin\.m2\repository\org\springframework\spring-context\2.5.6\spring-context-2.5.6.jar
+ C:\Documents and Settings\Admin\.m2\repository\aopalliance\aopalliance\1.0\aopalliance-1.0.jar
+ C:\Documents and Settings\Admin\.m2\repository\org\springframework\spring-beans\2.5.6\spring-beans-2.5.6.jar
+ C:\Documents and Settings\Admin\.m2\repository\org\springframework\spring-aspects\2.5.6\spring-aspects-2.5.6.jar
+ C:\Documents and Settings\Admin\.m2\repository\org\aspectj\aspectjrt\1.6.1\aspectjrt-1.6.1.jar
+ C:\Documents and Settings\Admin\.m2\repository\org\aspectj\aspectjweaver\1.6.1\aspectjweaver-1.6.1.jar
+ C:\Documents and Settings\Admin\.m2\repository\org\springframework\spring-aop\2.5.6\spring-aop-2.5.6.jar
+ C:\Documents and Settings\Admin\.m2\repository\org\springframework\spring-tx\2.5.6\spring-tx-2.5.6.jar
+ C:\Documents and Settings\Admin\.m2\repository\org\springframework\spring-hibernate3\2.0.8\spring-hibernate3-2.0.8.jar
+ C:\Documents and Settings\Admin\.m2\repository\org\hibernate\hibernate\3.2.5.ga\hibernate-3.2.5.ga.jar
+ C:\Documents and Settings\Admin\.m2\repository\net\sf\ehcache\ehcache\1.2.3\ehcache-1.2.3.jar
+ C:\Documents and Settings\Admin\.m2\repository\commons-collections\commons-collections\2.1.1\commons-collections-2.1.1.jar
+ C:\Documents and Settings\Admin\.m2\repository\javax\transaction\jta\1.0.1B\jta-1.0.1B.jar
+ C:\Documents and Settings\Admin\.m2\repository\asm\asm-attrs\1.5.3\asm-attrs-1.5.3.jar
+ C:\Documents and Settings\Admin\.m2\repository\dom4j\dom4j\1.6.1\dom4j-1.6.1.jar
+ C:\Documents and Settings\Admin\.m2\repository\antlr\antlr\2.7.2\antlr-2.7.2.jar
+ C:\Documents and Settings\Admin\.m2\repository\cglib\cglib\2.1_3\cglib-2.1_3.jar
+ C:\Documents and Settings\Admin\.m2\repository\asm\asm\1.5.3\asm-1.5.3.jar
+ C:\Documents and Settings\Admin\.m2\repository\org\springframework\spring-dao\2.0.8\spring-dao-2.0.8.jar
+ C:\Documents and Settings\Admin\.m2\repository\org\springframework\spring-jdbc\2.0.8\spring-jdbc-2.0.8.jar
+ C:\Documents and Settings\Admin\.m2\repository\org\springframework\spring-struts\2.0.8\spring-struts-2.0.8.jar
+ C:\Documents and Settings\Admin\.m2\repository\commons-beanutils\commons-beanutils\1.7.0\commons-beanutils-1.7.0.jar
+ C:\Documents and Settings\Admin\.m2\repository\struts\struts\1.2.9\struts-1.2.9.jar
+ C:\Documents and Settings\Admin\.m2\repository\commons-digester\commons-digester\1.8\commons-digester-1.8.jar
+ C:\Documents and Settings\Admin\.m2\repository\commons-fileupload\commons-fileupload\1.0\commons-fileupload-1.0.jar
+ C:\Documents and Settings\Admin\.m2\repository\commons-validator\commons-validator\1.3.1\commons-validator-1.3.1.jar
+ C:\Documents and Settings\Admin\.m2\repository\oro\oro\2.0.8\oro-2.0.8.jar
+ C:\Documents and Settings\Admin\.m2\repository\xalan\xalan\2.5.1\xalan-2.5.1.jar
+ C:\Documents and Settings\Admin\.m2\repository\org\springframework\spring-web\2.5.6\spring-web-2.5.6.jar
+ C:\Documents and Settings\Admin\.m2\repository\org\apache\struts\struts-core\1.3.8\struts-core-1.3.8.jar
+ C:\Documents and Settings\Admin\.m2\repository\commons-chain\commons-chain\1.1\commons-chain-1.1.jar
+ C:\Documents and Settings\Admin\.m2\repository\org\apache\struts\struts-taglib\1.3.8\struts-taglib-1.3.8.jar
+ C:\Documents and Settings\Admin\.m2\repository\org\mortbay\jetty\servlet-api-2.5\6.1.4\servlet-api-2.5-6.1.4.jar
+ C:\Documents and Settings\Admin\.m2\repository\junit\junit\4.4\junit-4.4.jar
+ C:\Documents and Settings\Admin\.m2\repository\hsqldb\hsqldb\1.8.0.7\hsqldb-1.8.0.7.jar
+ C:\Documents and Settings\Admin\.m2\repository\taglibs\standard\1.1.2\standard-1.1.2.jar
+ C:\Documents and Settings\Admin\.m2\repository\javax\servlet\jstl\1.1.2\jstl-1.1.2.jar]
+[DEBUG] Output directory: D:\testspace\TechDemo\target\test-classes
+[INFO] Nothing to compile - all classes are up to date
+[DEBUG] bg.proxiad.demo:TechDemo:war:1.0-SNAPSHOT (selected for null)
+[DEBUG]   org.springframework:spring-core:jar:2.5.6:compile (selected for compile)
+[DEBUG]     commons-logging:commons-logging:jar:1.1.1:compile (selected for compile)
+[DEBUG]   org.springframework:spring-context:jar:2.5.6:compile (selected for compile)
+[DEBUG]     aopalliance:aopalliance:jar:1.0:compile (selected for compile)
+[DEBUG]     org.springframework:spring-beans:jar:2.5.6:compile (selected for compile)
+[DEBUG]   org.springframework:spring-aspects:jar:2.5.6:compile (selected for compile)
+[DEBUG]     org.aspectj:aspectjrt:jar:1.6.1:compile (selected for compile)
+[DEBUG]     org.aspectj:aspectjweaver:jar:1.6.1:compile (selected for compile)
+[DEBUG]   org.springframework:spring-aop:jar:2.5.6:compile (selected for compile)
+[DEBUG]   org.springframework:spring-tx:jar:2.5.6:compile (selected for compile)
+[DEBUG]   org.springframework:spring-hibernate3:jar:2.0.8:compile (selected for compile)
+[DEBUG]     commons-logging:commons-logging:jar:1.1:compile (removed - nearer found: 1.1.1)
+[DEBUG]     org.hibernate:hibernate:jar:3.2.5.ga:compile (selected for compile)
+[DEBUG]       net.sf.ehcache:ehcache:jar:1.2.3:compile (selected for compile)
+[DEBUG]         commons-logging:commons-logging:jar:1.0.4:compile (removed - nearer found: 1.1.1)
+[DEBUG]         commons-collections:commons-collections:jar:2.1:compile (selected for compile)
+[DEBUG]       javax.transaction:jta:jar:1.0.1B:compile (selected for compile)
+[DEBUG]       commons-logging:commons-logging:jar:1.0.4:compile (removed - nearer found: 1.1.1)
+[DEBUG]       asm:asm-attrs:jar:1.5.3:compile (selected for compile)
+[DEBUG]       dom4j:dom4j:jar:1.6.1:compile (selected for compile)
+[DEBUG]       antlr:antlr:jar:2.7.6:compile (selected for compile)
+[DEBUG]       cglib:cglib:jar:2.1_3:compile (selected for compile)
+[DEBUG]         asm:asm:jar:1.5.3:compile (selected for compile)
+[DEBUG]       asm:asm:jar:1.5.3:compile (selected for compile)
+[DEBUG]       commons-collections:commons-collections:jar:2.1:compile (removed - nearer found: 2.1.1)
+[DEBUG]       commons-collections:commons-collections:jar:2.1.1:compile (selected for compile)
+[DEBUG]     org.springframework:spring-beans:jar:2.0.8:compile (removed - nearer found: 2.5.6)
+[DEBUG]     org.springframework:spring-context:jar:2.0.8:compile (removed - nearer found: 2.5.6)
+[DEBUG]     org.springframework:spring-core:jar:2.0.8:compile (removed - nearer found: 2.5.6)
+[DEBUG]     org.springframework:spring-dao:jar:2.0.8:compile (selected for compile)
+[DEBUG]       commons-logging:commons-logging:jar:1.1:compile (removed - nearer found: 1.1.1)
+[DEBUG]       org.springframework:spring-beans:jar:2.0.8:compile (removed - nearer found: 2.5.6)
+[DEBUG]       org.springframework:spring-context:jar:2.0.8:compile (removed - nearer found: 2.5.6)
+[DEBUG]       org.springframework:spring-core:jar:2.0.8:compile (removed - nearer found: 2.5.6)
+[DEBUG]     org.springframework:spring-jdbc:jar:2.0.8:compile (selected for compile)
+[DEBUG]       commons-logging:commons-logging:jar:1.1:compile (removed - nearer found: 1.1.1)
+[DEBUG]       org.springframework:spring-beans:jar:2.0.8:compile (removed - nearer found: 2.5.6)
+[DEBUG]       org.springframework:spring-context:jar:2.0.8:compile (removed - nearer found: 2.5.6)
+[DEBUG]       org.springframework:spring-core:jar:2.0.8:compile (removed - nearer found: 2.5.6)
+[DEBUG]   org.springframework:spring-struts:jar:2.0.8:compile (selected for compile)
+[DEBUG]     commons-beanutils:commons-beanutils:jar:1.7.0:compile (selected for compile)
+[DEBUG]       commons-logging:commons-logging:jar:1.0.3:compile (removed - nearer found: 1.1.1)
+[DEBUG]     commons-logging:commons-logging:jar:1.1:compile (removed - nearer found: 1.1.1)
+[DEBUG]     struts:struts:jar:1.2.9:compile (selected for compile)
+[DEBUG]       commons-digester:commons-digester:jar:1.6:compile (selected for compile)
+[DEBUG]         commons-beanutils:commons-beanutils:jar:1.6:compile (removed - nearer found: 1.7.0)
+[DEBUG]         commons-logging:commons-logging:jar:1.0:compile (removed - nearer found: 1.1.1)
+[DEBUG]         commons-collections:commons-collections:jar:2.1:compile (removed - nearer found: 2.1.1)
+[DEBUG]         xml-apis:xml-apis:jar:1.0.b2:compile (selected for compile)
+[DEBUG]       commons-fileupload:commons-fileupload:jar:1.0:compile (selected for compile)
+[DEBUG]       commons-logging:commons-logging:jar:1.0.4:compile (removed - nearer found: 1.1.1)
+[DEBUG]       commons-validator:commons-validator:jar:1.1.4:compile (selected for compile)
+[DEBUG]       oro:oro:jar:2.0.7:compile (selected for compile)
+[DEBUG]       antlr:antlr:jar:2.7.2:compile (removed - nearer found: 2.7.6)
+[DEBUG]       xalan:xalan:jar:2.5.1:compile (selected for compile)
+[DEBUG]     org.springframework:spring-beans:jar:2.0.8:compile (removed - nearer found: 2.5.6)
+[DEBUG]     org.springframework:spring-context:jar:2.0.8:compile (removed - nearer found: 2.5.6)
+[DEBUG]     org.springframework:spring-core:jar:2.0.8:compile (removed - nearer found: 2.5.6)
+[DEBUG]     org.springframework:spring-web:jar:2.0.8:compile (selected for compile)
+[DEBUG]       commons-logging:commons-logging:jar:1.1:compile (removed - nearer found: 1.1.1)
+[DEBUG]       org.springframework:spring-beans:jar:2.0.8:compile (removed - nearer found: 2.5.6)
+[DEBUG]       org.springframework:spring-context:jar:2.0.8:compile (removed - nearer found: 2.5.6)
+[DEBUG]       org.springframework:spring-core:jar:2.0.8:compile (removed - nearer found: 2.5.6)
+[DEBUG]   org.springframework:spring-web:jar:2.0.8:compile (removed - nearer found: 2.5.6)
+[DEBUG]   org.springframework:spring-web:jar:2.5.6:compile (selected for compile)
+[DEBUG]   org.apache.struts:struts-core:jar:1.3.8:compile (selected for compile)
+[DEBUG]     antlr:antlr:jar:2.7.6:compile (removed - nearer found: 2.7.2)
+[DEBUG]     antlr:antlr:jar:2.7.2:compile (selected for compile)
+[DEBUG]     commons-chain:commons-chain:jar:1.1:compile (selected for compile)
+[DEBUG]       commons-logging:commons-logging:jar:1.0.3:compile (removed - nearer found: 1.1.1)
+[DEBUG]     commons-digester:commons-digester:jar:1.6:compile (removed - nearer found: 1.8)
+[DEBUG]     commons-digester:commons-digester:jar:1.8:compile (selected for compile)
+[DEBUG]       commons-logging:commons-logging:jar:1.1:compile (removed - nearer found: 1.1.1)
+[DEBUG]     commons-logging:commons-logging:jar:1.0.4:compile (removed - nearer found: 1.1.1)
+[DEBUG]     commons-validator:commons-validator:jar:1.1.4:compile (removed - nearer found: 1.3.1)
+[DEBUG]     commons-validator:commons-validator:jar:1.3.1:compile (selected for compile)
+[DEBUG]       commons-digester:commons-digester:jar:1.6:compile (removed - nearer found: 1.8)
+[DEBUG]       commons-logging:commons-logging:jar:1.0.4:compile (removed - nearer found: 1.1.1)
+[DEBUG]     oro:oro:jar:2.0.7:compile (removed - nearer found: 2.0.8)
+[DEBUG]     oro:oro:jar:2.0.8:compile (selected for compile)
+[DEBUG]   org.apache.struts:struts-taglib:jar:1.3.8:compile (selected for compile)
+[DEBUG]   commons-validator:commons-validator:jar:1.3.1:compile (selected for compile)
+[DEBUG]     commons-digester:commons-digester:jar:1.6:compile (removed - nearer found: 1.8)
+[DEBUG]     commons-logging:commons-logging:jar:1.0.4:compile (removed - nearer found: 1.1.1)
+[DEBUG]   org.mortbay.jetty:servlet-api-2.5:jar:6.1.4:provided (selected for provided)
+[DEBUG]   junit:junit:jar:4.4:test (selected for test)
+[DEBUG]   hsqldb:hsqldb:jar:1.8.0.7:compile (selected for compile)
+[DEBUG]   org.hibernate:hibernate:jar:3.2.5.ga:compile (selected for compile)
+[DEBUG]     net.sf.ehcache:ehcache:jar:1.2.3:compile (selected for compile)
+[DEBUG]       commons-logging:commons-logging:jar:1.0.4:compile (removed - nearer found: 1.1.1)
+[DEBUG]       commons-collections:commons-collections:jar:2.1:compile (selected for compile)
+[DEBUG]     javax.transaction:jta:jar:1.0.1B:compile (selected for compile)
+[DEBUG]     commons-logging:commons-logging:jar:1.0.4:compile (removed - nearer found: 1.1.1)
+[DEBUG]     asm:asm-attrs:jar:1.5.3:compile (selected for compile)
+[DEBUG]     dom4j:dom4j:jar:1.6.1:compile (selected for compile)
+[DEBUG]     antlr:antlr:jar:2.7.6:compile (removed - nearer found: 2.7.2)
+[DEBUG]     cglib:cglib:jar:2.1_3:compile (selected for compile)
+[DEBUG]       asm:asm:jar:1.5.3:compile (selected for compile)
+[DEBUG]     asm:asm:jar:1.5.3:compile (selected for compile)
+[DEBUG]     commons-collections:commons-collections:jar:2.1:compile (removed - nearer found: 2.1.1)
+[DEBUG]     commons-collections:commons-collections:jar:2.1.1:compile (selected for compile)
+[DEBUG]   taglibs:standard:jar:1.1.2:compile (selected for compile)
+[DEBUG]   javax.servlet:jstl:jar:1.1.2:compile (selected for compile)
+[DEBUG] org.apache.maven.plugins:maven-surefire-plugin:maven-plugin:2.3.1:runtime (selected for runtime)
+[DEBUG]   org.apache.maven:maven-project:jar:2.0:runtime (selected for runtime)
+[DEBUG]     org.apache.maven:maven-profile:jar:2.0:runtime (selected for runtime)
+[DEBUG]       org.apache.maven:maven-model:jar:2.0:runtime (selected for runtime)
+[DEBUG]         org.codehaus.plexus:plexus-utils:jar:1.0.4:runtime (selected for runtime)
+[DEBUG]       org.codehaus.plexus:plexus-utils:jar:1.0.4:runtime (selected for runtime)
+[DEBUG]       org.codehaus.plexus:plexus-container-default:jar:1.0-alpha-8:runtime (selected for runtime)
+[DEBUG]         junit:junit:jar:3.8.1:runtime (selected for runtime)
+[DEBUG]         classworlds:classworlds:jar:1.1-alpha-2:runtime (selected for runtime)
+[DEBUG]     org.apache.maven:maven-model:jar:2.0:runtime (selected for runtime)
+[DEBUG]     org.apache.maven:maven-artifact-manager:jar:2.0:runtime (selected for runtime)
+[DEBUG]       org.apache.maven:maven-repository-metadata:jar:2.0:runtime (selected for runtime)
+[DEBUG]       org.apache.maven:maven-artifact:jar:2.0:runtime (selected for runtime)
+[DEBUG]       org.apache.maven.wagon:wagon-provider-api:jar:1.0-alpha-5:runtime (selected for runtime)
+[DEBUG]     org.codehaus.plexus:plexus-utils:jar:1.0.4:runtime (selected for runtime)
+[DEBUG]     org.apache.maven:maven-artifact:jar:2.0:runtime (selected for runtime)
+[DEBUG]     org.codehaus.plexus:plexus-container-default:jar:1.0-alpha-8:runtime (selected for runtime)
+[DEBUG]       junit:junit:jar:3.8.1:runtime (selected for runtime)
+[DEBUG]       classworlds:classworlds:jar:1.1-alpha-2:runtime (selected for runtime)
+[DEBUG]   org.apache.maven:maven-plugin-api:jar:2.0:runtime (selected for runtime)
+[DEBUG] Adding managed dependencies for unknown:surefire-booter
+[DEBUG]   org.apache.maven.surefire:surefire-api:jar:2.3.1
+[DEBUG]   org.apache.maven.surefire:surefire-booter:jar:2.3.1
+[DEBUG]   org.apache.maven.surefire:surefire-booter:jar:2.3.1:runtime (selected for runtime)
+[DEBUG] Adding managed dependencies for unknown:surefire-api
+[DEBUG]   org.apache.maven.surefire:surefire-api:jar:2.3.1
+[DEBUG]   org.apache.maven.surefire:surefire-booter:jar:2.3.1
+[DEBUG]     org.apache.maven.surefire:surefire-api:jar:2.3.1:runtime (selected for runtime)
+[DEBUG]       org.codehaus.plexus:plexus-utils:jar:1.1:runtime (removed - nearer found: 1.0.4)
+[DEBUG]       commons-lang:commons-lang:jar:2.1:runtime (selected for runtime)
+[DEBUG]     org.codehaus.plexus:plexus-utils:jar:1.1:runtime (removed - nearer found: 1.0.4)
+[DEBUG]     org.codehaus.plexus:plexus-archiver:jar:1.0-alpha-7:runtime (selected for runtime)
+[DEBUG] Retrieving parent-POM: org.codehaus.plexus:plexus::1.0.5 for project: null:plexus-utils:jar:1.2 from the repository.
+[DEBUG]       org.codehaus.plexus:plexus-utils:jar:1.2:runtime (removed - nearer found: 1.0.4)
+[DEBUG]   org.codehaus.plexus:plexus-utils:jar:1.0.4:runtime (removed - nearer found: 1.1)
+[DEBUG]   org.codehaus.plexus:plexus-utils:jar:1.1:runtime (selected for runtime)
+[DEBUG]   org.apache.maven:maven-artifact:jar:2.0:runtime (selected for runtime)
+[DEBUG]     org.codehaus.plexus:plexus-utils:jar:1.0.4:runtime (removed - nearer found: 1.1)
+[DEBUG] Configuring mojo 'org.apache.maven.plugins:maven-surefire-plugin:2.3.1:test' -->
+[DEBUG]   (f) basedir = D:\testspace\TechDemo
+[DEBUG]   (f) childDelegation = false
+[DEBUG]   (f) classesDirectory = D:\testspace\TechDemo\target\classes
+[DEBUG]   (f) classpathElements = [D:\testspace\TechDemo\target\test-classes, D:\testspace\TechDemo\target\classes, C:\Documents and Settings\Admin\.m2\repository\org\springframework\spring-core\2.5.6\spring-core-2.5.6.jar, C:\Documents and Settings\Admin\.m2\repository\commons-logging\commons-logging\1.1.1\commons-logging-1.1.1.jar, C:\Documents and Settings\Admin\.m2\repository\org\springframework\spring-context\2.5.6\spring-context-2.5.6.jar, C:\Documents and Settings\Admin\.m2\repository\aopalliance\aopalliance\1.0\aopalliance-1.0.jar, C:\Documents and Settings\Admin\.m2\repository\org\springframework\spring-beans\2.5.6\spring-beans-2.5.6.jar, C:\Documents and Settings\Admin\.m2\repository\org\springframework\spring-aspects\2.5.6\spring-aspects-2.5.6.jar, C:\Documents and Settings\Admin\.m2\repository\org\aspectj\aspectjrt\1.6.1\aspectjrt-1.6.1.jar, C:\Documents and Settings\Admin\.m2\repository\org\aspectj\aspectjweaver\1.6.1\aspectjweaver-1.6.1.jar, C:\Documents and Settings\Admin\.m2\repository\org\springframework\spring-aop\2.5.6\spring-aop-2.5.6.jar, C:\Documents and Settings\Admin\.m2\repository\org\springframework\spring-tx\2.5.6\spring-tx-2.5.6.jar, C:\Documents and Settings\Admin\.m2\repository\org\springframework\spring-hibernate3\2.0.8\spring-hibernate3-2.0.8.jar, C:\Documents and Settings\Admin\.m2\repository\org\hibernate\hibernate\3.2.5.ga\hibernate-3.2.5.ga.jar, C:\Documents and Settings\Admin\.m2\repository\net\sf\ehcache\ehcache\1.2.3\ehcache-1.2.3.jar, C:\Documents and Settings\Admin\.m2\repository\commons-collections\commons-collections\2.1.1\commons-collections-2.1.1.jar, C:\Documents and Settings\Admin\.m2\repository\javax\transaction\jta\1.0.1B\jta-1.0.1B.jar, C:\Documents and Settings\Admin\.m2\repository\asm\asm-attrs\1.5.3\asm-attrs-1.5.3.jar, C:\Documents and Settings\Admin\.m2\repository\dom4j\dom4j\1.6.1\dom4j-1.6.1.jar, C:\Documents and Settings\Admin\.m2\repository\antlr\antlr\2.7.2\antlr-2.7.2.jar, C:\Documents and Settings\Admin\.m2\repository\cglib\cglib\2.1_3\cglib-2.1_3.jar, C:\Documents and Settings\Admin\.m2\repository\asm\asm\1.5.3\asm-1.5.3.jar, C:\Documents and Settings\Admin\.m2\repository\org\springframework\spring-dao\2.0.8\spring-dao-2.0.8.jar, C:\Documents and Settings\Admin\.m2\repository\org\springframework\spring-jdbc\2.0.8\spring-jdbc-2.0.8.jar, C:\Documents and Settings\Admin\.m2\repository\org\springframework\spring-struts\2.0.8\spring-struts-2.0.8.jar, C:\Documents and Settings\Admin\.m2\repository\commons-beanutils\commons-beanutils\1.7.0\commons-beanutils-1.7.0.jar, C:\Documents and Settings\Admin\.m2\repository\struts\struts\1.2.9\struts-1.2.9.jar, C:\Documents and Settings\Admin\.m2\repository\commons-digester\commons-digester\1.8\commons-digester-1.8.jar, C:\Documents and Settings\Admin\.m2\repository\commons-fileupload\commons-fileupload\1.0\commons-fileupload-1.0.jar, C:\Documents and Settings\Admin\.m2\repository\commons-validator\commons-validator\1.3.1\commons-validator-1.3.1.jar, C:\Documents and Settings\Admin\.m2\repository\oro\oro\2.0.8\oro-2.0.8.jar, C:\Documents and Settings\Admin\.m2\repository\xalan\xalan\2.5.1\xalan-2.5.1.jar, C:\Documents and Settings\Admin\.m2\repository\org\springframework\spring-web\2.5.6\spring-web-2.5.6.jar, C:\Documents and Settings\Admin\.m2\repository\org\apache\struts\struts-core\1.3.8\struts-core-1.3.8.jar, C:\Documents and Settings\Admin\.m2\repository\commons-chain\commons-chain\1.1\commons-chain-1.1.jar, C:\Documents and Settings\Admin\.m2\repository\org\apache\struts\struts-taglib\1.3.8\struts-taglib-1.3.8.jar, C:\Documents and Settings\Admin\.m2\repository\org\mortbay\jetty\servlet-api-2.5\6.1.4\servlet-api-2.5-6.1.4.jar, C:\Documents and Settings\Admin\.m2\repository\junit\junit\4.4\junit-4.4.jar, C:\Documents and Settings\Admin\.m2\repository\hsqldb\hsqldb\1.8.0.7\hsqldb-1.8.0.7.jar, C:\Documents and Settings\Admin\.m2\repository\taglibs\standard\1.1.2\standard-1.1.2.jar, C:\Documents and Settings\Admin\.m2\repository\javax\servlet\jstl\1.1.2\jstl-1.1.2.jar]
+[DEBUG]   (f) disableXmlReport = false
+[DEBUG]   (f) enableAssertions = true
+[DEBUG]   (f) forkMode = once
+[DEBUG]   (f) junitArtifactName = junit:junit
+[DEBUG]   (f) localRepository = [local] -> file://C:\Documents and Settings\Admin\.m2\repository
+[DEBUG]   (f) parallel = false
+[DEBUG]   (f) pluginArtifactMap = {commons-lang:commons-lang=commons-lang:commons-lang:jar:2.1:runtime, org.codehaus.plexus:plexus-utils=org.codehaus.plexus:plexus-utils:jar:1.1:runtime, org.apache.maven.surefire:surefire-api=org.apache.maven.surefire:surefire-api:jar:2.3.1:runtime, org.apache.maven:maven-project=org.apache.maven:maven-project:jar:2.0:runtime, org.apache.maven:maven-artifact=org.apache.maven:maven-artifact:jar:2.0:runtime, org.apache.maven:maven-plugin-api=org.apache.maven:maven-plugin-api:jar:2.0:runtime, org.apache.maven.surefire:surefire-booter=org.apache.maven.surefire:surefire-booter:jar:2.3.1:runtime, org.codehaus.plexus:plexus-archiver=org.codehaus.plexus:plexus-archiver:jar:1.0-alpha-7:runtime}
+[DEBUG]   (f) printSummary = true
+[DEBUG]   (f) project = MavenProject: bg.proxiad.demo:TechDemo:1.0-SNAPSHOT @ D:\testspace\TechDemo\pom.xml
+[DEBUG]   (f) projectArtifactMap = {commons-chain:commons-chain=commons-chain:commons-chain:jar:1.1:compile, xalan:xalan=xalan:xalan:jar:2.5.1:compile, junit:junit=junit:junit:jar:4.4:test, org.springframework:spring-aspects=org.springframework:spring-aspects:jar:2.5.6:compile, javax.servlet:jstl=javax.servlet:jstl:jar:1.1.2:compile, dom4j:dom4j=dom4j:dom4j:jar:1.6.1:compile, antlr:antlr=antlr:antlr:jar:2.7.2:compile, org.aspectj:aspectjweaver=org.aspectj:aspectjweaver:jar:1.6.1:compile, org.springframework:spring-dao=org.springframework:spring-dao:jar:2.0.8:compile, org.aspectj:aspectjrt=org.aspectj:aspectjrt:jar:1.6.1:compile, org.springframework:spring-tx=org.springframework:spring-tx:jar:2.5.6:compile, org.mortbay.jetty:servlet-api-2.5=org.mortbay.jetty:servlet-api-2.5:jar:6.1.4:provided, javax.transaction:jta=javax.transaction:jta:jar:1.0.1B:compile, net.sf.ehcache:ehcache=net.sf.ehcache:ehcache:jar:1.2.3:compile, asm:asm=asm:asm:jar:1.5.3:compile, org.hibernate:hibernate=org.hibernate:hibernate:jar:3.2.5.ga:compile, org.springframework:spring-context=org.springframework:spring-context:jar:2.5.6:compile, hsqldb:hsqldb=hsqldb:hsqldb:jar:1.8.0.7:compile, oro:oro=oro:oro:jar:2.0.8:compile, org.springframework:spring-aop=org.springframework:spring-aop:jar:2.5.6:compile, commons-logging:commons-logging=commons-logging:commons-logging:jar:1.1.1:compile, commons-fileupload:commons-fileupload=commons-fileupload:commons-fileupload:jar:1.0:compile, org.springframework:spring-beans=org.springframework:spring-beans:jar:2.5.6:compile, org.springframework:spring-web=org.springframework:spring-web:jar:2.5.6:compile, cglib:cglib=cglib:cglib:jar:2.1_3:compile, struts:struts=struts:struts:jar:1.2.9:compile, commons-collections:commons-collections=commons-collections:commons-collections:jar:2.1.1:compile, org.springframework:spring-hibernate3=org.springframework:spring-hibernate3:jar:2.0.8:compile, org.springframework:spring-struts=org.springframework:spring-struts:jar:2.0.8:compile, commons-beanutils:commons-beanutils=commons-beanutils:commons-beanutils:jar:1.7.0:compile, org.springframework:spring-core=org.springframework:spring-core:jar:2.5.6:compile, org.springframework:spring-jdbc=org.springframework:spring-jdbc:jar:2.0.8:compile, asm:asm-attrs=asm:asm-attrs:jar:1.5.3:compile, org.apache.struts:struts-core=org.apache.struts:struts-core:jar:1.3.8:compile, aopalliance:aopalliance=aopalliance:aopalliance:jar:1.0:compile, taglibs:standard=taglibs:standard:jar:1.1.2:compile, org.apache.struts:struts-taglib=org.apache.struts:struts-taglib:jar:1.3.8:compile, commons-validator:commons-validator=commons-validator:commons-validator:jar:1.3.1:compile, commons-digester:commons-digester=commons-digester:commons-digester:jar:1.8:compile}
+[DEBUG]   (f) redirectTestOutputToFile = false
+[DEBUG]   (f) remoteRepositories = [[central] -> http://repo1.maven.org/maven2]
+[DEBUG]   (f) reportFormat = brief
+[DEBUG]   (f) reportsDirectory = D:\testspace\TechDemo\target\surefire-reports
+[DEBUG]   (f) testClassesDirectory = D:\testspace\TechDemo\target\test-classes
+[DEBUG]   (f) testNGArtifactName = org.testng:testng
+[DEBUG]   (f) testSourceDirectory = D:\testspace\TechDemo\src\test\java
+[DEBUG]   (f) threadCount = 5
+[DEBUG]   (f) trimStackTrace = true
+[DEBUG]   (f) useFile = true
+[DEBUG]   (f) useSystemClassLoader = false
+[DEBUG] -- end configuration --
+[INFO] [surefire:test]
+[DEBUG] dummy:dummy:jar:1.0 (selected for null)
+[DEBUG]   org.apache.maven.surefire:surefire-booter:jar:2.3.1:runtime (selected for runtime)
+[DEBUG]     org.apache.maven.surefire:surefire-api:jar:2.3.1:runtime (selected for runtime)
+[DEBUG]       org.codehaus.plexus:plexus-utils:jar:1.1:runtime (selected for runtime)
+[DEBUG]       commons-lang:commons-lang:jar:2.1:runtime (selected for runtime)
+[DEBUG]     org.codehaus.plexus:plexus-utils:jar:1.1:runtime (selected for runtime)
+[DEBUG]     org.codehaus.plexus:plexus-archiver:jar:1.0-alpha-7:runtime (selected for runtime)
+[DEBUG]       org.codehaus.plexus:plexus-container-default:jar:1.0-alpha-8:runtime (selected for runtime)
+[DEBUG]         org.codehaus.plexus:plexus-utils:jar:1.0.4:runtime (removed - nearer found: 1.1)
+[DEBUG]         junit:junit:jar:3.8.1:runtime (selected for runtime)
+[DEBUG]         classworlds:classworlds:jar:1.1-alpha-2:runtime (selected for runtime)
+[DEBUG]       org.codehaus.plexus:plexus-utils:jar:1.2:runtime (removed - nearer found: 1.1)
+[DEBUG] Adding to surefire booter test classpath: C:\Documents and Settings\Admin\.m2\repository\org\apache\maven\surefire\surefire-booter\2.3.1\surefire-booter-2.3.1.jar
+[DEBUG] Adding to surefire booter test classpath: C:\Documents and Settings\Admin\.m2\repository\org\apache\maven\surefire\surefire-api\2.3.1\surefire-api-2.3.1.jar
+[DEBUG] Adding to surefire booter test classpath: C:\Documents and Settings\Admin\.m2\repository\org\codehaus\plexus\plexus-utils\1.1\plexus-utils-1.1.jar
+[DEBUG] Adding to surefire booter test classpath: C:\Documents and Settings\Admin\.m2\repository\commons-lang\commons-lang\2.1\commons-lang-2.1.jar
+[DEBUG] Adding to surefire booter test classpath: C:\Documents and Settings\Admin\.m2\repository\org\codehaus\plexus\plexus-archiver\1.0-alpha-7\plexus-archiver-1.0-alpha-7.jar
+[DEBUG] Adding to surefire booter test classpath: C:\Documents and Settings\Admin\.m2\repository\org\codehaus\plexus\plexus-container-default\1.0-alpha-8\plexus-container-default-1.0-alpha-8.jar
+[DEBUG] Adding to surefire booter test classpath: C:\Documents and Settings\Admin\.m2\repository\junit\junit\3.8.1\junit-3.8.1.jar
+[DEBUG] Adding to surefire booter test classpath: C:\Documents and Settings\Admin\.m2\repository\classworlds\classworlds\1.1-alpha-2\classworlds-1.1-alpha-2.jar
+[DEBUG] dummy:dummy:jar:1.0 (selected for null)
+[DEBUG] Retrieving parent-POM: org.apache.maven.surefire:surefire-providers::2.3.1 for project: null:surefire-junit4:jar:null from the repository.
+[DEBUG] Adding managed dependencies for unknown:surefire-junit4
+[DEBUG]   org.apache.maven.surefire:surefire-api:jar:2.3.1
+[DEBUG]   org.apache.maven.surefire:surefire-booter:jar:2.3.1
+[DEBUG]   org.apache.maven.surefire:surefire-junit4:jar:2.3.1:test (selected for test)
+[DEBUG]     org.apache.maven.surefire:surefire-api:jar:2.3.1:test (selected for test)
+[DEBUG]       org.codehaus.plexus:plexus-utils:jar:1.1:test (selected for test)
+[DEBUG]       commons-lang:commons-lang:jar:2.1:test (selected for test)
+[DEBUG]     junit:junit:jar:4.0:test (selected for test)
+[DEBUG] Adding to surefire test classpath: C:\Documents and Settings\Admin\.m2\repository\org\apache\maven\surefire\surefire-junit4\2.3.1\surefire-junit4-2.3.1.jar
+[DEBUG] Adding to surefire test classpath: C:\Documents and Settings\Admin\.m2\repository\org\apache\maven\surefire\surefire-api\2.3.1\surefire-api-2.3.1.jar
+[DEBUG] Adding to surefire test classpath: C:\Documents and Settings\Admin\.m2\repository\org\codehaus\plexus\plexus-utils\1.1\plexus-utils-1.1.jar
+[DEBUG] Adding to surefire test classpath: C:\Documents and Settings\Admin\.m2\repository\commons-lang\commons-lang\2.1\commons-lang-2.1.jar
+[DEBUG] Adding to surefire test classpath: C:\Documents and Settings\Admin\.m2\repository\junit\junit\4.0\junit-4.0.jar
+[DEBUG] Test Classpath :
+[DEBUG]   D:\testspace\TechDemo\target\test-classes
+[DEBUG]   D:\testspace\TechDemo\target\classes
+[DEBUG]   C:\Documents and Settings\Admin\.m2\repository\org\springframework\spring-core\2.5.6\spring-core-2.5.6.jar
+[DEBUG]   C:\Documents and Settings\Admin\.m2\repository\commons-logging\commons-logging\1.1.1\commons-logging-1.1.1.jar
+[DEBUG]   C:\Documents and Settings\Admin\.m2\repository\org\springframework\spring-context\2.5.6\spring-context-2.5.6.jar
+[DEBUG]   C:\Documents and Settings\Admin\.m2\repository\aopalliance\aopalliance\1.0\aopalliance-1.0.jar
+[DEBUG]   C:\Documents and Settings\Admin\.m2\repository\org\springframework\spring-beans\2.5.6\spring-beans-2.5.6.jar
+[DEBUG]   C:\Documents and Settings\Admin\.m2\repository\org\springframework\spring-aspects\2.5.6\spring-aspects-2.5.6.jar
+[DEBUG]   C:\Documents and Settings\Admin\.m2\repository\org\aspectj\aspectjrt\1.6.1\aspectjrt-1.6.1.jar
+[DEBUG]   C:\Documents and Settings\Admin\.m2\repository\org\aspectj\aspectjweaver\1.6.1\aspectjweaver-1.6.1.jar
+[DEBUG]   C:\Documents and Settings\Admin\.m2\repository\org\springframework\spring-aop\2.5.6\spring-aop-2.5.6.jar
+[DEBUG]   C:\Documents and Settings\Admin\.m2\repository\org\springframework\spring-tx\2.5.6\spring-tx-2.5.6.jar
+[DEBUG]   C:\Documents and Settings\Admin\.m2\repository\org\springframework\spring-hibernate3\2.0.8\spring-hibernate3-2.0.8.jar
+[DEBUG]   C:\Documents and Settings\Admin\.m2\repository\org\hibernate\hibernate\3.2.5.ga\hibernate-3.2.5.ga.jar
+[DEBUG]   C:\Documents and Settings\Admin\.m2\repository\net\sf\ehcache\ehcache\1.2.3\ehcache-1.2.3.jar
+[DEBUG]   C:\Documents and Settings\Admin\.m2\repository\commons-collections\commons-collections\2.1.1\commons-collections-2.1.1.jar
+[DEBUG]   C:\Documents and Settings\Admin\.m2\repository\javax\transaction\jta\1.0.1B\jta-1.0.1B.jar
+[DEBUG]   C:\Documents and Settings\Admin\.m2\repository\asm\asm-attrs\1.5.3\asm-attrs-1.5.3.jar
+[DEBUG]   C:\Documents and Settings\Admin\.m2\repository\dom4j\dom4j\1.6.1\dom4j-1.6.1.jar
+[DEBUG]   C:\Documents and Settings\Admin\.m2\repository\antlr\antlr\2.7.2\antlr-2.7.2.jar
+[DEBUG]   C:\Documents and Settings\Admin\.m2\repository\cglib\cglib\2.1_3\cglib-2.1_3.jar
+[DEBUG]   C:\Documents and Settings\Admin\.m2\repository\asm\asm\1.5.3\asm-1.5.3.jar
+[DEBUG]   C:\Documents and Settings\Admin\.m2\repository\org\springframework\spring-dao\2.0.8\spring-dao-2.0.8.jar
+[DEBUG]   C:\Documents and Settings\Admin\.m2\repository\org\springframework\spring-jdbc\2.0.8\spring-jdbc-2.0.8.jar
+[DEBUG]   C:\Documents and Settings\Admin\.m2\repository\org\springframework\spring-struts\2.0.8\spring-struts-2.0.8.jar
+[DEBUG]   C:\Documents and Settings\Admin\.m2\repository\commons-beanutils\commons-beanutils\1.7.0\commons-beanutils-1.7.0.jar
+[DEBUG]   C:\Documents and Settings\Admin\.m2\repository\struts\struts\1.2.9\struts-1.2.9.jar
+[DEBUG]   C:\Documents and Settings\Admin\.m2\repository\commons-digester\commons-digester\1.8\commons-digester-1.8.jar
+[DEBUG]   C:\Documents and Settings\Admin\.m2\repository\commons-fileupload\commons-fileupload\1.0\commons-fileupload-1.0.jar
+[DEBUG]   C:\Documents and Settings\Admin\.m2\repository\commons-validator\commons-validator\1.3.1\commons-validator-1.3.1.jar
+[DEBUG]   C:\Documents and Settings\Admin\.m2\repository\oro\oro\2.0.8\oro-2.0.8.jar
+[DEBUG]   C:\Documents and Settings\Admin\.m2\repository\xalan\xalan\2.5.1\xalan-2.5.1.jar
+[DEBUG]   C:\Documents and Settings\Admin\.m2\repository\org\springframework\spring-web\2.5.6\spring-web-2.5.6.jar
+[DEBUG]   C:\Documents and Settings\Admin\.m2\repository\org\apache\struts\struts-core\1.3.8\struts-core-1.3.8.jar
+[DEBUG]   C:\Documents and Settings\Admin\.m2\repository\commons-chain\commons-chain\1.1\commons-chain-1.1.jar
+[DEBUG]   C:\Documents and Settings\Admin\.m2\repository\org\apache\struts\struts-taglib\1.3.8\struts-taglib-1.3.8.jar
+[DEBUG]   C:\Documents and Settings\Admin\.m2\repository\org\mortbay\jetty\servlet-api-2.5\6.1.4\servlet-api-2.5-6.1.4.jar
+[DEBUG]   C:\Documents and Settings\Admin\.m2\repository\junit\junit\4.4\junit-4.4.jar
+[DEBUG]   C:\Documents and Settings\Admin\.m2\repository\hsqldb\hsqldb\1.8.0.7\hsqldb-1.8.0.7.jar
+[DEBUG]   C:\Documents and Settings\Admin\.m2\repository\taglibs\standard\1.1.2\standard-1.1.2.jar
+[DEBUG]   C:\Documents and Settings\Admin\.m2\repository\javax\servlet\jstl\1.1.2\jstl-1.1.2.jar
+[DEBUG] Setting system property [localRepository]=[C:\Documents and Settings\Admin\.m2\repository]
+[DEBUG] Setting system property [basedir]=[D:\testspace\TechDemo]
+[DEBUG] Using JVM: C:\Java\jdk1.6.0\jre\bin\java
+[INFO] Surefire report directory: D:\testspace\TechDemo\target\surefire-reports
+Forking command line: C:\Java\jdk1.6.0\jre\bin\java -classpath "C:\Documents and Settings\Admin\.m2\repository\org\apache\maven\surefire\surefire-booter\2.3.1\surefire-booter-2.3.1.jar;C:\Documents and Settings\Admin\.m2\repository\org\apache\maven\surefire\surefire-api\2.3.1\surefire-api-2.3.1.jar;C:\Documents and Settings\Admin\.m2\repository\org\codehaus\plexus\plexus-utils\1.1\plexus-utils-1.1.jar;C:\Documents and Settings\Admin\.m2\repository\commons-lang\commons-lang\2.1\commons-lang-2.1.jar;C:\Documents and Settings\Admin\.m2\repository\org\codehaus\plexus\plexus-archiver\1.0-alpha-7\plexus-archiver-1.0-alpha-7.jar;C:\Documents and Settings\Admin\.m2\repository\org\codehaus\plexus\plexus-container-default\1.0-alpha-8\plexus-container-default-1.0-alpha-8.jar;C:\Documents and Settings\Admin\.m2\repository\junit\junit\3.8.1\junit-3.8.1.jar;C:\Documents and Settings\Admin\.m2\repository\classworlds\classworlds\1.1-alpha-2\classworlds-1.1-alpha-2.jar" org.apache.maven.surefire.booter.SurefireBooter C:\DOCUME~1\Admin\LOCALS~1\Temp\surefire41431tmp C:\DOCUME~1\Admin\LOCALS~1\Temp\surefire41432tmp
+
+-------------------------------------------------------
+ T E S T S
+-------------------------------------------------------
+Running org.codehaus.mojo.selenium.SeleniumExampleTest
+Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.031 sec
+
+Results :
+
+Tests run: 1, Failures: 0, Errors: 0, Skipped: 0
+
+[DEBUG] bg.proxiad.demo:TechDemo:war:1.0-SNAPSHOT (selected for null)
+[DEBUG]   org.springframework:spring-core:jar:2.5.6:compile (selected for compile)
+[DEBUG]     commons-logging:commons-logging:jar:1.1.1:compile (selected for compile)
+[DEBUG]   org.springframework:spring-context:jar:2.5.6:compile (selected for compile)
+[DEBUG]     aopalliance:aopalliance:jar:1.0:compile (selected for compile)
+[DEBUG]     org.springframework:spring-beans:jar:2.5.6:compile (selected for compile)
+[DEBUG]   org.springframework:spring-aspects:jar:2.5.6:compile (selected for compile)
+[DEBUG]     org.aspectj:aspectjrt:jar:1.6.1:compile (selected for compile)
+[DEBUG]     org.aspectj:aspectjweaver:jar:1.6.1:compile (selected for compile)
+[DEBUG]   org.springframework:spring-aop:jar:2.5.6:compile (selected for compile)
+[DEBUG]   org.springframework:spring-tx:jar:2.5.6:compile (selected for compile)
+[DEBUG]   org.springframework:spring-hibernate3:jar:2.0.8:compile (selected for compile)
+[DEBUG]     commons-logging:commons-logging:jar:1.1:compile (removed - nearer found: 1.1.1)
+[DEBUG]     org.hibernate:hibernate:jar:3.2.5.ga:compile (selected for compile)
+[DEBUG]       net.sf.ehcache:ehcache:jar:1.2.3:compile (selected for compile)
+[DEBUG]         commons-logging:commons-logging:jar:1.0.4:compile (removed - nearer found: 1.1.1)
+[DEBUG]         commons-collections:commons-collections:jar:2.1:compile (selected for compile)
+[DEBUG]       javax.transaction:jta:jar:1.0.1B:compile (selected for compile)
+[DEBUG]       commons-logging:commons-logging:jar:1.0.4:compile (removed - nearer found: 1.1.1)
+[DEBUG]       asm:asm-attrs:jar:1.5.3:compile (selected for compile)
+[DEBUG]       dom4j:dom4j:jar:1.6.1:compile (selected for compile)
+[DEBUG]       antlr:antlr:jar:2.7.6:compile (selected for compile)
+[DEBUG]       cglib:cglib:jar:2.1_3:compile (selected for compile)
+[DEBUG]         asm:asm:jar:1.5.3:compile (selected for compile)
+[DEBUG]       asm:asm:jar:1.5.3:compile (selected for compile)
+[DEBUG]       commons-collections:commons-collections:jar:2.1:compile (removed - nearer found: 2.1.1)
+[DEBUG]       commons-collections:commons-collections:jar:2.1.1:compile (selected for compile)
+[DEBUG]     org.springframework:spring-beans:jar:2.0.8:compile (removed - nearer found: 2.5.6)
+[DEBUG]     org.springframework:spring-context:jar:2.0.8:compile (removed - nearer found: 2.5.6)
+[DEBUG]     org.springframework:spring-core:jar:2.0.8:compile (removed - nearer found: 2.5.6)
+[DEBUG]     org.springframework:spring-dao:jar:2.0.8:compile (selected for compile)
+[DEBUG]       commons-logging:commons-logging:jar:1.1:compile (removed - nearer found: 1.1.1)
+[DEBUG]       org.springframework:spring-beans:jar:2.0.8:compile (removed - nearer found: 2.5.6)
+[DEBUG]       org.springframework:spring-context:jar:2.0.8:compile (removed - nearer found: 2.5.6)
+[DEBUG]       org.springframework:spring-core:jar:2.0.8:compile (removed - nearer found: 2.5.6)
+[DEBUG]     org.springframework:spring-jdbc:jar:2.0.8:compile (selected for compile)
+[DEBUG]       commons-logging:commons-logging:jar:1.1:compile (removed - nearer found: 1.1.1)
+[DEBUG]       org.springframework:spring-beans:jar:2.0.8:compile (removed - nearer found: 2.5.6)
+[DEBUG]       org.springframework:spring-context:jar:2.0.8:compile (removed - nearer found: 2.5.6)
+[DEBUG]       org.springframework:spring-core:jar:2.0.8:compile (removed - nearer found: 2.5.6)
+[DEBUG]   org.springframework:spring-struts:jar:2.0.8:compile (selected for compile)
+[DEBUG]     commons-beanutils:commons-beanutils:jar:1.7.0:compile (selected for compile)
+[DEBUG]       commons-logging:commons-logging:jar:1.0.3:compile (removed - nearer found: 1.1.1)
+[DEBUG]     commons-logging:commons-logging:jar:1.1:compile (removed - nearer found: 1.1.1)
+[DEBUG]     struts:struts:jar:1.2.9:compile (selected for compile)
+[DEBUG]       commons-digester:commons-digester:jar:1.6:compile (selected for compile)
+[DEBUG]         commons-beanutils:commons-beanutils:jar:1.6:compile (removed - nearer found: 1.7.0)
+[DEBUG]         commons-logging:commons-logging:jar:1.0:compile (removed - nearer found: 1.1.1)
+[DEBUG]         commons-collections:commons-collections:jar:2.1:compile (removed - nearer found: 2.1.1)
+[DEBUG]         xml-apis:xml-apis:jar:1.0.b2:compile (selected for compile)
+[DEBUG]       commons-fileupload:commons-fileupload:jar:1.0:compile (selected for compile)
+[DEBUG]       commons-logging:commons-logging:jar:1.0.4:compile (removed - nearer found: 1.1.1)
+[DEBUG]       commons-validator:commons-validator:jar:1.1.4:compile (selected for compile)
+[DEBUG]       oro:oro:jar:2.0.7:compile (selected for compile)
+[DEBUG]       antlr:antlr:jar:2.7.2:compile (removed - nearer found: 2.7.6)
+[DEBUG]       xalan:xalan:jar:2.5.1:compile (selected for compile)
+[DEBUG]     org.springframework:spring-beans:jar:2.0.8:compile (removed - nearer found: 2.5.6)
+[DEBUG]     org.springframework:spring-context:jar:2.0.8:compile (removed - nearer found: 2.5.6)
+[DEBUG]     org.springframework:spring-core:jar:2.0.8:compile (removed - nearer found: 2.5.6)
+[DEBUG]     org.springframework:spring-web:jar:2.0.8:compile (selected for compile)
+[DEBUG]       commons-logging:commons-logging:jar:1.1:compile (removed - nearer found: 1.1.1)
+[DEBUG]       org.springframework:spring-beans:jar:2.0.8:compile (removed - nearer found: 2.5.6)
+[DEBUG]       org.springframework:spring-context:jar:2.0.8:compile (removed - nearer found: 2.5.6)
+[DEBUG]       org.springframework:spring-core:jar:2.0.8:compile (removed - nearer found: 2.5.6)
+[DEBUG]   org.springframework:spring-web:jar:2.0.8:compile (removed - nearer found: 2.5.6)
+[DEBUG]   org.springframework:spring-web:jar:2.5.6:compile (selected for compile)
+[DEBUG]   org.apache.struts:struts-core:jar:1.3.8:compile (selected for compile)
+[DEBUG]     antlr:antlr:jar:2.7.6:compile (removed - nearer found: 2.7.2)
+[DEBUG]     antlr:antlr:jar:2.7.2:compile (selected for compile)
+[DEBUG]     commons-chain:commons-chain:jar:1.1:compile (selected for compile)
+[DEBUG]       commons-logging:commons-logging:jar:1.0.3:compile (removed - nearer found: 1.1.1)
+[DEBUG]     commons-digester:commons-digester:jar:1.6:compile (removed - nearer found: 1.8)
+[DEBUG]     commons-digester:commons-digester:jar:1.8:compile (selected for compile)
+[DEBUG]       commons-logging:commons-logging:jar:1.1:compile (removed - nearer found: 1.1.1)
+[DEBUG]     commons-logging:commons-logging:jar:1.0.4:compile (removed - nearer found: 1.1.1)
+[DEBUG]     commons-validator:commons-validator:jar:1.1.4:compile (removed - nearer found: 1.3.1)
+[DEBUG]     commons-validator:commons-validator:jar:1.3.1:compile (selected for compile)
+[DEBUG]       commons-digester:commons-digester:jar:1.6:compile (removed - nearer found: 1.8)
+[DEBUG]       commons-logging:commons-logging:jar:1.0.4:compile (removed - nearer found: 1.1.1)
+[DEBUG]     oro:oro:jar:2.0.7:compile (removed - nearer found: 2.0.8)
+[DEBUG]     oro:oro:jar:2.0.8:compile (selected for compile)
+[DEBUG]   org.apache.struts:struts-taglib:jar:1.3.8:compile (selected for compile)
+[DEBUG]   commons-validator:commons-validator:jar:1.3.1:compile (selected for compile)
+[DEBUG]     commons-digester:commons-digester:jar:1.6:compile (removed - nearer found: 1.8)
+[DEBUG]     commons-logging:commons-logging:jar:1.0.4:compile (removed - nearer found: 1.1.1)
+[DEBUG]   org.mortbay.jetty:servlet-api-2.5:jar:6.1.4:provided (selected for provided)
+[DEBUG]   junit:junit:jar:4.4:test (selected for test)
+[DEBUG]   hsqldb:hsqldb:jar:1.8.0.7:compile (selected for compile)
+[DEBUG]   org.hibernate:hibernate:jar:3.2.5.ga:compile (selected for compile)
+[DEBUG]     net.sf.ehcache:ehcache:jar:1.2.3:compile (selected for compile)
+[DEBUG]       commons-logging:commons-logging:jar:1.0.4:compile (removed - nearer found: 1.1.1)
+[DEBUG]       commons-collections:commons-collections:jar:2.1:compile (selected for compile)
+[DEBUG]     javax.transaction:jta:jar:1.0.1B:compile (selected for compile)
+[DEBUG]     commons-logging:commons-logging:jar:1.0.4:compile (removed - nearer found: 1.1.1)
+[DEBUG]     asm:asm-attrs:jar:1.5.3:compile (selected for compile)
+[DEBUG]     dom4j:dom4j:jar:1.6.1:compile (selected for compile)
+[DEBUG]     antlr:antlr:jar:2.7.6:compile (removed - nearer found: 2.7.2)
+[DEBUG]     cglib:cglib:jar:2.1_3:compile (selected for compile)
+[DEBUG]       asm:asm:jar:1.5.3:compile (selected for compile)
+[DEBUG]     asm:asm:jar:1.5.3:compile (selected for compile)
+[DEBUG]     commons-collections:commons-collections:jar:2.1:compile (removed - nearer found: 2.1.1)
+[DEBUG]     commons-collections:commons-collections:jar:2.1.1:compile (selected for compile)
+[DEBUG]   taglibs:standard:jar:1.1.2:compile (selected for compile)
+[DEBUG]   javax.servlet:jstl:jar:1.1.2:compile (selected for compile)
+[DEBUG] org.apache.maven.plugins:maven-war-plugin:maven-plugin:2.1-alpha-1:runtime (selected for runtime)
+[DEBUG] Retrieving parent-POM: org.apache.maven:maven::2.0.6 for project: null:maven-artifact:jar:null from the repository.
+[DEBUG] Adding managed dependencies for unknown:maven-artifact
+[DEBUG]   org.apache.maven:maven-model:jar:2.0.6
+[DEBUG]   org.apache.maven:maven-project:jar:2.0.6
+[DEBUG]   org.apache.maven.reporting:maven-reporting-api:jar:2.0.6
+[DEBUG]   org.apache.maven:maven-repository-metadata:jar:2.0.6
+[DEBUG]   org.apache.maven:maven-artifact:jar:2.0.6
+[DEBUG]   org.apache.maven:maven-artifact-manager:jar:2.0.6
+[DEBUG]   org.apache.maven:maven-artifact-test:jar:2.0.6
+[DEBUG]   org.apache.maven:maven-settings:jar:2.0.6
+[DEBUG]   org.apache.maven:maven-plugin-parameter-documenter:jar:2.0.6
+[DEBUG]   org.apache.maven:maven-profile:jar:2.0.6
+[DEBUG]   org.apache.maven:maven-plugin-registry:jar:2.0.6
+[DEBUG]   org.apache.maven:maven-plugin-api:jar:2.0.6
+[DEBUG]   org.apache.maven:maven-monitor:jar:2.0.6
+[DEBUG]   org.codehaus.plexus:plexus-container-default:jar:1.0-alpha-9-stable-1
+[DEBUG]   org.codehaus.plexus:plexus-utils:jar:1.4.1
+[DEBUG]   org.apache.maven.wagon:wagon-provider-api:jar:1.0-beta-2
+[DEBUG]   org.apache.maven.wagon:wagon-ssh:jar:1.0-beta-2
+[DEBUG]   org.apache.maven.wagon:wagon-ssh-external:jar:1.0-beta-2
+[DEBUG]   org.apache.maven.wagon:wagon-file:jar:1.0-beta-2
+[DEBUG]   org.apache.maven.wagon:wagon-http-lightweight:jar:1.0-beta-2
+[DEBUG]   easymock:easymock:jar:1.2_Java1.3:test
+[DEBUG]   classworlds:classworlds:jar:1.1
+[DEBUG]   org.apache.maven:maven-artifact:jar:2.0.6:runtime (selected for runtime)
+[DEBUG] Retrieving parent-POM: org.codehaus.plexus:plexus::1.0.11 for project: null:plexus-utils:jar:1.4.1 from the repository.
+[DEBUG]     org.codehaus.plexus:plexus-utils:jar:1.4.1:runtime (selected for runtime)
+[DEBUG] Retrieving parent-POM: org.apache.maven.shared:maven-shared-components::3 for project: org.apache.maven:maven-archiver:jar:2.2 from the repository.
+[DEBUG] Retrieving parent-POM: org.apache.maven:maven-parent::4 for project: org.apache.maven.shared:maven-shared-components:pom:3 from the repository.
+[DEBUG]   org.apache.maven:maven-archiver:jar:2.2:runtime (selected for runtime)
+[DEBUG]     org.apache.maven:maven-project:jar:2.0:runtime (selected for runtime)
+[DEBUG]       org.apache.maven:maven-profile:jar:2.0:runtime (selected for runtime)
+[DEBUG]         org.apache.maven:maven-model:jar:2.0:runtime (selected for runtime)
+[DEBUG]           org.codehaus.plexus:plexus-utils:jar:1.0.4:runtime (removed - nearer found: 1.4.1)
+[DEBUG]         org.codehaus.plexus:plexus-utils:jar:1.0.4:runtime (removed - nearer found: 1.4.1)
+[DEBUG]         org.codehaus.plexus:plexus-container-default:jar:1.0-alpha-8:runtime (selected for runtime)
+[DEBUG]           org.codehaus.plexus:plexus-utils:jar:1.0.4:runtime (removed - nearer found: 1.4.1)
+[DEBUG]           junit:junit:jar:3.8.1:runtime (selected for runtime)
+[DEBUG]           classworlds:classworlds:jar:1.1-alpha-2:runtime (selected for runtime)
+[DEBUG]       org.apache.maven:maven-model:jar:2.0:runtime (selected for runtime)
+[DEBUG]         org.codehaus.plexus:plexus-utils:jar:1.0.4:runtime (removed - nearer found: 1.4.1)
+[DEBUG]       org.apache.maven:maven-artifact-manager:jar:2.0:runtime (selected for runtime)
+[DEBUG]         org.apache.maven:maven-repository-metadata:jar:2.0:runtime (selected for runtime)
+[DEBUG]           org.codehaus.plexus:plexus-utils:jar:1.0.4:runtime (removed - nearer found: 1.4.1)
+[DEBUG]         org.codehaus.plexus:plexus-utils:jar:1.0.4:runtime (removed - nearer found: 1.4.1)
+[DEBUG]         org.apache.maven:maven-artifact:jar:2.0:runtime (removed - nearer found: 2.0.6)
+[DEBUG]         org.apache.maven.wagon:wagon-provider-api:jar:1.0-alpha-5:runtime (selected for runtime)
+[DEBUG]           org.codehaus.plexus:plexus-utils:jar:1.0.4:runtime (removed - nearer found: 1.4.1)
+[DEBUG]       org.codehaus.plexus:plexus-utils:jar:1.0.4:runtime (removed - nearer found: 1.4.1)
+[DEBUG]       org.apache.maven:maven-artifact:jar:2.0:runtime (removed - nearer found: 2.0.6)
+[DEBUG]       org.codehaus.plexus:plexus-container-default:jar:1.0-alpha-8:runtime (selected for runtime)
+[DEBUG]         org.codehaus.plexus:plexus-utils:jar:1.0.4:runtime (removed - nearer found: 1.4.1)
+[DEBUG]         junit:junit:jar:3.8.1:runtime (selected for runtime)
+[DEBUG]         classworlds:classworlds:jar:1.1-alpha-2:runtime (selected for runtime)
+[DEBUG]     org.codehaus.plexus:plexus-archiver:jar:1.0-alpha-7:runtime (selected for runtime)
+[DEBUG]       org.codehaus.plexus:plexus-utils:jar:1.2:runtime (removed - nearer found: 1.4.1)
+[DEBUG]     org.apache.maven:maven-artifact:jar:2.0:runtime (removed - nearer found: 2.0.6)
+[DEBUG]   org.codehaus.plexus:plexus-utils:jar:1.4.1:runtime (removed - nearer found: 1.4.7)
+[DEBUG]   org.codehaus.plexus:plexus-utils:jar:1.4.7:runtime (selected for runtime)
+[DEBUG] Adding managed dependencies for unknown:maven-plugin-api
+[DEBUG]   org.apache.maven:maven-model:jar:2.0.6
+[DEBUG]   org.apache.maven:maven-project:jar:2.0.6
+[DEBUG]   org.apache.maven.reporting:maven-reporting-api:jar:2.0.6
+[DEBUG]   org.apache.maven:maven-repository-metadata:jar:2.0.6
+[DEBUG]   org.apache.maven:maven-artifact:jar:2.0.6
+[DEBUG]   org.apache.maven:maven-artifact-manager:jar:2.0.6
+[DEBUG]   org.apache.maven:maven-artifact-test:jar:2.0.6
+[DEBUG]   org.apache.maven:maven-settings:jar:2.0.6
+[DEBUG]   org.apache.maven:maven-plugin-parameter-documenter:jar:2.0.6
+[DEBUG]   org.apache.maven:maven-profile:jar:2.0.6
+[DEBUG]   org.apache.maven:maven-plugin-registry:jar:2.0.6
+[DEBUG]   org.apache.maven:maven-plugin-api:jar:2.0.6
+[DEBUG]   org.apache.maven:maven-monitor:jar:2.0.6
+[DEBUG]   org.codehaus.plexus:plexus-container-default:jar:1.0-alpha-9-stable-1
+[DEBUG]   org.codehaus.plexus:plexus-utils:jar:1.4.1
+[DEBUG]   org.apache.maven.wagon:wagon-provider-api:jar:1.0-beta-2
+[DEBUG]   org.apache.maven.wagon:wagon-ssh:jar:1.0-beta-2
+[DEBUG]   org.apache.maven.wagon:wagon-ssh-external:jar:1.0-beta-2
+[DEBUG]   org.apache.maven.wagon:wagon-file:jar:1.0-beta-2
+[DEBUG]   org.apache.maven.wagon:wagon-http-lightweight:jar:1.0-beta-2
+[DEBUG]   easymock:easymock:jar:1.2_Java1.3:test
+[DEBUG]   classworlds:classworlds:jar:1.1
+[DEBUG]   org.apache.maven:maven-plugin-api:jar:2.0.6:runtime (selected for runtime)
+[DEBUG] Retrieving parent-POM: com.thoughtworks.xstream:xstream-parent::1.2.2 for project: null:xstream:jar:null from the repository.
+[DEBUG] Adding managed dependencies for unknown:xstream
+[DEBUG]   commons-io:commons-io:jar:1.3
+[DEBUG]   commons-lang:commons-lang:jar:2.1
+[DEBUG]   cglib:cglib-nodep:jar:2.1_3
+[DEBUG]   dom4j:dom4j:jar:1.6.1
+[DEBUG]   jdom:jdom:jar:1.0
+[DEBUG]   joda-time:joda-time:jar:1.2.1
+[DEBUG]   com.megginson.sax:xml-writer:jar:0.2
+[DEBUG]   stax:stax:jar:1.2.0
+[DEBUG]   stax:stax-api:jar:1.0.1
+[DEBUG]   org.codehaus.woodstox:wstx-asl:jar:3.2.0
+[DEBUG]   xom:xom:jar:1.1
+[DEBUG]   xpp3:xpp3_min:jar:1.1.3.4.O
+[DEBUG]   oro:oro:jar:2.0.8
+[DEBUG]   org.codehaus.jettison:jettison:jar:1.0-RC1
+[DEBUG]   junit:junit:jar:3.8.1:test
+[DEBUG]   jmock:jmock:jar:1.0.1:test
+[DEBUG]   com.thoughtworks.xstream:xstream:jar:1.2.2:runtime (selected for runtime)
+[DEBUG]     xpp3:xpp3_min:jar:1.1.3.4.O:runtime (selected for runtime)
+[DEBUG] Configuring mojo 'org.apache.maven.plugins:maven-war-plugin:2.1-alpha-1:war' -->
+[DEBUG]   (s) archiveClasses = false
+[DEBUG]   (s) cacheFile = D:\testspace\TechDemo\target\war\work\webapp-cache.xml
+[DEBUG]   (s) classesDirectory = D:\testspace\TechDemo\target\classes
+[DEBUG]   (s) filters = []
+[DEBUG]   (f) outputDirectory = D:\testspace\TechDemo\target
+[DEBUG]   (f) primaryArtifact = true
+[DEBUG]   (s) project = MavenProject: bg.proxiad.demo:TechDemo:1.0-SNAPSHOT @ D:\testspace\TechDemo\pom.xml
+[DEBUG]   (s) useCache = true
+[DEBUG]   (f) warName = TechDemo
+[DEBUG]   (s) warSourceDirectory = D:\testspace\TechDemo\src\main\webapp
+[DEBUG]   (s) webappDirectory = D:\testspace\TechDemo\target\TechDemo
+[DEBUG]   (s) workDirectory = D:\testspace\TechDemo\target\war\work
+[DEBUG] -- end configuration --
+[INFO] [war:war]
+[INFO] Packaging webapp
+[INFO] Assembling webapp[TechDemo] in [D:\testspace\TechDemo\target\TechDemo]
+[INFO] Processing war project
+[DEBUG]  * AddMember.jsp is up to date.
+[DEBUG]  * css/demo.css is up to date.
+[DEBUG]  * css/SyntaxHighlighter.css is up to date.
+[DEBUG]  * css/tabs.css is up to date.
+[DEBUG]  * flash/clipboard.swf is up to date.
+[DEBUG]  * images/16x16/blue.gif is up to date.
+[DEBUG]  * images/16x16/blue_anime.gif is up to date.
+[DEBUG]  * images/16x16/clock.gif is up to date.
+[DEBUG]  * images/16x16/computer-x.gif is up to date.
+[DEBUG]  * images/16x16/computer.gif is up to date.
+[DEBUG]  * images/16x16/document_add.gif is up to date.
+[DEBUG]  * images/16x16/document_delete.gif is up to date.
+[DEBUG]  * images/16x16/document_edit.gif is up to date.
+[DEBUG]  * images/16x16/edit-delete.gif is up to date.
+[DEBUG]  * images/16x16/empty.gif is up to date.
+[DEBUG]  * images/16x16/error.gif is up to date.
+[DEBUG]  * images/16x16/fingerprint.gif is up to date.
+[DEBUG]  * images/16x16/folder-open.gif is up to date.
+[DEBUG]  * images/16x16/folder.gif is up to date.
+[DEBUG]  * images/16x16/go-next.gif is up to date.
+[DEBUG]  * images/16x16/grey.gif is up to date.
+[DEBUG]  * images/16x16/grey_anime.gif is up to date.
+[DEBUG]  * images/16x16/health-00to19.gif is up to date.
+[DEBUG]  * images/16x16/health-20to39.gif is up to date.
+[DEBUG]  * images/16x16/health-40to59.gif is up to date.
+[DEBUG]  * images/16x16/health-60to79.gif is up to date.
+[DEBUG]  * images/16x16/health-80plus.gif is up to date.
+[DEBUG]  * images/16x16/help.gif is up to date.
+[DEBUG]  * images/16x16/help.png is up to date.
+[DEBUG]  * images/16x16/lock.gif is up to date.
+[DEBUG]  * images/16x16/notepad.gif is up to date.
+[DEBUG]  * images/16x16/package.gif is up to date.
+[DEBUG]  * images/16x16/red.gif is up to date.
+[DEBUG]  * images/16x16/red_anime.gif is up to date.
+[DEBUG]  * images/16x16/search.gif is up to date.
+[DEBUG]  * images/16x16/star-gold.gif is up to date.
+[DEBUG]  * images/16x16/star.gif is up to date.
+[DEBUG]  * images/16x16/stop.gif is up to date.
+[DEBUG]  * images/16x16/terminal.gif is up to date.
+[DEBUG]  * images/16x16/text.gif is up to date.
+[DEBUG]  * images/16x16/warning.gif is up to date.
+[DEBUG]  * images/16x16/yellow.gif is up to date.
+[DEBUG]  * images/16x16/yellow_anime.gif is up to date.
+[DEBUG]  * images/24x24/blue.gif is up to date.
+[DEBUG]  * images/24x24/blue_anime.gif is up to date.
+[DEBUG]  * images/24x24/clipboard.gif is up to date.
+[DEBUG]  * images/24x24/clock.gif is up to date.
+[DEBUG]  * images/24x24/computer-x.gif is up to date.
+[DEBUG]  * images/24x24/computer.gif is up to date.
+[DEBUG]  * images/24x24/delete-document.gif is up to date.
+[DEBUG]  * images/24x24/document.gif is up to date.
+[DEBUG]  * images/24x24/edit-delete.gif is up to date.
+[DEBUG]  * images/24x24/empty.gif is up to date.
+[DEBUG]  * images/24x24/fingerprint.gif is up to date.
+[DEBUG]  * images/24x24/folder.gif is up to date.
+[DEBUG]  * images/24x24/gear.gif is up to date.
+[DEBUG]  * images/24x24/gear2.gif is up to date.
+[DEBUG]  * images/24x24/graph.gif is up to date.
+[DEBUG]  * images/24x24/grey.gif is up to date.
+[DEBUG]  * images/24x24/grey_anime.gif is up to date.
+[DEBUG]  * images/24x24/health-00to19.gif is up to date.
+[DEBUG]  * images/24x24/health-20to39.gif is up to date.
+[DEBUG]  * images/24x24/health-40to59.gif is up to date.
+[DEBUG]  * images/24x24/health-60to79.gif is up to date.
+[DEBUG]  * images/24x24/health-80plus.gif is up to date.
+[DEBUG]  * images/24x24/help.gif is up to date.
+[DEBUG]  * images/24x24/new-document.gif is up to date.
+[DEBUG]  * images/24x24/new-package.gif is up to date.
+[DEBUG]  * images/24x24/next.gif is up to date.
+[DEBUG]  * images/24x24/notepad.gif is up to date.
+[DEBUG]  * images/24x24/orange-square.gif is up to date.
+[DEBUG]  * images/24x24/package.gif is up to date.
+[DEBUG]  * images/24x24/previous.gif is up to date.
+[DEBUG]  * images/24x24/red.gif is up to date.
+[DEBUG]  * images/24x24/red_anime.gif is up to date.
+[DEBUG]  * images/24x24/refresh.gif is up to date.
+[DEBUG]  * images/24x24/save.gif is up to date.
+[DEBUG]  * images/24x24/search.gif is up to date.
+[DEBUG]  * images/24x24/setting.gif is up to date.
+[DEBUG]  * images/24x24/star-gold.gif is up to date.
+[DEBUG]  * images/24x24/star.gif is up to date.
+[DEBUG]  * images/24x24/terminal.gif is up to date.
+[DEBUG]  * images/24x24/up.gif is up to date.
+[DEBUG]  * images/24x24/user.gif is up to date.
+[DEBUG]  * images/24x24/yellow.gif is up to date.
+[DEBUG]  * images/24x24/yellow_anime.gif is up to date.
+[DEBUG]  * images/32x32/blue.gif is up to date.
+[DEBUG]  * images/32x32/blue_anime.gif is up to date.
+[DEBUG]  * images/32x32/clock.gif is up to date.
+[DEBUG]  * images/32x32/computer-x.gif is up to date.
+[DEBUG]  * images/32x32/computer.gif is up to date.
+[DEBUG]  * images/32x32/empty.gif is up to date.
+[DEBUG]  * images/32x32/error.gif is up to date.
+[DEBUG]  * images/32x32/graph.gif is up to date.
+[DEBUG]  * images/32x32/grey.gif is up to date.
+[DEBUG]  * images/32x32/grey_anime.gif is up to date.
+[DEBUG]  * images/32x32/health-00to19.gif is up to date.
+[DEBUG]  * images/32x32/health-20to39.gif is up to date.
+[DEBUG]  * images/32x32/health-40to59.gif is up to date.
+[DEBUG]  * images/32x32/health-60to79.gif is up to date.
+[DEBUG]  * images/32x32/health-80plus.gif is up to date.
+[DEBUG]  * images/32x32/red.gif is up to date.
+[DEBUG]  * images/32x32/red_anime.gif is up to date.
+[DEBUG]  * images/32x32/star-gold.gif is up to date.
+[DEBUG]  * images/32x32/star.gif is up to date.
+[DEBUG]  * images/32x32/user.gif is up to date.
+[DEBUG]  * images/32x32/yellow.gif is up to date.
+[DEBUG]  * images/32x32/yellow_anime.gif is up to date.
+[DEBUG]  * images/48x48/blue.gif is up to date.
+[DEBUG]  * images/48x48/blue_anime.gif is up to date.
+[DEBUG]  * images/48x48/clipboard.gif is up to date.
+[DEBUG]  * images/48x48/computer-x.gif is up to date.
+[DEBUG]  * images/48x48/computer.gif is up to date.
+[DEBUG]  * images/48x48/empty.gif is up to date.
+[DEBUG]  * images/48x48/error.gif is up to date.
+[DEBUG]  * images/48x48/fingerprint.gif is up to date.
+[DEBUG]  * images/48x48/folder.gif is up to date.
+[DEBUG]  * images/48x48/gear2.gif is up to date.
+[DEBUG]  * images/48x48/graph.gif is up to date.
+[DEBUG]  * images/48x48/grey.gif is up to date.
+[DEBUG]  * images/48x48/grey_anime.gif is up to date.
+[DEBUG]  * images/48x48/health-00to19.gif is up to date.
+[DEBUG]  * images/48x48/health-20to39.gif is up to date.
+[DEBUG]  * images/48x48/health-40to59.gif is up to date.
+[DEBUG]  * images/48x48/health-60to79.gif is up to date.
+[DEBUG]  * images/48x48/health-80plus.gif is up to date.
+[DEBUG]  * images/48x48/help.gif is up to date.
+[DEBUG]  * images/48x48/network.gif is up to date.
+[DEBUG]  * images/48x48/notepad.gif is up to date.
+[DEBUG]  * images/48x48/orange-square.gif is up to date.
+[DEBUG]  * images/48x48/package.gif is up to date.
+[DEBUG]  * images/48x48/red.gif is up to date.
+[DEBUG]  * images/48x48/red_anime.gif is up to date.
+[DEBUG]  * images/48x48/refresh.gif is up to date.
+[DEBUG]  * images/48x48/search.gif is up to date.
+[DEBUG]  * images/48x48/secure.gif is up to date.
+[DEBUG]  * images/48x48/setting.gif is up to date.
+[DEBUG]  * images/48x48/star-gold.gif is up to date.
+[DEBUG]  * images/48x48/star.gif is up to date.
+[DEBUG]  * images/48x48/system-log-out.gif is up to date.
+[DEBUG]  * images/48x48/user.gif is up to date.
+[DEBUG]  * images/48x48/yellow.gif is up to date.
+[DEBUG]  * images/48x48/yellow_anime.gif is up to date.
+[DEBUG]  * images/atom-license.txt is up to date.
+[DEBUG]  * images/atom.gif is up to date.
+[DEBUG]  * images/headless.png is up to date.
+[DEBUG]  * images/hudson.png is up to date.
+[DEBUG]  * images/hudson.xcf is up to date.
+[DEBUG]  * images/none.gif is up to date.
+[DEBUG]  * images/progress-unknown.gif is up to date.
+[DEBUG]  * images/spinner.gif is up to date.
+[DEBUG]  * images/TangoProject-License.url is up to date.
+[DEBUG]  * images/textarea-handle.gif is up to date.
+[DEBUG]  * images/title.png is up to date.
+[DEBUG]  * images/title.svg is up to date.
+[DEBUG]  * images/title.xcf is up to date.
+[DEBUG]  * images/topbar.png is up to date.
+[DEBUG]  * images/webstart.gif is up to date.
+[DEBUG]  * index.html is up to date.
+[DEBUG]  * js/behaviour.js is up to date.
+[DEBUG]  * js/combobox.js is up to date.
+[DEBUG]  * js/demo.js is up to date.
+[DEBUG]  * js/prototype.js is up to date.
+[DEBUG]  * js/shBrushCpp.js is up to date.
+[DEBUG]  * js/shBrushCSharp.js is up to date.
+[DEBUG]  * js/shBrushCss.js is up to date.
+[DEBUG]  * js/shBrushDelphi.js is up to date.
+[DEBUG]  * js/shBrushJava.js is up to date.
+[DEBUG]  * js/shBrushJScript.js is up to date.
+[DEBUG]  * js/shBrushPhp.js is up to date.
+[DEBUG]  * js/shBrushPython.js is up to date.
+[DEBUG]  * js/shBrushRuby.js is up to date.
+[DEBUG]  * js/shBrushSql.js is up to date.
+[DEBUG]  * js/shBrushVb.js is up to date.
+[DEBUG]  * js/shBrushXml.js is up to date.
+[DEBUG]  * js/shCore.js is up to date.
+[DEBUG]  * js/sortable.js is up to date.
+[DEBUG]  * js/utilities.js is up to date.
+[DEBUG]  * js/yui/animation/animation-debug.js is up to date.
+[DEBUG]  * js/yui/animation/animation-min.js is up to date.
+[DEBUG]  * js/yui/assets/skins/sam/autocomplete.css is up to date.
+[DEBUG]  * js/yui/assets/skins/sam/blankimage.png is up to date.
+[DEBUG]  * js/yui/assets/skins/sam/button.css is up to date.
+[DEBUG]  * js/yui/assets/skins/sam/calendar.css is up to date.
+[DEBUG]  * js/yui/assets/skins/sam/colorpicker.css is up to date.
+[DEBUG]  * js/yui/assets/skins/sam/container.css is up to date.
+[DEBUG]  * js/yui/assets/skins/sam/datatable.css is up to date.
+[DEBUG]  * js/yui/assets/skins/sam/dt-arrow-dn.png is up to date.
+[DEBUG]  * js/yui/assets/skins/sam/dt-arrow-up.png is up to date.
+[DEBUG]  * js/yui/assets/skins/sam/editor-knob.gif is up to date.
+[DEBUG]  * js/yui/assets/skins/sam/editor-sprite-active.gif is up to date.
+[DEBUG]  * js/yui/assets/skins/sam/editor-sprite.gif is up to date.
+[DEBUG]  * js/yui/assets/skins/sam/editor.css is up to date.
+[DEBUG]  * js/yui/assets/skins/sam/hue_bg.png is up to date.
+[DEBUG]  * js/yui/assets/skins/sam/logger.css is up to date.
+[DEBUG]  * js/yui/assets/skins/sam/menu-button-arrow-disabled.png is up to date.
+[DEBUG]  * js/yui/assets/skins/sam/menu-button-arrow.png is up to date.
+[DEBUG]  * js/yui/assets/skins/sam/menu.css is up to date.
+[DEBUG]  * js/yui/assets/skins/sam/picker_mask.png is up to date.
+[DEBUG]  * js/yui/assets/skins/sam/skin.css is up to date.
+[DEBUG]  * js/yui/assets/skins/sam/split-button-arrow-active.png is up to date.
+[DEBUG]  * js/yui/assets/skins/sam/split-button-arrow-disabled.png is up to date.
+[DEBUG]  * js/yui/assets/skins/sam/split-button-arrow-focus.png is up to date.
+[DEBUG]  * js/yui/assets/skins/sam/split-button-arrow-hover.png is up to date.
+[DEBUG]  * js/yui/assets/skins/sam/split-button-arrow.png is up to date.
+[DEBUG]  * js/yui/assets/skins/sam/sprite.png is up to date.
+[DEBUG]  * js/yui/assets/skins/sam/tabview.css is up to date.
+[DEBUG]  * js/yui/assets/skins/sam/treeview-loading.gif is up to date.
+[DEBUG]  * js/yui/assets/skins/sam/treeview-sprite.gif is up to date.
+[DEBUG]  * js/yui/assets/skins/sam/treeview.css is up to date.
+[DEBUG]  * js/yui/assets/skins/sam/yuitest.css is up to date.
+[DEBUG]  * js/yui/autocomplete/assets/autocomplete-core.css is up to date.
+[DEBUG]  * js/yui/autocomplete/assets/skins/sam/autocomplete-skin.css is up to date.
+[DEBUG]  * js/yui/autocomplete/assets/skins/sam/autocomplete.css is up to date.
+[DEBUG]  * js/yui/autocomplete/autocomplete-debug.js is up to date.
+[DEBUG]  * js/yui/autocomplete/autocomplete-min.js is up to date.
+[DEBUG]  * js/yui/base/base-min.css is up to date.
+[DEBUG]  * js/yui/base/base.css is up to date.
+[DEBUG]  * js/yui/button/assets/button-core.css is up to date.
+[DEBUG]  * js/yui/button/assets/skins/sam/button-skin.css is up to date.
+[DEBUG]  * js/yui/button/assets/skins/sam/button.css is up to date.
+[DEBUG]  * js/yui/button/assets/skins/sam/menu-button-arrow-disabled.png is up to date.
+[DEBUG]  * js/yui/button/assets/skins/sam/menu-button-arrow.png is up to date.
+[DEBUG]  * js/yui/button/assets/skins/sam/split-button-arrow-active.png is up to date.
+[DEBUG]  * js/yui/button/assets/skins/sam/split-button-arrow-disabled.png is up to date.
+[DEBUG]  * js/yui/button/assets/skins/sam/split-button-arrow-focus.png is up to date.
+[DEBUG]  * js/yui/button/assets/skins/sam/split-button-arrow-hover.png is up to date.
+[DEBUG]  * js/yui/button/assets/skins/sam/split-button-arrow.png is up to date.
+[DEBUG]  * js/yui/button/button-beta-debug.js is up to date.
+[DEBUG]  * js/yui/button/button-beta-min.js is up to date.
+[DEBUG]  * js/yui/connection/connection-debug.js is up to date.
+[DEBUG]  * js/yui/connection/connection-min.js is up to date.
+[DEBUG]  * js/yui/container/assets/alrt16_1.gif is up to date.
+[DEBUG]  * js/yui/container/assets/blck16_1.gif is up to date.
+[DEBUG]  * js/yui/container/assets/close12_1.gif is up to date.
+[DEBUG]  * js/yui/container/assets/container-core.css is up to date.
+[DEBUG]  * js/yui/container/assets/container.css is up to date.
+[DEBUG]  * js/yui/container/assets/hlp16_1.gif is up to date.
+[DEBUG]  * js/yui/container/assets/info16_1.gif is up to date.
+[DEBUG]  * js/yui/container/assets/skins/sam/container-skin.css is up to date.
+[DEBUG]  * js/yui/container/assets/skins/sam/container.css is up to date.
+[DEBUG]  * js/yui/container/assets/tip16_1.gif is up to date.
+[DEBUG]  * js/yui/container/assets/warn16_1.gif is up to date.
+[DEBUG]  * js/yui/container/container-debug.js is up to date.
+[DEBUG]  * js/yui/container/container-min.js is up to date.
+[DEBUG]  * js/yui/container/container_core-debug.js is up to date.
+[DEBUG]  * js/yui/container/container_core-min.js is up to date.
+[DEBUG]  * js/yui/cutdown.sh is up to date.
+[DEBUG]  * js/yui/dom/dom-debug.js is up to date.
+[DEBUG]  * js/yui/dom/dom-min.js is up to date.
+[DEBUG]  * js/yui/element/element-beta-debug.js is up to date.
+[DEBUG]  * js/yui/element/element-beta-min.js is up to date.
+[DEBUG]  * js/yui/event/event-debug.js is up to date.
+[DEBUG]  * js/yui/event/event-min.js is up to date.
+[DEBUG]  * js/yui/fonts/fonts-min.css is up to date.
+[DEBUG]  * js/yui/fonts/fonts.css is up to date.
+[DEBUG]  * js/yui/logger/assets/logger-core.css is up to date.
+[DEBUG]  * js/yui/logger/assets/logger.css is up to date.
+[DEBUG]  * js/yui/logger/assets/skins/sam/logger-skin.css is up to date.
+[DEBUG]  * js/yui/logger/assets/skins/sam/logger.css is up to date.
+[DEBUG]  * js/yui/logger/logger-debug.js is up to date.
+[DEBUG]  * js/yui/logger/logger-min.js is up to date.
+[DEBUG]  * js/yui/menu/assets/map.gif is up to date.
+[DEBUG]  * js/yui/menu/assets/menu-core.css is up to date.
+[DEBUG]  * js/yui/menu/assets/menu.css is up to date.
+[DEBUG]  * js/yui/menu/assets/skins/sam/menu-skin.css is up to date.
+[DEBUG]  * js/yui/menu/assets/skins/sam/menu.css is up to date.
+[DEBUG]  * js/yui/menu/menu-debug.js is up to date.
+[DEBUG]  * js/yui/menu/menu-min.js is up to date.
+[DEBUG]  * js/yui/tabview/assets/border_tabs.css is up to date.
+[DEBUG]  * js/yui/tabview/assets/loading.gif is up to date.
+[DEBUG]  * js/yui/tabview/assets/skin-sam.css is up to date.
+[DEBUG]  * js/yui/tabview/assets/skins/sam/tabview-skin.css is up to date.
+[DEBUG]  * js/yui/tabview/assets/skins/sam/tabview.css is up to date.
+[DEBUG]  * js/yui/tabview/assets/tabview-core.css is up to date.
+[DEBUG]  * js/yui/tabview/assets/tabview.css is up to date.
+[DEBUG]  * js/yui/tabview/tabview-debug.js is up to date.
+[DEBUG]  * js/yui/tabview/tabview-min.js is up to date.
+[DEBUG]  * js/yui/treeview/assets/skins/sam/treeview-loading.gif is up to date.
+[DEBUG]  * js/yui/treeview/assets/skins/sam/treeview-skin.css is up to date.
+[DEBUG]  * js/yui/treeview/assets/skins/sam/treeview-sprite.gif is up to date.
+[DEBUG]  * js/yui/treeview/assets/skins/sam/treeview.css is up to date.
+[DEBUG]  * js/yui/treeview/assets/sprite-menu.gif is up to date.
+[DEBUG]  * js/yui/treeview/assets/sprite-orig.gif is up to date.
+[DEBUG]  * js/yui/treeview/assets/treeview-core.css is up to date.
+[DEBUG]  * js/yui/treeview/assets/treeview-loading.gif is up to date.
+[DEBUG]  * js/yui/treeview/assets/treeview-menu.css is up to date.
+[DEBUG]  * js/yui/treeview/assets/treeview.css is up to date.
+[DEBUG]  * js/yui/treeview/treeview-debug.js is up to date.
+[DEBUG]  * js/yui/treeview/treeview-min.js is up to date.
+[DEBUG]  * js/yui/yahoo/yahoo-debug.js is up to date.
+[DEBUG]  * js/yui/yahoo/yahoo-min.js is up to date.
+[DEBUG]  * ShowMembers.jsp is up to date.
+[DEBUG]  * WEB-INF/application-context.xml is up to date.
+[DEBUG]  * WEB-INF/chain-config.xml is up to date.
+[DEBUG]  * WEB-INF/struts-config.xml is up to date.
+[DEBUG]  * WEB-INF/transaction-context.xml is up to date.
+[DEBUG]  * WEB-INF/validation.xml is up to date.
+[DEBUG]  * WEB-INF/web.xml is up to date.
+[DEBUG]  * WEB-INF/classes/ApplicationResources.properties is up to date.
+[DEBUG]  * WEB-INF/classes/ApplicationResources_bg.properties is up to date.
+[DEBUG]  * WEB-INF/classes/bg/proxiad/demo/chain/commands/AutowireCreateAction.class is up to date.
+[DEBUG]  * WEB-INF/classes/bg/proxiad/demo/chain/commands/DelegatingActionUtils.class is up to date.
+[DEBUG]  * WEB-INF/classes/bg/proxiad/demo/logic/AdministrationService.class is up to date.
+[DEBUG]  * WEB-INF/classes/bg/proxiad/demo/logic/AdministrationServiceImpl.class is up to date.
+[DEBUG]  * WEB-INF/classes/bg/proxiad/demo/logic/TestService.class is up to date.
+[DEBUG]  * WEB-INF/classes/bg/proxiad/demo/model/Person.class is up to date.
+[DEBUG]  * WEB-INF/classes/bg/proxiad/demo/model/Person.hbm.xml is up to date.
+[DEBUG]  * WEB-INF/classes/bg/proxiad/demo/model/PersonDao.class is up to date.
+[DEBUG]  * WEB-INF/classes/bg/proxiad/demo/model/PersonDaoHibernateImpl$1.class is up to date.
+[DEBUG]  * WEB-INF/classes/bg/proxiad/demo/model/PersonDaoHibernateImpl.class is up to date.
+[DEBUG]  * WEB-INF/classes/bg/proxiad/demo/model/Role.class is up to date.
+[DEBUG]  * WEB-INF/classes/bg/proxiad/demo/model/Role.hbm.xml is up to date.
+[DEBUG]  * WEB-INF/classes/bg/proxiad/demo/model/RoleDao.class is up to date.
+[DEBUG]  * WEB-INF/classes/bg/proxiad/demo/model/RoleDaoHibernateImpl$1.class is up to date.
+[DEBUG]  * WEB-INF/classes/bg/proxiad/demo/model/RoleDaoHibernateImpl.class is up to date.
+[DEBUG]  * WEB-INF/classes/bg/proxiad/demo/struts/AddMemberAction.class is up to date.
+[DEBUG]  * WEB-INF/classes/bg/proxiad/demo/struts/AddMemberFormAction.class is up to date.
+[DEBUG]  * WEB-INF/classes/bg/proxiad/demo/struts/InitRolesAction.class is up to date.
+[DEBUG]  * WEB-INF/classes/bg/proxiad/demo/struts/MemberForm.class is up to date.
+[DEBUG]  * WEB-INF/classes/bg/proxiad/demo/struts/ShowMembersAction.class is up to date.
+[DEBUG]  * WEB-INF/classes/log4j.xml is up to date.
+[DEBUG] Processing: spring-core-2.5.6.jar
+[DEBUG]  * WEB-INF/lib/spring-core-2.5.6.jar is up to date.
+[DEBUG] Processing: commons-logging-1.1.1.jar
+[DEBUG]  * WEB-INF/lib/commons-logging-1.1.1.jar is up to date.
+[DEBUG] Processing: spring-context-2.5.6.jar
+[DEBUG]  * WEB-INF/lib/spring-context-2.5.6.jar is up to date.
+[DEBUG] Processing: aopalliance-1.0.jar
+[DEBUG]  * WEB-INF/lib/aopalliance-1.0.jar is up to date.
+[DEBUG] Processing: spring-beans-2.5.6.jar
+[DEBUG]  * WEB-INF/lib/spring-beans-2.5.6.jar is up to date.
+[DEBUG] Processing: spring-aspects-2.5.6.jar
+[DEBUG]  * WEB-INF/lib/spring-aspects-2.5.6.jar is up to date.
+[DEBUG] Processing: aspectjrt-1.6.1.jar
+[DEBUG]  * WEB-INF/lib/aspectjrt-1.6.1.jar is up to date.
+[DEBUG] Processing: aspectjweaver-1.6.1.jar
+[DEBUG]  * WEB-INF/lib/aspectjweaver-1.6.1.jar is up to date.
+[DEBUG] Processing: spring-aop-2.5.6.jar
+[DEBUG]  * WEB-INF/lib/spring-aop-2.5.6.jar is up to date.
+[DEBUG] Processing: spring-tx-2.5.6.jar
+[DEBUG]  * WEB-INF/lib/spring-tx-2.5.6.jar is up to date.
+[DEBUG] Processing: spring-hibernate3-2.0.8.jar
+[DEBUG]  * WEB-INF/lib/spring-hibernate3-2.0.8.jar is up to date.
+[DEBUG] Processing: hibernate-3.2.5.ga.jar
+[DEBUG]  * WEB-INF/lib/hibernate-3.2.5.ga.jar is up to date.
+[DEBUG] Processing: ehcache-1.2.3.jar
+[DEBUG]  * WEB-INF/lib/ehcache-1.2.3.jar is up to date.
+[DEBUG] Processing: commons-collections-2.1.1.jar
+[DEBUG]  * WEB-INF/lib/commons-collections-2.1.1.jar is up to date.
+[DEBUG] Processing: jta-1.0.1B.jar
+[DEBUG]  * WEB-INF/lib/jta-1.0.1B.jar is up to date.
+[DEBUG] Processing: asm-attrs-1.5.3.jar
+[DEBUG]  * WEB-INF/lib/asm-attrs-1.5.3.jar is up to date.
+[DEBUG] Processing: dom4j-1.6.1.jar
+[DEBUG]  * WEB-INF/lib/dom4j-1.6.1.jar is up to date.
+[DEBUG] Processing: antlr-2.7.2.jar
+[DEBUG]  * WEB-INF/lib/antlr-2.7.2.jar is up to date.
+[DEBUG] Processing: cglib-2.1_3.jar
+[DEBUG]  * WEB-INF/lib/cglib-2.1_3.jar is up to date.
+[DEBUG] Processing: asm-1.5.3.jar
+[DEBUG]  * WEB-INF/lib/asm-1.5.3.jar is up to date.
+[DEBUG] Processing: spring-dao-2.0.8.jar
+[DEBUG]  * WEB-INF/lib/spring-dao-2.0.8.jar is up to date.
+[DEBUG] Processing: spring-jdbc-2.0.8.jar
+[DEBUG]  * WEB-INF/lib/spring-jdbc-2.0.8.jar is up to date.
+[DEBUG] Processing: spring-struts-2.0.8.jar
+[DEBUG]  * WEB-INF/lib/spring-struts-2.0.8.jar is up to date.
+[DEBUG] Processing: commons-beanutils-1.7.0.jar
+[DEBUG]  * WEB-INF/lib/commons-beanutils-1.7.0.jar is up to date.
+[DEBUG] Processing: struts-1.2.9.jar
+[DEBUG]  * WEB-INF/lib/struts-1.2.9.jar is up to date.
+[DEBUG] Processing: commons-digester-1.8.jar
+[DEBUG]  * WEB-INF/lib/commons-digester-1.8.jar is up to date.
+[DEBUG] Processing: commons-fileupload-1.0.jar
+[DEBUG]  * WEB-INF/lib/commons-fileupload-1.0.jar is up to date.
+[DEBUG] Processing: commons-validator-1.3.1.jar
+[DEBUG]  * WEB-INF/lib/commons-validator-1.3.1.jar is up to date.
+[DEBUG] Processing: oro-2.0.8.jar
+[DEBUG]  * WEB-INF/lib/oro-2.0.8.jar is up to date.
+[DEBUG] Processing: xalan-2.5.1.jar
+[DEBUG]  * WEB-INF/lib/xalan-2.5.1.jar is up to date.
+[DEBUG] Processing: spring-web-2.5.6.jar
+[DEBUG]  * WEB-INF/lib/spring-web-2.5.6.jar is up to date.
+[DEBUG] Processing: struts-core-1.3.8.jar
+[DEBUG]  * WEB-INF/lib/struts-core-1.3.8.jar is up to date.
+[DEBUG] Processing: commons-chain-1.1.jar
+[DEBUG]  * WEB-INF/lib/commons-chain-1.1.jar is up to date.
+[DEBUG] Processing: struts-taglib-1.3.8.jar
+[DEBUG]  * WEB-INF/lib/struts-taglib-1.3.8.jar is up to date.
+[DEBUG] Processing: hsqldb-1.8.0.7.jar
+[DEBUG]  * WEB-INF/lib/hsqldb-1.8.0.7.jar is up to date.
+[DEBUG] Processing: standard-1.1.2.jar
+[DEBUG]  * WEB-INF/lib/standard-1.1.2.jar is up to date.
+[DEBUG] Processing: jstl-1.1.2.jar
+[DEBUG]  * WEB-INF/lib/jstl-1.1.2.jar is up to date.
+[DEBUG] Cache saved successfully.
+[INFO] Webapp assembled in[219 msecs]
+[INFO] Building war: D:\testspace\TechDemo\target\TechDemo.war
+[DEBUG] adding directory META-INF/
+[DEBUG] adding entry META-INF/MANIFEST.MF
+[DEBUG] adding directory css/
+[DEBUG] adding directory flash/
+[DEBUG] adding directory images/
+[DEBUG] adding directory images/16x16/
+[DEBUG] adding directory images/24x24/
+[DEBUG] adding directory images/32x32/
+[DEBUG] adding directory images/48x48/
+[DEBUG] adding directory js/
+[DEBUG] adding directory js/yui/
+[DEBUG] adding directory js/yui/animation/
+[DEBUG] adding directory js/yui/assets/
+[DEBUG] adding directory js/yui/assets/skins/
+[DEBUG] adding directory js/yui/assets/skins/sam/
+[DEBUG] adding directory js/yui/autocomplete/
+[DEBUG] adding directory js/yui/autocomplete/assets/
+[DEBUG] adding directory js/yui/autocomplete/assets/skins/
+[DEBUG] adding directory js/yui/autocomplete/assets/skins/sam/
+[DEBUG] adding directory js/yui/base/
+[DEBUG] adding directory js/yui/button/
+[DEBUG] adding directory js/yui/button/assets/
+[DEBUG] adding directory js/yui/button/assets/skins/
+[DEBUG] adding directory js/yui/button/assets/skins/sam/
+[DEBUG] adding directory js/yui/connection/
+[DEBUG] adding directory js/yui/container/
+[DEBUG] adding directory js/yui/container/assets/
+[DEBUG] adding directory js/yui/container/assets/skins/
+[DEBUG] adding directory js/yui/container/assets/skins/sam/
+[DEBUG] adding directory js/yui/dom/
+[DEBUG] adding directory js/yui/element/
+[DEBUG] adding directory js/yui/event/
+[DEBUG] adding directory js/yui/fonts/
+[DEBUG] adding directory js/yui/logger/
+[DEBUG] adding directory js/yui/logger/assets/
+[DEBUG] adding directory js/yui/logger/assets/skins/
+[DEBUG] adding directory js/yui/logger/assets/skins/sam/
+[DEBUG] adding directory js/yui/menu/
+[DEBUG] adding directory js/yui/menu/assets/
+[DEBUG] adding directory js/yui/menu/assets/skins/
+[DEBUG] adding directory js/yui/menu/assets/skins/sam/
+[DEBUG] adding directory js/yui/tabview/
+[DEBUG] adding directory js/yui/tabview/assets/
+[DEBUG] adding directory js/yui/tabview/assets/skins/
+[DEBUG] adding directory js/yui/tabview/assets/skins/sam/
+[DEBUG] adding directory js/yui/treeview/
+[DEBUG] adding directory js/yui/treeview/assets/
+[DEBUG] adding directory js/yui/treeview/assets/skins/
+[DEBUG] adding directory js/yui/treeview/assets/skins/sam/
+[DEBUG] adding directory js/yui/yahoo/
+[DEBUG] adding directory WEB-INF/
+[DEBUG] adding directory WEB-INF/classes/
+[DEBUG] adding directory WEB-INF/classes/bg/
+[DEBUG] adding directory WEB-INF/classes/bg/proxiad/
+[DEBUG] adding directory WEB-INF/classes/bg/proxiad/demo/
+[DEBUG] adding directory WEB-INF/classes/bg/proxiad/demo/chain/
+[DEBUG] adding directory WEB-INF/classes/bg/proxiad/demo/chain/commands/
+[DEBUG] adding directory WEB-INF/classes/bg/proxiad/demo/logic/
+[DEBUG] adding directory WEB-INF/classes/bg/proxiad/demo/model/
+[DEBUG] adding directory WEB-INF/classes/bg/proxiad/demo/struts/
+[DEBUG] adding directory WEB-INF/lib/
+[DEBUG] adding entry AddMember.jsp
+[DEBUG] adding entry css/demo.css
+[DEBUG] adding entry css/SyntaxHighlighter.css
+[DEBUG] adding entry css/tabs.css
+[DEBUG] adding entry flash/clipboard.swf
+[DEBUG] adding entry images/16x16/blue.gif
+[DEBUG] adding entry images/16x16/blue_anime.gif
+[DEBUG] adding entry images/16x16/clock.gif
+[DEBUG] adding entry images/16x16/computer-x.gif
+[DEBUG] adding entry images/16x16/computer.gif
+[DEBUG] adding entry images/16x16/document_add.gif
+[DEBUG] adding entry images/16x16/document_delete.gif
+[DEBUG] adding entry images/16x16/document_edit.gif
+[DEBUG] adding entry images/16x16/edit-delete.gif
+[DEBUG] adding entry images/16x16/empty.gif
+[DEBUG] adding entry images/16x16/error.gif
+[DEBUG] adding entry images/16x16/fingerprint.gif
+[DEBUG] adding entry images/16x16/folder-open.gif
+[DEBUG] adding entry images/16x16/folder.gif
+[DEBUG] adding entry images/16x16/go-next.gif
+[DEBUG] adding entry images/16x16/grey.gif
+[DEBUG] adding entry images/16x16/grey_anime.gif
+[DEBUG] adding entry images/16x16/health-00to19.gif
+[DEBUG] adding entry images/16x16/health-20to39.gif
+[DEBUG] adding entry images/16x16/health-40to59.gif
+[DEBUG] adding entry images/16x16/health-60to79.gif
+[DEBUG] adding entry images/16x16/health-80plus.gif
+[DEBUG] adding entry images/16x16/help.gif
+[DEBUG] adding entry images/16x16/help.png
+[DEBUG] adding entry images/16x16/lock.gif
+[DEBUG] adding entry images/16x16/notepad.gif
+[DEBUG] adding entry images/16x16/package.gif
+[DEBUG] adding entry images/16x16/red.gif
+[DEBUG] adding entry images/16x16/red_anime.gif
+[DEBUG] adding entry images/16x16/search.gif
+[DEBUG] adding entry images/16x16/star-gold.gif
+[DEBUG] adding entry images/16x16/star.gif
+[DEBUG] adding entry images/16x16/stop.gif
+[DEBUG] adding entry images/16x16/terminal.gif
+[DEBUG] adding entry images/16x16/text.gif
+[DEBUG] adding entry images/16x16/warning.gif
+[DEBUG] adding entry images/16x16/yellow.gif
+[DEBUG] adding entry images/16x16/yellow_anime.gif
+[DEBUG] adding entry images/24x24/blue.gif
+[DEBUG] adding entry images/24x24/blue_anime.gif
+[DEBUG] adding entry images/24x24/clipboard.gif
+[DEBUG] adding entry images/24x24/clock.gif
+[DEBUG] adding entry images/24x24/computer-x.gif
+[DEBUG] adding entry images/24x24/computer.gif
+[DEBUG] adding entry images/24x24/delete-document.gif
+[DEBUG] adding entry images/24x24/document.gif
+[DEBUG] adding entry images/24x24/edit-delete.gif
+[DEBUG] adding entry images/24x24/empty.gif
+[DEBUG] adding entry images/24x24/fingerprint.gif
+[DEBUG] adding entry images/24x24/folder.gif
+[DEBUG] adding entry images/24x24/gear.gif
+[DEBUG] adding entry images/24x24/gear2.gif
+[DEBUG] adding entry images/24x24/graph.gif
+[DEBUG] adding entry images/24x24/grey.gif
+[DEBUG] adding entry images/24x24/grey_anime.gif
+[DEBUG] adding entry images/24x24/health-00to19.gif
+[DEBUG] adding entry images/24x24/health-20to39.gif
+[DEBUG] adding entry images/24x24/health-40to59.gif
+[DEBUG] adding entry images/24x24/health-60to79.gif
+[DEBUG] adding entry images/24x24/health-80plus.gif
+[DEBUG] adding entry images/24x24/help.gif
+[DEBUG] adding entry images/24x24/new-document.gif
+[DEBUG] adding entry images/24x24/new-package.gif
+[DEBUG] adding entry images/24x24/next.gif
+[DEBUG] adding entry images/24x24/notepad.gif
+[DEBUG] adding entry images/24x24/orange-square.gif
+[DEBUG] adding entry images/24x24/package.gif
+[DEBUG] adding entry images/24x24/previous.gif
+[DEBUG] adding entry images/24x24/red.gif
+[DEBUG] adding entry images/24x24/red_anime.gif
+[DEBUG] adding entry images/24x24/refresh.gif
+[DEBUG] adding entry images/24x24/save.gif
+[DEBUG] adding entry images/24x24/search.gif
+[DEBUG] adding entry images/24x24/setting.gif
+[DEBUG] adding entry images/24x24/star-gold.gif
+[DEBUG] adding entry images/24x24/star.gif
+[DEBUG] adding entry images/24x24/terminal.gif
+[DEBUG] adding entry images/24x24/up.gif
+[DEBUG] adding entry images/24x24/user.gif
+[DEBUG] adding entry images/24x24/yellow.gif
+[DEBUG] adding entry images/24x24/yellow_anime.gif
+[DEBUG] adding entry images/32x32/blue.gif
+[DEBUG] adding entry images/32x32/blue_anime.gif
+[DEBUG] adding entry images/32x32/clock.gif
+[DEBUG] adding entry images/32x32/computer-x.gif
+[DEBUG] adding entry images/32x32/computer.gif
+[DEBUG] adding entry images/32x32/empty.gif
+[DEBUG] adding entry images/32x32/error.gif
+[DEBUG] adding entry images/32x32/graph.gif
+[DEBUG] adding entry images/32x32/grey.gif
+[DEBUG] adding entry images/32x32/grey_anime.gif
+[DEBUG] adding entry images/32x32/health-00to19.gif
+[DEBUG] adding entry images/32x32/health-20to39.gif
+[DEBUG] adding entry images/32x32/health-40to59.gif
+[DEBUG] adding entry images/32x32/health-60to79.gif
+[DEBUG] adding entry images/32x32/health-80plus.gif
+[DEBUG] adding entry images/32x32/red.gif
+[DEBUG] adding entry images/32x32/red_anime.gif
+[DEBUG] adding entry images/32x32/star-gold.gif
+[DEBUG] adding entry images/32x32/star.gif
+[DEBUG] adding entry images/32x32/user.gif
+[DEBUG] adding entry images/32x32/yellow.gif
+[DEBUG] adding entry images/32x32/yellow_anime.gif
+[DEBUG] adding entry images/48x48/blue.gif
+[DEBUG] adding entry images/48x48/blue_anime.gif
+[DEBUG] adding entry images/48x48/clipboard.gif
+[DEBUG] adding entry images/48x48/computer-x.gif
+[DEBUG] adding entry images/48x48/computer.gif
+[DEBUG] adding entry images/48x48/empty.gif
+[DEBUG] adding entry images/48x48/error.gif
+[DEBUG] adding entry images/48x48/fingerprint.gif
+[DEBUG] adding entry images/48x48/folder.gif
+[DEBUG] adding entry images/48x48/gear2.gif
+[DEBUG] adding entry images/48x48/graph.gif
+[DEBUG] adding entry images/48x48/grey.gif
+[DEBUG] adding entry images/48x48/grey_anime.gif
+[DEBUG] adding entry images/48x48/health-00to19.gif
+[DEBUG] adding entry images/48x48/health-20to39.gif
+[DEBUG] adding entry images/48x48/health-40to59.gif
+[DEBUG] adding entry images/48x48/health-60to79.gif
+[DEBUG] adding entry images/48x48/health-80plus.gif
+[DEBUG] adding entry images/48x48/help.gif
+[DEBUG] adding entry images/48x48/network.gif
+[DEBUG] adding entry images/48x48/notepad.gif
+[DEBUG] adding entry images/48x48/orange-square.gif
+[DEBUG] adding entry images/48x48/package.gif
+[DEBUG] adding entry images/48x48/red.gif
+[DEBUG] adding entry images/48x48/red_anime.gif
+[DEBUG] adding entry images/48x48/refresh.gif
+[DEBUG] adding entry images/48x48/search.gif
+[DEBUG] adding entry images/48x48/secure.gif
+[DEBUG] adding entry images/48x48/setting.gif
+[DEBUG] adding entry images/48x48/star-gold.gif
+[DEBUG] adding entry images/48x48/star.gif
+[DEBUG] adding entry images/48x48/system-log-out.gif
+[DEBUG] adding entry images/48x48/user.gif
+[DEBUG] adding entry images/48x48/yellow.gif
+[DEBUG] adding entry images/48x48/yellow_anime.gif
+[DEBUG] adding entry images/atom-license.txt
+[DEBUG] adding entry images/atom.gif
+[DEBUG] adding entry images/headless.png
+[DEBUG] adding entry images/hudson.png
+[DEBUG] adding entry images/hudson.xcf
+[DEBUG] adding entry images/none.gif
+[DEBUG] adding entry images/progress-unknown.gif
+[DEBUG] adding entry images/spinner.gif
+[DEBUG] adding entry images/TangoProject-License.url
+[DEBUG] adding entry images/textarea-handle.gif
+[DEBUG] adding entry images/title.png
+[DEBUG] adding entry images/title.svg
+[DEBUG] adding entry images/title.xcf
+[DEBUG] adding entry images/topbar.png
+[DEBUG] adding entry images/webstart.gif
+[DEBUG] adding entry index.html
+[DEBUG] adding entry js/behaviour.js
+[DEBUG] adding entry js/combobox.js
+[DEBUG] adding entry js/demo.js
+[DEBUG] adding entry js/prototype.js
+[DEBUG] adding entry js/shBrushCpp.js
+[DEBUG] adding entry js/shBrushCSharp.js
+[DEBUG] adding entry js/shBrushCss.js
+[DEBUG] adding entry js/shBrushDelphi.js
+[DEBUG] adding entry js/shBrushJava.js
+[DEBUG] adding entry js/shBrushJScript.js
+[DEBUG] adding entry js/shBrushPhp.js
+[DEBUG] adding entry js/shBrushPython.js
+[DEBUG] adding entry js/shBrushRuby.js
+[DEBUG] adding entry js/shBrushSql.js
+[DEBUG] adding entry js/shBrushVb.js
+[DEBUG] adding entry js/shBrushXml.js
+[DEBUG] adding entry js/shCore.js
+[DEBUG] adding entry js/sortable.js
+[DEBUG] adding entry js/utilities.js
+[DEBUG] adding entry js/yui/animation/animation-debug.js
+[DEBUG] adding entry js/yui/animation/animation-min.js
+[DEBUG] adding entry js/yui/assets/skins/sam/autocomplete.css
+[DEBUG] adding entry js/yui/assets/skins/sam/blankimage.png
+[DEBUG] adding entry js/yui/assets/skins/sam/button.css
+[DEBUG] adding entry js/yui/assets/skins/sam/calendar.css
+[DEBUG] adding entry js/yui/assets/skins/sam/colorpicker.css
+[DEBUG] adding entry js/yui/assets/skins/sam/container.css
+[DEBUG] adding entry js/yui/assets/skins/sam/datatable.css
+[DEBUG] adding entry js/yui/assets/skins/sam/dt-arrow-dn.png
+[DEBUG] adding entry js/yui/assets/skins/sam/dt-arrow-up.png
+[DEBUG] adding entry js/yui/assets/skins/sam/editor-knob.gif
+[DEBUG] adding entry js/yui/assets/skins/sam/editor-sprite-active.gif
+[DEBUG] adding entry js/yui/assets/skins/sam/editor-sprite.gif
+[DEBUG] adding entry js/yui/assets/skins/sam/editor.css
+[DEBUG] adding entry js/yui/assets/skins/sam/hue_bg.png
+[DEBUG] adding entry js/yui/assets/skins/sam/logger.css
+[DEBUG] adding entry js/yui/assets/skins/sam/menu-button-arrow-disabled.png
+[DEBUG] adding entry js/yui/assets/skins/sam/menu-button-arrow.png
+[DEBUG] adding entry js/yui/assets/skins/sam/menu.css
+[DEBUG] adding entry js/yui/assets/skins/sam/picker_mask.png
+[DEBUG] adding entry js/yui/assets/skins/sam/skin.css
+[DEBUG] adding entry js/yui/assets/skins/sam/split-button-arrow-active.png
+[DEBUG] adding entry js/yui/assets/skins/sam/split-button-arrow-disabled.png
+[DEBUG] adding entry js/yui/assets/skins/sam/split-button-arrow-focus.png
+[DEBUG] adding entry js/yui/assets/skins/sam/split-button-arrow-hover.png
+[DEBUG] adding entry js/yui/assets/skins/sam/split-button-arrow.png
+[DEBUG] adding entry js/yui/assets/skins/sam/sprite.png
+[DEBUG] adding entry js/yui/assets/skins/sam/tabview.css
+[DEBUG] adding entry js/yui/assets/skins/sam/treeview-loading.gif
+[DEBUG] adding entry js/yui/assets/skins/sam/treeview-sprite.gif
+[DEBUG] adding entry js/yui/assets/skins/sam/treeview.css
+[DEBUG] adding entry js/yui/assets/skins/sam/yuitest.css
+[DEBUG] adding entry js/yui/autocomplete/assets/autocomplete-core.css
+[DEBUG] adding entry js/yui/autocomplete/assets/skins/sam/autocomplete-skin.css
+[DEBUG] adding entry js/yui/autocomplete/assets/skins/sam/autocomplete.css
+[DEBUG] adding entry js/yui/autocomplete/autocomplete-debug.js
+[DEBUG] adding entry js/yui/autocomplete/autocomplete-min.js
+[DEBUG] adding entry js/yui/base/base-min.css
+[DEBUG] adding entry js/yui/base/base.css
+[DEBUG] adding entry js/yui/button/assets/button-core.css
+[DEBUG] adding entry js/yui/button/assets/skins/sam/button-skin.css
+[DEBUG] adding entry js/yui/button/assets/skins/sam/button.css
+[DEBUG] adding entry js/yui/button/assets/skins/sam/menu-button-arrow-disabled.png
+[DEBUG] adding entry js/yui/button/assets/skins/sam/menu-button-arrow.png
+[DEBUG] adding entry js/yui/button/assets/skins/sam/split-button-arrow-active.png
+[DEBUG] adding entry js/yui/button/assets/skins/sam/split-button-arrow-disabled.png
+[DEBUG] adding entry js/yui/button/assets/skins/sam/split-button-arrow-focus.png
+[DEBUG] adding entry js/yui/button/assets/skins/sam/split-button-arrow-hover.png
+[DEBUG] adding entry js/yui/button/assets/skins/sam/split-button-arrow.png
+[DEBUG] adding entry js/yui/button/button-beta-debug.js
+[DEBUG] adding entry js/yui/button/button-beta-min.js
+[DEBUG] adding entry js/yui/connection/connection-debug.js
+[DEBUG] adding entry js/yui/connection/connection-min.js
+[DEBUG] adding entry js/yui/container/assets/alrt16_1.gif
+[DEBUG] adding entry js/yui/container/assets/blck16_1.gif
+[DEBUG] adding entry js/yui/container/assets/close12_1.gif
+[DEBUG] adding entry js/yui/container/assets/container-core.css
+[DEBUG] adding entry js/yui/container/assets/container.css
+[DEBUG] adding entry js/yui/container/assets/hlp16_1.gif
+[DEBUG] adding entry js/yui/container/assets/info16_1.gif
+[DEBUG] adding entry js/yui/container/assets/skins/sam/container-skin.css
+[DEBUG] adding entry js/yui/container/assets/skins/sam/container.css
+[DEBUG] adding entry js/yui/container/assets/tip16_1.gif
+[DEBUG] adding entry js/yui/container/assets/warn16_1.gif
+[DEBUG] adding entry js/yui/container/container-debug.js
+[DEBUG] adding entry js/yui/container/container-min.js
+[DEBUG] adding entry js/yui/container/container_core-debug.js
+[DEBUG] adding entry js/yui/container/container_core-min.js
+[DEBUG] adding entry js/yui/cutdown.sh
+[DEBUG] adding entry js/yui/dom/dom-debug.js
+[DEBUG] adding entry js/yui/dom/dom-min.js
+[DEBUG] adding entry js/yui/element/element-beta-debug.js
+[DEBUG] adding entry js/yui/element/element-beta-min.js
+[DEBUG] adding entry js/yui/event/event-debug.js
+[DEBUG] adding entry js/yui/event/event-min.js
+[DEBUG] adding entry js/yui/fonts/fonts-min.css
+[DEBUG] adding entry js/yui/fonts/fonts.css
+[DEBUG] adding entry js/yui/logger/assets/logger-core.css
+[DEBUG] adding entry js/yui/logger/assets/logger.css
+[DEBUG] adding entry js/yui/logger/assets/skins/sam/logger-skin.css
+[DEBUG] adding entry js/yui/logger/assets/skins/sam/logger.css
+[DEBUG] adding entry js/yui/logger/logger-debug.js
+[DEBUG] adding entry js/yui/logger/logger-min.js
+[DEBUG] adding entry js/yui/menu/assets/map.gif
+[DEBUG] adding entry js/yui/menu/assets/menu-core.css
+[DEBUG] adding entry js/yui/menu/assets/menu.css
+[DEBUG] adding entry js/yui/menu/assets/skins/sam/menu-skin.css
+[DEBUG] adding entry js/yui/menu/assets/skins/sam/menu.css
+[DEBUG] adding entry js/yui/menu/menu-debug.js
+[DEBUG] adding entry js/yui/menu/menu-min.js
+[DEBUG] adding entry js/yui/tabview/assets/border_tabs.css
+[DEBUG] adding entry js/yui/tabview/assets/loading.gif
+[DEBUG] adding entry js/yui/tabview/assets/skin-sam.css
+[DEBUG] adding entry js/yui/tabview/assets/skins/sam/tabview-skin.css
+[DEBUG] adding entry js/yui/tabview/assets/skins/sam/tabview.css
+[DEBUG] adding entry js/yui/tabview/assets/tabview-core.css
+[DEBUG] adding entry js/yui/tabview/assets/tabview.css
+[DEBUG] adding entry js/yui/tabview/tabview-debug.js
+[DEBUG] adding entry js/yui/tabview/tabview-min.js
+[DEBUG] adding entry js/yui/treeview/assets/skins/sam/treeview-loading.gif
+[DEBUG] adding entry js/yui/treeview/assets/skins/sam/treeview-skin.css
+[DEBUG] adding entry js/yui/treeview/assets/skins/sam/treeview-sprite.gif
+[DEBUG] adding entry js/yui/treeview/assets/skins/sam/treeview.css
+[DEBUG] adding entry js/yui/treeview/assets/sprite-menu.gif
+[DEBUG] adding entry js/yui/treeview/assets/sprite-orig.gif
+[DEBUG] adding entry js/yui/treeview/assets/treeview-core.css
+[DEBUG] adding entry js/yui/treeview/assets/treeview-loading.gif
+[DEBUG] adding entry js/yui/treeview/assets/treeview-menu.css
+[DEBUG] adding entry js/yui/treeview/assets/treeview.css
+[DEBUG] adding entry js/yui/treeview/treeview-debug.js
+[DEBUG] adding entry js/yui/treeview/treeview-min.js
+[DEBUG] adding entry js/yui/yahoo/yahoo-debug.js
+[DEBUG] adding entry js/yui/yahoo/yahoo-min.js
+[DEBUG] adding entry ShowMembers.jsp
+[DEBUG] adding entry WEB-INF/application-context.xml
+[DEBUG] adding entry WEB-INF/chain-config.xml
+[DEBUG] adding entry WEB-INF/classes/ApplicationResources.properties
+[DEBUG] adding entry WEB-INF/classes/ApplicationResources_bg.properties
+[DEBUG] adding entry WEB-INF/classes/bg/proxiad/demo/chain/commands/AutowireCreateAction.class
+[DEBUG] adding entry WEB-INF/classes/bg/proxiad/demo/chain/commands/DelegatingActionUtils.class
+[DEBUG] adding entry WEB-INF/classes/bg/proxiad/demo/logic/AdministrationService.class
+[DEBUG] adding entry WEB-INF/classes/bg/proxiad/demo/logic/AdministrationServiceImpl.class
+[DEBUG] adding entry WEB-INF/classes/bg/proxiad/demo/logic/TestService.class
+[DEBUG] adding entry WEB-INF/classes/bg/proxiad/demo/model/Person.class
+[DEBUG] adding entry WEB-INF/classes/bg/proxiad/demo/model/Person.hbm.xml
+[DEBUG] adding entry WEB-INF/classes/bg/proxiad/demo/model/PersonDao.class
+[DEBUG] adding entry WEB-INF/classes/bg/proxiad/demo/model/PersonDaoHibernateImpl$1.class
+[DEBUG] adding entry WEB-INF/classes/bg/proxiad/demo/model/PersonDaoHibernateImpl.class
+[DEBUG] adding entry WEB-INF/classes/bg/proxiad/demo/model/Role.class
+[DEBUG] adding entry WEB-INF/classes/bg/proxiad/demo/model/Role.hbm.xml
+[DEBUG] adding entry WEB-INF/classes/bg/proxiad/demo/model/RoleDao.class
+[DEBUG] adding entry WEB-INF/classes/bg/proxiad/demo/model/RoleDaoHibernateImpl$1.class
+[DEBUG] adding entry WEB-INF/classes/bg/proxiad/demo/model/RoleDaoHibernateImpl.class
+[DEBUG] adding entry WEB-INF/classes/bg/proxiad/demo/struts/AddMemberAction.class
+[DEBUG] adding entry WEB-INF/classes/bg/proxiad/demo/struts/AddMemberFormAction.class
+[DEBUG] adding entry WEB-INF/classes/bg/proxiad/demo/struts/InitRolesAction.class
+[DEBUG] adding entry WEB-INF/classes/bg/proxiad/demo/struts/MemberForm.class
+[DEBUG] adding entry WEB-INF/classes/bg/proxiad/demo/struts/ShowMembersAction.class
+[DEBUG] adding entry WEB-INF/classes/log4j.xml
+[DEBUG] adding entry WEB-INF/lib/antlr-2.7.2.jar
+[DEBUG] adding entry WEB-INF/lib/aopalliance-1.0.jar
+[DEBUG] adding entry WEB-INF/lib/asm-1.5.3.jar
+[DEBUG] adding entry WEB-INF/lib/asm-attrs-1.5.3.jar
+[DEBUG] adding entry WEB-INF/lib/aspectjrt-1.6.1.jar
+[DEBUG] adding entry WEB-INF/lib/aspectjweaver-1.6.1.jar
+[DEBUG] adding entry WEB-INF/lib/cglib-2.1_3.jar
+[DEBUG] adding entry WEB-INF/lib/commons-beanutils-1.7.0.jar
+[DEBUG] adding entry WEB-INF/lib/commons-chain-1.1.jar
+[DEBUG] adding entry WEB-INF/lib/commons-collections-2.1.1.jar
+[DEBUG] adding entry WEB-INF/lib/commons-digester-1.8.jar
+[DEBUG] adding entry WEB-INF/lib/commons-fileupload-1.0.jar
+[DEBUG] adding entry WEB-INF/lib/commons-logging-1.1.1.jar
+[DEBUG] adding entry WEB-INF/lib/commons-validator-1.3.1.jar
+[DEBUG] adding entry WEB-INF/lib/dom4j-1.6.1.jar
+[DEBUG] adding entry WEB-INF/lib/ehcache-1.2.3.jar
+[DEBUG] adding entry WEB-INF/lib/hibernate-3.2.5.ga.jar
+[DEBUG] adding entry WEB-INF/lib/hsqldb-1.8.0.7.jar
+[DEBUG] adding entry WEB-INF/lib/jstl-1.1.2.jar
+[DEBUG] adding entry WEB-INF/lib/jta-1.0.1B.jar
+[DEBUG] adding entry WEB-INF/lib/oro-2.0.8.jar
+[DEBUG] adding entry WEB-INF/lib/spring-aop-2.5.6.jar
+[DEBUG] adding entry WEB-INF/lib/spring-aspects-2.5.6.jar
+[DEBUG] adding entry WEB-INF/lib/spring-beans-2.5.6.jar
+[DEBUG] adding entry WEB-INF/lib/spring-context-2.5.6.jar
+[DEBUG] adding entry WEB-INF/lib/spring-core-2.5.6.jar
+[DEBUG] adding entry WEB-INF/lib/spring-dao-2.0.8.jar
+[DEBUG] adding entry WEB-INF/lib/spring-hibernate3-2.0.8.jar
+[DEBUG] adding entry WEB-INF/lib/spring-jdbc-2.0.8.jar
+[DEBUG] adding entry WEB-INF/lib/spring-struts-2.0.8.jar
+[DEBUG] adding entry WEB-INF/lib/spring-tx-2.5.6.jar
+[DEBUG] adding entry WEB-INF/lib/spring-web-2.5.6.jar
+[DEBUG] adding entry WEB-INF/lib/standard-1.1.2.jar
+[DEBUG] adding entry WEB-INF/lib/struts-1.2.9.jar
+[DEBUG] adding entry WEB-INF/lib/struts-core-1.3.8.jar
+[DEBUG] adding entry WEB-INF/lib/struts-taglib-1.3.8.jar
+[DEBUG] adding entry WEB-INF/lib/xalan-2.5.1.jar
+[DEBUG] adding entry WEB-INF/struts-config.xml
+[DEBUG] adding entry WEB-INF/transaction-context.xml
+[DEBUG] adding entry WEB-INF/validation.xml
+[DEBUG] adding entry WEB-INF/web.xml
+[DEBUG] adding directory META-INF/maven/
+[DEBUG] adding directory META-INF/maven/bg.proxiad.demo/
+[DEBUG] adding directory META-INF/maven/bg.proxiad.demo/TechDemo/
+[DEBUG] adding entry META-INF/maven/bg.proxiad.demo/TechDemo/pom.xml
+[DEBUG] adding entry META-INF/maven/bg.proxiad.demo/TechDemo/pom.properties
+[DEBUG] org.apache.maven.plugins:maven-install-plugin:maven-plugin:2.2:runtime (selected for runtime)
+[DEBUG]   org.apache.maven:maven-artifact:jar:2.0.6:runtime (selected for runtime)
+[DEBUG]     org.codehaus.plexus:plexus-utils:jar:1.4.1:runtime (selected for runtime)
+[DEBUG] Adding managed dependencies for unknown:maven-project
+[DEBUG]   org.apache.maven:maven-model:jar:2.0.6
+[DEBUG]   org.apache.maven:maven-project:jar:2.0.6
+[DEBUG]   org.apache.maven.reporting:maven-reporting-api:jar:2.0.6
+[DEBUG]   org.apache.maven:maven-repository-metadata:jar:2.0.6
+[DEBUG]   org.apache.maven:maven-artifact:jar:2.0.6
+[DEBUG]   org.apache.maven:maven-artifact-manager:jar:2.0.6
+[DEBUG]   org.apache.maven:maven-artifact-test:jar:2.0.6
+[DEBUG]   org.apache.maven:maven-settings:jar:2.0.6
+[DEBUG]   org.apache.maven:maven-plugin-parameter-documenter:jar:2.0.6
+[DEBUG]   org.apache.maven:maven-profile:jar:2.0.6
+[DEBUG]   org.apache.maven:maven-plugin-registry:jar:2.0.6
+[DEBUG]   org.apache.maven:maven-plugin-api:jar:2.0.6
+[DEBUG]   org.apache.maven:maven-monitor:jar:2.0.6
+[DEBUG]   org.codehaus.plexus:plexus-container-default:jar:1.0-alpha-9-stable-1
+[DEBUG]   org.codehaus.plexus:plexus-utils:jar:1.4.1
+[DEBUG]   org.apache.maven.wagon:wagon-provider-api:jar:1.0-beta-2
+[DEBUG]   org.apache.maven.wagon:wagon-ssh:jar:1.0-beta-2
+[DEBUG]   org.apache.maven.wagon:wagon-ssh-external:jar:1.0-beta-2
+[DEBUG]   org.apache.maven.wagon:wagon-file:jar:1.0-beta-2
+[DEBUG]   org.apache.maven.wagon:wagon-http-lightweight:jar:1.0-beta-2
+[DEBUG]   easymock:easymock:jar:1.2_Java1.3:test
+[DEBUG]   classworlds:classworlds:jar:1.1
+[DEBUG]   org.apache.maven:maven-project:jar:2.0.6:runtime (selected for runtime)
+[DEBUG] Adding managed dependencies for unknown:maven-settings
+[DEBUG]   org.apache.maven:maven-model:jar:2.0.6
+[DEBUG]   org.apache.maven:maven-project:jar:2.0.6
+[DEBUG]   org.apache.maven.reporting:maven-reporting-api:jar:2.0.6
+[DEBUG]   org.apache.maven:maven-repository-metadata:jar:2.0.6
+[DEBUG]   org.apache.maven:maven-artifact:jar:2.0.6
+[DEBUG]   org.apache.maven:maven-artifact-manager:jar:2.0.6
+[DEBUG]   org.apache.maven:maven-artifact-test:jar:2.0.6
+[DEBUG]   org.apache.maven:maven-settings:jar:2.0.6
+[DEBUG]   org.apache.maven:maven-plugin-parameter-documenter:jar:2.0.6
+[DEBUG]   org.apache.maven:maven-profile:jar:2.0.6
+[DEBUG]   org.apache.maven:maven-plugin-registry:jar:2.0.6
+[DEBUG]   org.apache.maven:maven-plugin-api:jar:2.0.6
+[DEBUG]   org.apache.maven:maven-monitor:jar:2.0.6
+[DEBUG]   org.codehaus.plexus:plexus-container-default:jar:1.0-alpha-9-stable-1
+[DEBUG]   org.codehaus.plexus:plexus-utils:jar:1.4.1
+[DEBUG]   org.apache.maven.wagon:wagon-provider-api:jar:1.0-beta-2
+[DEBUG]   org.apache.maven.wagon:wagon-ssh:jar:1.0-beta-2
+[DEBUG]   org.apache.maven.wagon:wagon-ssh-external:jar:1.0-beta-2
+[DEBUG]   org.apache.maven.wagon:wagon-file:jar:1.0-beta-2
+[DEBUG]   org.apache.maven.wagon:wagon-http-lightweight:jar:1.0-beta-2
+[DEBUG]   easymock:easymock:jar:1.2_Java1.3:test
+[DEBUG]   classworlds:classworlds:jar:1.1
+[DEBUG]     org.apache.maven:maven-settings:jar:2.0.6:runtime (selected for runtime)
+[DEBUG] Adding managed dependencies for unknown:maven-model
+[DEBUG]   org.apache.maven:maven-model:jar:2.0.6
+[DEBUG]   org.apache.maven:maven-project:jar:2.0.6
+[DEBUG]   org.apache.maven.reporting:maven-reporting-api:jar:2.0.6
+[DEBUG]   org.apache.maven:maven-repository-metadata:jar:2.0.6
+[DEBUG]   org.apache.maven:maven-artifact:jar:2.0.6
+[DEBUG]   org.apache.maven:maven-artifact-manager:jar:2.0.6
+[DEBUG]   org.apache.maven:maven-artifact-test:jar:2.0.6
+[DEBUG]   org.apache.maven:maven-settings:jar:2.0.6
+[DEBUG]   org.apache.maven:maven-plugin-parameter-documenter:jar:2.0.6
+[DEBUG]   org.apache.maven:maven-profile:jar:2.0.6
+[DEBUG]   org.apache.maven:maven-plugin-registry:jar:2.0.6
+[DEBUG]   org.apache.maven:maven-plugin-api:jar:2.0.6
+[DEBUG]   org.apache.maven:maven-monitor:jar:2.0.6
+[DEBUG]   org.codehaus.plexus:plexus-container-default:jar:1.0-alpha-9-stable-1
+[DEBUG]   org.codehaus.plexus:plexus-utils:jar:1.4.1
+[DEBUG]   org.apache.maven.wagon:wagon-provider-api:jar:1.0-beta-2
+[DEBUG]   org.apache.maven.wagon:wagon-ssh:jar:1.0-beta-2
+[DEBUG]   org.apache.maven.wagon:wagon-ssh-external:jar:1.0-beta-2
+[DEBUG]   org.apache.maven.wagon:wagon-file:jar:1.0-beta-2
+[DEBUG]   org.apache.maven.wagon:wagon-http-lightweight:jar:1.0-beta-2
+[DEBUG]   easymock:easymock:jar:1.2_Java1.3:test
+[DEBUG]   classworlds:classworlds:jar:1.1
+[DEBUG]       org.apache.maven:maven-model:jar:2.0.6:runtime (selected for runtime)
+[DEBUG] Retrieving parent-POM: org.codehaus.plexus:plexus-containers::1.0.3 for project: null:plexus-container-default:jar:1.0-alpha-9-stable-1 from the repository.
+[DEBUG]       org.codehaus.plexus:plexus-container-default:jar:1.0-alpha-9-stable-1:runtime (selected for runtime)
+[DEBUG]         junit:junit:jar:3.8.1:runtime (selected for runtime)
+[DEBUG]         org.codehaus.plexus:plexus-utils:jar:1.0.4:runtime (removed - nearer found: 1.4.1)
+[DEBUG]         classworlds:classworlds:jar:1.1-alpha-2:runtime (selected for runtime)
+[DEBUG] Adding managed dependencies for unknown:maven-profile
+[DEBUG]   org.apache.maven:maven-model:jar:2.0.6
+[DEBUG]   org.apache.maven:maven-project:jar:2.0.6
+[DEBUG]   org.apache.maven.reporting:maven-reporting-api:jar:2.0.6
+[DEBUG]   org.apache.maven:maven-repository-metadata:jar:2.0.6
+[DEBUG]   org.apache.maven:maven-artifact:jar:2.0.6
+[DEBUG]   org.apache.maven:maven-artifact-manager:jar:2.0.6
+[DEBUG]   org.apache.maven:maven-artifact-test:jar:2.0.6
+[DEBUG]   org.apache.maven:maven-settings:jar:2.0.6
+[DEBUG]   org.apache.maven:maven-plugin-parameter-documenter:jar:2.0.6
+[DEBUG]   org.apache.maven:maven-profile:jar:2.0.6
+[DEBUG]   org.apache.maven:maven-plugin-registry:jar:2.0.6
+[DEBUG]   org.apache.maven:maven-plugin-api:jar:2.0.6
+[DEBUG]   org.apache.maven:maven-monitor:jar:2.0.6
+[DEBUG]   org.codehaus.plexus:plexus-container-default:jar:1.0-alpha-9-stable-1
+[DEBUG]   org.codehaus.plexus:plexus-utils:jar:1.4.1
+[DEBUG]   org.apache.maven.wagon:wagon-provider-api:jar:1.0-beta-2
+[DEBUG]   org.apache.maven.wagon:wagon-ssh:jar:1.0-beta-2
+[DEBUG]   org.apache.maven.wagon:wagon-ssh-external:jar:1.0-beta-2
+[DEBUG]   org.apache.maven.wagon:wagon-file:jar:1.0-beta-2
+[DEBUG]   org.apache.maven.wagon:wagon-http-lightweight:jar:1.0-beta-2
+[DEBUG]   easymock:easymock:jar:1.2_Java1.3:test
+[DEBUG]   classworlds:classworlds:jar:1.1
+[DEBUG]     org.apache.maven:maven-profile:jar:2.0.6:runtime (selected for runtime)
+[DEBUG]     org.apache.maven:maven-model:jar:2.0.6:runtime (selected for runtime)
+[DEBUG] Adding managed dependencies for unknown:maven-artifact-manager
+[DEBUG]   org.apache.maven:maven-model:jar:2.0.6
+[DEBUG]   org.apache.maven:maven-project:jar:2.0.6
+[DEBUG]   org.apache.maven.reporting:maven-reporting-api:jar:2.0.6
+[DEBUG]   org.apache.maven:maven-repository-metadata:jar:2.0.6
+[DEBUG]   org.apache.maven:maven-artifact:jar:2.0.6
+[DEBUG]   org.apache.maven:maven-artifact-manager:jar:2.0.6
+[DEBUG]   org.apache.maven:maven-artifact-test:jar:2.0.6
+[DEBUG]   org.apache.maven:maven-settings:jar:2.0.6
+[DEBUG]   org.apache.maven:maven-plugin-parameter-documenter:jar:2.0.6
+[DEBUG]   org.apache.maven:maven-profile:jar:2.0.6
+[DEBUG]   org.apache.maven:maven-plugin-registry:jar:2.0.6
+[DEBUG]   org.apache.maven:maven-plugin-api:jar:2.0.6
+[DEBUG]   org.apache.maven:maven-monitor:jar:2.0.6
+[DEBUG]   org.codehaus.plexus:plexus-container-default:jar:1.0-alpha-9-stable-1
+[DEBUG]   org.codehaus.plexus:plexus-utils:jar:1.4.1
+[DEBUG]   org.apache.maven.wagon:wagon-provider-api:jar:1.0-beta-2
+[DEBUG]   org.apache.maven.wagon:wagon-ssh:jar:1.0-beta-2
+[DEBUG]   org.apache.maven.wagon:wagon-ssh-external:jar:1.0-beta-2
+[DEBUG]   org.apache.maven.wagon:wagon-file:jar:1.0-beta-2
+[DEBUG]   org.apache.maven.wagon:wagon-http-lightweight:jar:1.0-beta-2
+[DEBUG]   easymock:easymock:jar:1.2_Java1.3:test
+[DEBUG]   classworlds:classworlds:jar:1.1
+[DEBUG]     org.apache.maven:maven-artifact-manager:jar:2.0.6:runtime (selected for runtime)
+[DEBUG] Adding managed dependencies for unknown:maven-repository-metadata
+[DEBUG]   org.apache.maven:maven-model:jar:2.0.6
+[DEBUG]   org.apache.maven:maven-project:jar:2.0.6
+[DEBUG]   org.apache.maven.reporting:maven-reporting-api:jar:2.0.6
+[DEBUG]   org.apache.maven:maven-repository-metadata:jar:2.0.6
+[DEBUG]   org.apache.maven:maven-artifact:jar:2.0.6
+[DEBUG]   org.apache.maven:maven-artifact-manager:jar:2.0.6
+[DEBUG]   org.apache.maven:maven-artifact-test:jar:2.0.6
+[DEBUG]   org.apache.maven:maven-settings:jar:2.0.6
+[DEBUG]   org.apache.maven:maven-plugin-parameter-documenter:jar:2.0.6
+[DEBUG]   org.apache.maven:maven-profile:jar:2.0.6
+[DEBUG]   org.apache.maven:maven-plugin-registry:jar:2.0.6
+[DEBUG]   org.apache.maven:maven-plugin-api:jar:2.0.6
+[DEBUG]   org.apache.maven:maven-monitor:jar:2.0.6
+[DEBUG]   org.codehaus.plexus:plexus-container-default:jar:1.0-alpha-9-stable-1
+[DEBUG]   org.codehaus.plexus:plexus-utils:jar:1.4.1
+[DEBUG]   org.apache.maven.wagon:wagon-provider-api:jar:1.0-beta-2
+[DEBUG]   org.apache.maven.wagon:wagon-ssh:jar:1.0-beta-2
+[DEBUG]   org.apache.maven.wagon:wagon-ssh-external:jar:1.0-beta-2
+[DEBUG]   org.apache.maven.wagon:wagon-file:jar:1.0-beta-2
+[DEBUG]   org.apache.maven.wagon:wagon-http-lightweight:jar:1.0-beta-2
+[DEBUG]   easymock:easymock:jar:1.2_Java1.3:test
+[DEBUG]   classworlds:classworlds:jar:1.1
+[DEBUG]       org.apache.maven:maven-repository-metadata:jar:2.0.6:runtime (selected for runtime)
+[DEBUG] Retrieving parent-POM: org.apache.maven.wagon:wagon::1.0-beta-2 for project: null:wagon-provider-api:jar:1.0-beta-2 from the repository.
+[DEBUG] Adding managed dependencies for unknown:wagon-provider-api
+[DEBUG]   org.apache.maven.wagon:wagon-provider-api:jar:1.0-beta-2
+[DEBUG]   org.apache.maven.wagon:wagon-provider-test:jar:1.0-beta-2
+[DEBUG]   org.apache.maven.wagon:wagon-ssh-common-test:jar:1.0-beta-2
+[DEBUG]   org.apache.maven.wagon:wagon-ssh-common:jar:1.0-beta-2
+[DEBUG]   junit:junit:jar:3.8.1
+[DEBUG]   org.codehaus.plexus:plexus-interactivity-api:jar:1.0-alpha-4
+[DEBUG]   org.codehaus.plexus:plexus-container-default:jar:1.0-alpha-8
+[DEBUG]   org.codehaus.plexus:plexus-utils:jar:1.0.4
+[DEBUG]       org.apache.maven.wagon:wagon-provider-api:jar:1.0-beta-2:runtime (selected for runtime)
+[DEBUG]         org.codehaus.plexus:plexus-utils:jar:1.0.4:runtime (removed - nearer found: 1.4.1)
+[DEBUG] Adding managed dependencies for org.apache.maven:maven-plugin-registry
+[DEBUG]   org.apache.maven:maven-model:jar:2.0.6
+[DEBUG]   org.apache.maven:maven-project:jar:2.0.6
+[DEBUG]   org.apache.maven.reporting:maven-reporting-api:jar:2.0.6
+[DEBUG]   org.apache.maven:maven-repository-metadata:jar:2.0.6
+[DEBUG]   org.apache.maven:maven-artifact:jar:2.0.6
+[DEBUG]   org.apache.maven:maven-artifact-manager:jar:2.0.6
+[DEBUG]   org.apache.maven:maven-artifact-test:jar:2.0.6
+[DEBUG]   org.apache.maven:maven-settings:jar:2.0.6
+[DEBUG]   org.apache.maven:maven-plugin-parameter-documenter:jar:2.0.6
+[DEBUG]   org.apache.maven:maven-profile:jar:2.0.6
+[DEBUG]   org.apache.maven:maven-plugin-registry:jar:2.0.6
+[DEBUG]   org.apache.maven:maven-plugin-api:jar:2.0.6
+[DEBUG]   org.apache.maven:maven-monitor:jar:2.0.6
+[DEBUG]   org.codehaus.plexus:plexus-container-default:jar:1.0-alpha-9-stable-1
+[DEBUG]   org.codehaus.plexus:plexus-utils:jar:1.4.1
+[DEBUG]   org.apache.maven.wagon:wagon-provider-api:jar:1.0-beta-2
+[DEBUG]   org.apache.maven.wagon:wagon-ssh:jar:1.0-beta-2
+[DEBUG]   org.apache.maven.wagon:wagon-ssh-external:jar:1.0-beta-2
+[DEBUG]   org.apache.maven.wagon:wagon-file:jar:1.0-beta-2
+[DEBUG]   org.apache.maven.wagon:wagon-http-lightweight:jar:1.0-beta-2
+[DEBUG]   easymock:easymock:jar:1.2_Java1.3:test
+[DEBUG]   classworlds:classworlds:jar:1.1
+[DEBUG]     org.apache.maven:maven-plugin-registry:jar:2.0.6:runtime (selected for runtime)
+[DEBUG]     org.codehaus.plexus:plexus-container-default:jar:1.0-alpha-9-stable-1:runtime (selected for runtime)
+[DEBUG]       junit:junit:jar:3.8.1:runtime (selected for runtime)
+[DEBUG]       org.codehaus.plexus:plexus-utils:jar:1.0.4:runtime (removed - nearer found: 1.4.1)
+[DEBUG]       classworlds:classworlds:jar:1.1-alpha-2:runtime (selected for runtime)
+[DEBUG]   org.apache.maven:maven-artifact-manager:jar:2.0.6:runtime (selected for runtime)
+[DEBUG]     org.apache.maven:maven-repository-metadata:jar:2.0.6:runtime (selected for runtime)
+[DEBUG]     org.apache.maven.wagon:wagon-provider-api:jar:1.0-beta-2:runtime (selected for runtime)
+[DEBUG]       org.codehaus.plexus:plexus-utils:jar:1.0.4:runtime (removed - nearer found: 1.4.1)
+[DEBUG]   org.codehaus.plexus:plexus-utils:jar:1.4.1:runtime (removed - nearer found: 1.1)
+[DEBUG]   org.codehaus.plexus:plexus-utils:jar:1.1:runtime (selected for runtime)
+[DEBUG]   org.apache.maven:maven-plugin-api:jar:2.0.6:runtime (selected for runtime)
+[DEBUG] Retrieving parent-POM: org.codehaus.plexus:plexus-components::1.1.7 for project: null:plexus-digest:jar:1.0 from the repository.
+[DEBUG]   org.codehaus.plexus:plexus-digest:jar:1.0:runtime (selected for runtime)
+[DEBUG]     org.codehaus.plexus:plexus-container-default:jar:1.0-alpha-8:runtime (removed - nearer found: 1.0-alpha-9-stable-1)
+[DEBUG] Configuring mojo 'org.apache.maven.plugins:maven-install-plugin:2.2:install' -->
+[DEBUG]   (f) artifact = bg.proxiad.demo:TechDemo:war:1.0-SNAPSHOT
+[DEBUG]   (f) attachedArtifacts = []
+[DEBUG]   (f) createChecksum = false
+[DEBUG]   (f) localRepository = [local] -> file://C:\Documents and Settings\Admin\.m2\repository
+[DEBUG]   (f) packaging = war
+[DEBUG]   (f) pomFile = D:\testspace\TechDemo\pom.xml
+[DEBUG]   (f) updateReleaseInfo = false
+[DEBUG] -- end configuration --
+[INFO] [install:install]
+[INFO] Installing D:\testspace\TechDemo\target\TechDemo.war to C:\Documents and Settings\Admin\.m2\repository\bg\proxiad\demo\TechDemo\1.0-SNAPSHOT\TechDemo-1.0-SNAPSHOT.war
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESSFUL
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time: 7 seconds
+[INFO] Finished at: Mon Nov 24 17:21:23 EET 2008
+[INFO] Final Memory: 8M/14M
+[INFO] ------------------------------------------------------------------------
