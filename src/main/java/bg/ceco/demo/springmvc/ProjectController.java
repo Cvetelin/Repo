@@ -54,7 +54,7 @@ public class ProjectController {
 	private TestInfoService testInfoService;
 
 	@Autowired
-	public ExecInfoService execInfoService;
+	private ExecInfoService execInfoService;
 
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public ModelAndView index() {
@@ -118,7 +118,7 @@ public class ProjectController {
 
 		ProjectTreeGenerator generator = new ProjectTreeGenerator();
 		List<CtClass> classes = generator.readJar(project);
-		generateClassSturcture(classes, project);
+		generateClassStructure(classes, project);
 
 		return new ModelAndView("redirect:/ShowProjects");
 	}
@@ -129,7 +129,7 @@ public class ProjectController {
 		ProjectTreeGenerator generator = new ProjectTreeGenerator();
 		clearOldData(project);
 		List<CtClass> classes = generator.readJar(project);
-		generateClassSturcture(classes, project);
+		generateClassStructure(classes, project);
 
 		ModelMap map = listPorejectDetils(project);
 		return new ModelAndView("ShowProjectDetails", map);
@@ -213,15 +213,11 @@ public class ProjectController {
 		String rootDir = "C:\\";
 		StringBuilder path = new StringBuilder();
 
-		path.append(rootDir);
-		path.append(JAR_SAVE_LOCATION);
-		path.append(projectForm.getName());
-		path.append("\\");
-		path.append(file.getOriginalFilename());
+		path.append(rootDir).append(JAR_SAVE_LOCATION);
+		path.append(projectForm.getName()).append("\\").append(file.getOriginalFilename());
 		path.append("-");
 		path.append(RandomStringUtils.randomNumeric(4));
-		path.append("\\");
-		path.append(file.getOriginalFilename());
+		path.append("\\").append(file.getOriginalFilename());
 		return path.toString();
 	}
 
@@ -261,30 +257,9 @@ public class ProjectController {
 		}
 		inputStream.close();
 		outStream.close();
-
-		// try {
-		// response.setHeader("Content-Disposition", "inline;filename=\""
-		// + project.getJarName() + "\"");
-		// OutputStream out = response.getOutputStream();
-		//
-		// ByteArrayInputStream bis = new ByteArrayInputStream(
-		// project.getTestJar());
-		// // response.setContentType(doc.getContentType());
-		//
-		// out.write(IOUtils.copy(bis, out));
-		//
-		// out.flush();
-		// out.close();
-		//
-		//
-		// } catch (IOException e) {
-		// e.printStackTrace();
-		// } // catch (SQLException e) {
-		// // e.printStackTrace();
-		// // }
 	}
 
-	private void generateClassSturcture(List<CtClass> classes, Project project) throws Exception {
+	private void generateClassStructure(List<CtClass> classes, Project project) throws Exception {
 
 		for (CtClass class1 : classes) {
 			try {
@@ -299,11 +274,11 @@ public class ProjectController {
 				if (classInfo.getTestInfo() == null) {
 					classInfo.setTestInfo(new HashSet<TestInfo>());
 				}
-				for (int i = 0; i < methods.length; i++) {
+				for (CtMethod method1 : methods) {
 					TestInfo testInfo = new TestInfo();
-					for (Object method : methods[i].getAnnotations()) {
+					for (Object method : method1.getAnnotations()) {
 						if (method.toString().equals("@org.junit.Test")) {
-							testInfo.setName(methods[i].getName());
+							testInfo.setName(method1.getName());
 							testInfo.setClassInfo(classInfo);
 							testInfos.add(testInfo);
 							classInfo.getTestInfo().add(testInfo);
@@ -316,7 +291,6 @@ public class ProjectController {
 			} finally {
 				class1.detach();
 			}
-
 		}
 	}
 
