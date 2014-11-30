@@ -1,0 +1,1 @@
+java -cp "%USERPROFILE%\.m2\repository\org\hsqldb\hsqldb\2.2.9\hsqldb-2.2.9.jar" org.hsqldb.server.Server --database.0 file:test-runner-db --dbname.0 demodb
